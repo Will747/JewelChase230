@@ -5,4 +5,6 @@ module com.example.jewelchase230 {
 
     opens com.example.jewelchase230 to javafx.fxml;
     exports com.example.jewelchase230;
+    exports com.example.jewelchase230.vectors;
+    opens com.example.jewelchase230.vectors to javafx.fxml;
 }
