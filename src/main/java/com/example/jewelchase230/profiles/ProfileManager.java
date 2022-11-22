@@ -6,16 +6,29 @@ import java.io.FileNotFoundException;
 
 public class ProfileManager
 {
+	private String playerProfileSlot;
+	private String playerName;
+	private Integer levelReached;
+	private Integer overallScore;
 	
-	  public static void main(final String[] args)
+
+	// we may need another variable here Integer uniquePlayerID ? depends on how we want to uniquely identify users
+	  public ProfileManager(String playerProfileSlot, String playerName, Integer levelReached, Integer overallScore) {
+		  this.playerProfileSlot = playerProfileSlot;
+		  this.playerName = playerName; 
+		  this.levelReached = levelReached;
+		  this.overallScore = overallScore;  
+		  
+	}
+
+	public static void main(final String[] args)
 	    {
 	        readLines();
 	    }
 	  
 	  
-	  
-	  //temporary profile object
-	  ProfileManager profile = new ProfileManager(); 
+	
+
 	  
 	  
 
@@ -64,6 +77,7 @@ public class ProfileManager
         } 
     }
     
+    //makes a profile from the lineDataSplit array
     public static ProfileManager makeProfile(String[] lineDataSplit) {
     	ArrayList<Integer>profileManagerIntegers = new ArrayList<Integer>(); 
     	for (int i = 0; i < lineDataSplit.length; i++) { 
@@ -73,9 +87,45 @@ public class ProfileManager
     		}
     		
     	}
-    	ProfileManager profile = new ProfileManager()
+    	ProfileManager profile = new ProfileManager(lineDataSplit[0],lineDataSplit[1],profileManagerIntegers.get(0), profileManagerIntegers.get(1));
+    	return profile;
     }
     
+    public void saveProfile(ProfileManager profile) { 
+    	 try
+         {
+             File myFile = new File("Profiles.txt");
+             Scanner input = new Scanner(myFile);
+             input.close();
+         }
+     
+         catch (FileNotFoundException e)
+         {
+             System.out.println("An error occurred.");
+             e.printStackTrace();
+ 	    } 
+    	 
+    }
+    
+    public String getplayerProfileSlot(ProfileManager profile) {
+    	return this.playerProfileSlot; 
+    }
+    
+    
+    public String getPlayerName(ProfileManager profile) {
+    	return this.playerName;
+    }
+    
+    public Integer getLevelReacher(ProfileManager profile) {
+    	return this.levelReached;
+    }
+    
+    public Integer getOverallScore(ProfileManager profile) { 
+    	return this.overallScore;
+    }
+    
+    
+    
+/// Kiwi: Add setters
 
-  
 }
