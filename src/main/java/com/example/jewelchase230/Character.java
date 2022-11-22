@@ -5,7 +5,7 @@ package com.example.jewelchase230;
  *
  * @author carolinesegestahl.
  */
-public class Character extends Sprite {
+public abstract class Character extends Sprite {
     /**
      * Constructs a renderable component.
      *
@@ -24,7 +24,8 @@ public class Character extends Sprite {
      * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    private boolean canMoveUp(boolean z, int x, int y) {
+    protected boolean canMoveUp(boolean z, int x, int y) {
+        //if tile color is same, tile is in game and no interrupting items then make the move
         return z;
     }
 
@@ -36,7 +37,7 @@ public class Character extends Sprite {
      * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    private boolean canMoveDown(boolean z, int x, int y) {
+    protected boolean canMoveDown(boolean z, int x, int y) {
         return z;
     }
 
@@ -48,7 +49,7 @@ public class Character extends Sprite {
      * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    private boolean canMoveRight(boolean z, int x, int y) {
+    protected boolean canMoveRight(boolean z, int x, int y) {
         return z;
     }
 
@@ -60,7 +61,7 @@ public class Character extends Sprite {
      * @param y Y position on the grid.
      * @return a boolean, true or false
      */
-    private boolean canMoveLeft(boolean z, int x, int y) {
+    protected boolean canMoveLeft(boolean z, int x, int y) {
         return z;
     }
 
@@ -72,7 +73,10 @@ public class Character extends Sprite {
      * @param y Y position on the grid.
      * @return True if an item is on the same tile as a character, else false.
      */
-    private boolean collectItem(boolean z, int x, int y) {
+    protected boolean collectItem(boolean z, int x, int y) {
+        // if item position = character position
+        //pick up
+        //else nothing
         return z;
     }
 
@@ -84,7 +88,7 @@ public class Character extends Sprite {
      * @param y Y position on the grid.
      * @return True if a collision is taking place on the tile the character is on.
      */
-    private boolean collision(boolean z, int x, int y) {
+    protected boolean collision(boolean z, int x, int y) {
         return z;
     }
 }

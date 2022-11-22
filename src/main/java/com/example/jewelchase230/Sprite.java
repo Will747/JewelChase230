@@ -7,7 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
  *
  * @author carolinesegestahl
  */
-public class Sprite extends Renderable{
+public abstract class Sprite extends Renderable {
     /**
      * Constructs a renderable component.
      *

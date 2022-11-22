@@ -10,4 +10,6 @@ public class AICharacter extends Character{
     public AICharacter(int x, int y) {
         super(x, y);
     }
+
+   // protected vector getNextMove()
 }
