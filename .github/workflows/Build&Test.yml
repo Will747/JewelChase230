@@ -31,9 +31,9 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Checkstyle for Java
-          uses: dbelyaev/action-checkstyle@v0.6.1
-          with:
-            checkstyle_config: checkstyle.xml
-            reporter: github-check
-            level: warning
-            workdir: src
+      uses: dbelyaev/action-checkstyle@v0.6.1
+      with:
+        checkstyle_config: checkstyle.xml
+        reporter: github-check
+        level: warning
+        workdir: src
