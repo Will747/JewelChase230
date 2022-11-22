@@ -18,7 +18,7 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param x Initial X component.
      * @param y Initial Y component.
      */
-    public DoubleVector2D(double x, double y) {
+    public DoubleVector2D(final double x, final double y) {
         setX(x);
         setY(y);
     }
@@ -28,8 +28,8 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The value to multiply by.
      * @return Multiplied vector.
      */
-    public DoubleVector2D multiply(double value) {
-        return new DoubleVector2D(x * value, y * value);
+    public DoubleVector2D multiply(final double value) {
+        return new DoubleVector2D(getX() * value, getY() * value);
     }
 
     /**
@@ -37,8 +37,8 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The vector to multiply by.
      * @return Multiplied vector.
      */
-    public DoubleVector2D multiply(DoubleVector2D value) {
-        return new DoubleVector2D(x * value.x, y * value.y);
+    public DoubleVector2D multiply(final DoubleVector2D value) {
+        return new DoubleVector2D(getX() * value.getX(), getY() * value.getY());
     }
 
     /**
@@ -46,8 +46,8 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The value to multiply by.
      * @return Multiplied vector.
      */
-    public DoubleVector2D multiply(int value) {
-        return new DoubleVector2D(x * value, y * value);
+    public DoubleVector2D multiply(final int value) {
+        return new DoubleVector2D(getX() * value, getY() * value);
     }
 
     /**
@@ -55,8 +55,8 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The vector to multiply by.
      * @return Multiplied vector.
      */
-    public DoubleVector2D multiply(IntVector2D value) {
-        return new DoubleVector2D(x * value.getX(), y * value.getY());
+    public DoubleVector2D multiply(final IntVector2D value) {
+        return new DoubleVector2D(getX() * value.getX(), getY() * value.getY());
     }
 
     /**
@@ -64,8 +64,8 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The value to divide by.
      * @return Divided vector.
      */
-    public DoubleVector2D divide(double value) {
-        return new DoubleVector2D(x / value, y / value);
+    public DoubleVector2D divide(final double value) {
+        return new DoubleVector2D(getX() / value, getY() / value);
     }
 
     /**
@@ -73,8 +73,8 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The vector to divide by.
      * @return Divided vector.
      */
-    public DoubleVector2D divide(DoubleVector2D value) {
-        return new DoubleVector2D(x / value.x, y / value.y);
+    public DoubleVector2D divide(final DoubleVector2D value) {
+        return new DoubleVector2D(getX() / value.getX(), getY() / value.getY());
     }
 
     /**
@@ -82,8 +82,8 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The value to divide by.
      * @return Divided vector.
      */
-    public DoubleVector2D divide(int value) {
-        return new DoubleVector2D(x / value, y / value);
+    public DoubleVector2D divide(final int value) {
+        return new DoubleVector2D(getX() / value, getY() / value);
     }
 
     /**
@@ -91,8 +91,8 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The vector to divide by.
      * @return Divided vector.
      */
-    public DoubleVector2D divide(IntVector2D value) {
-        return new DoubleVector2D(x / value.x, y / value.y);
+    public DoubleVector2D divide(final IntVector2D value) {
+        return new DoubleVector2D(getX() / value.getX(), getY() / value.getY());
     }
 
     /**
@@ -100,7 +100,7 @@ public class DoubleVector2D extends Vector2D<Double> {
      * @param value The vector to add.
      * @return Added vector.
      */
-    public DoubleVector2D add(DoubleVector2D value) {
-        return new DoubleVector2D(x + value.x, y + value.y);
+    public DoubleVector2D add(final DoubleVector2D value) {
+        return new DoubleVector2D(getX() + value.getX(), getY() + value.getY());
     }
 }

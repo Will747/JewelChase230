@@ -11,7 +11,7 @@ import javafx.scene.canvas.GraphicsContext;
  * @author Will Kaye
  */
 public abstract class Renderable {
-    // Position in the level item should be rendered to
+    /** Position in the level item should be rendered to. */
     private IntVector2D gridPosition;
 
     /**
@@ -19,8 +19,8 @@ public abstract class Renderable {
      * @param x X position on the grid.
      * @param y Y position on the grid.
      */
-    public Renderable(int x, int y) {
-        gridPosition = new IntVector2D(x ,y);
+    public Renderable(final int x, final int y) {
+        gridPosition = new IntVector2D(x, y);
     }
 
     /**
@@ -63,10 +63,10 @@ public abstract class Renderable {
 
     /**
      * Changes the position of this on the grid.
-     * @param gridPosition New position on the grid.
+     * @param inGridPosition New position on the grid.
      */
-    public void setGridPosition(IntVector2D gridPosition) {
-        this.gridPosition = gridPosition;
+    public void setGridPosition(final IntVector2D inGridPosition) {
+        gridPosition = inGridPosition;
     }
 
     /**

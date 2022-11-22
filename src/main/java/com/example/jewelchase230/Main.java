@@ -5,9 +5,6 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,38 +21,46 @@ import java.io.IOException;
  *
  * @author Will Kaye
  */
-public class Main extends Application {
+public final class Main extends Application {
 
-    // The dimensions of the canvas
+    // The dimensions of the canvas.
+    /** Width of canvas. */
     private static final int CANVAS_WIDTH = 800;
+    /** Height of canvas. */
     private static final int CANVAS_HEIGHT = 450;
 
-    // Number of times the game ticks per second
+    /** Number of times the game ticks per second. */
     private static final int FRAME_RATE = 2;
 
-    // The stage shown by the window
+    /** The stage shown by the window. */
     private static Stage stage;
 
-    // Pane the hold the canvas as a child
+    /** Pane the hold the canvas as a child. */
     private static StackPane canvasPane;
 
-    // The canvas being used to render the grid/board
+    /** The canvas being used to render the grid/board. */
     private static Canvas canvas;
 
-    // Timeline which will cause tick method to be called periodically
+    /** Timeline which will cause tick method to be called periodically. */
     private static Timeline tickTimeline;
 
-    // The level currently being played.
-    // null if no level is being played.
+    /**
+     * The level currently being played.
+     * null if no level is being played.
+     */
     private static Level currentLevel;
 
     @Override
-    public void start(Stage inStage) throws IOException {
+    public void start(final Stage inStage) throws IOException {
         Menu.initMenus();
 
         // Register a tick method to be called periodically.
-        // Make a new timeline with one keyframe that triggers the tick method every half a second.
-        tickTimeline = new Timeline(new KeyFrame(Duration.millis((double) 1000/FRAME_RATE), event -> tick()));
+        // Make a new timeline with one keyframe that triggers
+        // the tick method every half a second.
+        final double millisecondsInASecond = 1000;
+        Duration duration = Duration.millis(millisecondsInASecond / FRAME_RATE);
+        KeyFrame keyFrame = new KeyFrame(duration, event -> tick());
+        tickTimeline = new Timeline(keyFrame);
         // Loop the timeline forever
         tickTimeline.setCycleCount(Animation.INDEFINITE);
 
@@ -72,7 +77,7 @@ public class Main extends Application {
 
         stage.setTitle("Jewel Chase");
         stage.setResizable(true);
-        //stage.setFullScreen(true); // TODO: Make this an optional setting
+        //stage.setFullScreen(true); // Make this an optional setting
         stage.show();
 
         /* Test - Remove this */
@@ -84,7 +89,7 @@ public class Main extends Application {
      * Changes the level currently being played.
      * @param level The new level.
      */
-    public void setLevel(Level level) {
+    public void setLevel(final Level level) {
         currentLevel = level;
     }
 
@@ -102,7 +107,7 @@ public class Main extends Application {
      * Switches what is currently shown on the screen to a menu.
      * @param scene The scene to be shown.
      */
-    public static void switchToMenu(Scene scene) {
+    public static void switchToMenu(final Scene scene) {
         tickTimeline.stop();
         stage.setScene(scene);
     }
@@ -151,7 +156,11 @@ public class Main extends Application {
         }
     }
 
-    public static void main(String[] args) {
+    /**
+     * Program entry point.
+     * @param args Program arguments.
+     */
+    public static void main(final String[] args) {
         launch();
     }
 }

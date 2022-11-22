@@ -8,7 +8,7 @@ import javafx.scene.layout.Region;
  * the canvas being in the incorrect places after the canvas has been resized.
  */
 public class GameCanvas extends Canvas {
-    // Region to match size with.
+    /** Region to match size with. */
     private Region parent;
 
     /**
@@ -18,7 +18,8 @@ public class GameCanvas extends Canvas {
      * @param width width used by canvas before scaling.
      * @param height height used by canvas before scaling.
      */
-    public GameCanvas(Region root, double width, double height) {
+    public GameCanvas(
+            final Region root, final double width, final double height) {
         super(width, height);
 
         setParentRegion(root);
@@ -26,10 +27,10 @@ public class GameCanvas extends Canvas {
 
     /**
      * Sets the canvas to scale to the size of this region.
-     * @param parent Parent/root region of this canvas.
+     * @param inParent Parent/root region of this canvas.
      */
-    public void setParentRegion(Region parent) {
-        this.parent = parent;
+    public void setParentRegion(final Region inParent) {
+        parent = inParent;
         parent.widthProperty().addListener(e -> updateScale());
         parent.heightProperty().addListener(e -> updateScale());
     }
@@ -42,10 +43,11 @@ public class GameCanvas extends Canvas {
         double externalWidth = parent.getWidth();
         double externalHeight = parent.getHeight();
 
-        double heightScale = externalHeight/getHeight();
-        double widthScale = externalWidth/getWidth();
+        double heightScale = externalHeight / getHeight();
+        double widthScale = externalWidth / getWidth();
 
-        // Ensures the whole canvas stays on the screen without affecting the aspect ratio
+        // Ensures the whole canvas stays on the screen without
+        // affecting the aspect ratio
         if (heightScale < widthScale) {
             setScaleX(heightScale);
             setScaleY(heightScale);

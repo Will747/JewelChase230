@@ -18,7 +18,7 @@ public class IntVector2D extends Vector2D<Integer> {
      * @param x Initial X component.
      * @param y Initial Y component.
      */
-    public IntVector2D(int x, int y) {
+    public IntVector2D(final int x, final int y) {
         setX(x);
         setY(y);
     }
@@ -28,6 +28,6 @@ public class IntVector2D extends Vector2D<Integer> {
      * @return Converted double vector.
      */
     public DoubleVector2D toDouble() {
-        return new DoubleVector2D(x, y);
+        return new DoubleVector2D(getX(), getY());
     }
 }

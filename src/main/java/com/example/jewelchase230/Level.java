@@ -13,8 +13,8 @@ public class Level {
      * @return The dimensions of the level.
      */
     public IntVector2D getLevelSize() {
-        /* TODO: This should return the dimensions of the tile array. */
-        return new IntVector2D(16,9);
+        // This should return the dimensions of the tile array.
+        return new IntVector2D(16, 9);
     }
 
     /**
@@ -22,14 +22,14 @@ public class Level {
      * @return All renderable objects.
      */
     public Renderable[] getRenderables() {
-        /* TODO: This should create an array of all tiles, items, characters. */
+        // This should create an array of all tiles, items, characters.
 
         /* Temp Test */
         Renderable[] demoResult = new Renderable[144];
 
         for (int x = 0; x < 16; x++) {
             for (int y = 0; y < 9; y++) {
-                demoResult[x+16*y] = new TestRenderable(x, y);
+                demoResult[x + 16 * y] = new TestRenderable(x, y);
             }
         }
 

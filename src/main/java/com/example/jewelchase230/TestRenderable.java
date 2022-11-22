@@ -11,19 +11,19 @@ import java.util.Random;
  *
  * @author Will Kaye
  */
-public class TestRenderable extends Renderable {
+public final class TestRenderable extends Renderable {
 
     /**
      * Constructs a test renderable component.
      * @param x X position on the grid.
      * @param y Y position on the grid.
      */
-    public TestRenderable(int x, int y) {
+    public TestRenderable(final int x, final int y) {
         super(x, y);
     }
 
     @Override
-    public void draw(GraphicsContext gc) {
+    public void draw(final GraphicsContext gc) {
         DoubleVector2D pos = getRenderPosition();
         DoubleVector2D size = getCubeSize();
 
@@ -41,7 +41,7 @@ public class TestRenderable extends Renderable {
     }
 
     @Override
-    public void tick(int time) {
+    public void tick(final int time) {
 
     }
 }

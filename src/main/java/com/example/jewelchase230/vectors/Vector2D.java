@@ -7,8 +7,10 @@ package com.example.jewelchase230.vectors;
  */
 public class Vector2D<E extends Number> {
     // Components of the vector.
-    protected E x;
-    protected E y;
+    /** x component. */
+    private E x;
+    /** y component. */
+    private E y;
 
     /**
      * Constructs a blank instance of Vector2D.
@@ -18,12 +20,12 @@ public class Vector2D<E extends Number> {
 
     /**
      * Constructs an instance of Vector2D.
-     * @param x Initial X component.
-     * @param y Initial Y component.
+     * @param inX Initial X component.
+     * @param inY Initial Y component.
      */
-    public Vector2D(E x, E y) {
-        setX(x);
-        setY(y);
+    public Vector2D(final E inX, final E inY) {
+        setX(inX);
+        setY(inY);
     }
 
     /**
@@ -41,16 +43,16 @@ public class Vector2D<E extends Number> {
     }
 
     /**
-     * @param x Changes the X component.
+     * @param inX Changes the X component.
      */
-    public void setX(E x) {
-        this.x = x;
+    public void setX(final E inX) {
+        x = inX;
     }
 
     /**
-     * @param y Changes the Y component.
+     * @param inY Changes the Y component.
      */
-    public void setY(E y) {
-        this.y = y;
+    public void setY(final E inY) {
+        y = inY;
     }
 }

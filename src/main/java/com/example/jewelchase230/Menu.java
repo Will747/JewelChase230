@@ -4,27 +4,35 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 
 /**
- * Class containing static functions for getting the scene of any menu in the game.
+ * Class containing static functions for getting the scene of any menu in the
+ * game.
  *
  * @author Will Kaye
  */
-public class Menu {
+public final class Menu {
     // Filenames of all fxml files
+    /** Main menu fxml file. */
     private static final String MAIN_MENU_FXML = "main-menu.fxml";
+    /** Test menu fxml file. */
     private static final String TEST_MENU_FXML = "test-menu.fxml";
 
-    // Already created scenes
-    private static HashMap<String, Scene> CachedScenes;
+    /** Already created scenes. */
+    private static HashMap<String, Scene> cachedScenes;
+
+    private Menu() {
+
+    }
 
     /**
      * Initializes all scenes and caches them.
      * This must be run before any scenes can be accessed.
      */
     public static void initMenus() throws IOException {
-        CachedScenes = new HashMap<>();
+        cachedScenes = new HashMap<>();
 
         createScene(MAIN_MENU_FXML);
         createScene(TEST_MENU_FXML);
@@ -49,17 +57,18 @@ public class Menu {
      * @param fxmlFile fxml file being loaded.
      * @return scene containing menu from fxml file.
      */
-    private static Scene getScene(String fxmlFile) {
-        return CachedScenes.get(fxmlFile);
+    private static Scene getScene(final String fxmlFile) {
+        return cachedScenes.get(fxmlFile);
     }
 
     /**
      * Creates a new scene and adds it to the cache.
      * @param fxmlFile fxmlFile that should be in the scene.
      */
-    private static void createScene(String fxmlFile) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Menu.class.getResource(fxmlFile));
+    private static void createScene(final String fxmlFile) throws IOException {
+        URL url = Menu.class.getResource(fxmlFile);
+        FXMLLoader fxmlLoader = new FXMLLoader(url);
         Scene scene = new Scene(fxmlLoader.load());
-        CachedScenes.put(fxmlFile, scene);
+        cachedScenes.put(fxmlFile, scene);
     }
 }

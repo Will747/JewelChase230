@@ -3,21 +3,19 @@ package com.example.jewelchase230;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
-
 /**
  * MainMenu controller for main menu fxml file.
  *
  * @author Will Kaye
  */
-public class MainMenu {
+public final class MainMenu {
     @FXML
-    void onStartGamePressed(MouseEvent event) {
+    void onStartGamePressed(final MouseEvent event) {
         Main.switchToCanvas();
     }
 
     @FXML
-    void onSwitchMenuPressed(MouseEvent event) {
+    void onSwitchMenuPressed(final MouseEvent event) {
         Main.switchToMenu(Menu.getTestMenu());
     }
 }
