@@ -1,4 +1,4 @@
-package com.example.practice230;
+package com.example.jewelchase230.profiles;
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
@@ -20,7 +20,7 @@ public class ProfileManager
 	    } 
     }
 
-    public void readLines()
+    public static void readLines()
     {
         try
         {
@@ -30,8 +30,8 @@ public class ProfileManager
             {
                 String data = input.nextLine();
                 System.out.println(data);
-                input.close();
             }
+            input.close();
         }
 
         catch (FileNotFoundException e)
@@ -40,7 +40,7 @@ public class ProfileManager
             e.printStackTrace();
         } 
     }
-    void main()
+    public static void main(final String[] args)
     {
         readLines();
     }
