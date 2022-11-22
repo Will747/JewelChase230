@@ -24,6 +24,14 @@ public abstract class Renderable {
     }
 
     /**
+     * Gets the current level.
+     * @return The level.
+     */
+    protected Level getLevel() {
+        return Main.getCurrentLevel();
+    }
+
+    /**
      * The top left position on the canvas that this item should
      * be rendered to.
      * @return Position of this item on the canvas.
