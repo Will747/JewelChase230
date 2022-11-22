@@ -25,6 +25,8 @@ public abstract class Character extends Sprite {
      * @return a boolean, true or false.
      */
     protected boolean canMoveUp(boolean z, int x, int y) {
+        //if Main.getCurrentLevel().getLevelSize() > getGridPosition()
+
         //if tile color is same, tile is in game and no interrupting items then make the move
         return z;
     }
@@ -38,6 +40,7 @@ public abstract class Character extends Sprite {
      * @return a boolean, true or false.
      */
     protected boolean canMoveDown(boolean z, int x, int y) {
+        //if tile color is same, tile is in game and no interrupting items then make the move
         return z;
     }
 
@@ -50,6 +53,7 @@ public abstract class Character extends Sprite {
      * @return a boolean, true or false.
      */
     protected boolean canMoveRight(boolean z, int x, int y) {
+        //if tile color is same, tile is in game and no interrupting items then make the move
         return z;
     }
 
@@ -62,6 +66,7 @@ public abstract class Character extends Sprite {
      * @return a boolean, true or false
      */
     protected boolean canMoveLeft(boolean z, int x, int y) {
+        //if tile color is same, tile is in game and no interrupting items then make the move
         return z;
     }
 
