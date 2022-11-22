@@ -6,11 +6,11 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -33,32 +33,25 @@ public class Main extends Application {
     // Number of times the game ticks per second
     private static final int FRAME_RATE = 2;
 
-    // The first component in the scene
-    private Pane root;
+    // The stage shown by the window
+    private static Stage stage;
+
+    // Pane the hold the canvas as a child
+    private static StackPane canvasPane;
 
     // The canvas being used to render the grid/board
-    private Canvas canvas;
+    private static Canvas canvas;
 
-    // Timeline which will cause tick method to be called periodically.
-    private Timeline tickTimeline;
+    // Timeline which will cause tick method to be called periodically
+    private static Timeline tickTimeline;
 
     // The level currently being played.
     // null if no level is being played.
     private static Level currentLevel;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        root = new StackPane();
-        root.setStyle("-fx-background-color: #000000");
-        canvas = new GameCanvas(root, CANVAS_WIDTH, CANVAS_HEIGHT);
-        switchToCanvas(); // TODO: Change this to show a menu
-
-        Scene scene = new Scene(root);
-        stage.setTitle("Jewel Chase");
-        stage.setScene(scene);
-        stage.setResizable(true);
-        //stage.setFullScreen(true); // TODO: Make this an optional setting
-        stage.show();
+    public void start(Stage inStage) throws IOException {
+        Menu.initMenus();
 
         // Register a tick method to be called periodically.
         // Make a new timeline with one keyframe that triggers the tick method every half a second.
@@ -66,9 +59,24 @@ public class Main extends Application {
         // Loop the timeline forever
         tickTimeline.setCycleCount(Animation.INDEFINITE);
 
+        // Setup canvas
+        canvasPane = new StackPane();
+        canvasPane.setStyle("-fx-background-color: #000000");
+        canvas = new GameCanvas(canvasPane, CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvasPane.getChildren().add(canvas);
+
+        stage = inStage;
+
+        // Show main menu at first
+        switchToMenu(Menu.getMainMenu());
+
+        stage.setTitle("Jewel Chase");
+        stage.setResizable(true);
+        //stage.setFullScreen(true); // TODO: Make this an optional setting
+        stage.show();
+
         /* Test - Remove this */
         currentLevel = new Level();
-        tickTimeline.play();
         /* Test - Remove this */
     }
 
@@ -84,10 +92,19 @@ public class Main extends Application {
      * Changes what is currently being rendered to the canvas.
      * Should be used when switching from a menu to a level.
      */
-    private void switchToCanvas() {
-        ObservableList<Node> children = root.getChildren();
-        children.removeAll();
-        children.add(canvas);
+    public static void switchToCanvas() {
+        tickTimeline.play();
+        Scene scene = new Scene(canvasPane);
+        stage.setScene(scene);
+    }
+
+    /**
+     * Switches what is currently shown on the screen to a menu.
+     * @param scene The scene to be shown.
+     */
+    public static void switchToMenu(Scene scene) {
+        tickTimeline.stop();
+        stage.setScene(scene);
     }
 
     /**
