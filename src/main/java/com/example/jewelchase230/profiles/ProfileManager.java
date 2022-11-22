@@ -18,21 +18,28 @@ public class ProfileManager
 	  ProfileManager profile = new ProfileManager(); 
 	  
 	  
+
+    /*
+    Opens a text file
+
     public void readProfile()
     {
         try
         {
             File myFile = new File("Profiles.txt");
             Scanner input = new Scanner(myFile);
+            input.close();
         }
-
+    
         catch (FileNotFoundException e)
         {
             System.out.println("An error occurred.");
             e.printStackTrace();
 	    } 
     }
+    */
 
+    // Reads each line of the text file "Profile.txt"
     public static void readLines()
     {
         try
