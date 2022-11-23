@@ -5,7 +5,7 @@ package com.example.jewelchase230;
  *
  * @author Caroline Segestaal.
  */
-public class AICharacter extends Character{
+public abstract class AICharacter extends Character{
     /**
      * Constructs a renderable component.
      *
