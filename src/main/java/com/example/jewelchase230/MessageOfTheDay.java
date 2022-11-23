@@ -7,7 +7,7 @@ import java.net.*;
 
 public class MessageOfTheDay
 {
-    public static String messageOfTheDay(String[] args)
+    public static String messageOfTheDay()
     {
         return getSolution();
     }
@@ -38,7 +38,7 @@ public class MessageOfTheDay
         {
             System.out.println("Error connecting to recieve puzzle.");
         }
-        solvePuzzle(puzzle);
+        return puzzle;
     }
 
     private static String solvePuzzle(String puzzle)
@@ -77,11 +77,40 @@ public class MessageOfTheDay
         int solvedPuzzleLength = puzzle.length() + SUFFIX_LENGTH;
         String solvedPuzzleLengthString = "" + solvedPuzzleLength;
         String solutionQuery = solvedPuzzleLengthString + solvedPuzzle + SUFFIX;
-        getSolution(solutionQuery);
+        return solutionQuery;
     }
 
-    private static String getSolution(String query)
+    private static String getSolution()
     {
-        
+        String solvedPuzzleQuery = solvePuzzle(getPuzzle());
+        String message = "";
+        String messageURL = "http://cswebcat.swansea.ac.uk/message?solution=";
+
+        try
+        {
+            URI  tempURI = new URI (messageURL + solvedPuzzleQuery);
+            URL finalMessageURL = tempURI.toURL();
+            HttpURLConnection messageConnection = (HttpURLConnection)finalMessageURL.openConnection();
+            messageConnection.setRequestMethod("GET");
+
+            InputStreamReader messageInputReader = new InputStreamReader(messageConnection.getInputStream());
+            BufferedReader messageBufferedReader = new BufferedReader(messageInputReader);
+            StringBuilder messageResponse = new StringBuilder();
+
+            while ((message = messageBufferedReader.readLine()) != null)
+            {
+                messageResponse.append(message);
+            }
+
+            messageInputReader.close();
+            messageBufferedReader.close();
+            message = messageResponse.toString();
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error connecting to recieve message of the day.");
+        }
+        return message;
     }
 }
