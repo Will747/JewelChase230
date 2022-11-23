@@ -1,9 +1,11 @@
 package com.example.jewelchase230;
 
+import javafx.scene.canvas.GraphicsContext;
+
 /**
  * Renders the characters to the game.
  *
- * @author carolinesegestahl.
+ * @author Caroline Segestaal.
  */
 public abstract class Character extends Sprite {
     /**
@@ -92,5 +94,25 @@ public abstract class Character extends Sprite {
      */
     protected boolean collision(boolean z, int x, int y) {
         return z;
+    }
+
+    /**
+     * Called just before the grid gets re-rendered.
+     *
+     * @param time Time since last frame in milliseconds.
+     */
+    @Override
+    public void tick(int time) {
+
+    }
+
+    /**
+     * Draws this item to the canvas.
+     *
+     * @param gc GraphicsContext for creating draw class.
+     */
+    @Override
+    public void draw(GraphicsContext gc) {
+
     }
 }

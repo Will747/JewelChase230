@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 /**
  * Represents Sprites in the game.
  *
- * @author carolinesegestahl
+ * @author Caroline Segestaal.
  */
 public abstract class Sprite extends Renderable {
     /**

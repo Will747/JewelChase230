@@ -1,5 +1,10 @@
 package com.example.jewelchase230;
 
+/**
+ * Class to control the AI characters.
+ *
+ * @author Caroline Segestaal.
+ */
 public class AICharacter extends Character{
     /**
      * Constructs a renderable component.
