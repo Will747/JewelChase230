@@ -33,43 +33,49 @@ public class MessageOfTheDay
             puzzleInputReader.close();
             puzzleBufferedReader.close();
             puzzle = puzzleResponse.toString();
+            puzzleConnection.disconnect();
         }
         catch (Exception e)
         {
             System.out.println("Error connecting to recieve puzzle.");
         }
+        System.out.println(puzzle);
         return puzzle;
     }
 
     private static String solvePuzzle(String puzzle)
     {
         final int SUFFIX_LENGTH = 6;
+        final int A_CHAR_AS_INT = 65;
+        final int Z_CHAR_AS_INT = 90;
         final String SUFFIX = "CS-230";
         String solvedPuzzle = "";
 
-        for (int i = 0; i < puzzle.length(); i++)
+        int tempIndex;
+
+        for (int i = 0; i <= puzzle.length() - 1; i++)
         {
-            int temp = i;
-            if ((temp + 1) % 2 == 0)
+            tempIndex = i + 1;
+            if ((tempIndex) % 2 == 0)
             {
-                if ((((int) puzzle.charAt(i)) + (temp + 1)) > 90)
+                if ((((int) puzzle.charAt(i)) + (tempIndex)) > Z_CHAR_AS_INT)
                 {
-                   solvedPuzzle =solvedPuzzle + ((char) (((65 + (temp + 1 - (( 90 - ((int) puzzle.charAt(i)))))))));
+                   solvedPuzzle = solvedPuzzle + ((char) (((A_CHAR_AS_INT + ((tempIndex) - (( Z_CHAR_AS_INT - ((int) puzzle.charAt(i)))))))));
                 }
                 else
                 {
-                   solvedPuzzle =solvedPuzzle + ((char) (((int) puzzle.charAt(i)) + (temp + 1)));
+                   solvedPuzzle = solvedPuzzle + ((char) (((int) puzzle.charAt(i)) + (tempIndex)));
                 }
             }
             else
             {
-                if ((((int) puzzle.charAt(i)) - (temp + 1)) < 65)
+                if ((((int) puzzle.charAt(i)) - (tempIndex + 1)) < A_CHAR_AS_INT)
                 {
-                   solvedPuzzle =solvedPuzzle + ((char) (90 - ((temp + 1) - (((int) puzzle.charAt(i)) - 65))));
+                   solvedPuzzle = solvedPuzzle + ((char) (Z_CHAR_AS_INT - ((tempIndex) - (((int) puzzle.charAt(i)) - A_CHAR_AS_INT))));
                 }
                 else
                 {
-                   solvedPuzzle =solvedPuzzle + ((char) (((int) puzzle.charAt(i)) - (temp + 1)));
+                   solvedPuzzle = solvedPuzzle + ((char) (((int) puzzle.charAt(i)) - (tempIndex)));
                 }
             }
         }
@@ -77,6 +83,7 @@ public class MessageOfTheDay
         int solvedPuzzleLength = puzzle.length() + SUFFIX_LENGTH;
         String solvedPuzzleLengthString = "" + solvedPuzzleLength;
         String solutionQuery = solvedPuzzleLengthString + solvedPuzzle + SUFFIX;
+        System.out.println(solvedPuzzle);
         return solutionQuery;
     }
 
@@ -105,10 +112,12 @@ public class MessageOfTheDay
             messageInputReader.close();
             messageBufferedReader.close();
             message = messageResponse.toString();
+            messageConnection.disconnect();
 
         }
         catch (Exception e)
         {
+            System.out.println(e);
             System.out.println("Error connecting to recieve message of the day.");
         }
         return message;
