@@ -9,6 +9,7 @@ public class Item extends Sprite {
     }
 
     public Item(String name, IntVector2D gridPos) {
+        super(gridPos.getX(), gridPos.getY());
 
     }
 
