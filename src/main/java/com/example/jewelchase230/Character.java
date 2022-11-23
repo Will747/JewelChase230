@@ -27,7 +27,7 @@ public abstract class Character extends Sprite {
      */
     protected boolean canMoveUp(int x, int y) {
 
-        return Main.getCurrentLevel().getLevelSize().getY() < getGridPosition().getY();
+        return getLevel().getLevelSize().getY() < getGridPosition().getY();
         //if tile color is same and no interrupting items then make the move
     }
 
@@ -40,7 +40,7 @@ public abstract class Character extends Sprite {
      */
     protected boolean canMoveDown(int x, int y) {
 
-        return Main.getCurrentLevel().getLevelSize().getY() > getGridPosition().getY();
+        return getLevel().getLevelSize().getY() > getGridPosition().getY();
         //if tile color is same and no interrupting items then make the move
     }
 
@@ -53,7 +53,7 @@ public abstract class Character extends Sprite {
      */
     protected boolean canMoveRight(int x, int y) {
 
-        return Main.getCurrentLevel().getLevelSize().getX() > getGridPosition().getX();
+        return getLevel().getLevelSize().getX() > getGridPosition().getX();
         //if tile color is same and no interrupting items then make the move
     }
 
@@ -65,7 +65,7 @@ public abstract class Character extends Sprite {
      * @return a boolean, true or false
      */
     protected boolean canMoveLeft(int x, int y) {
-        return Main.getCurrentLevel().getLevelSize().getX() < getGridPosition().getX();
+        return getLevel().getLevelSize().getX() < getGridPosition().getX();
         //if tile color is same and no interrupting items then make the move
     }
 
