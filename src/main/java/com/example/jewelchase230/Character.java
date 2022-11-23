@@ -19,55 +19,52 @@ public abstract class Character extends Sprite {
     /**
      * Checks if the character can move up.
      *
-     * @param z //just for now.
      * @param x X position on the grid.
      * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    protected boolean canMoveUp(boolean z, int x, int y) {
-        //if Main.getCurrentLevel().getLevelSize() > getGridPosition()
+    protected boolean canMoveUp(int x, int y) {
 
-        //if tile color is same, tile is in game and no interrupting items then make the move
-        return z;
+        return Main.getCurrentLevel().getLevelSize().getY() < getGridPosition().getY();
+        //if tile color is same and no interrupting items then make the move
     }
 
     /**
      *Checks if the character can move down.
      *
-     * @param z //just for now.
      * @param x X position on the grid.
      * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    protected boolean canMoveDown(boolean z, int x, int y) {
-        //if tile color is same, tile is in game and no interrupting items then make the move
-        return z;
+    protected boolean canMoveDown(int x, int y) {
+
+        return Main.getCurrentLevel().getLevelSize().getY() > getGridPosition().getY();
+        //if tile color is same and no interrupting items then make the move
     }
 
     /**
      * Checks if the character can move right.
      *
-     * @param z //just for now.
      * @param x X position on the grid.
      * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    protected boolean canMoveRight(boolean z, int x, int y) {
-        //if tile color is same, tile is in game and no interrupting items then make the move
-        return z;
+    protected boolean canMoveRight(int x, int y) {
+
+        return Main.getCurrentLevel().getLevelSize().getX() > getGridPosition().getX();
+        //if tile color is same and no interrupting items then make the move
     }
 
     /**
      * Checks if the character can move left.
      *
-     * @param z //just for now.
      * @param x X position on the grid.
      * @param y Y position on the grid.
      * @return a boolean, true or false
      */
-    protected boolean canMoveLeft(boolean z, int x, int y) {
-        //if tile color is same, tile is in game and no interrupting items then make the move
-        return z;
+    protected boolean canMoveLeft(int x, int y) {
+        return Main.getCurrentLevel().getLevelSize().getX() < getGridPosition().getX();
+        //if tile color is same and no interrupting items then make the move
     }
 
     /**
