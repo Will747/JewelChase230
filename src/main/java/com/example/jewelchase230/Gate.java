@@ -9,6 +9,7 @@ public class Gate extends Item {
         super(x, y, name, fileName);
     }
 
+
 //    public Gate(int x, int y) {
 //        super(x, y);
 //    }
