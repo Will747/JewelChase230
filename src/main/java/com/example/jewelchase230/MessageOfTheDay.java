@@ -38,6 +38,7 @@ public class MessageOfTheDay
             puzzleInputReader.close();
             puzzleBufferedReader.close();
             puzzle = puzzleResponse.toString();
+            // puzzle = "CAB";
             puzzleConnection.disconnect();
         }
         catch (Exception e)
@@ -65,7 +66,7 @@ public class MessageOfTheDay
             {
                 if ((((int) puzzle.charAt(i)) + (tempIndex)) > Z_CHAR_AS_INT)
                 {
-                   solvedPuzzle = solvedPuzzle + ((char) (((A_CHAR_AS_INT + ((tempIndex) - (( Z_CHAR_AS_INT - ((int) puzzle.charAt(i)))))))));
+                   solvedPuzzle = solvedPuzzle +  ((char) (1 + ((((A_CHAR_AS_INT + ((tempIndex) - (( Z_CHAR_AS_INT - ((int) puzzle.charAt(i)))))))))));
                 }
                 else
                 {
@@ -76,7 +77,7 @@ public class MessageOfTheDay
             {
                 if ((((int) puzzle.charAt(i)) - (tempIndex + 1)) < A_CHAR_AS_INT)
                 {
-                   solvedPuzzle = solvedPuzzle + ((char) (Z_CHAR_AS_INT - ((tempIndex) - (((int) puzzle.charAt(i)) - A_CHAR_AS_INT))));
+                   solvedPuzzle = solvedPuzzle + ((char) (1 + (Z_CHAR_AS_INT - ((tempIndex) - (((int) puzzle.charAt(i)) - A_CHAR_AS_INT)))));
                 }
                 else
                 {
