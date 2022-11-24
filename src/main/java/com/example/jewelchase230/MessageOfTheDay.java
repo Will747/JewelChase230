@@ -12,6 +12,11 @@ public class MessageOfTheDay
         return getSolution();
     }
 
+    public static void main(String[] args)
+    {
+        System.out.println(getSolution());
+    }
+
     private static String getPuzzle()
     {
         String puzzle = "";
