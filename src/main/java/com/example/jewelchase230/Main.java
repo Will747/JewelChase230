@@ -81,7 +81,7 @@ public final class Main extends Application {
         stage.show();
 
         /* Test - Remove this */
-        currentLevel = new Level();
+        currentLevel = new Level(new IntVector2D(16, 9));
         /* Test - Remove this */
     }
 

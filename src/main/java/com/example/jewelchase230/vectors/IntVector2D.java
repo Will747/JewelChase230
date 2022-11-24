@@ -24,6 +24,15 @@ public class IntVector2D extends Vector2D<Integer> {
     }
 
     /**
+     * Adds two vectors together.
+     * @param value vector to add.
+     * @return sum of both vectors.
+     */
+    public IntVector2D add(final IntVector2D value) {
+        return new IntVector2D(getX() + value.getX(), getY() + value.getY());
+    }
+
+    /**
      * Converts this int vector to a double vector.
      * @return Converted double vector.
      */

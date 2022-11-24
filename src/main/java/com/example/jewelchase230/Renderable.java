@@ -24,6 +24,14 @@ public abstract class Renderable {
     }
 
     /**
+     * Constructs a renderable component.
+     * @param pos Position of component on grid.
+     */
+    public Renderable(final IntVector2D pos) {
+        gridPosition = pos;
+    }
+
+    /**
      * Gets the current level.
      * @return The level.
      */
