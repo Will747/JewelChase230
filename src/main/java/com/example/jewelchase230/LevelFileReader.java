@@ -81,4 +81,34 @@ public class LevelFileReader
         }
         
     }
+
+    // Returns the x-axis.
+    public static int getXAxis()
+    {
+        return xAxis;
+    }
+
+    // Returns the y-axis.
+    public static int getYAxis()
+    {
+        return yAxis;
+    }
+
+    // Returns the time allowed for the level.
+    public static int getLevelTime()
+    {
+        return levelTime;
+    }
+
+    // Returns the array list of the tile colours.
+    public static ArrayList<String> getTileColours()
+    {
+        return tileColours;
+    }
+
+    // Returns the array list of objects needed for the level.
+    public static ArrayList<Object> getObjectArray()
+    {
+        return objectArray;
+    }
 }
