@@ -16,30 +16,21 @@ import java.io.IOException;
 
 public class ProfileManager
 {
-	private String playerProfileSlot;
-	private String playerName;
-	private Integer levelReached;
-	private Integer overallScore;
-	private Integer uniquePlayerID;
+
 	private static int lineCount;
 	static int uniqueIDFromFile;
 	
 
 	// we may need another variable here Integer uniquePlayerID ? depends on how we want to uniquely identify users
-	  public ProfileManager(Integer uniquePlayerID, String playerProfileSlot, String playerName, Integer levelReached, Integer overallScore) {
-		  this.uniquePlayerID = uniquePlayerID;
-		  this.playerProfileSlot = playerProfileSlot;
-		  this.playerName = playerName; 
-		  this.levelReached = levelReached;
-		  this.overallScore = overallScore;  
-		  
-	}
+	
 
 	public static void main(final String[] args) throws IOException
 	    {
-		//tests to see if functions work 
-		ProfileManager Nicole = new ProfileManager (1, "P1" , "Nicole", 4, 342);
-		ProfileManager Kiwi = new ProfileManager (4, "P4", "FART", 5, 500); 
+		//tests to see if functions work
+
+		//fix PM -> Profile
+		Profile Nicole = new Profile (1, "P1" , "Nicole", 4, 342);
+		Profile Kiwi = new Profile (4, "P4", "FART", 5, 500); 
 		
 		readLines(); 
 		saveProfile(Kiwi); 
@@ -113,17 +104,10 @@ public class ProfileManager
      * @return profile
      */
     
-    public static ProfileManager makeProfile(String[] lineDataSplit) {
-    	
-    	ArrayList<Integer>profileManagerIntegers = new ArrayList<Integer>(); 
-    	for (int i = 0; i < lineDataSplit.length; i++) { 
-    		if (i == 2 || i == 3) { 
-    			int addInt = Integer.parseInt(lineDataSplit[i]);
-    			profileManagerIntegers.add(addInt); 
-    		}
-    		
-    	}
-    	ProfileManager profile = new ProfileManager((lineCount + 1), lineDataSplit[0],lineDataSplit[1],profileManagerIntegers.get(0), profileManagerIntegers.get(1));
+    public static Profile makeProfile(String[] lineDataSplit) {
+    
+ 
+    	Profile profile = new Profile(lineDataSplit);
     	return profile;
     }
     
@@ -134,27 +118,35 @@ public class ProfileManager
      * @param ProfileManager profile
      * @throws FileNotFoundException
      */
-    public static void saveProfile(ProfileManager profile) throws IOException { 
+    
+    
+    
+    //rewrite entire textFile -- delete this +++4 lines max 
+    
+    public static void saveProfile(Profile profile) throws IOException { 
     	 try
          {
     		 FileWriter writeToPlayerFile = new FileWriter ("Profiles.txt");
+    		// writeToPlayerFile.write(null);
+    		 //look up .writeLine
     		 Scanner input = new Scanner(new File("Profiles.txt"));
-    		 StringBuffer buffer = new StringBuffer();
+    		/// StringBuffer buffer = new StringBuffer();
     		 System.out.println("Before While");
-    		 while (input.hasNextLine()) {
+    		 while (input.hasNext()) {
     			 System.out.println("While");
-    			 buffer.append(input.nextLine()+System.lineSeparator());
+    			// buffer.append(input.nextLine()+System.lineSeparator());
     			 
     			 if (profile.getUniquePlayerID() == uniqueIDFromFile) { 
         			 System.out.println("If");
 
     				 String overwrittenData = input.nextLine();
+    				 //below FIX
     				 String overwritingData = (profile.getUniquePlayerID() + "." + profile.getPlayerProfileSlot() + "." + profile.getPlayerName() + "." + profile.getLevelReached() + "." +
     						 profile.getOverallScore()); 
-    				 String fileContents = buffer.toString();
-    				 fileContents = fileContents.replaceAll(overwrittenData, overwritingData);
+    				// String fileContents = buffer.toString();
+    				// fileContents = fileContents.replaceAll(overwrittenData, overwritingData);
     				 
-    				 writeToPlayerFile.append(fileContents); 
+    			//	 writeToPlayerFile.append(fileContents); 
     				 writeToPlayerFile.flush(); 
     				 
     			 }  
@@ -174,75 +166,6 @@ public class ProfileManager
     
 
 
-	/**
-	 * @return the playerProfileSlot
-	 */
-	public String getPlayerProfileSlot() {
-		return playerProfileSlot;
-	}
-
-	/**
-	 * @return the playerName
-	 */
-	public String getPlayerName() {
-		return playerName;
-	}
-
-	/**
-	 * @return the levelReached
-	 */
-	public Integer getLevelReached() {
-		return levelReached;
-	}
-
-	/**
-	 * @return the overallScore
-	 */
-	public Integer getOverallScore() {
-		return overallScore;
-	}
-
-	/**
-	 * @param playerProfileSlot the playerProfileSlot to set
-	 */
-	public void setPlayerProfileSlot(String playerProfileSlot) {
-		this.playerProfileSlot = playerProfileSlot;
-	}
-
-	/**
-	 * @param playerName the playerName to set
-	 */
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
-	}
-
-	/**
-	 * @param levelReached the levelReached to set
-	 */
-	public void setLevelReached(Integer levelReached) {
-		this.levelReached = levelReached;
-	}
-
-	/**
-	 * @param overallScore the overallScore to set
-	 */
-	public void setOverallScore(Integer overallScore) {
-		this.overallScore = overallScore;
-	}
-
-	/**
-	 * @return the uniquePlayerID
-	 */
-	public Integer getUniquePlayerID() {
-		return uniquePlayerID;
-	}
-
-	/**
-	 * @param uniquePlayerID the uniquePlayerID to set
-	 */
-	public void setUniquePlayerID(Integer uniquePlayerID) {
-		this.uniquePlayerID = uniquePlayerID;
-	}
     
     
     

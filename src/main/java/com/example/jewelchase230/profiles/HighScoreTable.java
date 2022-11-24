@@ -1,10 +1,10 @@
 package com.example.jewelchase230.profiles;
 
-public class highScoreTable {
+public class HighScoreTable {
 
 	//public levelHighScores() highScores { 
 		
-		///take 
+		///this   may be completely independent {taken from serializable)
 		
 	
 	
