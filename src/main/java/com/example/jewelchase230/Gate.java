@@ -1,15 +1,17 @@
-package com.example;
-
-import com.example.jewelchase230.Item;
+package com.example.jewelchase230;
 
 public class Gate extends Item {
 
     private boolean visible;
     private String colour;
 
-    public Gate(int x, int y) {
-        super(x, y);
+    public Gate(int x, int y, String name, String fileName) {
+        super(x, y, name, fileName);
     }
+
+//    public Gate(int x, int y) {
+//        super(x, y);
+//    }
 
     /*public Gate(String colour){
         this.colour = colour;
