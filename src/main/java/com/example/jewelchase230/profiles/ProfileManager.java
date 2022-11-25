@@ -24,9 +24,8 @@ public class ProfileManager
 
 	// we may need another variable here Integer uniquePlayerID ? depends on how we want to uniquely identify users
 	
-
 	public static void main(final String[] args) throws IOException
-	    {
+	{
 		//tests to see if functions work
 
 		//fix PM -> Profile
@@ -37,13 +36,7 @@ public class ProfileManager
 		readLines(); 
 		
 		System.out.println("Hi"); 
-	    }
-	  
-	  
-	
-
-	  
-	  
+	}
 
     /*
     Opens a text file
@@ -66,12 +59,13 @@ public class ProfileManager
     */
 
     // Reads each line of the text file "Profile.txt"
-	 /**
-     * Reads content from file and stores them appropriately to be handled
-     * in the makeProfile method
-     * @return lineDataSplit
-     * @throws FileNotFoundException
-     */
+	/**
+    * Reads content from file and stores them appropriately to be handled
+    * in the makeProfile method
+    * @return lineDataSplit
+    * @throws FileNotFoundException
+    */
+
     public static void readLines()
     {
     	String[] lineDataSplit = new String[6];
@@ -103,11 +97,11 @@ public class ProfileManager
         }
     }
     /**
-     * Constructs a profile object
-     * 
-     * @param String[] lineDataSplit
-     * @return profile
-     */
+    * Constructs a profile object
+    * 
+    * @param String[] lineDataSplit
+    * @return profile
+    */
     
     public static Profile makeProfile(String[] lineDataSplit) {
     
@@ -124,14 +118,12 @@ public class ProfileManager
      * @throws FileNotFoundException
      */
     
-    
-    
     //rewrite entire textFile -- delete this +++4 lines max 
     
     public static void saveProfile(Profile profile) throws IOException { 
     	FileWriter pmWriter = new FileWriter ("Profiles.txt"); 
     	try
-         {
+        {
     		 
     		
     		for (int i = 0; i <= profilesLineByLineData.size(); i++) { 
@@ -140,18 +132,10 @@ public class ProfileManager
     		pmWriter.close();
     		}
      
-         } catch (FileNotFoundException e)
-         {
+        } catch (FileNotFoundException e)
+        {
              System.out.println("An error occurred.");
              e.printStackTrace();
- 	    } 
-    	 
+ 	    } 	 
     }
-    
-
-
-    
-    
-    
-
 }
