@@ -32,7 +32,7 @@ public class ProfileManager
 		Profile Nicole = new Profile (1, "P1" , "Nicole", 4, 342);
 		Profile Kiwi = new Profile (4, "P4", "FART", 5, 500); 
 		
-        //saveProfile(Kiwi); 
+        saveProfile(Kiwi); 
 		readLines(); 
 		
 		System.out.println("Hi"); 
@@ -124,8 +124,6 @@ public class ProfileManager
     	FileWriter pmWriter = new FileWriter ("Profiles.txt"); 
     	try
         {
-    		 
-    		
     		for (int i = 0; i <= profilesLineByLineData.size(); i++) { 
     		pmWriter.write(profilesLineByLineData.get(i)); 
     		pmWriter.write(System.lineSeparator());
