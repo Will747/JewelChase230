@@ -32,8 +32,16 @@ public class Profile {
 	  }
 	  
 	  //tostring for saving profile -- then go into PM and change save file to just be called on the toString
-	  
-	  
+	   
+	  /* 
+	   * 
+	   * THIS METHOD MAKES IT BREAK BC THE profilesLineByLineData method is broken
+	   * public String toString(String[] lineDataSplit) { 
+	      String result = lineDataSplit[0] + "." + lineDataSplit[1] + "." + lineDataSplit[2] + "." + lineDataSplit[3] + "." + lineDataSplit[4]; 
+	      
+	      return result;
+	  } 
+	  */
 	  
 	  
 	  

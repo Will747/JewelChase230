@@ -18,6 +18,7 @@ public class ProfileManager
 {
 
 	private static int lineCount;
+	static ArrayList <String> profilesLineByLineData; 
 	static int uniqueIDFromFile;
 	
 
@@ -73,19 +74,23 @@ public class ProfileManager
     public static String[] readLines()
     {
     	 String[] lineDataSplit = null;
+
         try
         {
             File myFile = new File("Profiles.txt");
             Scanner input = new Scanner(myFile);
             System.out.println("readfile");
+            
             while (input.hasNextLine()) {
             	lineCount++;
             	System.out.println(lineCount + " " + "hiii");
                 String data = input.nextLine();
+                profilesLineByLineData.add(data); 
                 lineDataSplit = data.split("."); 
                  uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
                 //temporary print statement
                 System.out.println(data);
+
             }
             input.close();
         }
@@ -124,39 +129,18 @@ public class ProfileManager
     //rewrite entire textFile -- delete this +++4 lines max 
     
     public static void saveProfile(Profile profile) throws IOException { 
-    	 try
+    	FileWriter pmWriter = new FileWriter ("Profiles.txt"); 
+    	try
          {
-    		 FileWriter writeToPlayerFile = new FileWriter ("Profiles.txt");
-    		// writeToPlayerFile.write(null);
-    		 //look up .writeLine
-    		 Scanner input = new Scanner(new File("Profiles.txt"));
-    		/// StringBuffer buffer = new StringBuffer();
-    		 System.out.println("Before While");
-    		 while (input.hasNext()) {
-    			 System.out.println("While");
-    			// buffer.append(input.nextLine()+System.lineSeparator());
-    			 
-    			 if (profile.getUniquePlayerID() == uniqueIDFromFile) { 
-        			 System.out.println("If");
-
-    				 String overwrittenData = input.nextLine();
-    				 //below FIX
-    				 String overwritingData = (profile.getUniquePlayerID() + "." + profile.getPlayerProfileSlot() + "." + profile.getPlayerName() + "." + profile.getLevelReached() + "." +
-    						 profile.getOverallScore()); 
-    				// String fileContents = buffer.toString();
-    				// fileContents = fileContents.replaceAll(overwrittenData, overwritingData);
-    				 
-    			//	 writeToPlayerFile.append(fileContents); 
-    				 writeToPlayerFile.flush(); 
-    				 
-    			 }  
-             }
     		 
-             
-             input.close();
-         }
+    		
+    		for (int i = 0; i <= profilesLineByLineData.size(); i++) { 
+    		pmWriter.write(profilesLineByLineData.get(i)); 
+    		pmWriter.write(System.lineSeparator());
+    		pmWriter.close();
+    		}
      
-         catch (FileNotFoundException e)
+         } catch (FileNotFoundException e)
          {
              System.out.println("An error occurred.");
              e.printStackTrace();
