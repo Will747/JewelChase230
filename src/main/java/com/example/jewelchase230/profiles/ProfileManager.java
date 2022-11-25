@@ -33,8 +33,9 @@ public class ProfileManager
 		Profile Nicole = new Profile (1, "P1" , "Nicole", 4, 342);
 		Profile Kiwi = new Profile (4, "P4", "FART", 5, 500); 
 		
+        //saveProfile(Kiwi); 
 		readLines(); 
-		saveProfile(Kiwi); 
+		
 		System.out.println("Hi"); 
 	    }
 	  
@@ -71,9 +72,9 @@ public class ProfileManager
      * @return lineDataSplit
      * @throws FileNotFoundException
      */
-    public static String[] readLines()
+    public static void readLines()
     {
-    	 String[] lineDataSplit = null;
+    	String[] lineDataSplit = new String[6];
 
         try
         {
@@ -83,11 +84,11 @@ public class ProfileManager
             
             while (input.hasNextLine()) {
             	lineCount++;
-            	System.out.println(lineCount + " " + "hiii");
+            	System.out.println(lineCount + " hiii");
                 String data = input.nextLine();
-                profilesLineByLineData.add(data); 
-                lineDataSplit = data.split("."); 
-                 uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
+                //profilesLineByLineData.add(data); 
+                //lineDataSplit = data.split("."); 
+                //uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
                 //temporary print statement
                 System.out.println(data);
 
@@ -99,8 +100,7 @@ public class ProfileManager
         {
             System.out.println("An error occurred.");
             e.printStackTrace();
-        } 
-        return lineDataSplit;
+        }
     }
     /**
      * Constructs a profile object
