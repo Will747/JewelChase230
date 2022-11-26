@@ -1,6 +1,7 @@
 package com.example.jewelchase230.profiles;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -18,7 +19,7 @@ public class ProfileManager
 {
 
 	private static int lineCount;
-	static ArrayList <String> profilesLineByLineData; 
+	static ArrayList <String> profilesLineByLineData = new ArrayList<String>(); 
 	static int uniqueIDFromFile;
 	
 
@@ -28,11 +29,10 @@ public class ProfileManager
 	{
 		//tests to see if functions work
 
-		//fix PM -> Profile
 		Profile Nicole = new Profile (1, "P1" , "Nicole", 4, 342);
 		Profile Kiwi = new Profile (4, "P4", "FART", 5, 500); 
 		
-        saveProfile(Kiwi); 
+         
 		readLines(); 
 		
 		System.out.println("Hi"); 
@@ -66,36 +66,31 @@ public class ProfileManager
     * @throws FileNotFoundException
     */
 
-    public static void readLines()
-    {
-    	String[] lineDataSplit = new String[6];
-
-        try
-        {
+    public static void readLines() {
+        try {
             File myFile = new File("Profiles.txt");
             Scanner input = new Scanner(myFile);
+            //print statement for testing
             System.out.println("readfile");
             
             while (input.hasNextLine()) {
             	lineCount++;
-            	System.out.println(lineCount + " hiii");
                 String data = input.nextLine();
-                //profilesLineByLineData.add(data); 
-                //lineDataSplit = data.split("."); 
-                //uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
-                //temporary print statement
-                System.out.println(data);
-
+                profilesLineByLineData.add(data); 
+              
+               String[] lineDataSplit = data.split("\\.",5); 
+                uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
+        
             }
+            
             input.close();
-        }
-
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
     }
+    
+    
     /**
     * Constructs a profile object
     * 
@@ -117,9 +112,7 @@ public class ProfileManager
      * @param ProfileManager profile
      * @throws FileNotFoundException
      */
-    
-    //rewrite entire textFile -- delete this +++4 lines max 
-    
+        
     public static void saveProfile(Profile profile) throws IOException { 
     	FileWriter pmWriter = new FileWriter ("Profiles.txt"); 
     	try
