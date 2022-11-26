@@ -1,7 +1,15 @@
 package com.example.jewelchase230.profiles;
 
 public class Profile {
-
+	
+	/**
+	 * This class manages the Profiles. Includes various constructor methods of Profiles, some functions to handle said objects, and getters and setters. 
+	 *
+	 * @author Kellie Robinson
+	 */
+	
+	
+	
 	
 	private Integer uniquePlayerID;
 	private String playerProfileSlot;
@@ -10,6 +18,16 @@ public class Profile {
 	private Integer overallScore;
 	
 	
+	
+	
+	/**
+	 * Constructor of Profile 
+	 * @param uniquePlayerID
+	 * @param playerProfileSlot
+	 * @param playerName
+	 * @param levelReached
+	 * @param overallScore
+	 */
 	  public Profile(Integer uniquePlayerID, String playerProfileSlot, String playerName, Integer levelReached, Integer overallScore) {
 		  this.uniquePlayerID = uniquePlayerID;
 		  this.playerProfileSlot = playerProfileSlot;
@@ -21,7 +39,10 @@ public class Profile {
 
 		  
 	}
-
+	  /**
+	   * Constructor of Profile
+	   * @param lineDataSplit
+	   */
 	  public Profile(String[] lineDataSplit) { 
 		  uniquePlayerID = Integer.parseInt(lineDataSplit[0]);
 		  playerProfileSlot = lineDataSplit[1]; 
@@ -31,17 +52,30 @@ public class Profile {
 		  
 	  }
 	  
-	  //tostring for saving profile -- then go into PM and change save file to just be called on the toString
+	  /**
+	   * Method which takes a Profile object and returns it to a String format seperating each variable with a '.'.
+	   * This will be fed into the saveProfile() function.
+	   * @param profile
+	   * @return profileToString
+	   */
+	  public static String profileToString(Profile profile) { 
+		  String profileToString = (profile.getUniquePlayerID() + "." + profile.getPlayerProfileSlot() + "." + profile.getPlayerName()
++ "." + profile.getLevelReached() + "." + profile.getOverallScore());
+		return profileToString;		 
+	  }
+	  
 	   
-	  /* 
-	   * 
-	   * THIS METHOD MAKES IT BREAK BC THE profilesLineByLineData method is broken
-	   * public String toString(String[] lineDataSplit) { 
-	      String result = lineDataSplit[0] + "." + lineDataSplit[1] + "." + lineDataSplit[2] + "." + lineDataSplit[3] + "." + lineDataSplit[4]; 
+	  /**
+	   * Method which takes an Array lineDataSplit and converts it to a String with periods ('.') between each variable.
+	   * @param lineDataSplit
+	   * @return lineDataSplitToString
+	   */
+	    public String toString(String[] lineDataSplit) { 
+	      String lineDataSplitToString = lineDataSplit[0] + "." + lineDataSplit[1] + "." + lineDataSplit[2] + "." + lineDataSplit[3] + "." + lineDataSplit[4]; 
 	      
-	      return result;
+	      return lineDataSplitToString;
 	  } 
-	  */
+	  
 	  
 	  
 	  

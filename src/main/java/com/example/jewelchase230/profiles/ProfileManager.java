@@ -1,4 +1,5 @@
 package com.example.jewelchase230.profiles;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,29 +35,13 @@ public class ProfileManager
 		
          
 		readLines(); 
+		System.out.println(profilesLineByLineData);
+		saveProfile(Nicole);		
 		
 		System.out.println("Hi"); 
 	}
 
-    /*
-    Opens a text file
-
-    public void readProfile()
-    {
-        try
-        {
-            File myFile = new File("Profiles.txt");
-            Scanner input = new Scanner(myFile);
-            input.close();
-        }
     
-        catch (FileNotFoundException e)
-        {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-	    } 
-    }
-    */
 
     // Reads each line of the text file "Profile.txt"
 	/**
@@ -80,7 +65,8 @@ public class ProfileManager
               
                String[] lineDataSplit = data.split("\\.",5); 
                 uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
-        
+                
+                System.out.println(lineCount);
             }
             
             input.close();
@@ -91,19 +77,7 @@ public class ProfileManager
     }
     
     
-    /**
-    * Constructs a profile object
-    * 
-    * @param String[] lineDataSplit
-    * @return profile
-    */
-    
-    public static Profile makeProfile(String[] lineDataSplit) {
-    
- 
-    	Profile profile = new Profile(lineDataSplit);
-    	return profile;
-    }
+   
     
     
     /**
@@ -112,19 +86,26 @@ public class ProfileManager
      * @param ProfileManager profile
      * @throws FileNotFoundException
      */
-        
+       
     public static void saveProfile(Profile profile) throws IOException { 
-    	FileWriter pmWriter = new FileWriter ("Profiles.txt"); 
+    	BufferedWriter pmWriter = new BufferedWriter (new FileWriter("Profiles.txt")); 
+
     	try
         {
-    		for (int i = 0; i <= profilesLineByLineData.size(); i++) { 
-    		pmWriter.write(profilesLineByLineData.get(i)); 
-    		pmWriter.write(System.lineSeparator());
+    		pmWriter.write(Profile.profileToString(profile));
+    		pmWriter.newLine();
+    		 for (int i = 0; i < profilesLineByLineData.size(); i++) {
+    			 pmWriter.write(profilesLineByLineData.get(i));
+    			 
+    			 if (i != profilesLineByLineData.size()) { 
+    				 pmWriter.newLine();
+    			 }
+    		 }
+    		
     		pmWriter.close();
-    		}
+    		
      
-        } catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
              System.out.println("An error occurred.");
              e.printStackTrace();
  	    } 	 

@@ -6,7 +6,11 @@ import javafx.scene.layout.Region;
  * A canvas that scales to the parent nodes size. But keeps the original
  * aspect ratio and dimensions internally. This prevents items drawn to
  * the canvas being in the incorrect places after the canvas has been resized.
+ * @author Will Kaye
  */
+
+
+
 public class GameCanvas extends Canvas {
     /** Region to match size with. */
     private Region parent;
