@@ -53,10 +53,10 @@ public class LevelFileReader {
             levelTime = fileScanner.nextInt();
 
             // Adds tokens to an array list for the colours of the tiles.
-            while (fileScanner.next().length() == 4) {
+            while (!fileScanner.hasNextInt()) {
                 tileColours.add(fileScanner.next());
             }
-
+            fileScanner.nextLine();
             // Makes objects from the provided information.
             while (fileScanner.hasNextLine()) {
                 levelBuilder(fileScanner.nextLine());
@@ -77,7 +77,7 @@ public class LevelFileReader {
 
         // Makes the appropriate object from the ID provided from the file.
         switch (ID) {
-            case 1:
+            case 1:{
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
@@ -88,7 +88,8 @@ public class LevelFileReader {
                     objectArray.add(tempBomb);
                 }
                 break;
-            case 2:
+            }
+            case 2:{
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
@@ -99,7 +100,8 @@ public class LevelFileReader {
                     objectArray.add(tempClock);
                 }
                 break;
-            case 3:
+            }
+            case 3:{
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
@@ -109,7 +111,8 @@ public class LevelFileReader {
                     objectArray.add(tempDoor);
                 }
                 break;
-            case 4:
+            }
+            case 4:{
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
@@ -120,7 +123,8 @@ public class LevelFileReader {
                     objectArray.add(tempLever);
                 }
                 break;
-            case 5:
+            }
+            case 5:{
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
@@ -131,7 +135,8 @@ public class LevelFileReader {
                     objectArray.add(tempGate);
                 }
                 break;
-            case 6:
+            }
+            case 6:{
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
@@ -139,7 +144,8 @@ public class LevelFileReader {
                     objectArray.add(tempThief);
                 }
                 break;
-            case 7:
+            }
+            case 7:{
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
@@ -147,7 +153,8 @@ public class LevelFileReader {
                     objectArray.add(tempAssassin);
                 }
                 break;
-            case 8:
+            }
+            case 8:{
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
@@ -158,9 +165,11 @@ public class LevelFileReader {
                     objectArray.add(tempLoot);
                 }
                 break;
-            default:
+            }
+            default:{
                 System.out.println("Item ID does not exist!");
                 break;
+            }
         }
 
     }
