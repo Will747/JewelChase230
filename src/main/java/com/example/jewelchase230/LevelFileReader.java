@@ -78,7 +78,7 @@ public class LevelFileReader {
         // Makes the appropriate object from the ID provided from the file.
         switch (ID) {
             case 1:
-                while (lineScanner.next() != "/n") {
+                while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
                     String name = lineScanner.next();
@@ -87,10 +87,9 @@ public class LevelFileReader {
                     Bomb tempBomb = new Bomb(x, y, name, fileName, time);
                     objectArray.add(tempBomb);
                 }
-                lineScanner.next();
                 break;
             case 2:
-                while (lineScanner.next() != "/n") {
+                while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
                     String name = lineScanner.next();
@@ -99,10 +98,9 @@ public class LevelFileReader {
                     Clock tempClock = new Clock(x, y, name, fileName, time);
                     objectArray.add(tempClock);
                 }
-                lineScanner.next();
                 break;
             case 3:
-                while (lineScanner.next() != "/n") {
+                while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
                     String name = lineScanner.next();
@@ -110,10 +108,9 @@ public class LevelFileReader {
                     Door tempDoor = new Door(x, y, name, fileName);
                     objectArray.add(tempDoor);
                 }
-                lineScanner.next();
                 break;
             case 4:
-                while (lineScanner.next() != "/n") {
+                while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
                     String name = lineScanner.next();
@@ -122,10 +119,9 @@ public class LevelFileReader {
                     Lever tempLever = new Lever(x, y, name, fileName, colour);
                     objectArray.add(tempLever);
                 }
-                lineScanner.next();
                 break;
             case 5:
-                while (lineScanner.next() != "/n") {
+                while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
                     String name = lineScanner.next();
@@ -133,29 +129,26 @@ public class LevelFileReader {
                     String colour = lineScanner.next();
                     Gate tempGate = new Gate(x, y, name, fileName, colour);
                     objectArray.add(tempGate);
-                    lineScanner.next();
                 }
                 break;
             case 6:
-                while (lineScanner.next() != "/n") {
+                while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
                     FloorFollowingThief tempThief = new FloorFollowingThief(x, y);
                     objectArray.add(tempThief);
                 }
-                lineScanner.next();
                 break;
             case 7:
-                while (lineScanner.next() != "/n") {
+                while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
                     FlyingAssassin tempAssassin = new FlyingAssassin(x, y);
                     objectArray.add(tempAssassin);
                 }
-                lineScanner.next();
                 break;
             case 8:
-                while (lineScanner.next() != "/n") {
+                while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
                     String name = lineScanner.next();
@@ -164,7 +157,6 @@ public class LevelFileReader {
                     Loot tempLoot = new Loot(x, y, name, fileName, rarity);
                     objectArray.add(tempLoot);
                 }
-                lineScanner.next();
                 break;
             default:
                 System.out.println("Item ID does not exist!");
