@@ -18,8 +18,8 @@ public class Item extends Sprite {
     public String name;
     public String fileName;
 
-    public void remove(Item item){
-        item.setGridPosition(new IntVector2D(-1,-1));
+    public void remove(){
+        this.setGridPosition(new IntVector2D(-1,-1));
     }
 
     public void setName(String name) {
@@ -39,6 +39,6 @@ public class Item extends Sprite {
     }
 
     public void doOnCollision() {
-
+        remove();
     }
 }
