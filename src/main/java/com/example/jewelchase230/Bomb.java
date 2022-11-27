@@ -1,4 +1,6 @@
 package com.example.jewelchase230;
+import java.util.ArrayList;
+import com.example.jewelchase230.vectors.IntVector2D;
 
 public class Bomb extends Item{
 
@@ -17,7 +19,24 @@ private int time;
         return this.time;
     }
 
+    //psueod code for explode. waiting for getObjectArray and setObjectArray in level class (or similar)
+
     public void explode() {
-        //Gets grid position and wipes out all items on that row and column
+        /*level currentLevel = main.getCurrentLevel();
+        ArrayList<Object> objectArray = currentLevel.getObjectArray();
+        for (int i=0; i < objectArray.size(); i++) {
+            if (i.getX == this.getX) {
+                i.remove()
+            }
+            if (i.getY == this.getY) {
+                i.remove()
+            }
+        }
+        main.currentLevel.setObjectArray(objectArray);  */
+    }
+
+    public void doOnCollision() {
+        explode();
+        remove();
     }
 }

@@ -1,4 +1,5 @@
 package com.example.jewelchase230;
+import java.util.ArrayList;
 
 public class Lever extends Item{
 
@@ -17,8 +18,23 @@ public class Lever extends Item{
         return colour;
     }
 
+    //pseudo code for removing gates. waiting for getObjectArray and setObjectArray in level class (or similar)
+    
     public void removeGates() {
-        //Removes all gates with the same colour
+        /*Level currentLevel = Main.getCurrentLevel();
+        ArrayList<Object> objectArray = currentLevel.getObjectArray();
+        for (Object itemInstance: objectArray) {
+            if (itemInstance instanceof Gate) {
+                if (itemInstance.getColour == this.colour) {
+                    itemInstance.remove();
+                }
+            }
+        }
+        Main.setObjectArray(objectArray); */
+    }
+
+    public void doOnCollision() {
+        removeGates();
     }
 
 }
