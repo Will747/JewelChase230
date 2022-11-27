@@ -22,6 +22,7 @@ public class ProfileManager
 	private static int lineCount;
 	static ArrayList <String> profilesLineByLineData = new ArrayList<String>(); 
 	static int uniqueIDFromFile;
+	public static final int LINEBYLINEDATA_I = 4; 
 	
 
 	// we may need another variable here Integer uniquePlayerID ? depends on how we want to uniquely identify users
@@ -30,8 +31,8 @@ public class ProfileManager
 	{
 		//tests to see if functions work
 
-		Profile Nicole = new Profile (1, "P1" , "Nicole", 4, 342);
-		Profile Kiwi = new Profile (4, "P4", "FART", 5, 500); 
+		Profile Nicole = new Profile (1, "P1" , "Nicole", 4, 342, 3);
+		Profile Kiwi = new Profile (4, "P4", "FART", 5, 500, 2); 
 		
          
 		readLines(); 
@@ -63,7 +64,7 @@ public class ProfileManager
                 String data = input.nextLine();
                 profilesLineByLineData.add(data); 
               
-               String[] lineDataSplit = data.split("\\.",5); 
+               String[] lineDataSplit = data.split("\\.",6); 
                 uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
                 
                 System.out.println(lineCount);
@@ -110,4 +111,22 @@ public class ProfileManager
              e.printStackTrace();
  	    } 	 
     }
+
+
+
+	/**
+	 * @return the profilesLineByLineData
+	 */
+	public static ArrayList<String> getProfilesLineByLineData() {
+		return profilesLineByLineData;
+	}
+
+
+
+	/**
+	 * @return the linebylinedataI
+	 */
+	public static int getLinebylinedataI() {
+		return LINEBYLINEDATA_I;
+	}
 }

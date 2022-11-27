@@ -16,6 +16,7 @@ public class Profile {
 	private String playerName;
 	private Integer levelReached;
 	private Integer overallScore;
+	private Integer currentLevel;
 	
 	
 	
@@ -27,13 +28,15 @@ public class Profile {
 	 * @param playerName
 	 * @param levelReached
 	 * @param overallScore
+	 * @param currentLevel
 	 */
-	  public Profile(Integer uniquePlayerID, String playerProfileSlot, String playerName, Integer levelReached, Integer overallScore) {
+	  public Profile(Integer uniquePlayerID, String playerProfileSlot, String playerName, Integer levelReached, Integer overallScore, Integer currentLevel) {
 		  this.uniquePlayerID = uniquePlayerID;
 		  this.playerProfileSlot = playerProfileSlot;
 		  this.playerName = playerName; 
 		  this.levelReached = levelReached;
 		  this.overallScore = overallScore;  
+		  this.currentLevel = currentLevel; 
 		  
 		  
 
@@ -49,6 +52,7 @@ public class Profile {
 		  playerName = lineDataSplit[2]; 
 		  levelReached = Integer.parseInt(lineDataSplit[3]);
 		  overallScore = Integer.parseInt(lineDataSplit[4]);
+		  currentLevel = Integer.parseInt(lineDataSplit[5]);
 		  
 	  }
 	  
@@ -60,7 +64,7 @@ public class Profile {
 	   */
 	  public static String profileToString(Profile profile) { 
 		  String profileToString = (profile.getUniquePlayerID() + "." + profile.getPlayerProfileSlot() + "." + profile.getPlayerName()
-+ "." + profile.getLevelReached() + "." + profile.getOverallScore());
++ "." + profile.getLevelReached() + "." + profile.getOverallScore() + "." + profile.getCurrentLevel());
 		return profileToString;		 
 	  }
 	  
@@ -71,13 +75,14 @@ public class Profile {
 	   * @return lineDataSplitToString
 	   */
 	    public String toString(String[] lineDataSplit) { 
-	      String lineDataSplitToString = lineDataSplit[0] + "." + lineDataSplit[1] + "." + lineDataSplit[2] + "." + lineDataSplit[3] + "." + lineDataSplit[4]; 
+	      String lineDataSplitToString = lineDataSplit[0] + "." + lineDataSplit[1] + "." + lineDataSplit[2] + "." + lineDataSplit[3] + "." + lineDataSplit[4] + 
+	    		  "." + lineDataSplit[5]; 
 	      
 	      return lineDataSplitToString;
 	  } 
 	  
 	  
-	  
+	
 	  
 	  
 	  
@@ -152,6 +157,18 @@ public class Profile {
 	 */
 	public void setUniquePlayerID(Integer uniquePlayerID) {
 		this.uniquePlayerID = uniquePlayerID;
+	}
+	/**
+	 * @return the currentLevel
+	 */
+	public Integer getCurrentLevel() {
+		return currentLevel;
+	}
+	/**
+	 * @param currentLevel the currentLevel to set
+	 */
+	public void setCurrentLevel(Integer currentLevel) {
+		this.currentLevel = currentLevel;
 	}
 	
 }
