@@ -15,8 +15,6 @@ public class Profile {
 	private String playerProfileSlot;
 	private String playerName;
 	private Integer levelReached;
-	private Integer overallScore;
-	private Integer currentLevel;
 	
 	
 	
@@ -30,14 +28,12 @@ public class Profile {
 	 * @param overallScore
 	 * @param currentLevel
 	 */
-	  public Profile(Integer uniquePlayerID, String playerProfileSlot, String playerName, Integer levelReached, Integer overallScore, Integer currentLevel) {
+	  public Profile(Integer uniquePlayerID, String playerProfileSlot, String playerName, Integer levelReached) {
 		  this.uniquePlayerID = uniquePlayerID;
 		  this.playerProfileSlot = playerProfileSlot;
 		  this.playerName = playerName; 
 		  this.levelReached = levelReached;
-		  this.overallScore = overallScore;  
-		  this.currentLevel = currentLevel; 
-		  
+		 
 		  
 
 		  
@@ -51,8 +47,7 @@ public class Profile {
 		  playerProfileSlot = lineDataSplit[1]; 
 		  playerName = lineDataSplit[2]; 
 		  levelReached = Integer.parseInt(lineDataSplit[3]);
-		  overallScore = Integer.parseInt(lineDataSplit[4]);
-		  currentLevel = Integer.parseInt(lineDataSplit[5]);
+		 
 		  
 	  }
 	  
@@ -64,7 +59,7 @@ public class Profile {
 	   */
 	  public static String profileToString(Profile profile) { 
 		  String profileToString = (profile.getUniquePlayerID() + "." + profile.getPlayerProfileSlot() + "." + profile.getPlayerName()
-+ "." + profile.getLevelReached() + "." + profile.getOverallScore() + "." + profile.getCurrentLevel());
++ "." + profile.getLevelReached());
 		return profileToString;		 
 	  }
 	  
@@ -75,16 +70,23 @@ public class Profile {
 	   * @return lineDataSplitToString
 	   */
 	    public String toString(String[] lineDataSplit) { 
-	      String lineDataSplitToString = lineDataSplit[0] + "." + lineDataSplit[1] + "." + lineDataSplit[2] + "." + lineDataSplit[3] + "." + lineDataSplit[4] + 
-	    		  "." + lineDataSplit[5]; 
+	      String lineDataSplitToString = lineDataSplit[0] + "." + lineDataSplit[1] + "." + lineDataSplit[2] + "." + lineDataSplit[3]; 
 	      
 	      return lineDataSplitToString;
 	  } 
 	  
 	  
 	
-	  
-	  
+	  /**
+	   * Method which clones an object 
+	   */
+	    public Object clone(){  
+	        try{  
+	            return super.clone();  
+	        }catch(Exception e){ 
+	            return null; 
+	        }
+	    }
 	  
 	  
 	  
@@ -110,12 +112,7 @@ public class Profile {
 		return levelReached;
 	}
 
-	/**
-	 * @return the overallScore
-	 */
-	public Integer getOverallScore() {
-		return overallScore;
-	}
+	
 
 	/**
 	 * @return the uniquePlayerID
@@ -145,30 +142,13 @@ public class Profile {
 		this.levelReached = levelReached;
 	}
 
-	/**
-	 * @param overallScore the overallScore to set
-	 */
-	public void setOverallScore(Integer overallScore) {
-		this.overallScore = overallScore;
-	}
+	
 
 	/**
 	 * @param uniquePlayerID the uniquePlayerID to set
 	 */
 	public void setUniquePlayerID(Integer uniquePlayerID) {
 		this.uniquePlayerID = uniquePlayerID;
-	}
-	/**
-	 * @return the currentLevel
-	 */
-	public Integer getCurrentLevel() {
-		return currentLevel;
-	}
-	/**
-	 * @param currentLevel the currentLevel to set
-	 */
-	public void setCurrentLevel(Integer currentLevel) {
-		this.currentLevel = currentLevel;
 	}
 	
 }

@@ -31,8 +31,8 @@ public class ProfileManager
 	{
 		//tests to see if functions work
 
-		Profile Nicole = new Profile (1, "P1" , "Nicole", 4, 342, 3);
-		Profile Kiwi = new Profile (4, "P4", "FART", 5, 500, 2); 
+		Profile Nicole = new Profile (1, "P1" , "Nicole", 4);
+		Profile Kiwi = new Profile (4, "P4", "FART", 5); 
 		
          
 		readLines(); 
@@ -64,7 +64,7 @@ public class ProfileManager
                 String data = input.nextLine();
                 profilesLineByLineData.add(data); 
               
-               String[] lineDataSplit = data.split("\\.",6); 
+               String[] lineDataSplit = data.split("\\.",4); 
                 uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
                 
                 System.out.println(lineCount);

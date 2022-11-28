@@ -1,4 +1,4 @@
-1.P1.Nicole.4.342.2
-1.P1.Kiwi.5.22.1
-2.P2.Nicole.5.245.3
-3.P3.Fart.7.523235.7
+1.P1.Nicole.4
+1.P1.Kiwi.5
+2.P2.Nicole.5
+3.P3.Fart.7
