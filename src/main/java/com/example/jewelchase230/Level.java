@@ -1,8 +1,9 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
-import javafx.scene.paint.Color;
 
+import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -37,8 +38,9 @@ public class Level {
                     };
                 }
 
-                tiles[x][y] =
-                        new Tile(new IntVector2D(x,y), colours[0], colours[1], colours[2], colours[3]);
+                Tile randomTile = new Tile(
+                        colours[0], colours[1], colours[2], colours[3]);
+                addTile(new IntVector2D(x, y), randomTile);
             }
         }
 
@@ -47,20 +49,89 @@ public class Level {
     }
 
     /**
+     * Adds a new tile to the level, replacing any existing tile
+     * in same position.
+     * @param pos Position of tile on grid.
+     * @param tile The tile.
+     */
+    public void addTile(final IntVector2D pos, final Tile tile) {
+        tile.setGridPosition(pos);
+        tiles[pos.getX()][pos.getY()] = tile;
+    }
+
+    /**
+     * Adds an item to a tile on the level.
+     * @param pos Position of tile.
+     * @param item The item.
+     */
+    public void addItem(final IntVector2D pos, final Item item) {
+        item.setGridPosition(pos);
+        getTile(pos).setItem(item);
+    }
+
+    /**
+     * Gets a tile a specific coordinate on grid.
+     * @param pos Position of tile.
+     * @return The tile.
+     */
+    public Tile getTile(final IntVector2D pos) {
+        return tiles[pos.getX()][pos.getY()];
+    }
+
+    /**
+     * Gets the item at a position on the grid.
+     * @param pos Position on the grid.
+     * @return The item or null if none exist.
+     */
+    public Item getItem(final IntVector2D pos) {
+        return tiles[pos.getX()][pos.getY()].getItem();
+    }
+
+    /**
+     * Gets all items of a particular type on the grid.
+     * @param type The class type.
+     * @return List of items.
+     * @param <T> The type of items to return.
+     */
+    public <T extends Item> ArrayList<T> getAllItemsOfType(
+            final Class<T> type) {
+        ArrayList<T> items = new ArrayList<>();
+
+        for (Tile[] tileRow : tiles) {
+            for (Tile tile : tileRow) {
+                Item item = tile.getItem();
+                if (type.isInstance(item)) {
+                    items.add(type.cast(item));
+                }
+            }
+        }
+
+        return items;
+    }
+
+    /**
+     * @return All items on the grid.
+     */
+    public ArrayList<Item> getAllItems() {
+        ArrayList<Item> items = new ArrayList<>();
+
+        for (Tile[] tileRow : tiles) {
+            for (Tile tile : tileRow) {
+                if (tile.getItem() != null) {
+                    items.add(tile.getItem());
+                }
+            }
+        }
+
+        return items;
+    }
+
+    /**
      * Gets the size of the level in terms of tiles.
      * @return The dimensions of the level.
      */
     public IntVector2D getLevelSize() {
         return new IntVector2D(tiles.length, tiles[0].length);
-    }
-
-    /**
-     * Gets a tile a specific coordinate on grid.
-     * @param pos Position of tile
-     * @return The tile.
-     */
-    public Tile getTile(final IntVector2D pos) {
-        return tiles[pos.getX()][pos.getY()];
     }
 
     /**
@@ -73,9 +144,9 @@ public class Level {
 
         int count = 0;
 
-        for (int x = 0; x < tiles.length; x++) {
-            for (int y = 0; y < tiles[x].length; y++) {
-                result[count] = tiles[x][y];
+        for (Tile[] tileRow : tiles) {
+            for (Tile tile : tileRow) {
+                result[count] = tile;
                 count++;
             }
         }

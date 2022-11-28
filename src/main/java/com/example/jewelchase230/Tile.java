@@ -1,7 +1,6 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.DoubleVector2D;
-import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
@@ -22,23 +21,42 @@ public final class Tile extends Renderable {
     private final TileColour right;
 
     /**
+     * Item currently on this tile.
+     * null when no item is on this tile.
+     */
+    private Item item;
+
+    /**
      * Constructs a new tile.
-     * @param pos Position on grid
      * @param inTop Top colour
      * @param inBottom Bottom colour
      * @param inLeft Left colour
      * @param inRight Right colour
      */
-    public Tile(final IntVector2D pos,
-                final TileColour inTop,
+    public Tile(final TileColour inTop,
                 final TileColour inBottom,
                 final TileColour inLeft,
                 final TileColour inRight) {
-        super(pos);
+        super();
         top = inTop;
         bottom = inBottom;
         left = inLeft;
         right = inRight;
+    }
+
+    /**
+     * @return The item on this tile or null if there isn't one.
+     */
+    public Item getItem() {
+        return item;
+    }
+
+    /**
+     * Adds an item to this tile.
+     * @param inItem Item on this tile.
+     */
+    public void setItem(final Item inItem) {
+        item = inItem;
     }
 
     /**
@@ -70,7 +88,9 @@ public final class Tile extends Renderable {
     }
 
     private void drawTriangle(
-            final GraphicsContext gc, final DoubleVector2D[] points, final TileColour colour) {
+            final GraphicsContext gc,
+            final DoubleVector2D[] points,
+            final TileColour colour) {
         if (points.length == CORNERS_IN_A_TRIANGLE) {
             double[] xVtx = new double[CORNERS_IN_A_TRIANGLE];
             double[] yVtx = new double[CORNERS_IN_A_TRIANGLE];

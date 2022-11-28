@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 /**
  * Tile colour - This could probably be changed to hold an image in the future.
  */
-enum TileColour {
+public enum TileColour {
     /** Red Colour. */
     Red(new Color(1, 0, 0, 1)),
     /** Blue Colour. */
