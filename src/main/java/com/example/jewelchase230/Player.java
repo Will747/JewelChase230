@@ -9,7 +9,23 @@ import javafx.scene.input.KeyEvent;
  *
  * @author Caroline Segestaal.
  */
+
+
+
+/** Hi :) I added a currentLevel integer for me to use in the highScoreClass. This should increment the integer by 1 each time a level is completed
+*Also added an activePlayerScore which will add score when loot is got, etc 
+*These **May** need changed to private, not sure. 
+*
+*To add in future once branches merged: 
+*upon Door, when level is completed, calls Profile to change currentLevel of object Profile
+* - Kiwi
+*/
+
 public class Player extends Character{
+	
+	public int playerCurrentLevel;
+	public int playerActiveScore; 
+	
     /**
      * Constructs a renderable component.
      *
