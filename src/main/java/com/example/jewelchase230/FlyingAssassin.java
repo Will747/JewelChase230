@@ -12,19 +12,30 @@ public class FlyingAssassin extends AICharacter {
     public FlyingAssassin(int x, int y) {
         super(x, y);
     }
-
-    @Override
-    protected void getNextMove(IntVector2D move) {
-        super.getNextMove(move);
-    }
-
-    private IntVector2D move() {
-        if (getGridPosition().getX() < getLevel().getLevelSize().getX()) {
-
+    
+    protected void getNextMove(Direction d) {
+        switch (d) {
+            case UP: if (getGridPosition().getY() < getLevel().getLevelSize().getY()) {
+                setGridPosition(new IntVector2D(getGridPosition().getX(), getGridPosition().getY() + 1));
+            } else {
+                getNextMove(d.getOppositeDirection(d));
+            }
+            case DOWN: if (getGridPosition().getY() > getLevel().getLevelSize().getY()) {
+                setGridPosition(new IntVector2D(getGridPosition().getX(), getGridPosition().getY() - 1));
+            } else {
+                getNextMove(d.getOppositeDirection(d));
+            }
+            case LEFT: if (getGridPosition().getX() > getLevel().getLevelSize().getX()) {
+                setGridPosition(new IntVector2D(getGridPosition().getX() - 1, getGridPosition().getY()));
+            } else {
+                getNextMove(d.getOppositeDirection(d));
+            }
+            case RIGHT: if (getGridPosition().getX() < getLevel().getLevelSize().getX()) {
+                setGridPosition(new IntVector2D(getGridPosition().getX() + 1, getGridPosition().getY()));
+            } else {
+                getNextMove(d.getOppositeDirection(d));
+            }
         }
-        while (getGridPosition() < getLevel().getLevelSize())
-
-        return new IntVector2D(x,y);
     }
 }
 
