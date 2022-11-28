@@ -1,7 +1,12 @@
 package com.example.jewelchase230;
-
 import com.example.jewelchase230.vectors.IntVector2D;
 
+/**
+ * Implements the Flying Assassin. A class to implement the move patterns and events of the AICharater
+ * Flying Assassin.
+ *
+ * @author Caroline Segestaal.
+ */
 public class FlyingAssassin extends AICharacter {
     /**
      * Constructs a renderable component.
@@ -12,7 +17,12 @@ public class FlyingAssassin extends AICharacter {
     public FlyingAssassin(int x, int y) {
         super(x, y);
     }
-    
+
+    /**
+     * Controls the next move of the Flying Assassin.
+     *
+     * @param d Direction the Flying assassin is facing.
+     */
     protected void getNextMove(Direction d) {
         switch (d) {
             case UP: if (getGridPosition().getY() < getLevel().getLevelSize().getY()) {
