@@ -20,6 +20,11 @@ public class Player extends Character{
         super(x, y);
     }
 
+    /**
+     * Handles the key press from the player and executes the appropriate event.
+     *
+     * @param keyPress Reads the keypress from the user.
+     */
     public void processKeyEvent (KeyEvent keyPress) {
         switch (keyPress.getCode()) {
             case UP:
