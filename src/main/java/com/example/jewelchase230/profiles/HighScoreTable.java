@@ -81,7 +81,7 @@ public class HighScoreTable {
 	                String data = input.nextLine();
 	                highScoreLineByLineData.add(data); 
 	              
-	               String[] lineDataSplit = data.split("\\.",4); 
+	               String[] lineDataSplit = data.split("\\.",4);
 	               // uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
 	              
 	               
