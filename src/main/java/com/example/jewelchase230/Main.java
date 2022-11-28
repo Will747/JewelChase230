@@ -30,7 +30,7 @@ public final class Main extends Application {
     private static final int CANVAS_HEIGHT = 450;
 
     /** Number of times the game ticks per second. */
-    private static final int FRAME_RATE = 2;
+    private static final int FRAME_RATE = 10;
 
     /** The stage shown by the window. */
     private static Stage stage;
@@ -81,7 +81,7 @@ public final class Main extends Application {
         stage.show();
 
         /* Test - Remove this */
-        currentLevel = new Level(new IntVector2D(16, 9));
+        currentLevel = new Level(new IntVector2D(16, 1));
         /* Test - Remove this */
     }
 

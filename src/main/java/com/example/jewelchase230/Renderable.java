@@ -11,6 +11,12 @@ import javafx.scene.canvas.GraphicsContext;
  * @author Will Kaye
  */
 public abstract class Renderable {
+    /**
+     * The percentage of the canvas that must be left blank
+     * around the edges.
+     */
+    private static final double BORDER_PERCENTAGE = 0.05;
+
     /** Position in the level item should be rendered to. */
     private IntVector2D gridPosition;
 
@@ -32,6 +38,14 @@ public abstract class Renderable {
     }
 
     /**
+     * Construct a renderable component that isn't on
+     * the grid.
+     */
+    public Renderable() {
+        gridPosition = new IntVector2D(-1, -1);
+    }
+
+    /**
      * Gets the current level.
      * @return The level.
      */
@@ -45,28 +59,35 @@ public abstract class Renderable {
      * @return Position of this item on the canvas.
      */
     protected DoubleVector2D getRenderPosition() {
+        Level level = Main.getCurrentLevel();
+
         IntVector2D canvasSize = Main.getCanvasSize();
+        IntVector2D levelSize = level.getLevelSize();
 
-        // Calculate the 10% size of the canvas that is used as a border
-        DoubleVector2D borderOffset = canvasSize.toDouble().multiply(0.025);
+        double cubeSize = getCubeSize();
+        DoubleVector2D gridSize = levelSize.toDouble().multiply(cubeSize);
+        DoubleVector2D gridTopLeft = canvasSize.toDouble()
+                .minus(gridSize).divide(2);
 
-        DoubleVector2D cubeSize = getCubeSize();
-        return cubeSize.multiply(gridPosition).add(borderOffset);
+        return gridPosition.toDouble().multiply(cubeSize).add(gridTopLeft);
     }
 
     /**
-     * The maximum size the item should take up on the grid.
+     * The maximum side length that the item should take up on the grid.
      * @return Size of this section.
      */
-    protected static DoubleVector2D getCubeSize() {
+    protected static double getCubeSize() {
         Level level = Main.getCurrentLevel();
 
         IntVector2D levelSize = level.getLevelSize();
         IntVector2D canvasSize = Main.getCanvasSize();
 
         // Take 20% from canvas so there is a border
-        DoubleVector2D gridSize = canvasSize.toDouble().multiply(0.95);
-        return gridSize.divide(levelSize);
+        DoubleVector2D gridSize = canvasSize.toDouble()
+                .multiply(1 - BORDER_PERCENTAGE);
+
+        DoubleVector2D potentialSize = gridSize.divide(levelSize);
+        return Math.min(potentialSize.getX(), potentialSize.getY());
     }
 
     /**

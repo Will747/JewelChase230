@@ -94,15 +94,15 @@ public final class Tile extends Renderable {
     public void draw(final GraphicsContext gc) {
 
         DoubleVector2D pos = getRenderPosition();
-        DoubleVector2D size = getCubeSize();
+        double size = getCubeSize();
 
         DoubleVector2D topRightCorner = pos.add(
-                new DoubleVector2D(size.getX(), 0));
+                new DoubleVector2D(size, 0));
         DoubleVector2D bottomLeft = pos.add(
-                new DoubleVector2D(0, size.getY())
+                new DoubleVector2D(0, size)
         );
         DoubleVector2D bottomRight = pos.add(size);
-        DoubleVector2D center = pos.add(size.divide(2));
+        DoubleVector2D center = pos.add(size / 2);
 
         DoubleVector2D[] points = new DoubleVector2D[CORNERS_IN_A_TRIANGLE];
 

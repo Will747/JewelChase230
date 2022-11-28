@@ -103,4 +103,22 @@ public class DoubleVector2D extends Vector2D<Double> {
     public DoubleVector2D add(final DoubleVector2D value) {
         return new DoubleVector2D(getX() + value.getX(), getY() + value.getY());
     }
+
+    /**
+     * Adds a double to both components of this vector.
+     * @param value The vector to add.
+     * @return Added vector.
+     */
+    public DoubleVector2D add(final double value) {
+        return new DoubleVector2D(getX() + value, getY() + value);
+    }
+
+    /**
+     * Subtracts one vector from another.
+     * @param value The vector to subtract.
+     * @return subtracted vector.
+     */
+    public DoubleVector2D minus(final DoubleVector2D value) {
+        return new DoubleVector2D(getX() - value.getX(), getY() - value.getY());
+    }
 }

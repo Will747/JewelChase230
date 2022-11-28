@@ -25,7 +25,7 @@ public final class TestRenderable extends Renderable {
     @Override
     public void draw(final GraphicsContext gc) {
         DoubleVector2D pos = getRenderPosition();
-        DoubleVector2D size = getCubeSize();
+        double size = getCubeSize();
 
         // Randomly pick a colour
         Random random = new Random();
@@ -37,7 +37,7 @@ public final class TestRenderable extends Renderable {
         };
 
         gc.setFill(colour);
-        gc.fillRect(pos.getX(), pos.getY(), size.getX(), size.getY());
+        gc.fillRect(pos.getX(), pos.getY(), size, size);
     }
 
     @Override
