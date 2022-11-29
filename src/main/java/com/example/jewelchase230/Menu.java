@@ -22,9 +22,9 @@ public final class Menu {
     /** Profile Menu fxml file. */
     private static final String PROFILE_MENU_FXML = "profile-menu.fxml";
     /** Settings Menu fxml file. */
-    private static final String SETTINGS_MENU_FXML = "settings.fxml"; 
+    private static final String SETTINGS_MENU_FXML = "settings-menu.fxml";
     /** HighScore Table Menu fxml file. */
-    private static final String HIGHSCORE_TABLE_FXML = "highscoretable.fxml"; 
+    private static final String HIGHSCORE_TABLE_FXML = "highScore-table.fxml";
     /** Profile Select fxml file. */
     private static final String PROFILE_SELECT_FXML = "profile-select.fxml";
 
@@ -47,8 +47,8 @@ public final class Menu {
         createScene(TEST_MENU_FXML);
         createScene(SETTINGS_MENU_FXML);
         createScene(HIGHSCORE_TABLE_FXML);
-        createScene(PROFILE_MENU_FXML); 
-        createScene(PROFILE_SELECT_FXML); 
+        //createScene(PROFILE_MENU_FXML);
+        //createScene(PROFILE_SELECT_FXML);
     }
     
     /**
@@ -75,11 +75,11 @@ public final class Menu {
     public static Scene getTestMenu() {
         return getScene(TEST_MENU_FXML);
     }
+
     /**
-     * 
-     * @return profile menu scene. 
+     * @return profile menu scene.
      */
-    public static Scene getProfileMenu() { 
+    public static Scene getProfileMenu() {
     	return getScene(PROFILE_MENU_FXML);
     }
 
