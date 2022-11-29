@@ -19,6 +19,10 @@ public final class Menu {
     private static final String MAIN_MENU_FXML = "main-menu.fxml";
     /** Test menu fxml file. */
     private static final String TEST_MENU_FXML = "test-menu.fxml";
+    /** Test menu fxml file. */
+    private static final String SETTINGS_MENU_FXML = "settings-menu.fxml";
+    /** Test menu fxml file. */
+    private static final String HIGHSCORE_TABLE_FXML = "highScore-table.fxml";
 
     /** Already created scenes. */
     private static HashMap<String, Scene> cachedScenes;
@@ -36,6 +40,8 @@ public final class Menu {
 
         createScene(MAIN_MENU_FXML);
         createScene(TEST_MENU_FXML);
+        createScene(SETTINGS_MENU_FXML);
+        createScene(HIGHSCORE_TABLE_FXML);
     }
 
     /**
@@ -50,6 +56,20 @@ public final class Menu {
      */
     public static Scene getTestMenu() {
         return getScene(TEST_MENU_FXML);
+    }
+
+    /**
+     * @return settings menu scene.
+     */
+    public static Scene getSettingsMenu() {
+        return getScene(SETTINGS_MENU_FXML);
+    }
+
+    /**
+     * @return highscores table scene.
+     */
+    public static Scene getHighScoreTable() {
+        return getScene(HIGHSCORE_TABLE_FXML);
     }
 
     /**
