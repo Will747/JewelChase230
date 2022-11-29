@@ -1,5 +1,6 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Sprite;
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.scene.image.Image;
@@ -26,15 +27,17 @@ public abstract class Item extends Sprite {
         }
     }
 
-    /*public Item(String name, IntVector2D gridPos) {
-        super(gridPos.getX(), gridPos.getY());
-
-    }*/
-
+    /**
+     * Removes the item from the level
+     */
     public void remove() {
+        Main.getCurrentLevel().removeItem(this.getGridPosition());
         this.setGridPosition(new IntVector2D(-1, -1));
     }
 
+    /**
+     * Default collision for all items
+     */
     public void doOnCollision() {
         remove();
     }

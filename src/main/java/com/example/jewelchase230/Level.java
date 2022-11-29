@@ -78,6 +78,10 @@ public class Level {
         getTile(pos).setItem(item);
     }
 
+    public void removeItem(final IntVector2D pos) {
+        getTile(pos).setItem(null);
+    }
+
     /**
      * Gets a tile a specific coordinate on grid.
      * @param pos Position of tile.
