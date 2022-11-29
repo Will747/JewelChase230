@@ -13,6 +13,9 @@ import java.util.LinkedList;
  *
  */
 
+
+
+
 public class LevelHighScores {
 	/** integer which holds the player's current level */
 	private int playerCurrentLevel;
@@ -25,10 +28,9 @@ public class LevelHighScores {
 	/** Linked List which holds the top 10 high scores */
 	LinkedList<Integer> topTenHighScores = new LinkedList<Integer>();
 
-	public LevelHighScores() {
-
-	}
-
+	
+	
+	
 	/**
 	 * Method which searches the ArrayList of profiles scores and checks alongside
 	 * Profile and PlayerScore to check if the player's current level score is a new
