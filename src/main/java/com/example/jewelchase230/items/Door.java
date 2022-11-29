@@ -1,12 +1,44 @@
 package com.example.jewelchase230.items;
 
+/**
+ * A class to implement doors and end the level if the door is open.
+ *
+ * @author Ben Stott
+ */
 public class Door extends Item {
+    /** Is the door open or closed. */
+    private boolean isDoorOpen = false;
+
+    /**
+     * Constructs a new door.
+     */
     public Door() {
         super(null);
     }
 
-//    public Door(int x, int y) {
-//        super(x, y);
-//    }
-//
+    /**
+     * Returns whether the door is open or not.
+     * @return True if open, false if closed.
+     */
+    public boolean getIsDoorOpen() {
+        return isDoorOpen;
+    }
+
+    /**
+     * Change if the door is open or closed.
+     * @param openOrClose True if open, false if closed.
+     */
+    public void setIsDoorOpen(boolean openOrClose) {
+        isDoorOpen = openOrClose;
+    }
+
+    /**
+     * Ends the level if the door is open when interacted with.
+     */
+    @Override
+    public void doOnCollision() {
+        if (isDoorOpen) {
+            //end level
+        }
+    }
 }

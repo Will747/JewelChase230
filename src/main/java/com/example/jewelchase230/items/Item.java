@@ -3,6 +3,7 @@ package com.example.jewelchase230.items;
 import com.example.jewelchase230.Sprite;
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.scene.image.Image;
+import java.util.ArrayList;
 
 import java.io.FileNotFoundException;
 
@@ -23,6 +24,17 @@ public abstract class Item extends Sprite {
 
         if (fileName != null) {
             setImageFromFile(fileName);
+        }
+    }
+
+    public void checkIfDoorOpen() {
+        ArrayList<Lever> leverArray = getLevel().getAllItemsOfType(Lever.class);
+        ArrayList<Loot> lootArray = getLevel().getAllItemsOfType(Loot.class);
+        if (leverArray.size() == 0 && lootArray.size() == 0) {
+            ArrayList<Door> doorArray = getLevel().getAllItemsOfType(Door.class);
+            for (Door doorInstance : doorArray) {
+                doorInstance.setIsDoorOpen(true);
+            }
         }
     }
 

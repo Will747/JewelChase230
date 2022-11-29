@@ -27,5 +27,6 @@ public class Loot extends Item {
         super.doOnCollision();
 
         // Increment player score if the player collided here.
+        checkIfDoorOpen();
     }
 }
