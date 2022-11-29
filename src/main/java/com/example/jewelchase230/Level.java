@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Represents a game level, including all tiles, items and characters.
  *
- * @author Will Kaye
+ * @author Will Kaye and Adam Smith
  */
 public class Level {
     /** Tiles on the grid. */
@@ -174,8 +174,27 @@ public class Level {
         characters.add(character);
     }
 
+    /**
+     * Returns the array list of characters in the level.
+     * @return the array list of characters.
+     */
     public ArrayList<Character> getAllCharacters(){
         return characters;
     }
 
+    /**
+     * Gets a specific character in the level.
+     * @param x the x-axis coordinate.
+     * @param y the y-axis coordinate.
+     * @return The wanted character or null if the character doesn't exist.
+     */
+    public Character getSpecificCharacter(int x, int y){
+        Character wantedCharacter = null;
+        for (Character c: characters){
+            if (c.getGridPosition().getX() == x && c.getGridPosition().getY() == y){
+                wantedCharacter =  c;
+            }
+        }
+        return wantedCharacter;
+    }
 }
