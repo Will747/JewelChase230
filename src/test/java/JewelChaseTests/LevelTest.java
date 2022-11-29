@@ -1,3 +1,5 @@
+package JewelChaseTests;
+
 import com.example.jewelchase230.Bomb;
 import com.example.jewelchase230.Gate;
 import com.example.jewelchase230.Item;
