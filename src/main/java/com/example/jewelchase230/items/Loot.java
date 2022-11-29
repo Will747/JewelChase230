@@ -1,4 +1,4 @@
-package com.example.jewelchase230;
+package com.example.jewelchase230.items;
 
 public class Loot extends Item{
 

@@ -1,5 +1,6 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.DoubleVector2D;
 import javafx.scene.canvas.GraphicsContext;
 

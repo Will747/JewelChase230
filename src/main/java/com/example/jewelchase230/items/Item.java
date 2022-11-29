@@ -1,5 +1,6 @@
-package com.example.jewelchase230;
+package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.Sprite;
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.scene.image.Image;
 

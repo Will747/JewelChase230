@@ -1,5 +1,4 @@
-package com.example.jewelchase230;
-import java.util.ArrayList;
+package com.example.jewelchase230.items;
 
 public class Lever extends Item{
     private String colour;
