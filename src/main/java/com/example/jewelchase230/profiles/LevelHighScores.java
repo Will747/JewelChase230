@@ -1,6 +1,9 @@
 package com.example.jewelchase230.profiles;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  * This class will manage player High Scores. This class will save high scores
@@ -17,6 +20,10 @@ public class LevelHighScores {
 	ArrayList<Integer> levelScoreList = new ArrayList<Integer>();
 	/** Integer which specifies the player's score for this level */
 	private int playerLevelScore;
+	/**final integer defining the amount of top players*/ 
+	private final int LEGAL_HIGH_SCORE_NUM = 10;
+	/** Linked List which holds the top 10 high scores */
+	LinkedList<Integer> topTenHighScores = new LinkedList<Integer>();
 
 	public LevelHighScores() {
 
@@ -32,10 +39,6 @@ public class LevelHighScores {
 	 * @param playerCurrentLevel
 	 * @param input
 	 */
-	// seperate function : updatePlayerScore. when function gets called it has
-	// profile as paramater and playerLevelScore, search and if current score
-	// is higher, overwrite and if doesnt exist make
-
 	public void updatePlayerScore(Profile profile, int playerCurrentLevel, ProfileScore input) {
 		for (int i = 0; i <= levelScoreList.size(); i++) {
 			if (input.getUserUniqueID() == profile.getUniquePlayerID()) {
@@ -53,36 +56,25 @@ public class LevelHighScores {
 
 	}
 
-	ArrayList<Integer> orderedLevelHighScores = new ArrayList<Integer>();
-	// vv should we change this to an Array, as it should be fixed to 10 scores?
-	ArrayList<Integer> topTenHighScores = new ArrayList<Integer>();
-
-	// note: will need serializable to load in these values
+	
 
 	/**
-	 * This method will take the levelScore array and sort them from highest to
-	 * lowest
-	 * 
-	 * @param levelScores
-	 * @return
-	 */
-	public ArrayList<Integer> orderHighScores(ArrayList<Integer> levelScores) {
-
-		return orderedLevelHighScores;
-	}
-
-	/**
-	 * This method will take the sorted ArrayList of scores per level X and take the
-	 * top 10 and add to Array topTenHighScores
+	 * This method will the ArrayList of scores per level X and sorts it, then takes
+	 * top 10 and add to Linked List topTenHighScores
 	 * 
 	 * @param orderedLevelHighScores
 	 * @return
 	 */
-	public ArrayList<Integer> cullTopTenHighScores(ArrayList<Integer> orderedLevelHighScores) {
-
+	public LinkedList<Integer> cullTopTenHighScores(ArrayList<Integer> levelScoreList) {
+		Collections.sort(levelScoreList);
+		Collections.reverse(levelScoreList);
+			for (int i = 0; i < LEGAL_HIGH_SCORE_NUM; i++) { 
+				topTenHighScores.addLast(levelScoreList.get(i));
+			}
+		
+	
 		return topTenHighScores;
 	}
-	
 	
 	
 	
@@ -116,17 +108,11 @@ public class LevelHighScores {
 		return playerLevelScore;
 	}
 
-	/**
-	 * @return the orderedLevelHighScores
-	 */
-	public ArrayList<Integer> getOrderedLevelHighScores() {
-		return orderedLevelHighScores;
-	}
 
 	/**
 	 * @return the topTenHighScores
 	 */
-	public ArrayList<Integer> getTopTenHighScores() {
+	public LinkedList<Integer> getTopTenHighScores() {
 		return topTenHighScores;
 	}
 
