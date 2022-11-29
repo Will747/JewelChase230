@@ -1,20 +1,33 @@
 package com.example.jewelchase230;
-import java.util.ArrayList;
-import com.example.jewelchase230.vectors.IntVector2D;
 
-public class Bomb extends Item{
+public class Bomb extends Item {
 
-private int time;
+    /** The bomb image. */
+    private static final String BOMB_IMAGE = "images/BOMB.png";
 
-    public Bomb(int x, int y, String name, String fileName, int time) {
-        super(x, y, name, fileName);
-        this.time = time;
+    /** The time until the bomb explodes. */
+    private int time;
+
+    /**
+     * Constructs a new bomb.
+     * @param inTime The time delay until the bomb explodes.
+     */
+    public Bomb(final int inTime) {
+        super(BOMB_IMAGE);
+        time = inTime;
     }
 
-    public void setTime(int newTime) {
+    /**
+     * Sets the time until the bomb explodes.
+     * @param newTime The time.
+     */
+    public void setTime(final int newTime) {
         this.time = newTime;
     }
 
+    /**
+     * @return The time until the bomb explodes.
+     */
     public int getTime() {
         return this.time;
     }
