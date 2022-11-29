@@ -13,6 +13,7 @@ import java.util.Random;
 public class Level {
     /** Tiles on the grid. */
     private Tile[][] tiles;
+    private ArrayList<Character> characters;
 
     /**
      * Constructs a new level.
@@ -20,6 +21,8 @@ public class Level {
      */
     public Level(final IntVector2D size) {
         tiles = new Tile[size.getX()][size.getY()];
+        characters = new ArrayList<>();
+
 
         /* Temp random tile creator. */
         for (int x = 0; x < tiles.length; x++) {
@@ -43,7 +46,7 @@ public class Level {
             }
         }
 
-
+        addItem(new IntVector2D(0, 0), new Bomb(1));
         /* End of Temp random tile creator. */
 
     }
@@ -139,11 +142,14 @@ public class Level {
      * @return All renderable objects.
      */
     public Renderable[] getRenderables() {
-        int numOfRenderables = tiles.length * tiles[0].length;
-        Renderable[] result = new Renderable[numOfRenderables];
+        ArrayList<Item> allItems = getAllItems();
 
+        int numOfTiles = tiles.length * tiles[0].length;
+        int numOfRenderables = numOfTiles + allItems.size();
+        Renderable[] result = new Renderable[numOfRenderables];
         int count = 0;
 
+        // Add tiles
         for (Tile[] tileRow : tiles) {
             for (Tile tile : tileRow) {
                 result[count] = tile;
@@ -151,6 +157,25 @@ public class Level {
             }
         }
 
+        // Add items
+        for (Item item : allItems) {
+            result[count] = item;
+            count++;
+        }
+
         return result;
     }
+
+    /**
+     * Adds characters to the level.
+     * @param character the character being added.
+     */
+    public void addCharacter(Character character){
+        characters.add(character);
+    }
+
+    public ArrayList<Character> getAllCharacters(){
+        return characters;
+    }
+
 }

@@ -2,12 +2,11 @@ package com.example.jewelchase230;
 import java.util.ArrayList;
 
 public class Lever extends Item{
-
     private String colour;
 
-    public Lever(int x, int y, String name, String fileName, String colour) {
-        super(x, y, name, fileName);
-        this.colour = colour;
+    public Lever(final String inColour) {
+        super(null);
+        colour = inColour;
     }
 
     public void setColour(String newColour){

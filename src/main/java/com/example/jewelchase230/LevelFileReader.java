@@ -102,7 +102,7 @@ public class LevelFileReader {
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     int time = lineScanner.nextInt();
-                    Bomb tempBomb = new Bomb(x, y, name, fileName, time);
+                    Bomb tempBomb = new Bomb(time);
                     levelBuilt.addItem(tempItemPos, tempBomb);
                 }
                 break;
@@ -115,7 +115,7 @@ public class LevelFileReader {
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     int time = lineScanner.nextInt();
-                    Clock tempClock = new Clock(x, y, name, fileName, time);
+                    Clock tempClock = new Clock(time);
                     levelBuilt.addItem(tempItemPos, tempClock);
                 }
                 break;
@@ -127,7 +127,7 @@ public class LevelFileReader {
                     IntVector2D tempItemPos = new IntVector2D(x, y);
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
-                    Door tempDoor = new Door(x, y, name, fileName);
+                    Door tempDoor = new Door();
                     levelBuilt.addItem(tempItemPos, tempDoor);
                 }
                 break;
@@ -140,7 +140,7 @@ public class LevelFileReader {
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     String colour = lineScanner.next();
-                    Lever tempLever = new Lever(x, y, name, fileName, colour);
+                    Lever tempLever = new Lever(colour);
                     levelBuilt.addItem(tempItemPos, tempLever);
                 }
                 break;
@@ -153,7 +153,7 @@ public class LevelFileReader {
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     String colour = lineScanner.next();
-                    Gate tempGate = new Gate(x, y, name, fileName, colour);
+                    Gate tempGate = new Gate(colour);
                     levelBuilt.addItem(tempItemPos, tempGate);
                 }
                 break;
@@ -190,7 +190,7 @@ public class LevelFileReader {
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     int rarity = lineScanner.nextInt();
-                    Loot tempLoot = new Loot(x, y, name, fileName, rarity);
+                    Loot tempLoot = new Loot(rarity);
                     levelBuilt.addItem(tempItemPos, tempLoot);
                 }
                 break;
