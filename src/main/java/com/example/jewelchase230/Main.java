@@ -73,7 +73,7 @@ public final class Main extends Application {
         stage = inStage;
 
         // Show main menu at first
-        switchToMenu(Menu.getMainMenu());
+        switchToScene(Menu.getMainMenu());
 
         stage.setTitle("Jewel Chase");
         stage.setResizable(true);
@@ -107,7 +107,7 @@ public final class Main extends Application {
      * Switches what is currently shown on the screen to a menu.
      * @param scene The scene to be shown.
      */
-    public static void switchToMenu(final Scene scene) {
+    public static void switchToScene(final Scene scene) {
         tickTimeline.stop();
         stage.setScene(scene);
     }
