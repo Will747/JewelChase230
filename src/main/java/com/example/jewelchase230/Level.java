@@ -1,9 +1,5 @@
 package com.example.jewelchase230;
-
-import com.example.jewelchase230.items.Bomb;
-import com.example.jewelchase230.items.Clock;
-import com.example.jewelchase230.items.Item;
-import com.example.jewelchase230.items.Lever;
+import com.example.jewelchase230.items.*;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.util.ArrayList;
@@ -17,6 +13,8 @@ import java.util.Random;
 public class Level {
     /** Tiles on the grid. */
     private Tile[][] tiles;
+
+    /** All characters in the level. */
     private ArrayList<Character> characters;
 
     /**
@@ -26,7 +24,6 @@ public class Level {
     public Level(final IntVector2D size) {
         tiles = new Tile[size.getX()][size.getY()];
         characters = new ArrayList<>();
-
 
         /* Temp random tile creator. */
         for (int x = 0; x < tiles.length; x++) {
@@ -53,6 +50,11 @@ public class Level {
         addItem(new IntVector2D(0, 0), new Bomb(1));
         addItem(new IntVector2D(1, 0), new Clock(1));
         addItem(new IntVector2D(2, 0), new Lever("Red"));
+
+        // Fill remaining tiles with loot to test randomness.
+        for (int i = 3; i < size.getX(); i++) {
+            addItem(new IntVector2D(i, 0), new Loot());
+        }
         /* End of Temp random tile creator. */
 
     }
