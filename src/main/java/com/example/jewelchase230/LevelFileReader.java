@@ -150,7 +150,8 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
-                    FlyingAssassin tempAssassin = new FlyingAssassin(x, y);
+                    Direction d = Direction.valueOf(lineScanner.next());
+                    FlyingAssassin tempAssassin = new FlyingAssassin(x, y, d);
                     objectArray.add(tempAssassin);
                 }
                 break;
