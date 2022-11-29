@@ -1,4 +1,9 @@
-import com.example.jewelchase230.*;
+package JewelChaseTests;
+
+import com.example.jewelchase230.Bomb;
+import com.example.jewelchase230.Gate;
+import com.example.jewelchase230.Item;
+import com.example.jewelchase230.Level;
 import com.example.jewelchase230.vectors.IntVector2D;
 import org.junit.jupiter.api.Test;
 

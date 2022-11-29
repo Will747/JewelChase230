@@ -7,6 +7,7 @@ import java.net.*;
 
 /**
  * This class interacts with the message of the day API for it to be displayed.
+ * @author Adam Smith.
  */
 
 public class MessageOfTheDay

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 /**
  * This class reads an ASCII file and converts the data into objects and
  * information needed to make the level.
+ * @author Adam Smith.
  */
 public class LevelFileReader {
     // The lists and variables needed to make the level.
