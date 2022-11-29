@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.MainMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.MainMenu">
    <children>
       <Label text="Jewel Chase">
          <font>
@@ -16,7 +16,7 @@
             <Insets bottom="45.0" />
          </VBox.margin>
       </Label>
-      <Button centerShape="false" mnemonicParsing="false" onMouseClicked="#onStartGamePressed" text="Start Game">
+      <Button centerShape="false" mnemonicParsing="false" onMouseClicked="#onProlifeMenuPressed" text="Start Game">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></Button>
