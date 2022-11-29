@@ -5,8 +5,8 @@ public class Gate extends Item {
     private boolean visible;
     private String colour;
 
-    public Gate(int x, int y, String name, String fileName, String colour) {
-        super(x, y, name, fileName);
+    public Gate(final String colour) {
+        super(null);
         this.colour = colour;
     }
 

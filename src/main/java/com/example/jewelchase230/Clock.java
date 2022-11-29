@@ -4,8 +4,8 @@ public class Clock extends Item{
 
     private int time;
 
-    public Clock(int x, int y, String name, String fileName, int time) {
-        super(x, y, name, fileName);
+    public Clock(int time) {
+        super(null);
         this.time = time;
     }
 

@@ -1,13 +1,28 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
+import javafx.scene.image.Image;
 
-public class Item extends Sprite {
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
-    public Item(int x, int y, String name, String fileName) {
-        super(x, y);
-        this.name = name;
-        this.fileName = fileName;
+public abstract class Item extends Sprite {
+
+    /**
+     * Constructs a new item.
+     * @param fileName The file path to image rendered by this item.
+     */
+    public Item(final String fileName) {
+        super();
+
+        if (fileName != null) {
+            try {
+                Image image = getImageFromFile(fileName);
+                setImage(image);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /*public Item(String name, IntVector2D gridPos) {
@@ -15,27 +30,8 @@ public class Item extends Sprite {
 
     }*/
 
-    public String name;
-    public String fileName;
-
-    public void remove(){
-        this.setGridPosition(new IntVector2D(-1,-1));
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setImage(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getImage() {
-        return fileName;
+    public void remove() {
+        this.setGridPosition(new IntVector2D(-1, -1));
     }
 
     public void doOnCollision() {
