@@ -22,20 +22,27 @@ public enum TileColour {
         colour = inColour;
     }
 
-    public static TileColour getTileColourType(char c){
-        switch(c){
+    /**
+     * Converts a character to tile.
+     * @param c The character.
+     * @return Converted colour.
+     */
+    public static TileColour getTileColourType(final char c) {
+        switch (c) {
             case 'r':
                 return Red;
             case 'g':
                 return Green;
             case 'b':
                 return Blue;
-            case 'y':
+            default:
                 return Yellow;
         }
-        return Red;
     }
 
+    /**
+     * @return The javaFX color.
+     */
     public Color getColour() {
         return colour;
     }

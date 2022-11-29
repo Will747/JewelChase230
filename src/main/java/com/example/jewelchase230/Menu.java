@@ -22,9 +22,9 @@ public final class Menu {
     /** Profile Menu fxml file. */
     private static final String PROFILE_MENU_FXML = "profile-menu.fxml";
     /** Settings Menu fxml file. */
-    private static final String SETTINGS_MENU_FXML = "settings.fxml"; 
+    private static final String SETTINGS_MENU_FXML = "settings-menu.fxml";
     /** HighScore Table Menu fxml file. */
-    private static final String HIGHSCORE_TABLE_FXML = "highscoretable.fxml"; 
+    private static final String HIGHSCORE_TABLE_FXML = "highScore-table.fxml";
     /** Profile Select fxml file. */
     private static final String PROFILE_SELECT_FXML = "profile-select.fxml";
 
@@ -45,13 +45,11 @@ public final class Menu {
 
         createScene(MAIN_MENU_FXML);
         createScene(TEST_MENU_FXML);
-        createScene(PROFILE_MENU_FXML); 
         createScene(SETTINGS_MENU_FXML);
-        createScene(HIGHSCORE_TABLE_FXML); 
-        createScene(PROFILE_SELECT_FXML); 
+        createScene(HIGHSCORE_TABLE_FXML);
+        //createScene(PROFILE_MENU_FXML);
+        //createScene(PROFILE_SELECT_FXML);
     }
-    
-    
     
     /**
      * Creates a new scene and adds it to the cache.
@@ -77,12 +75,26 @@ public final class Menu {
     public static Scene getTestMenu() {
         return getScene(TEST_MENU_FXML);
     }
+
     /**
-     * 
-     * @return profile menu scene. 
+     * @return profile menu scene.
      */
-    public static Scene getProfileMenu() { 
+    public static Scene getProfileMenu() {
     	return getScene(PROFILE_MENU_FXML);
+    }
+
+    /**
+     * @return settings menu scene.
+     */
+    public static Scene getSettingsMenu() {
+        return getScene(SETTINGS_MENU_FXML);
+    }
+
+    /**
+     * @return highscores table scene.
+     */
+    public static Scene getHighScoreTable() {
+        return getScene(HIGHSCORE_TABLE_FXML);
     }
 
     /**
@@ -93,41 +105,6 @@ public final class Menu {
     private static Scene getScene(final String fxmlFile) {
         return cachedScenes.get(fxmlFile);
     }
-
-	/**
-	 * @return the mainMenuFxml
-	 */
-	public static String getMainMenuFxml() {
-		return MAIN_MENU_FXML;
-	}
-
-	/**
-	 * @return the profileMenuFxml
-	 */
-	public static String getProfileMenuFxml() {
-		return PROFILE_MENU_FXML;
-	}
-
-	/**
-	 * @return the settingsMenuFxml
-	 */
-	public static String getSettingsMenuFxml() {
-		return SETTINGS_MENU_FXML;
-	}
-
-	/**
-	 * @return the highscoreTableFxml
-	 */
-	public static String getHighscoreTableFxml() {
-		return HIGHSCORE_TABLE_FXML;
-	}
-
-	/**
-	 * @return the profileSelectFxml
-	 */
-	public static String getProfileSelectFxml() {
-		return PROFILE_SELECT_FXML;
-	}
 
 	/**
 	 * @return the cachedScenes

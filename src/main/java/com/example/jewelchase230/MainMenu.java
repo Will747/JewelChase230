@@ -19,9 +19,14 @@ public final class MainMenu {
     void onSwitchMenuPressed(final MouseEvent event) {
         Main.switchToScene(Menu.getTestMenu());
     }
-    
-    //void onSettingsPressed(final MouseEvent event) {
-   // 	Main.switchToScene(Menu.getSettingsMenuFxml());
-   // }
-    
+
+    @FXML
+    void onSettingsMenuPressed(final MouseEvent event) {
+        Main.switchToScene(Menu.getSettingsMenu());
+    }
+
+    @FXML
+    void onHighScoreTablePressed(final MouseEvent event) {
+        Main.switchToScene(Menu.getHighScoreTable());
+    }
 }
