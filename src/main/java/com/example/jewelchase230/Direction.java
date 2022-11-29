@@ -23,4 +23,18 @@ public enum Direction {
         }
         return d;
     }
+
+    public static Direction getDirectionType(String directionString){
+        switch(directionString){
+            case "UP":
+                return UP;
+            case "DOWN":
+                return DOWN;
+            case "LEFT":
+                return LEFT;
+            case "RIGHT":
+                return RIGHT;
+        }
+        return UP;
+    }
 }

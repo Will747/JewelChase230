@@ -161,6 +161,8 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    String directionString = lineScanner.next();
+                    Direction direction = Direction.getDirectionType(directionString);
                     IntVector2D tempItemPos = new IntVector2D(x, y);
                     FloorFollowingThief tempThief = new FloorFollowingThief(x, y);
                     // levelBuilt.addNPC(tempItemPos, tempThief);
@@ -171,8 +173,10 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    String directionString = lineScanner.next();
+                    Direction direction = Direction.getDirectionType(directionString);
                     IntVector2D tempNPCPos = new IntVector2D(x, y);
-                    FlyingAssassin tempAssassin = new FlyingAssassin(x, y);
+                    FlyingAssassin tempAssassin = new FlyingAssassin(x, y, direction);
                     // LevelBuilt.addNPC(tempItemPos, tempAssassin);
                 }
                 break;
