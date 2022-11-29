@@ -3,6 +3,7 @@ package com.example.jewelchase230;
 import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.items.Clock;
 import com.example.jewelchase230.items.Item;
+import com.example.jewelchase230.items.Lever;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class Level {
 
         addItem(new IntVector2D(0, 0), new Bomb(1));
         addItem(new IntVector2D(1, 0), new Clock(1));
+        addItem(new IntVector2D(2, 0), new Lever("Red"));
         /* End of Temp random tile creator. */
 
     }
