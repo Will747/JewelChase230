@@ -6,6 +6,16 @@ private int highestScore;
 private String userName;
 
 
+
+
+
+
+
+
+
+
+
+
 /**
  * @return the highestScore
  */
