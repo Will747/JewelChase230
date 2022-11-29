@@ -57,7 +57,7 @@ public class LevelFileReader {
             IntVector2D size = new IntVector2D(xAxis, yAxis);
             levelBuilt = new Level(size);
 
-            // Adds tokens to an array list for the colours of the tiles.
+            // Changes the tokens in the text file to tile objects that are added to the level.
             while (!fileScanner.hasNextInt()) {
                 for (int i = 0; i < yAxis - 1; i++){
                     for (int j = 0; j < xAxis - 1; i ++){
