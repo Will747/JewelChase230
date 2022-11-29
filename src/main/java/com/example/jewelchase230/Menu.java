@@ -19,10 +19,15 @@ public final class Menu {
     private static final String MAIN_MENU_FXML = "main-menu.fxml";
     /** Test menu fxml file. */
     private static final String TEST_MENU_FXML = "test-menu.fxml";
-    /** Test menu fxml file. */
-    private static final String SETTINGS_MENU_FXML = "settings-menu.fxml";
-    /** Test menu fxml file. */
-    private static final String HIGHSCORE_TABLE_FXML = "highScore-table.fxml";
+    /** Profile Menu fxml file. */
+    private static final String PROFILE_MENU_FXML = "profile-menu.fxml";
+    /** Settings Menu fxml file. */
+    private static final String SETTINGS_MENU_FXML = "settings.fxml"; 
+    /** HighScore Table Menu fxml file. */
+    private static final String HIGHSCORE_TABLE_FXML = "highscoretable.fxml"; 
+    /** Profile Select fxml file. */
+    private static final String PROFILE_SELECT_FXML = "profile-select.fxml";
+
 
     /** Already created scenes. */
     private static HashMap<String, Scene> cachedScenes;
@@ -42,6 +47,19 @@ public final class Menu {
         createScene(TEST_MENU_FXML);
         createScene(SETTINGS_MENU_FXML);
         createScene(HIGHSCORE_TABLE_FXML);
+        createScene(PROFILE_MENU_FXML); 
+        createScene(PROFILE_SELECT_FXML); 
+    }
+    
+    /**
+     * Creates a new scene and adds it to the cache.
+     * @param fxmlFile fxmlFile that should be in the scene.
+     */
+    private static void createScene(final String fxmlFile) throws IOException {
+        URL url = Menu.class.getResource(fxmlFile);
+        FXMLLoader fxmlLoader = new FXMLLoader(url);
+        Scene scene = new Scene(fxmlLoader.load());
+        cachedScenes.put(fxmlFile, scene);
     }
 
     /**
@@ -56,6 +74,13 @@ public final class Menu {
      */
     public static Scene getTestMenu() {
         return getScene(TEST_MENU_FXML);
+    }
+    /**
+     * 
+     * @return profile menu scene. 
+     */
+    public static Scene getProfileMenu() { 
+    	return getScene(PROFILE_MENU_FXML);
     }
 
     /**
@@ -81,14 +106,10 @@ public final class Menu {
         return cachedScenes.get(fxmlFile);
     }
 
-    /**
-     * Creates a new scene and adds it to the cache.
-     * @param fxmlFile fxmlFile that should be in the scene.
-     */
-    private static void createScene(final String fxmlFile) throws IOException {
-        URL url = Menu.class.getResource(fxmlFile);
-        FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load());
-        cachedScenes.put(fxmlFile, scene);
-    }
+	/**
+	 * @return the cachedScenes
+	 */
+	public static HashMap<String, Scene> getCachedScenes() {
+		return cachedScenes;
+	}
 }

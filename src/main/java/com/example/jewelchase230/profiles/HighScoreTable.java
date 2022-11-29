@@ -65,63 +65,7 @@ public class HighScoreTable {
 	
 	
 	
-	/**
-	 * Reads all data from highscoretable.txt and adds to Array Lists for parsing
-	 * 
-	 */
-	public void readAllHighScoreFromFile() { 
-		   try {
-	            File myFile = new File("highscoretable.txt");
-	            Scanner input = new Scanner(myFile);
-	            //print statement for testing
-	            System.out.println("readfile");
-	            
-	            while (input.hasNextLine()) {
-	            	//lineCount++;
-	                String data = input.nextLine();
-	                highScoreLineByLineData.add(data); 
-	              
-	               String[] lineDataSplit = data.split("\\.",4);
-	               // uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
-	              
-	               
-	                
-	            }
-	            
-	            input.close();
-	        } catch (FileNotFoundException e) {
-	            System.out.println("An error occurred.");
-	            e.printStackTrace();
-	        }
-	}
 	
-	
-	/**
-	public static void saveScore(Profile profile) throws IOException { 
-    	BufferedWriter pmWriter = new BufferedWriter (new FileWriter("Profiles.txt")); 
-
-    	try
-        {
-    		pmWriter.write(Profile.profileToString(profile));
-    		pmWriter.newLine();
-    		 for (int i = 0; i < profilesLineByLineData.size(); i++) {
-    			 pmWriter.write(profilesLineByLineData.get(i));
-    			 
-    			 if (i != profilesLineByLineData.size()) { 
-    				 pmWriter.newLine();
-    			 }
-    		 }
-    		
-    		pmWriter.close();
-    		
-     
-        } catch (FileNotFoundException e) {
-             System.out.println("An error occurred.");
-             e.printStackTrace();
- 	    } 	 
-    }
-    
-    */
 	
 	public void groupHighScoresPerLevelX(int levelNumberCompleted) { 
 		

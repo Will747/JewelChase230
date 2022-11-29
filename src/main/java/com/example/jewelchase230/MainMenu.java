@@ -11,21 +11,22 @@ import javafx.scene.input.MouseEvent;
 public final class MainMenu {
     @FXML
     void onStartGamePressed(final MouseEvent event) {
-        Main.switchToCanvas();
+        Main.switchToScene(Menu.getProfileMenu());
     }
-
+    
+    
     @FXML
     void onSwitchMenuPressed(final MouseEvent event) {
-        Main.switchToMenu(Menu.getTestMenu());
+        Main.switchToScene(Menu.getTestMenu());
     }
 
     @FXML
     void onSettingsMenuPressed(final MouseEvent event) {
-        Main.switchToMenu(Menu.getSettingsMenu());
+        Main.switchToScene(Menu.getSettingsMenu());
     }
 
     @FXML
     void onHighScoreTablePressed(final MouseEvent event) {
-        Main.switchToMenu(Menu.getHighScoreTable());
+        Main.switchToScene(Menu.getHighScoreTable());
     }
 }

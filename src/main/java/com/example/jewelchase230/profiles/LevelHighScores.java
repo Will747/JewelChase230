@@ -28,20 +28,8 @@ public class LevelHighScores {
 	ArrayList<Integer> topTenHighScores = new ArrayList<Integer>();
 
 	
-	/**
-	 * This method will search for the relevent level high scores in the highscoretperlevel text file using the playerCurrentLevel parameter
-	 * and load the relevent scores into the ArrayList
-	 * @param playerCurrentLevel
-	 * @return levelScores
-	 * 
-	 */
-	public ArrayList<Integer> loadLevelHighScoresToList(int playerCurrentLevel) { 
-		
-		
-		
-		
-		return levelScores;
-	}
+	//note: will need serializable to load in these values
+	
 	
 	/**
 	 * This method will take the levelScore array and sort them from highest to lowest
