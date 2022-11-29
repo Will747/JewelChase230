@@ -1,6 +1,8 @@
 package com.example.jewelchase230.profiles;
 
-public class ProfileScore {
+import java.io.Serializable;
+
+public class ProfileScore implements Serializable {
 	/** int which holds the highest score of a player */
 	private int highestScore;
 	/** Integer which holds the player's unique ID */
