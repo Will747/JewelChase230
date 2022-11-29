@@ -14,7 +14,6 @@ public final class MainMenu {
         Main.switchToScene(Menu.getProfileMenu());
     }
     
-    
     @FXML
     void onSwitchMenuPressed(final MouseEvent event) {
         Main.switchToScene(Menu.getTestMenu());
@@ -28,5 +27,15 @@ public final class MainMenu {
     @FXML
     void onHighScoreTablePressed(final MouseEvent event) {
         Main.switchToScene(Menu.getHighScoreTable());
+    }
+
+    @FXML
+    void onProlifeMenuPressed(final MouseEvent event) {
+        Main.switchToScene(Menu.getProfileMenu());
+    }
+
+    @FXML
+    void onProlifeSelectPressed(final MouseEvent event) {
+        Main.switchToScene(Menu.getProfileSelect());
     }
 }
