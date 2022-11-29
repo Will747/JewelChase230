@@ -20,8 +20,8 @@ public final class MainMenu {
         Main.switchToScene(Menu.getTestMenu());
     }
     
-    void onSettingsPressed(final MouseEvent event) { 
-    	Main.switchToScene(Menu.getSettingsMenuFxml());
-    }
+    //void onSettingsPressed(final MouseEvent event) {
+   // 	Main.switchToScene(Menu.getSettingsMenuFxml());
+   // }
     
 }
