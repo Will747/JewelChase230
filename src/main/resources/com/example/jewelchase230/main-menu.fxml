@@ -13,7 +13,12 @@
             <Font name="Franklin Gothic Medium Italic" size="45.0" />
          </font>
          <VBox.margin>
-            <Insets bottom="45.0" />
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </Label>
+      <Label fx:id="messageOfTheDay" text="Message Of The Day" textAlignment="CENTER" wrapText="true">
+         <VBox.margin>
+            <Insets bottom="40.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Label>
       <Button centerShape="false" mnemonicParsing="false" onMouseClicked="#onProlifeMenuPressed" text="Start Game">
