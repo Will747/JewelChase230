@@ -105,7 +105,7 @@ public class MessageOfTheDay
             // The method for changing characters if at an odd index (start from 1).
             else
             {
-                if ((((int) puzzle.charAt(i)) - (tempIndex + 1)) < A_CHAR_AS_INT)
+                if ((((int) puzzle.charAt(i)) - (tempIndex)) < A_CHAR_AS_INT)
                 {
                     // Handles the changing of characters if they wrap around the alphabet.
                    solvedPuzzle = solvedPuzzle + ((char) ((Z_CHAR_AS_INT - ((tempIndex) - (((int) puzzle.charAt(i)) - A_CHAR_AS_INT)))));
