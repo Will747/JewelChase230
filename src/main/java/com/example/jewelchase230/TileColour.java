@@ -22,6 +22,20 @@ public enum TileColour {
         colour = inColour;
     }
 
+    public static TileColour getTileColourType(char c){
+        switch(c){
+            case 'r':
+                return Red;
+            case 'g':
+                return Green;
+            case 'b':
+                return Blue;
+            case 'y':
+                return Yellow;
+        }
+        return Red;
+    }
+
     public Color getColour() {
         return colour;
     }

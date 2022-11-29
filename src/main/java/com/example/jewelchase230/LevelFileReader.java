@@ -1,6 +1,9 @@
 package com.example.jewelchase230;
 
 import java.util.Scanner;
+
+import com.example.jewelchase230.vectors.IntVector2D;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,8 +19,7 @@ public class LevelFileReader {
     private static int xAxis;
     private static int yAxis;
     private static int levelTime;
-    private static ArrayList<String> tileColours = new ArrayList<>();
-    private static ArrayList<Object> objectArray = new ArrayList<>();
+    private static Level levelBuilt;
 
     public static void main(String[] args) {
         // Tests that the values are read in correcly.
@@ -25,8 +27,7 @@ public class LevelFileReader {
         System.out.println(xAxis);
         System.out.println(yAxis);
         System.out.println(levelTime);
-        System.out.println(tileColours.toString());
-        System.out.println(objectArray.toString());
+        System.out.println(levelBuilt.getAllItems().toString());
     }
 
     /**
@@ -53,9 +54,23 @@ public class LevelFileReader {
             yAxis = fileScanner.nextInt();
             levelTime = fileScanner.nextInt();
 
+            IntVector2D size = new IntVector2D(xAxis, yAxis);
+            levelBuilt = new Level(size);
+
             // Adds tokens to an array list for the colours of the tiles.
             while (!fileScanner.hasNextInt()) {
-                tileColours.add(fileScanner.next());
+                for (int i = 0; i < yAxis - 1; i++){
+                    for (int j = 0; j < xAxis - 1; i ++){
+                        String tempTileColour = fileScanner.next();
+                        TileColour topLeft = TileColour.getTileColourType(tempTileColour.charAt(1));
+                        TileColour topRight = TileColour.getTileColourType(tempTileColour.charAt(1));
+                        TileColour bottomLeft = TileColour.getTileColourType(tempTileColour.charAt(1));
+                        TileColour bottomRight = TileColour.getTileColourType(tempTileColour.charAt(1));
+                        Tile tempTile = new Tile(topLeft, topRight, bottomLeft, bottomRight);
+                        IntVector2D tempTilePos = new IntVector2D(j, i);
+                        levelBuilt.addTile(tempTilePos, tempTile);
+                    }
+                }
             }
             fileScanner.nextLine();
             // Makes objects from the provided information.
@@ -82,11 +97,12 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    IntVector2D tempItemPos = new IntVector2D(x, y);
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     int time = lineScanner.nextInt();
                     Bomb tempBomb = new Bomb(x, y, name, fileName, time);
-                    objectArray.add(tempBomb);
+                    levelBuilt.addItem(tempItemPos, tempBomb);
                 }
                 break;
             }
@@ -94,11 +110,12 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    IntVector2D tempItemPos = new IntVector2D(x, y);
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     int time = lineScanner.nextInt();
                     Clock tempClock = new Clock(x, y, name, fileName, time);
-                    objectArray.add(tempClock);
+                    levelBuilt.addItem(tempItemPos, tempClock);
                 }
                 break;
             }
@@ -106,10 +123,11 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    IntVector2D tempItemPos = new IntVector2D(x, y);
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     Door tempDoor = new Door(x, y, name, fileName);
-                    objectArray.add(tempDoor);
+                    levelBuilt.addItem(tempItemPos, tempDoor);
                 }
                 break;
             }
@@ -117,11 +135,12 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    IntVector2D tempItemPos = new IntVector2D(x, y);
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     String colour = lineScanner.next();
                     Lever tempLever = new Lever(x, y, name, fileName, colour);
-                    objectArray.add(tempLever);
+                    levelBuilt.addItem(tempItemPos, tempLever);
                 }
                 break;
             }
@@ -129,11 +148,12 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    IntVector2D tempItemPos = new IntVector2D(x, y);
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     String colour = lineScanner.next();
                     Gate tempGate = new Gate(x, y, name, fileName, colour);
-                    objectArray.add(tempGate);
+                    levelBuilt.addItem(tempItemPos, tempGate);
                 }
                 break;
             }
@@ -141,8 +161,9 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    IntVector2D tempItemPos = new IntVector2D(x, y);
                     FloorFollowingThief tempThief = new FloorFollowingThief(x, y);
-                    objectArray.add(tempThief);
+                    // levelBuilt.addNPC(tempItemPos, tempThief);
                 }
                 break;
             }
@@ -150,8 +171,9 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    IntVector2D tempNPCPos = new IntVector2D(x, y);
                     FlyingAssassin tempAssassin = new FlyingAssassin(x, y);
-                    objectArray.add(tempAssassin);
+                    // LevelBuilt.addNPC(tempItemPos, tempAssassin);
                 }
                 break;
             }
@@ -159,11 +181,12 @@ public class LevelFileReader {
                 while (lineScanner.hasNext()) {
                     int x = lineScanner.nextInt();
                     int y = lineScanner.nextInt();
+                    IntVector2D tempItemPos = new IntVector2D(x, y);
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     int rarity = lineScanner.nextInt();
                     Loot tempLoot = new Loot(x, y, name, fileName, rarity);
-                    objectArray.add(tempLoot);
+                    levelBuilt.addItem(tempItemPos, tempLoot);
                 }
                 break;
             }
@@ -173,30 +196,5 @@ public class LevelFileReader {
             }
         }
 
-    }
-
-    // Returns the x-axis.
-    public static int getXAxis() {
-        return xAxis;
-    }
-
-    // Returns the y-axis.
-    public static int getYAxis() {
-        return yAxis;
-    }
-
-    // Returns the time allowed for the level.
-    public static int getLevelTime() {
-        return levelTime;
-    }
-
-    // Returns the array list of the tile colours.
-    public static ArrayList<String> getTileColours() {
-        return tileColours;
-    }
-
-    // Returns the array list of objects needed for the level.
-    public static ArrayList<Object> getObjectArray() {
-        return objectArray;
     }
 }
