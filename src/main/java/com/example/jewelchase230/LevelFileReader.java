@@ -2,12 +2,11 @@ package com.example.jewelchase230;
 
 import java.util.Scanner;
 
+import com.example.jewelchase230.items.*;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * This class reads an ASCII file and converts the data into objects and

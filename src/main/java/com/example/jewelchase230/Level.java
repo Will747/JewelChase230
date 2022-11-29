@@ -1,5 +1,9 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.items.Bomb;
+import com.example.jewelchase230.items.Clock;
+import com.example.jewelchase230.items.Item;
+import com.example.jewelchase230.items.Lever;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.util.ArrayList;
@@ -8,7 +12,7 @@ import java.util.Random;
 /**
  * Represents a game level, including all tiles, items and characters.
  *
- * @author Will Kaye
+ * @author Will Kaye and Adam Smith
  */
 public class Level {
     /** Tiles on the grid. */
@@ -47,6 +51,8 @@ public class Level {
         }
 
         addItem(new IntVector2D(0, 0), new Bomb(1));
+        addItem(new IntVector2D(1, 0), new Clock(1));
+        addItem(new IntVector2D(2, 0), new Lever("Red"));
         /* End of Temp random tile creator. */
 
     }
@@ -174,8 +180,27 @@ public class Level {
         characters.add(character);
     }
 
+    /**
+     * Returns the array list of characters in the level.
+     * @return the array list of characters.
+     */
     public ArrayList<Character> getAllCharacters(){
         return characters;
     }
 
+    /**
+     * Gets a specific character in the level.
+     * @param x the x-axis coordinate.
+     * @param y the y-axis coordinate.
+     * @return The wanted character or null if the character doesn't exist.
+     */
+    public Character getSpecificCharacter(int x, int y){
+        Character wantedCharacter = null;
+        for (Character c: characters){
+            if (c.getGridPosition().getX() == x && c.getGridPosition().getY() == y){
+                wantedCharacter =  c;
+            }
+        }
+        return wantedCharacter;
+    }
 }

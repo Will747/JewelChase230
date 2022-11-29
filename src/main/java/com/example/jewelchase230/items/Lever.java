@@ -1,11 +1,13 @@
-package com.example.jewelchase230;
-import java.util.ArrayList;
+package com.example.jewelchase230.items;
 
-public class Lever extends Item{
+public class Lever extends Item {
+    /** The lever image. */
+    private static final String LEVER_IMAGE = "images/LEVER.png";
+
     private String colour;
 
     public Lever(final String inColour) {
-        super(null);
+        super(LEVER_IMAGE);
         colour = inColour;
     }
 
