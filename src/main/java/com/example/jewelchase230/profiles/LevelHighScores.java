@@ -11,14 +11,34 @@ import java.util.ArrayList;
 
 
 public class LevelHighScores {
-
+	  /** integer which holds the player's current level */
 	private int playerCurrentLevel; 
-	private ProfileScore[] playerScores;
+	  /** ArrayList holds scores of all players from each Level */
+	ArrayList<Integer> levelScoreList = new ArrayList<Integer>();
+	/** Integer which specifies the player's score for this level */
 	private int playerLevelScore;
 	
-	public LevelHighScores (int playerLevelScore, Profile profile ) { 
-		this.playerLevelScore = playerLevelScore;
-		Profile thisProfile = (Profile)profile.clone(); 
+	public LevelHighScores () { 
+		
+	}
+	
+	//seperate function : updatePlayerScore. when function gets called it has profile as paramater and playerLevelScore, search and if current score
+	// is higher, overwrite and if doesnt exist make
+	
+	public void updatePlayerScore(Profile profile, int playerCurrentLevel) { 
+		for(int i = 0; i <= levelScoreList.size(); i++) { 
+			/** if the ProfileScore.getuniquePlayerID == profile.getID
+			 * if playerLevelScore > levelScoreList.get(i) { 
+			 * playerScore.set(highestScore) = playerLevelScore
+			 * levelScoreList(i) = playerScore.get(highestScore);
+			 * 		else if (profile.getID not exists in  ProfileScore.uniquePlayerID)
+			 * 				profileUniqueID as Profile.getID
+			 * 				profile highest score as playerLevelScore
+			 */
+			
+			
+			
+		}
 		
 	}
 	
@@ -37,6 +57,7 @@ public class LevelHighScores {
 	 * @return
 	 */
 	public ArrayList <Integer> orderHighScores(ArrayList<Integer>levelScores){
+		
 		
 		
 		return orderedLevelHighScores;
