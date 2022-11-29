@@ -25,25 +25,7 @@ public class ProfileManager
 	public static final int LINEBYLINEDATA_I = 4; 
 	
 
-	// we may need another variable here Integer uniquePlayerID ? depends on how we want to uniquely identify users
 	
-	public static void main(final String[] args) throws IOException
-	{
-		//tests to see if functions work
-
-		Profile Nicole = new Profile (1, "P1" , "Nicole", 4);
-		Profile Kiwi = new Profile (4, "P4", "FART", 5); 
-		
-         
-		readLines(); 
-		System.out.println(profilesLineByLineData);
-		saveProfile(Nicole);		
-		
-		System.out.println("Hi"); 
-	}
-
-    
-
     // Reads each line of the text file "Profile.txt"
 	/**
     * Reads content from file and stores them appropriately to be handled
