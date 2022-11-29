@@ -61,4 +61,12 @@ public class Lever extends Item {
         checkIfDoorOpen();
     }
 
+    /**
+     * Thief collision is the same as player collision for levers.
+     */
+    @Override
+    public void doOnThiefCollision() {
+        doOnCollision();
+    }
+
 }

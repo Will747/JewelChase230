@@ -19,6 +19,8 @@ import javafx.scene.input.KeyEvent;
 *To add in future once branches merged: 
 *upon Door, when level is completed, calls Profile to change currentLevel of object Profile
 * - Kiwi
+*I also added addToActiveScore in order to add points when collecting items
+* - Ben
 */
 
 public class Player extends Character{
@@ -62,6 +64,14 @@ public class Player extends Character{
         //redraw game
 
         keyPress.consume();
+    }
+
+    /**
+     * Adds score to the active current score of player.
+     * @param score Score to be added to the active score.
+     */
+    public void addToActiveScore(int score) {
+        playerActiveScore += score;
     }
 
 

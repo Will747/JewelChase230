@@ -42,7 +42,7 @@ public class Bomb extends Item {
     /**
      * Check if item type is valid to be removed.
      * @param item Item to have type checked if it's valid to be removed.
-     * @return
+     * @return True if item can be removed, false if it cannot.
      */
     private Boolean checkValidRemove(Item item) {
         if (item instanceof Gate || item instanceof Door) {
@@ -81,5 +81,13 @@ public class Bomb extends Item {
         //Countdown needs to be implemented
         explode();
         remove();
+    }
+
+    /**
+     * Thief collision is the same as player collision for bombs.
+     */
+    @Override
+    public void doOnThiefCollision() {
+        doOnCollision();
     }
 }

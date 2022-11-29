@@ -34,4 +34,12 @@ public class Gate extends Item {
     public void doOnCollision() {
         
     }
+
+    /**
+     * Shouldn't be collidable and if it is collided nothing should happen
+     */
+    @Override
+    public void doOnThiefCollision() {
+
+    }
 }

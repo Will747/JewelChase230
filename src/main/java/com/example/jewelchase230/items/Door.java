@@ -33,12 +33,22 @@ public class Door extends Item {
     }
 
     /**
-     * Ends the level if the door is open when interacted with.
+     * Ends the level with winning situation if door is open.
      */
     @Override
     public void doOnCollision() {
         if (isDoorOpen) {
-            //end level
+            //winning end level situation
+        }
+    }
+
+    /**
+     * Ends the level with losing situation if door is open.
+     */
+    @Override
+    public void doOnThiefCollision() {
+        if (isDoorOpen) {
+            //losing end level situation
         }
     }
 }

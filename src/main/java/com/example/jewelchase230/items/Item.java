@@ -45,14 +45,21 @@ public abstract class Item extends Sprite {
      * Removes the item from the level.
      */
     public void remove() {
-        getLevel().removeItem(this.getGridPosition());
+        getLevel().removeItem(getGridPosition());
         this.setGridPosition(new IntVector2D(-1, -1));
     }
 
     /**
-     * Default collision for all items.
+     * Default player collision for all items.
      */
     public void doOnCollision() {
+        remove();
+    }
+
+    /**
+     * Default thief collision for all items.
+     */
+    public void doOnThiefCollision() {
         remove();
     }
 }

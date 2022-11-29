@@ -195,6 +195,20 @@ public class Level {
     }
 
     /**
+     * Gets the current player in the level.
+     * @return The current player.
+     */
+    public Player getPlayer() {
+        ArrayList<Character> characterArray = getAllCharacters();
+        for (Character characterInstance : characterArray) {
+            if (characterInstance instanceof Player) {
+                return ((Player) characterInstance);
+            }
+        }
+        return null;
+    }
+
+    /**
      * Gets a specific character in the level.
      * @param x the x-axis coordinate.
      * @param y the y-axis coordinate.
