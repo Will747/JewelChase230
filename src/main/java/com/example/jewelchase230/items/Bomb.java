@@ -1,5 +1,10 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.Level;
+import com.example.jewelchase230.Main;
+import com.example.jewelchase230.vectors.IntVector2D;
+import java.util.ArrayList;
+
 public class Bomb extends Item {
 
     /** The bomb image. */
@@ -32,23 +37,56 @@ public class Bomb extends Item {
         return this.time;
     }
 
-    //psueod code for explode. waiting for getObjectArray and setObjectArray in level class (or similar)
-
-    public void explode() {
-        /*level currentLevel = main.getCurrentLevel();
-        ArrayList<Object> objectArray = currentLevel.getObjectArray();
-        for (int i=0; i < objectArray.size(); i++) {
-            if (i.getX == this.getX) {
-                i.remove()
-            }
-            if (i.getY == this.getY) {
-                i.remove()
-            }
+    /**
+     * Check if item type is valid to be removed.
+     * @param item Item to have type checked if it's valid to be removed.
+     * @return
+     */
+    public Boolean checkValidRemove(Item item) {
+        if (item instanceof Gate || item instanceof Door) {
+            return false;
         }
-        main.currentLevel.setObjectArray(objectArray);  */
+        return true;
     }
 
+    /**
+     * Explosion removing all items, except Doors and Gates, from the level.
+     */
+    public void explode() {
+        Level currentLevel = Main.getCurrentLevel();
+        ArrayList<Item> itemArray = currentLevel.getAllItems();
+        final int currentXCoordinate = this.getGridPosition().getX();
+        final int currentYCoordinate = this.getGridPosition().getY();
+        for (Item itemInstance : itemArray) {
+            IntVector2D itemInstanceGridPosition = itemInstance.getGridPosition();
+            int itemInstanceX = itemInstanceGridPosition.getX();
+            int itemInstanceY = itemInstanceGridPosition.getY();
+            if (itemInstanceX == currentXCoordinate) { //removes all items on the same row
+                if (itemInstance instanceof Bomb) {
+                    Bomb newBomb = (Bomb) itemInstance;
+                    newBomb.explode();
+                }
+                if (checkValidRemove(itemInstance)) {
+                    itemInstance.remove();
+                }
+            }
+            if (itemInstanceY == currentYCoordinate) { //removes all items on the same column
+                if (itemInstance instanceof Bomb) {
+                    Bomb newBomb = (Bomb) itemInstance;
+                    newBomb.explode();
+                }
+                if (checkValidRemove(itemInstance)) {
+                    itemInstance.remove();
+                }
+            }
+        }
+    }
+
+    /**
+     * Counts down from 3 then explodes.
+     */
     public void doOnCollision() {
+        //Countdown needs to be implemented
         explode();
         remove();
     }

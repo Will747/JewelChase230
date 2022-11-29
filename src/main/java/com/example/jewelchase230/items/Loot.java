@@ -1,20 +1,31 @@
 package com.example.jewelchase230.items;
 
-public class Loot extends Item{
+/**
+ * A collectable item that holds a reward when collected.
+ *
+ * @author Will Kaye
+ */
+public class Loot extends Item {
+    /** The type of loot. */
+    private final LootType type;
 
-    private int rarity;
-    private int counter;
-
-    public Loot(int rarity) {
-        super(null);
-        this.rarity = rarity;
+    /**
+     * Constructs a new item of loot.
+     * Randomly selecting the type.
+     */
+    public Loot() {
+        super();
+        type = LootType.getRandomType();
+        setImageFromFile(type.getImage());
     }
-    
+
+    /**
+     * Triggered when a thief collides with this item.
+     */
+    @Override
+    public void doOnCollision() {
+        super.doOnCollision();
+
+        // Increment player score if the player collided here.
+    }
 }
-
-
-// will need a switch statement which assigns each case of rarity to a loot value
-// lootCoin = 100; lootBagofCoins = 250; lootBeer = 500; lootCocktail = 750; 
-// these should then change the variable playerActiveScore in Player upon collision
-// feel free to change item image names to match
-// - Kiwi

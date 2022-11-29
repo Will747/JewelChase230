@@ -189,7 +189,7 @@ public class LevelFileReader {
                     String name = lineScanner.next();
                     String fileName = lineScanner.next();
                     int rarity = lineScanner.nextInt();
-                    Loot tempLoot = new Loot(rarity);
+                    Loot tempLoot = new Loot();
                     levelBuilt.addItem(tempItemPos, tempLoot);
                 }
                 break;
