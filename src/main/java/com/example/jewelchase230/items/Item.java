@@ -27,6 +27,9 @@ public abstract class Item extends Sprite {
         }
     }
 
+    /**
+     * Checks if all loot and levers have been collected and opens the door if they have.
+     */
     public void checkIfDoorOpen() {
         ArrayList<Lever> leverArray = getLevel().getAllItemsOfType(Lever.class);
         ArrayList<Loot> lootArray = getLevel().getAllItemsOfType(Loot.class);

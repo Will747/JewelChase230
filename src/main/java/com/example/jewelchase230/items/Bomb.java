@@ -52,7 +52,7 @@ public class Bomb extends Item {
     }
 
     /**
-     * Explosion removing all items, except Doors and Gates, from the level.
+     * Explosion removing all items on the same row and column, expect gates and doors.
      */
     public void explode() {
         ArrayList<Item> itemArray = getLevel().getAllItems();
@@ -61,7 +61,7 @@ public class Bomb extends Item {
         for (Item itemInstance : itemArray) {
             int itemInstanceX = itemInstance.getGridPosition().getX();
             int itemInstanceY = itemInstance.getGridPosition().getX();
-            if (itemInstanceX == currentXCoordinate || itemInstanceY == currentYCoordinate) { //removes all items on the same row
+            if (itemInstanceX == currentXCoordinate || itemInstanceY == currentYCoordinate) {
                 if (itemInstance instanceof Bomb) {
                     Bomb newBomb = (Bomb) itemInstance;
                     newBomb.explode();
