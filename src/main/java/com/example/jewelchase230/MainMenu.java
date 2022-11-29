@@ -11,7 +11,7 @@ import javafx.scene.input.MouseEvent;
 public final class MainMenu {
     @FXML
     void onStartGamePressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getProfileMenu());
+        Main.switchToCanvas();
     }
     
     @FXML

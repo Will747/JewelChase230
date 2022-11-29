@@ -34,9 +34,10 @@ public class LevelFileReader {
      * Method that is called to start the process of reading in the level ASCII file.
      * @param fileName the name / directory of the file being read in.
      */
-    public static void levelFileReader(String fileName){
+    public static Level levelFileReader(String fileName){
            File levelFile = new File(fileName);
            lineReader(levelFile);
+           return levelBuilt;
     }
 
     /**
