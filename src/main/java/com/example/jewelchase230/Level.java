@@ -13,6 +13,7 @@ import java.util.Random;
 public class Level {
     /** Tiles on the grid. */
     private Tile[][] tiles;
+    private ArrayList<Character> characters;
 
     /**
      * Constructs a new level.
@@ -20,6 +21,8 @@ public class Level {
      */
     public Level(final IntVector2D size) {
         tiles = new Tile[size.getX()][size.getY()];
+        characters = new ArrayList<>();
+
 
         /* Temp random tile creator. */
         for (int x = 0; x < tiles.length; x++) {
@@ -154,5 +157,16 @@ public class Level {
         return result;
     }
 
-    
+    /**
+     * Adds characters to the level.
+     * @param character the character being added.
+     */
+    public void addCharacter(Character character){
+        characters.add(character);
+    }
+
+    public ArrayList<Character> getAllCharacters(){
+        return characters;
+    }
+
 }
