@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test various functions in the level class.
+ *
+ * @author Will Kaye
  */
 public class LevelTest {
     @Test
