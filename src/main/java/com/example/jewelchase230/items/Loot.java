@@ -28,4 +28,13 @@ public class Loot extends Item {
         remove();
         checkIfDoorOpen();
     }
+
+    /**
+     * Triggered when a thief collides with loot.
+     */
+    @Override
+    public void doOnThiefCollision() {
+        remove();
+        checkIfDoorOpen();
+    }
 }

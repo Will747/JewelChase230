@@ -199,8 +199,7 @@ public class Level {
      * @return The current player.
      */
     public Player getPlayer() {
-        ArrayList<Character> characterArray = getAllCharacters();
-        for (Character characterInstance : characterArray) {
+        for (Character characterInstance : characters) {
             if (characterInstance instanceof Player) {
                 return ((Player) characterInstance);
             }
