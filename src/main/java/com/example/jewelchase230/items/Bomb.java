@@ -63,13 +63,17 @@ public class Bomb extends Item {
      * @return Every neighbouring tile.
      */
     public ArrayList<Tile> getNeighbouringTiles() {
+        final IntVector2D maxSize = getLevel().getMaxSize();
         ArrayList<Tile> tileArray = new ArrayList<>();
         final IntVector2D thisPos = getGridPosition();
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
                 if (!(x == 0 && x == 0)) {
-                    IntVector2D tempVector = new IntVector2D(x, y);
-                    tileArray.add(getLevel().getTile(thisPos.add(tempVector)));
+                    IntVector2D tempVector = thisPos.add(new IntVector2D(x, y));
+                    if (!(tempVector.getX() <= 0 || tempVector.getY() <= 0) &&
+                    !(tempVector.getX() > maxSize.getX() || tempVector.getY() > maxSize.getY())) {
+                        tileArray.add(getLevel().getTile(tempVector));
+                    }
                 }
             } 
         }
