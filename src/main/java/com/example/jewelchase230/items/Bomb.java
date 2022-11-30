@@ -78,7 +78,10 @@ public class Bomb extends Item {
      */
     @Override
     public void doOnCollision() {
-        //Countdown needs to be implemented
+        for (int i = 0; i < 3; i++) { //change when there are different bomb countdown images
+            tick(1000);
+            //change image
+        }
         explode();
         remove();
     }
