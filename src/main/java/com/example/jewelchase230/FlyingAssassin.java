@@ -58,7 +58,7 @@ public class FlyingAssassin extends AICharacter {
      */
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(new Image("src/main/java/com/example/jewelchase230/images/CAT_BLACK_SIT.png"), 1, 1);
+        gc.drawImage(new Image("/images/CAT_BLACK_SIT.png"), 1, 1);
         //setGridPosition(new IntVector2D(1,1));
     }
 }
