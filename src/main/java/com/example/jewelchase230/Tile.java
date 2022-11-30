@@ -2,6 +2,7 @@ package com.example.jewelchase230;
 
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.DoubleVector2D;
+
 import javafx.scene.canvas.GraphicsContext;
 
 /**
@@ -17,9 +18,9 @@ public final class Tile extends Renderable {
     private final TileColour bottom;
     /** Left side of tile. */
     private final TileColour left;
-
     /** Right side of tile. */
     private final TileColour right;
+    public Character character;
 
     /**
      * Item currently on this tile.
@@ -150,5 +151,13 @@ public final class Tile extends Renderable {
     @Override
     public void tick(final int time) {
 
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(final Character inCharacter) {
+        character = inCharacter;
     }
 }

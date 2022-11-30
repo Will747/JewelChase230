@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 /**
  * Represents Sprites in the game.
  *
- * @author Caroline Segestaal.
+ * @author Caroline Segestaal and Will Kaye.
  */
 public abstract class Sprite extends Renderable {
     /**
@@ -49,8 +49,20 @@ public abstract class Sprite extends Renderable {
      * Updates the image being rendered by this sprite.
      * @param inImage The image.
      */
-    public void setImage(final Image inImage) {
+    protected void setImage(final Image inImage) {
         image = inImage;
+    }
+
+    /**
+     * Sets the image to render, from the file path to the image.
+     * @param fileName File path of image.
+     */
+    protected void setImageFromFile(final String fileName) {
+        try {
+            setImage(getImageFromFile(fileName));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -59,7 +71,7 @@ public abstract class Sprite extends Renderable {
      * @return The image.
      * @throws FileNotFoundException When the image cannot be loaded.
      */
-    public static Image getImageFromFile(final String fileName)
+    private static Image getImageFromFile(final String fileName)
             throws FileNotFoundException {
         return new Image(new FileInputStream(fileName));
     }

@@ -13,12 +13,10 @@ public class FlyingAssassin extends AICharacter {
 
     /**
      * Constructs a renderable component.
-     *  @param x X position on the grid.
-     * @param y Y position on the grid.
      * @param d
      */
-    public FlyingAssassin(int x, int y, Direction d) {
-        super(x, y);
+    public FlyingAssassin(Direction d) {
+        super();
     }
 
     /**
@@ -58,7 +56,7 @@ public class FlyingAssassin extends AICharacter {
      */
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(new Image("src/main/java/com/example/jewelchase230/images/CAT_BLACK_SIT.png"), 1, 1);
+        gc.drawImage(new Image("/images/CAT_BLACK_SIT.png"), 1, 1);
         //setGridPosition(new IntVector2D(1,1));
     }
 }
