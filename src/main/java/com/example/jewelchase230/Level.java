@@ -20,15 +20,11 @@ public class Level {
     /** The time limit on the level. */
     private int timeLimit;
 
-    /** The maximum size of the level. */
-    private IntVector2D maxSize;
-
     /**
      * Constructs a new level.
      * @param size The size of the level (Num of tiles).
      */
     public Level(final IntVector2D size) {
-        maxSize = size;
         tiles = new Tile[size.getX()][size.getY()];
         characters = new ArrayList<>();
 
@@ -66,14 +62,6 @@ public class Level {
         }
         /* End of Temp random tile creator. */
 
-    }
-
-    /**
-     * Get the max size of the level.
-     * @return The max size of the level.
-     */
-    public IntVector2D getMaxSize() {
-        return maxSize;
     }
 
     /**
