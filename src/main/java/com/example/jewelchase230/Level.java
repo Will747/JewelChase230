@@ -17,6 +17,9 @@ public class Level {
     /** All characters in the level. */
     private ArrayList<Character> characters;
 
+    /** The time limit on the level. */
+    private int timeLimit;
+
     /**
      * Constructs a new level.
      * @param size The size of the level (Num of tiles).
@@ -60,6 +63,30 @@ public class Level {
     }
 
     /**
+     * Set the time limit for the level.
+     * @param inTimeLimit The new time limit for the level.
+     */
+    public void setTimeLimit(int inTimeLimit) {
+        timeLimit = inTimeLimit;
+    }
+
+    /**
+     * Gets the time limit for the level.
+     * @return The time limit for the level.
+     */
+    public int getTimeLimit() {
+        return timeLimit;
+    }
+
+    /**
+     * Adds more time to the time limit.
+     * @param additionalTime The time to be added to the time limit.
+     */
+    public void addTime(int additionalTime) {
+        timeLimit += additionalTime;
+    }
+
+    /**
      * Adds a new tile to the level, replacing any existing tile
      * in same position.
      * @param pos Position of tile on grid.
@@ -80,6 +107,10 @@ public class Level {
         getTile(pos).setItem(item);
     }
 
+    /**
+     * Removes an item from a tile.
+     * @param pos The tile position to have item removed from.
+     */
     public void removeItem(final IntVector2D pos) {
         getTile(pos).setItem(null);
     }

@@ -18,7 +18,7 @@ public class Clock extends Item {
      */
     public Clock(final int inTime) {
         super(CLOCK_IMAGE);
-        this.time = inTime;
+        time = inTime;
     }
 
     /**
@@ -26,7 +26,7 @@ public class Clock extends Item {
      * @param newTime The new additional time value.
      */
     public void setTime(int newTime) {
-        this.time = newTime;
+        time = newTime;
     }
 
     /**
@@ -34,6 +34,15 @@ public class Clock extends Item {
      * @return The additional time value.
      */
     public int getTime() {
-        return this.time;
+        return time;
+    }
+
+    /**
+     * Adds time to the remaining time of the level.
+     */
+    @Override
+    public void doOnCollision() {
+        getLevel().addTime(time);
+        remove();
     }
 }
