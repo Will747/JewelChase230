@@ -20,6 +20,7 @@ public final class Tile extends Renderable {
 
     /** Right side of tile. */
     private final TileColour right;
+    public Character character;
 
     /**
      * Item currently on this tile.
@@ -150,5 +151,13 @@ public final class Tile extends Renderable {
     @Override
     public void tick(final int time) {
 
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(final Character inCharacter) {
+        character = inCharacter;
     }
 }

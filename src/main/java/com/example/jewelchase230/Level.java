@@ -50,6 +50,8 @@ public class Level {
             }
         }
 
+        addCharacter(new IntVector2D(3, 0), new Player(3,0));
+
         addItem(new IntVector2D(0, 0), new Bomb(1));
         addItem(new IntVector2D(1, 0), new Clock(1));
         addItem(new IntVector2D(2, 0), new Lever("Red"));
@@ -186,9 +188,10 @@ public class Level {
      */
     public Renderable[] getRenderables() {
         ArrayList<Item> allItems = getAllItems();
+        ArrayList<Character> allCharacters = getAllCharacters();
 
         int numOfTiles = tiles.length * tiles[0].length;
-        int numOfRenderables = numOfTiles + allItems.size();
+        int numOfRenderables = numOfTiles + allItems.size() + allCharacters.size();
         Renderable[] result = new Renderable[numOfRenderables];
         int count = 0;
 
@@ -206,6 +209,12 @@ public class Level {
             count++;
         }
 
+        //add characters
+        for (Character character : allCharacters) {
+            result[count] = character;
+            count++;
+        }
+
         return result;
     }
 
@@ -213,8 +222,9 @@ public class Level {
      * Adds characters to the level.
      * @param character the character being added.
      */
-    public void addCharacter(Character character){
-        characters.add(character);
+    public void addCharacter(final IntVector2D pos, final Character character){
+        character.setGridPosition(pos);
+        getTile(pos).setCharacter(character);
     }
 
     /**
@@ -222,6 +232,15 @@ public class Level {
      * @return the array list of characters.
      */
     public ArrayList<Character> getAllCharacters(){
+        ArrayList<Character> characters = new ArrayList<>();
+
+        for (Tile[] tileRow : tiles) {
+            for (Tile tile : tileRow) {
+                if (tile.getCharacter() != null) {
+                    characters.add(tile.character);
+                }
+            }
+        }
         return characters;
     }
 

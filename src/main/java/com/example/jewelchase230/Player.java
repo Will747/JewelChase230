@@ -2,6 +2,7 @@ package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -93,7 +94,7 @@ public class Player extends Character{
      */
     @Override
     public void draw(GraphicsContext gc) {
-
+        gc.drawImage(new Image("images/CAT_TABBY_SIT.png"), 3, 1);
     }
 
 }
