@@ -16,6 +16,7 @@ public class Gate extends Item {
      */
     public Gate(final String colour) {
         super(null);
+        setCollidable(false);
         this.colour = colour;
     }
 

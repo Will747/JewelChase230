@@ -21,6 +21,7 @@ public class Bomb extends Item {
      */
     public Bomb(final int inTime) {
         super(BOMB_IMAGE);
+        setCollidable(false);
         time = inTime;
     }
 
