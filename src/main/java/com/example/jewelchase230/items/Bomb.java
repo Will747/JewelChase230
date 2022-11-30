@@ -18,9 +18,6 @@ public class Bomb extends Item {
     /** The time until the bomb explodes. */
     private int time;
 
-    /** Array of all neighbouring tiles to this bomb. */
-    private ArrayList<Tile> neighbouringTiles = getNeighbouringTiles();
-
     /**
      * Constructs a new bomb.
      * @param inTime The time delay until the bomb explodes.
@@ -29,7 +26,9 @@ public class Bomb extends Item {
         super(BOMB_IMAGE);
         setCollidable(false);
         time = inTime;
-        setTriggers(getGridPosition());
+
+        //May not be in a level at the time of construction
+        //setTriggers(getGridPosition());
     }
 
     /**
@@ -86,7 +85,7 @@ public class Bomb extends Item {
      * @param bombPosInTile Current bomb position if triggerd, null if not.
      */
     private void setTriggers(IntVector2D bombPosInTile) {
-        for (Tile tileInstance : neighbouringTiles) {
+        for (Tile tileInstance : getNeighbouringTiles()) {
             tileInstance.setNextToBomb(bombPosInTile);
         }
     }
