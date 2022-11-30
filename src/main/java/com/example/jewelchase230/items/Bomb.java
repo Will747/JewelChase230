@@ -1,5 +1,8 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.Tile;
+import com.example.jewelchase230.vectors.IntVector2D;
+
 import java.util.ArrayList;
 
 /**
@@ -15,6 +18,8 @@ public class Bomb extends Item {
     /** The time until the bomb explodes. */
     private int time;
 
+    private ArrayList<Tile> neighbouringTiles = getNeighbouringTiles();
+
     /**
      * Constructs a new bomb.
      * @param inTime The time delay until the bomb explodes.
@@ -23,6 +28,7 @@ public class Bomb extends Item {
         super(BOMB_IMAGE);
         setCollidable(false);
         time = inTime;
+        setTriggers(getGridPosition());
     }
 
     /**
@@ -53,9 +59,38 @@ public class Bomb extends Item {
     }
 
     /**
+     * Gets every neighbouring tile to this bombs position.
+     * @return Every neighbouring tile.
+     */
+    public ArrayList<Tile> getNeighbouringTiles() {
+        ArrayList<Tile> tileArray = new ArrayList<>();
+        final IntVector2D thisPos = getGridPosition();
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                if (!(x == 0 && x == 0)) {
+                    IntVector2D tempVector = new IntVector2D(x, y);
+                    tileArray.add(getLevel().getTile(thisPos.add(tempVector)));
+                }
+            } 
+        }
+        return tileArray;
+    }
+
+    /**
+     * Set or remove bomb triggers from neighbouring tiles.
+     * @param bombPosInTile Current bomb position if triggerd, null if not.
+     */
+    private void setTriggers(IntVector2D bombPosInTile) {
+        for (Tile tileInstance : neighbouringTiles) {
+            tileInstance.setNextToBomb(bombPosInTile);
+        }
+    }
+
+    /**
      * Explosion removing all items on the same row and column, expect gates and doors.
      */
     public void explode() {
+        setTriggers(null);
         ArrayList<Item> itemArray = getLevel().getAllItems();
         final int currentXCoordinate = getGridPosition().getX();
         final int currentYCoordinate = getGridPosition().getY();

@@ -31,10 +31,10 @@ public class Lever extends Item {
         colour = newColour;
     }
 
-        /**
-         * Get the lever colour
-         * @return The lever colour
-         */
+    /**
+    * Get the lever colour
+    * @return The lever colour
+    */
     public String getColour(){
         return colour;
     }
