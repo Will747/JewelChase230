@@ -1,7 +1,6 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
-import javafx.scene.canvas.GraphicsContext;
 
 /**
  * Renders the characters to the game.
