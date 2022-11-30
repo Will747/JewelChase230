@@ -32,6 +32,8 @@ public final class Main extends Application {
     /** Number of times the game ticks per second. */
     private static final int FRAME_RATE = 10;
 
+    final double millisecondsInASecond = 1000;
+
     /** The stage shown by the window. */
     private static Stage stage;
 
@@ -43,6 +45,8 @@ public final class Main extends Application {
 
     /** Timeline which will cause tick method to be called periodically. */
     private static Timeline tickTimeline;
+
+    
 
     /**
      * The level currently being played.
@@ -57,7 +61,6 @@ public final class Main extends Application {
         // Register a tick method to be called periodically.
         // Make a new timeline with one keyframe that triggers
         // the tick method every half a second.
-        final double millisecondsInASecond = 1000;
         Duration duration = Duration.millis(millisecondsInASecond / FRAME_RATE);
         KeyFrame keyFrame = new KeyFrame(duration, event -> tick());
         tickTimeline = new Timeline(keyFrame);
@@ -143,6 +146,8 @@ public final class Main extends Application {
      * any items before being rendered.
      */
     private void tick() {
+        double timeSinceLastFrame = (millisecondsInASecond / FRAME_RATE);
+        int timeSinceLastFrameInt = (int)Math.round(timeSinceLastFrame);
         if (currentLevel != null) {
             resetCanvas();
 
@@ -150,7 +155,7 @@ public final class Main extends Application {
 
             Renderable[] renderables = currentLevel.getRenderables();
             for (Renderable renderable : renderables) {
-                renderable.tick(0);
+                renderable.tick(timeSinceLastFrameInt);
                 renderable.draw(gc);
             }
         }
