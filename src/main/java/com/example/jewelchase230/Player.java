@@ -1,8 +1,6 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -24,19 +22,18 @@ import javafx.scene.input.KeyEvent;
 * - Ben
 */
 
-public class Player extends Character{
-	
-	public int playerCurrentLevel;
-	public int playerActiveScore; 
-	
+public class Player extends Character {
+
+	private int playerCurrentLevel;
+	private int playerActiveScore;
+
     /**
      * Constructs a renderable component.
-     *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      */
-    public Player(int x, int y) {
-        super(x, y);
+    public Player() {
+        super();
+
+        setImageFromFile("images/CAT_TABBY_SIT.png");
     }
 
     /**
@@ -75,26 +72,13 @@ public class Player extends Character{
         playerActiveScore += score;
     }
 
-
-
     /**
      * Called just before the grid gets re-rendered.
      *
      * @param time Time since last frame in milliseconds.
      */
     @Override
-    public void tick(int time) {
+    public void tick(final int time) {
 
     }
-
-    /**
-     * Draws this item to the canvas.
-     *
-     * @param gc GraphicsContext for creating draw class.
-     */
-    @Override
-    public void draw(GraphicsContext gc) {
-        gc.drawImage(new Image("images/CAT_TABBY_SIT.png"), 3, 1);
-    }
-
 }

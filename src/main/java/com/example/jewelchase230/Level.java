@@ -50,14 +50,14 @@ public class Level {
             }
         }
 
-        addCharacter(new IntVector2D(3, 0), new Player(3,0));
+        addCharacter(new IntVector2D(3, 0), new Player());
 
         addItem(new IntVector2D(0, 0), new Bomb(1));
         addItem(new IntVector2D(1, 0), new Clock(1));
         addItem(new IntVector2D(2, 0), new Lever("Red"));
 
         // Fill remaining tiles with loot to test randomness.
-        for (int i = 3; i < size.getX(); i++) {
+        for (int i = 4; i < size.getX(); i++) {
             addItem(new IntVector2D(i, 0), new Loot());
         }
         /* End of Temp random tile creator. */
@@ -188,10 +188,9 @@ public class Level {
      */
     public Renderable[] getRenderables() {
         ArrayList<Item> allItems = getAllItems();
-        ArrayList<Character> allCharacters = getAllCharacters();
 
         int numOfTiles = tiles.length * tiles[0].length;
-        int numOfRenderables = numOfTiles + allItems.size() + allCharacters.size();
+        int numOfRenderables = numOfTiles + allItems.size() + characters.size();
         Renderable[] result = new Renderable[numOfRenderables];
         int count = 0;
 
@@ -210,7 +209,7 @@ public class Level {
         }
 
         //add characters
-        for (Character character : allCharacters) {
+        for (Character character : characters) {
             result[count] = character;
             count++;
         }
@@ -222,25 +221,16 @@ public class Level {
      * Adds characters to the level.
      * @param character the character being added.
      */
-    public void addCharacter(final IntVector2D pos, final Character character){
+    public void addCharacter(final IntVector2D pos, final Character character) {
         character.setGridPosition(pos);
-        getTile(pos).setCharacter(character);
+        characters.add(character);
     }
 
     /**
      * Returns the array list of characters in the level.
      * @return the array list of characters.
      */
-    public ArrayList<Character> getAllCharacters(){
-        ArrayList<Character> characters = new ArrayList<>();
-
-        for (Tile[] tileRow : tiles) {
-            for (Tile tile : tileRow) {
-                if (tile.getCharacter() != null) {
-                    characters.add(tile.character);
-                }
-            }
-        }
+    public ArrayList<Character> getAllCharacters() {
         return characters;
     }
 
@@ -263,10 +253,10 @@ public class Level {
      * @param y the y-axis coordinate.
      * @return The wanted character or null if the character doesn't exist.
      */
-    public Character getSpecificCharacter(int x, int y){
+    public Character getSpecificCharacter(int x, int y) {
         Character wantedCharacter = null;
-        for (Character c: characters){
-            if (c.getGridPosition().getX() == x && c.getGridPosition().getY() == y){
+        for (Character c: characters) {
+            if (c.getGridPosition().getX() == x && c.getGridPosition().getY() == y) {
                 wantedCharacter =  c;
             }
         }

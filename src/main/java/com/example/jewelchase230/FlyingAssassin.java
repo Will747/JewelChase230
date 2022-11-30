@@ -13,12 +13,10 @@ public class FlyingAssassin extends AICharacter {
 
     /**
      * Constructs a renderable component.
-     *  @param x X position on the grid.
-     * @param y Y position on the grid.
      * @param d
      */
-    public FlyingAssassin(int x, int y, Direction d) {
-        super(x, y);
+    public FlyingAssassin(Direction d) {
+        super();
     }
 
     /**

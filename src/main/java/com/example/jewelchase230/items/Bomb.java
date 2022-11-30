@@ -75,7 +75,7 @@ public class Bomb extends Item {
                         tileArray.add(getLevel().getTile(tempVector));
                     }
                 }
-            } 
+            }
         }
         return tileArray;
     }

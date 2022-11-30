@@ -8,15 +8,12 @@ import javafx.scene.canvas.GraphicsContext;
  *
  * @author Caroline Segestaal.
  */
-public abstract class AICharacter extends Character{
+public abstract class AICharacter extends Character {
     /**
      * Constructs a renderable component.
-     *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      */
-    public AICharacter(int x, int y) {
-        super(x, y);
+    public AICharacter() {
+        super();
     }
 
     protected void getNextMove(IntVector2D move) {
