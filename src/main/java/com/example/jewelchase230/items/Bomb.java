@@ -18,6 +18,7 @@ public class Bomb extends Item {
     /** The time until the bomb explodes. */
     private int time;
 
+    /** Array of all neighbouring tiles to this bomb. */
     private ArrayList<Tile> neighbouringTiles = getNeighbouringTiles();
 
     /**
@@ -70,8 +71,8 @@ public class Bomb extends Item {
             for (int y = -1; y <= 1; y++) {
                 if (!(x == 0 && x == 0)) {
                     IntVector2D tempVector = thisPos.add(new IntVector2D(x, y));
-                    if (!(tempVector.getX() <= 0 || tempVector.getY() <= 0) &&
-                    !(tempVector.getX() > maxSize.getX() || tempVector.getY() > maxSize.getY())) {
+                    if (!(tempVector.getX() < 0 || tempVector.getY() < 0) &&
+                    !(tempVector.getX() >= maxSize.getX() || tempVector.getY() >= maxSize.getY())) {
                         tileArray.add(getLevel().getTile(tempVector));
                     }
                 }

@@ -20,6 +20,7 @@ public class Level {
     /** The time limit on the level. */
     private int timeLimit;
 
+    /** The maximum size of the level. */
     private IntVector2D maxSize;
 
     /**
