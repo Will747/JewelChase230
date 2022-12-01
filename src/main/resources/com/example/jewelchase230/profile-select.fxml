@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileMenu">
    <children>
       <Label alignment="TOP_CENTER" text="Profiles" underline="true">
          <font>
@@ -35,10 +35,12 @@
             <Insets left="60.0" right="60.0" />
          </VBox.margin>
       </Pane>
-      <Button mnemonicParsing="false" text="Back">
-         <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin>
-      </Button>
+      <Pane prefHeight="162.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="65.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onBackToProfileMenuPressed" prefHeight="120.0" prefWidth="120.0" text="Back" />
+            <Button layoutX="240.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onStartGamePressed" prefHeight="120.0" prefWidth="120.0" text="Start" />
+            <Button layoutX="420.0" layoutY="14.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" text="Delete" />
+         </children>
+      </Pane>
    </children>
 </VBox>

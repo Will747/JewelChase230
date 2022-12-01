@@ -23,11 +23,6 @@ public final class MainMenu {
     }
 
     @FXML
-    private void onStartGamePressed(final MouseEvent event) {
-        Main.switchToCanvas();
-    }
-
-    @FXML
     private void onSwitchMenuPressed(final MouseEvent event) {
         Main.switchToScene(Menu.getTestMenu());
     }

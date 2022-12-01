@@ -80,8 +80,11 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <padding>
+            <Insets left="0.2" right="0.2" />
+         </padding>
       </GridPane>
-      <Button mnemonicParsing="false" onMouseClicked="#onBackPressed" text="Back">
+      <Button mnemonicParsing="false" onMouseClicked="#onBackToMainMenuPressed" text="Back">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin></Button>

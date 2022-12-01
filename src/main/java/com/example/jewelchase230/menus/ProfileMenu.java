@@ -12,8 +12,13 @@ import javafx.scene.input.MouseEvent;
  */
 public final class ProfileMenu {
     @FXML
-    void onBackPressed(final MouseEvent event) {
+    void onBackToMainMenuPressed(final MouseEvent event) {
         Main.switchToScene(Menu.getMainMenu());
+    }
+
+    @FXML
+    void onBackToProfileMenuPressed(final MouseEvent event) {
+        Main.switchToScene(Menu.getProfileMenu());
     }
 
     @FXML
@@ -34,5 +39,10 @@ public final class ProfileMenu {
     @FXML
     void onP4Pressed(final MouseEvent event) {
         Main.switchToScene(Menu.getProfileSelect());
+    }
+
+    @FXML
+    private void onStartGamePressed(final MouseEvent event) {
+        Main.switchToCanvas();
     }
 }
