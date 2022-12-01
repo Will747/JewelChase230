@@ -31,7 +31,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Button>
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onSwitchMenuPressed" text="Exit">
+      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onExitPressed" text="Exit">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>

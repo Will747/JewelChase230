@@ -11,7 +11,7 @@ import java.util.HashMap;
  * Class containing static functions for getting the scene of any menu in the
  * game.
  *
- * @author Will Kaye
+ * @author Will Kaye, Daniel Clark
  */
 public final class Menu {
     // Filenames of all fxml files
@@ -33,7 +33,7 @@ public final class Menu {
     private static HashMap<String, Scene> cachedScenes;
 
     private Menu() {
-
+        
     }
 
     /**

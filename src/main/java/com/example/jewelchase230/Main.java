@@ -19,7 +19,7 @@ import java.io.IOException;
  * Jewel Chase application. This class manages the initial startup,
  * what gets rendered and the ticking of the game.
  *
- * @author Will Kaye
+ * @author Will Kaye, Daniel Clark
  */
 public final class Main extends Application {
 
@@ -83,6 +83,10 @@ public final class Main extends Application {
         /* Test - Remove this */
         currentLevel = new Level(new IntVector2D(16, 1));
         /* Test - Remove this */
+    }
+
+    public static void close(){
+        stage.close();
     }
 
     /**

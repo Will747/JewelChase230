@@ -51,4 +51,9 @@ public final class MainMenu {
     private void onProlifeSelectPressed(final MouseEvent event) {
         Main.switchToScene(Menu.getProfileSelect());
     }
+
+    @FXML
+    private void onExitPressed(final MouseEvent event) {
+        Main.close();
+    }
 }
