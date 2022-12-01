@@ -1,7 +1,5 @@
 package com.example.jewelchase230;
 import com.example.jewelchase230.vectors.IntVector2D;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 /**
  * Implements the Flying Assassin. A class to implement the move patterns and events of the AICharater
