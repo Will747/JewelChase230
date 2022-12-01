@@ -1,3 +1,7 @@
-2 2
+4 4
 200
-rrrr gggg bbbb rrrr
+rbrg gbgr bbrr grbr rbrg gbgr bbrr grbr rbrg gbgr bbrr grbr rbrg gbgr bbrr grbr
+1 1 1 a b 20
+2 0 1 a b 20
+8 1 1 a b 4
+8 0 0 a b 3

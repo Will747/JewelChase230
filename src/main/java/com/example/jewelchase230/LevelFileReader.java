@@ -54,6 +54,7 @@ public class LevelFileReader {
             for (int i = 0; i < yAxis; i++){
                  for (int j = 0; j < xAxis; j++){
                      String tempTileColour = fileScanner.next();
+                     System.out.println(tempTileColour);
                      TileColour topLeft = TileColour.getTileColourType(tempTileColour.charAt(0));
                      TileColour topRight = TileColour.getTileColourType(tempTileColour.charAt(1));
                      TileColour bottomLeft = TileColour.getTileColourType(tempTileColour.charAt(2));
@@ -63,6 +64,8 @@ public class LevelFileReader {
                      levelBuilt.addTile(tempTilePos, tempTile);
                  }
             }
+
+             fileScanner.nextLine();       
             // Makes objects from the provided information.
             while (fileScanner.hasNextLine()) {
                 levelBuilder(fileScanner.nextLine());
@@ -79,6 +82,7 @@ public class LevelFileReader {
      */
     private static void levelBuilder(String value) {
         Scanner lineScanner = new Scanner(value);
+        System.out.println(value);
         int ID = lineScanner.nextInt();
 
         // Makes the appropriate object from the ID provided from the file.
