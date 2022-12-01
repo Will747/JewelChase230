@@ -85,6 +85,9 @@ public final class Main extends Application {
         /* Test - Remove this */
     }
 
+    /**
+     * Closes the FXML window
+     */
     public static void close(){
         stage.close();
     }
