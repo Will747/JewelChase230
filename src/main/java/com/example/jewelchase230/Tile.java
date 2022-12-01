@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.DoubleVector2D;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.*;
 
@@ -18,10 +19,17 @@ public final class Tile extends Renderable {
     /** Bottom side of tile. */
     private final TileColour bottomLeft;
     /** Left side of tile. */
+<<<<<<< HEAD
     private final TileColour topRight;
 
     /** Right side of tile. */
     private final TileColour bottomRight;
+=======
+    private final TileColour left;
+    /** Right side of tile. */
+    private final TileColour right;
+    public Character character;
+>>>>>>> 9babea8c3f5a708ee321f2607e0a22248834bda1
 
     /**
      * Item currently on this tile.
@@ -302,5 +310,13 @@ public final class Tile extends Renderable {
     @Override
     public void tick(final int time) {
 
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(final Character inCharacter) {
+        character = inCharacter;
     }
 }

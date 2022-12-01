@@ -1,40 +1,46 @@
 package com.example.jewelchase230.items;
 
+/**
+ * A class to implement gates of a certain colour.
+ *
+ * @author Ben Stott and Scott Williams
+ */
 public class Gate extends Item {
 
-    private boolean visible;
-    private String colour;
+    /** The gate colour. */
+    final private String colour;
 
+    /**
+     * Constructs a new gate.
+     * @param colour defines the gate colour.
+     */
     public Gate(final String colour) {
         super(null);
+        setCollidable(false);
         this.colour = colour;
     }
 
-
-//    public Gate(int x, int y) {
-//        super(x, y);
-//    }
-
-    /*public Gate(String colour){
-        this.colour = colour;
-    }*/
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public void setColour(String colour){
-        this.colour = colour;
-    }
-
-    public boolean getVisible(){
-        return visible;
-    }
-
+    /**
+     * Returns the colour of the gate.
+     * @return colour of the gate.
+     */
     public String getColour(){
         return colour;
     }
 
-    
+    /**
+     * Shouldn't be collidable and if it is collided nothing should happen.
+     */
+    @Override
+    public void doOnCollision() {
+        
+    }
 
+    /**
+     * Shouldn't be collidable and if it is collided nothing should happen
+     */
+    @Override
+    public void doOnThiefCollision() {
+
+    }
 }

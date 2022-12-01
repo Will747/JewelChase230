@@ -1,7 +1,6 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
-import javafx.scene.canvas.GraphicsContext;
 
 /**
  * Renders the characters to the game.
@@ -11,12 +10,9 @@ import javafx.scene.canvas.GraphicsContext;
 public abstract class Character extends Sprite {
     /**
      * Constructs a renderable component.
-     *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      */
-    public Character(int x, int y) {
-        super(x, y);
+    public Character() {
+        super();
     }
 
     /**
@@ -125,16 +121,6 @@ public abstract class Character extends Sprite {
      */
     @Override
     public void tick(int time) {
-
-    }
-
-    /**
-     * Draws this item to the canvas.
-     *
-     * @param gc GraphicsContext for creating draw class.
-     */
-    @Override
-    public void draw(GraphicsContext gc) {
 
     }
 }

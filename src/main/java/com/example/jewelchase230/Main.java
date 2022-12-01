@@ -8,6 +8,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -32,14 +34,17 @@ public final class Main extends Application {
     /** Number of times the game ticks per second. */
     private static final int FRAME_RATE = 10;
 
+    /** The number of milliseconds in a second. */
+    private static final int MILLISECONDS_IN_A_SECOND = 1000;
+
     /** The stage shown by the window. */
     private static Stage stage;
 
-    /** Pane the hold the canvas as a child. */
-    private static StackPane canvasPane;
-
     /** The canvas being used to render the grid/board. */
     private static Canvas canvas;
+
+    /** Scene containing canvas with level on it. */
+    private static Scene gameScene;
 
     /** Timeline which will cause tick method to be called periodically. */
     private static Timeline tickTimeline;
@@ -57,18 +62,20 @@ public final class Main extends Application {
         // Register a tick method to be called periodically.
         // Make a new timeline with one keyframe that triggers
         // the tick method every half a second.
-        final double millisecondsInASecond = 1000;
-        Duration duration = Duration.millis(millisecondsInASecond / FRAME_RATE);
+        Duration duration =
+                Duration.millis((double) MILLISECONDS_IN_A_SECOND / FRAME_RATE);
         KeyFrame keyFrame = new KeyFrame(duration, event -> tick());
         tickTimeline = new Timeline(keyFrame);
         // Loop the timeline forever
         tickTimeline.setCycleCount(Animation.INDEFINITE);
 
         // Setup canvas
-        canvasPane = new StackPane();
+        StackPane canvasPane = new StackPane();
         canvasPane.setStyle("-fx-background-color: #000000");
         canvas = new GameCanvas(canvasPane, CANVAS_WIDTH, CANVAS_HEIGHT);
         canvasPane.getChildren().add(canvas);
+        gameScene = new Scene(canvasPane);
+        gameScene.addEventFilter(KeyEvent.KEY_PRESSED, Main::processKeyEvent);
 
         stage = inStage;
 
@@ -99,8 +106,7 @@ public final class Main extends Application {
      */
     public static void switchToCanvas() {
         tickTimeline.play();
-        Scene scene = new Scene(canvasPane);
-        stage.setScene(scene);
+        stage.setScene(gameScene);
     }
 
     /**
@@ -124,6 +130,19 @@ public final class Main extends Application {
        gc.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     }
 
+    private static void processKeyEvent(final KeyEvent event) {
+        boolean bGameRunning =
+                tickTimeline.getStatus() == Animation.Status.RUNNING;
+
+        if (currentLevel != null && bGameRunning) {
+            currentLevel.getPlayer().processKeyEvent(event);
+        }
+
+        if (event.getCode() == KeyCode.ESCAPE) {
+            switchToScene(Menu.getMainMenu());
+        }
+    }
+
     /**
      * @return The level currently being played.
      */
@@ -143,6 +162,9 @@ public final class Main extends Application {
      * any items before being rendered.
      */
     private void tick() {
+        double timeSinceLastFrame =
+                (double) MILLISECONDS_IN_A_SECOND / FRAME_RATE;
+        int timeSinceLastFrameInt = (int) Math.round(timeSinceLastFrame);
         if (currentLevel != null) {
             resetCanvas();
 
@@ -150,7 +172,7 @@ public final class Main extends Application {
 
             Renderable[] renderables = currentLevel.getRenderables();
             for (Renderable renderable : renderables) {
-                renderable.tick(0);
+                renderable.tick(timeSinceLastFrameInt);
                 renderable.draw(gc);
             }
         }

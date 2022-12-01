@@ -47,8 +47,8 @@ public final class Menu {
         createScene(TEST_MENU_FXML);
         createScene(SETTINGS_MENU_FXML);
         createScene(HIGHSCORE_TABLE_FXML);
-        //createScene(PROFILE_MENU_FXML);
-        //createScene(PROFILE_SELECT_FXML);
+        createScene(PROFILE_MENU_FXML);
+        createScene(PROFILE_SELECT_FXML);
     }
     
     /**
@@ -81,6 +81,13 @@ public final class Menu {
      */
     public static Scene getProfileMenu() {
     	return getScene(PROFILE_MENU_FXML);
+    }
+
+    /**
+     * @return profile menu scene.
+     */
+    public static Scene getProfileSelect() {
+    	return getScene(PROFILE_SELECT_FXML);
     }
 
     /**
