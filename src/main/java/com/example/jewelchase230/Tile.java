@@ -14,22 +14,14 @@ import javafx.scene.image.*;
  * each side.
  */
 public final class Tile extends Renderable {
-    /** Top side of tile. */
+    /** Top left side of tile. */
     private final TileColour topLeft;
-    /** Bottom side of tile. */
+    /** Bottom left side of tile. */
     private final TileColour bottomLeft;
-    /** Left side of tile. */
-<<<<<<< HEAD
+    /** Top right side of tile. */
     private final TileColour topRight;
-
-    /** Right side of tile. */
+    /** Bottom right side of tile. */
     private final TileColour bottomRight;
-=======
-    private final TileColour left;
-    /** Right side of tile. */
-    private final TileColour right;
-    public Character character;
->>>>>>> 9babea8c3f5a708ee321f2607e0a22248834bda1
 
     /**
      * Item currently on this tile.
@@ -86,12 +78,22 @@ public final class Tile extends Renderable {
         return bottomRight;
     }
 
+    /**
+     * Draws the sqaures based on the parameters passed.
+     * @param gc   The graphic context.
+     * @param img   The image being applied to the tile. 
+     * @param pos   The position in which the tile is being rendered.
+     * @param sideLength The length of the tile.
+     */
     private void drawSquare(GraphicsContext gc, Image img,  DoubleVector2D pos, double sideLength){
         double upperX = pos.getX();
         double upperY = pos.getY();
         gc.drawImage(img, upperX, upperY, sideLength, sideLength);
     }
 
+    /**
+     * Draws the tile has a whole using the drawSquare method to do each quadrant.
+     */
     @Override
     public void draw(final GraphicsContext gc){
         DoubleVector2D pos = getRenderPosition();
@@ -100,6 +102,9 @@ public final class Tile extends Renderable {
 
         double sideLength = size / 2;
         
+        /**
+         * Makes and passes the variables needed for the tile to be drawn for each quadrant.
+         */
         DoubleVector2D topLeft = new DoubleVector2D(0, size);
         switch(getTopLeft()){
             case Red:
@@ -245,78 +250,8 @@ public final class Tile extends Renderable {
         }
     }
 
-    /*
-    private void drawTriangle(
-            final GraphicsContext gc,
-            final DoubleVector2D[] points,
-            final TileColour colour) {
-        if (points.length == CORNERS_IN_A_TRIANGLE) {
-            double[] xVtx = new double[CORNERS_IN_A_TRIANGLE];
-            double[] yVtx = new double[CORNERS_IN_A_TRIANGLE];
-
-            // Left
-            xVtx[0] = points[0].getX();
-            yVtx[0] = points[0].getY();
-
-            xVtx[1] = points[1].getX();
-            yVtx[1] = points[1].getY();
-
-            xVtx[2] = points[2].getX();
-            yVtx[2] = points[2].getY();
-
-            gc.setFill(colour.getColour());
-            gc.fillPolygon(xVtx, yVtx, CORNERS_IN_A_TRIANGLE);
-        }
-    }
-
-    @Override
-    public void draw(final GraphicsContext gc) {
-
-        DoubleVector2D pos = getRenderPosition();
-        double size = getCubeSize();
-
-        DoubleVector2D topRightCorner = pos.add(
-                new DoubleVector2D(size, 0));
-        DoubleVector2D bottomLeft = pos.add(
-                new DoubleVector2D(0, size)
-        );
-        DoubleVector2D bottomRight = pos.add(size);
-        DoubleVector2D center = pos.add(size / 2);
-
-        DoubleVector2D[] points = new DoubleVector2D[CORNERS_IN_A_TRIANGLE];
-
-        // Left
-        points[0] = pos;
-        points[1] = center;
-        points[2] = bottomLeft;
-        drawTriangle(gc, points, left);
-
-        // Top
-        points[2] = topRightCorner;
-        drawTriangle(gc, points, top);
-
-        // Right
-        points[0] = bottomRight;
-        drawTriangle(gc, points, right);
-
-        // Bottom
-        points[0] = bottomLeft;
-        points[2] = bottomRight;
-        drawTriangle(gc, points, bottom);
-    }
-
-    */
-
     @Override
     public void tick(final int time) {
 
-    }
-
-    public Character getCharacter() {
-        return character;
-    }
-
-    public void setCharacter(final Character inCharacter) {
-        character = inCharacter;
     }
 }
