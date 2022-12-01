@@ -13,10 +13,12 @@ public class FlyingAssassin extends AICharacter {
 
     /**
      * Constructs a renderable component.
-     * @param d
+     * @param d Direction the Flying assassin is facing.
      */
     public FlyingAssassin(Direction d) {
         super();
+
+        setImageFromFile("images/CAT_BLACK_SIT.png");
     }
 
     /**
@@ -50,27 +52,26 @@ public class FlyingAssassin extends AICharacter {
     }
 
     /**
-     * Draws this item to the canvas.
+     * Called just before the grid gets re-rendered.
      *
-     * @param gc GraphicsContext for creating draw class.
+     * @param time Time since last frame in milliseconds.
      */
     @Override
-    public void draw(GraphicsContext gc) {
-        gc.drawImage(new Image("/images/CAT_BLACK_SIT.png"), 1, 1);
-        //setGridPosition(new IntVector2D(1,1));
+    public void tick(final int time) {
+
     }
+
+//    /**
+//     * Draws this item to the canvas.
+//     *
+//     * @param gc GraphicsContext for creating draw class.
+//     */
+//    @Override
+//    public void draw(GraphicsContext gc) {
+//        //gc.drawImage(new Image("/images/CAT_BLACK_SIT.png"), 1, 1);
+//    }
 }
 
-
-//    public void inputImage() throws FileNotFoundException {
-//        InputStream imageStream = new FileInputStream("src/main/java/com/example/jewelchase230/images/CAT_BLACK_SIT.png");
-//        Image image = new Image(imageStream);
-//        ImageView view = new ImageView();
-//        view.setImage(image);
-//        view.setX(1);
-//        view.setY(1);
-//
-//    }
 
 //        It moves in a straight line in
 //        the direction it is facing until it reaches the edge
