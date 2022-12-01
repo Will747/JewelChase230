@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.TestMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileMenu">
    <children>
       <Label alignment="TOP_CENTER" text="Profiles" underline="true">
          <font>
@@ -34,46 +34,46 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="294.0" prefWidth="300.0" text="Button" visible="false" />
                   <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
                      <image>
                         <Image url="@../../../../../../images/CAT_BLACK_SIT.png" />
                      </image>
                   </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#onP1Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="133.0" prefWidth="350.0" text="Button" visible="false" />
-                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
+                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P2" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../images/CAT_OREO_SIT.png" />
                      </image>
                   </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#onP2Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="144.0" prefWidth="354.0" text="Button" visible="false" />
-                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
+                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P3" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../images/CAT_TABBY_SIT.png" />
                      </image>
                   </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#onP3Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="122.0" prefWidth="343.0" text="Button" visible="false" />
-                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
+                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P4" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../images/CAT_WHITE_SIT.png" />
                      </image>
                   </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#onP4Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
          </children>
@@ -81,7 +81,7 @@
             <Insets />
          </opaqueInsets>
       </GridPane>
-      <Button mnemonicParsing="false" text="Back">
+      <Button mnemonicParsing="false" onMouseClicked="#onBackPressed" text="Back">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin></Button>
