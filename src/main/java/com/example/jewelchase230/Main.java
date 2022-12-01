@@ -88,7 +88,7 @@ public final class Main extends Application {
         stage.show();
 
         /* Test - Remove this */
-        currentLevel = new Level(new IntVector2D(16, 1));
+        currentLevel = LevelFileReader.readInFile("Level_Files/level1.txt");
         /* Test - Remove this */
     }
 

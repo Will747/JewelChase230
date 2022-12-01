@@ -27,7 +27,7 @@ public enum TileColour {
      * @param c The character.
      * @return Converted colour.
      */
-    public static TileColour getTileColourType(final char c) {
+    public static TileColour getTileColourType(char c) {
         switch (c) {
             case 'r':
                 return Red;

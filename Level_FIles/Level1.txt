@@ -1,6 +1,3 @@
-12 12
+2 2
 200
-rrrr gggg bbbb rrrr gggg bbbb
-1 5 2 a b 20
-2 3 3 b c 30
-8 6 6 b a 4
+rrrr gggg bbbb rrrr

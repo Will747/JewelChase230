@@ -27,41 +27,6 @@ public class Level {
     public Level(final IntVector2D size) {
         tiles = new Tile[size.getX()][size.getY()];
         characters = new ArrayList<>();
-
-        /* Temp random tile creator. */
-        for (int x = 0; x < tiles.length; x++) {
-            for (int y = 0; y < tiles[x].length; y++) {
-
-                // Randomly pick a colours
-                TileColour[] colours = new TileColour[4];
-                for (int i = 0; i < 4; i++) {
-                    Random random = new Random();
-                    colours[i] = switch (random.nextInt(4)) {
-                        case 1 -> TileColour.Red;
-                        case 2 -> TileColour.Green;
-                        case 3 -> TileColour.Blue;
-                        default -> TileColour.Yellow;
-                    };
-                }
-
-                Tile randomTile = new Tile(
-                        colours[0], colours[1], colours[2], colours[3]);
-                addTile(new IntVector2D(x, y), randomTile);
-            }
-        }
-
-        addCharacter(new IntVector2D(3, 0), new Player());
-
-        addItem(new IntVector2D(0, 0), new Bomb(1));
-        addItem(new IntVector2D(1, 0), new Clock(1));
-        addItem(new IntVector2D(2, 0), new Lever("Red"));
-
-        // Fill remaining tiles with loot to test randomness.
-        for (int i = 4; i < size.getX(); i++) {
-            addItem(new IntVector2D(i, 0), new Loot());
-        }
-        /* End of Temp random tile creator. */
-
     }
 
     /**
