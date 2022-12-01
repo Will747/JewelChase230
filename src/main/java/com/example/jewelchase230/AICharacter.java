@@ -19,14 +19,4 @@ public abstract class AICharacter extends Character {
     protected void getNextMove(IntVector2D move) {
 
     }
-
-    /**
-     * Draws this item to the canvas.
-     *
-     * @param gc GraphicsContext for creating draw class.
-     */
-    @Override
-    public void draw(GraphicsContext gc) {
-
-    }
 }

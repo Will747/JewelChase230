@@ -1,25 +1,32 @@
 package com.example.jewelchase230;
 
-import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
- * Tile colour - This could probably be changed to hold an image in the future.
+ * Tile colour - Holds the image for a colour on a section of a tile.
  */
 public enum TileColour {
     /** Red Colour. */
-    Red(new Color(1, 0, 0, 1)),
+    Red("images/WOODFLOOR_RED.png"),
     /** Blue Colour. */
-    Blue(new Color(0, 0, 1, 1)),
+    Blue("images/WOODFLOOR_BLUE.png"),
     /** Green Colour. */
-    Green(new Color(0, 1, 0, 1)),
+    Green("images/WOODFLOOR_GREEN.png"),
     /** Yellow Colour. */
-    Yellow(new Color(0, 0.5, 0.5, 1));
+    Yellow("images/WOODFLOOR_PINK.png");
 
     /** The colour of a section of a tile. */
-    private final Color colour;
+    private Image image = null;
 
-    TileColour(final Color inColour) {
-        colour = inColour;
+    TileColour(final String imageFileName) {
+        try {
+            image = new Image(new FileInputStream(imageFileName));
+        } catch (FileNotFoundException e) {
+            System.out.println(imageFileName + " file not found");
+        }
     }
 
     /**
@@ -27,23 +34,19 @@ public enum TileColour {
      * @param c The character.
      * @return Converted colour.
      */
-    public static TileColour getTileColourType(char c) {
-        switch (c) {
-            case 'r':
-                return Red;
-            case 'g':
-                return Green;
-            case 'b':
-                return Blue;
-            default:
-                return Yellow;
-        }
+    public static TileColour getTileColourType(final char c) {
+        return switch (c) {
+            case 'r' -> Red;
+            case 'g' -> Green;
+            case 'b' -> Blue;
+            default -> Yellow;
+        };
     }
 
     /**
      * @return The javaFX color.
      */
-    public Color getColour() {
-        return colour;
+    public Image getImage() {
+        return image;
     }
 }
