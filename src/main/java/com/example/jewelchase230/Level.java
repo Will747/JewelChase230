@@ -51,6 +51,7 @@ public class Level {
         }
 
         addCharacter(new IntVector2D(3, 0), new Player());
+        addCharacter(new IntVector2D(4,0), new FlyingAssassin(Direction.RIGHT));
 
         addItem(new IntVector2D(0, 0), new Bomb(1));
         addItem(new IntVector2D(1, 0), new Clock(1));

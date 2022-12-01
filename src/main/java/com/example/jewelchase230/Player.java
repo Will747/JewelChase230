@@ -59,8 +59,6 @@ public class Player extends Character {
                 break;
         }
 
-        //redraw game
-
         keyPress.consume();
     }
 
