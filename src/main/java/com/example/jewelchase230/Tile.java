@@ -10,6 +10,9 @@ import javafx.scene.canvas.GraphicsContext;
  * each side.
  */
 public final class Tile extends Renderable {
+    /** The width of the border around the tile. */
+    private static final double BORDER_WIDTH = 0.04;
+
     /** Top left side of tile. */
     private final TileColour topLeft;
     /** Bottom left side of tile. */
@@ -92,7 +95,8 @@ public final class Tile extends Renderable {
     @Override
     public void draw(final GraphicsContext gc) {
         DoubleVector2D pos = getRenderPosition();
-        double halfSize = getCubeSize() / 2;
+        double cubeSize = getCubeSize();
+        double halfSize = cubeSize / 2;
 
         gc.drawImage(
                 topLeft.getImage(), pos.getX(), pos.getY(), halfSize, halfSize);
@@ -103,6 +107,9 @@ public final class Tile extends Renderable {
                 halfSize, halfSize);
         gc.drawImage(bottomRight.getImage(), pos.getX() + halfSize,
                 pos.getY() + halfSize, halfSize, halfSize);
+
+        gc.setLineWidth(halfSize * BORDER_WIDTH);
+        gc.strokeRect(pos.getX(), pos.getY(), cubeSize, cubeSize);
     }
 
     @Override
