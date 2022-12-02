@@ -10,21 +10,25 @@ public class FloorFollowingThief extends AICharacter {
         super();
     }
 
+    /**
+     * getNextMoveFloorThief.
+     * @return Position after making move.
+     */
     protected IntVector2D getNextMoveFloorThief() {
         IntVector2D move = new IntVector2D();
         int x = this.getGridPosition().getX();
         int y = this.getGridPosition().getY();
 
-        if (this.canMoveUp(x, y) == true) {
+        if (canMoveUp(x, y)) {
             y = y + 1;
         } else {
-            if (this.canMoveRight(x, y) == true) {
+            if (canMoveRight(x, y)) {
                 x = x + 1;
             } else {
-                if (this.canMoveDown(x, y) == true) {
+                if (canMoveDown(x, y)) {
                     y = y - 1;
                 } else {
-                    if (this.canMoveLeft(x, y) == true) {
+                    if (canMoveLeft(x, y)) {
                         x = x - 1;
                     }
                 }

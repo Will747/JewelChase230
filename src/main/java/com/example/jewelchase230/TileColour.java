@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 
 /**
  * Tile colour - Holds the image for a colour on a section of a tile.
+ *
+ * @author Will Kaye
  */
 public enum TileColour {
     /** Red Colour. */

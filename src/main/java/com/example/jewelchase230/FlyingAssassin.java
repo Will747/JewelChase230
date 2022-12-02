@@ -2,8 +2,8 @@ package com.example.jewelchase230;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 /**
- * Implements the Flying Assassin. A class to implement the move patterns and events of the AICharater
- * Flying Assassin.
+ * Implements the Flying Assassin. A class to implement the move
+ * patterns and events of the AICharater Flying Assassin.
  *
  * @author Caroline Segestaal.
  */
@@ -13,7 +13,7 @@ public class FlyingAssassin extends AICharacter {
      * Constructs a renderable component.
      * @param d Direction the Flying assassin is facing.
      */
-    public FlyingAssassin(Direction d) {
+    public FlyingAssassin(final Direction d) {
         super();
 
         setImageFromFile("images/CAT_BLACK_SIT.png");
@@ -24,25 +24,29 @@ public class FlyingAssassin extends AICharacter {
      *
      * @param d Direction the Flying assassin is facing.
      */
-    protected void getNextMove(Direction d) {
+    protected void getNextMove(final Direction d) {
+        IntVector2D gridPos = getGridPosition();
+        IntVector2D levelSize = getLevel().getLevelSize();
+
         switch (d) {
-            case UP: if (getGridPosition().getY() < getLevel().getLevelSize().getY()) {
-                setGridPosition(new IntVector2D(getGridPosition().getX(), getGridPosition().getY() + 1));
+            case UP: if (gridPos.getY() < levelSize.getY()) {
+                setGridPosition(gridPos.add(new IntVector2D(0, 1)));
             } else {
                 getNextMove(d.getOppositeDirection(d));
             }
-            case DOWN: if (getGridPosition().getY() > getLevel().getLevelSize().getY()) {
-                setGridPosition(new IntVector2D(getGridPosition().getX(), getGridPosition().getY() - 1));
+            case DOWN: if (gridPos.getY() > levelSize.getY()) {
+                setGridPosition(gridPos.add(new IntVector2D(0, -1)));
             } else {
                 getNextMove(d.getOppositeDirection(d));
             }
-            case LEFT: if (getGridPosition().getX() > getLevel().getLevelSize().getX()) {
-                setGridPosition(new IntVector2D(getGridPosition().getX() - 1, getGridPosition().getY()));
+            case LEFT: if (gridPos.getX() > levelSize.getX()) {
+                setGridPosition(gridPos.add(new IntVector2D(-1, 0)));
             } else {
                 getNextMove(d.getOppositeDirection(d));
             }
-            case RIGHT: if (getGridPosition().getX() < getLevel().getLevelSize().getX()) {
-                setGridPosition(new IntVector2D(getGridPosition().getX() + 1, getGridPosition().getY()));
+            default: //RIGHT
+                if (gridPos.getX() < levelSize.getX()) {
+                setGridPosition(gridPos.add(new IntVector2D(1, 0)));
             } else {
                 getNextMove(d.getOppositeDirection(d));
             }
