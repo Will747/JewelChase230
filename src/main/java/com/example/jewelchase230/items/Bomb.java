@@ -27,7 +27,8 @@ public class Bomb extends Item {
      * @param inTime The time delay until the bomb explodes.
      */
     public Bomb(final int inTime) {
-        super(BOMB_IMAGE);
+        super();
+        setImageFromFile(BOMB_IMAGE);
         setCollidable(false);
         time = inTime;
 
@@ -124,6 +125,21 @@ public class Bomb extends Item {
     public void doOnCollision() {
         for (int i = 0; i < 3; i++) { //change when there are different bomb countdown images
             tick(1000);
+            //i doubt this will work, but here's some dummy code for this? 
+            
+           /** switch (i) {
+            case 0:
+                setImageFromFile(BOMB_COUNTDOWN_3);
+              break;
+            case 1: 
+            	setImageFromFile(BOMB_COUNTDOWN_2);
+            	break;
+            case 2: 
+            	setImageFromFile(BOMB_COUNTDOWN_1);
+            	break;
+            } 
+            */
+            
             //change image
         }
         explode();

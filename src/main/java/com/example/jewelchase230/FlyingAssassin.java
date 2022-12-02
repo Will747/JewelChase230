@@ -16,7 +16,7 @@ public class FlyingAssassin extends AICharacter {
     public FlyingAssassin(final Direction d) {
         super();
 
-        setImageFromFile("images/CAT_BLACK_SIT.png");
+        setImageFromFile("images/FLYING_ASSASSIN_LEFT_FACE.png");
     }
 
     /**
@@ -70,7 +70,7 @@ public class FlyingAssassin extends AICharacter {
 //     */
 //    @Override
 //    public void draw(GraphicsContext gc) {
-//        //gc.drawImage(new Image("/images/CAT_BLACK_SIT.png"), 1, 1);
+//        //gc.drawImage(new Image("/images/FLYING_ASSASSIN_LEFT_FACE.png"), 1, 1);
 //    }
 }
 
