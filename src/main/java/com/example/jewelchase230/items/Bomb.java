@@ -14,6 +14,10 @@ public class Bomb extends Item {
 
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
+    private static final String BOMB_COUNTDOWN_3 = "images/BOMB_3.png";
+    private static final String BOMB_COUNTDOWN_2 = "images/BOMB_2.png";
+    private static final String BOMB_COUNTDOWN_1 = "images/BOMB_1.png";
+
 
     /** The time until the bomb explodes. */
     private int time;
