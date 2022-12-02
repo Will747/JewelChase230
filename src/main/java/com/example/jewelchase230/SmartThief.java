@@ -2,7 +2,7 @@ package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
 
-public class SmartThief extends AICharacter {
+public final class SmartThief extends AICharacter {
     /**
      * Constructs a renderable component.
      */
@@ -11,7 +11,7 @@ public class SmartThief extends AICharacter {
     }
 
     @Override
-    protected void getNextMove(IntVector2D move) {
+    protected void getNextMove(final IntVector2D move) {
         super.getNextMove(move);
     }
 }
