@@ -37,7 +37,7 @@
                   <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../../../../images/CAT_BLACK_SIT.png" />
+                        <Image url="@../fxmlImages/CAT_BLACK_SIT.png" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" onMouseClicked="#onP1Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
@@ -48,7 +48,7 @@
                   <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P2" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../images/CAT_OREO_SIT.png" />
+                        <Image url="@../fxmlImages/CAT_OREO_SIT.png" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" onMouseClicked="#onP2Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
@@ -59,7 +59,7 @@
                   <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P3" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../images/CAT_TABBY_SIT.png" />
+                        <Image url="@../fxmlImages/CAT_TABBY_SIT.png" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" onMouseClicked="#onP3Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
@@ -70,7 +70,7 @@
                   <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P4" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../images/CAT_WHITE_SIT.png" />
+                        <Image url="@../fxmlImages/CAT_WHITE_SIT.png" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" onMouseClicked="#onP4Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />

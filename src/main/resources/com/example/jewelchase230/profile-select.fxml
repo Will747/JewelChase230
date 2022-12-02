@@ -24,7 +24,7 @@
             <Label alignment="CENTER" layoutX="156.0" layoutY="10.0" prefHeight="142.0" prefWidth="277.0" text="Player" />
             <ImageView fitHeight="142.0" fitWidth="146.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../../../images/CAT_BLACK_SIT.png" />
+                  <Image url="@../fxmlImages/CAT_BLACK_SIT.png" />
                </image>
             </ImageView>
          </children>
