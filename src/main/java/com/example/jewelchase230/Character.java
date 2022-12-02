@@ -1,7 +1,6 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
-import javafx.scene.canvas.GraphicsContext;
 
 /**
  * Renders the characters to the game.
@@ -11,12 +10,9 @@ import javafx.scene.canvas.GraphicsContext;
 public abstract class Character extends Sprite {
     /**
      * Constructs a renderable component.
-     *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      */
-    public Character(int x, int y) {
-        super(x, y);
+    public Character() {
+        super();
     }
 
     /**
@@ -29,7 +25,7 @@ public abstract class Character extends Sprite {
     protected boolean canMoveUp(int x, int y) {
         IntVector2D yTry = new IntVector2D(getGridPosition().getX(), getGridPosition().getY() + 1);
         if (getLevel().getLevelSize().getY() < getGridPosition().getY()) {
-            if (getLevel().getTile(getGridPosition()).getTop() == getLevel().getTile(yTry).getBottom()) {
+            if ((getLevel().getTile(getGridPosition()).getTopLeft() == getLevel().getTile(yTry).getBottomLeft()) && (getLevel().getTile(getGridPosition()).getTopRight() == getLevel().getTile(yTry).getBottomRight())) {
                 return true;
             }
         }
@@ -47,7 +43,7 @@ public abstract class Character extends Sprite {
     protected boolean canMoveDown(int x, int y) {
         IntVector2D yTry = new IntVector2D(getGridPosition().getX(), getGridPosition().getY() - 1);
         if (getLevel().getLevelSize().getY() > getGridPosition().getY()) {
-            if (getLevel().getTile(getGridPosition()).getBottom() == getLevel().getTile(yTry).getTop()){
+            if ((getLevel().getTile(getGridPosition()).getBottomLeft() == getLevel().getTile(yTry).getTopLeft()) && (getLevel().getTile(getGridPosition()).getBottomRight() == getLevel().getTile(yTry).getTopRight())){
                 return true;
             }
         }
@@ -65,7 +61,7 @@ public abstract class Character extends Sprite {
     protected boolean canMoveRight(int x, int y) {
         IntVector2D xTry = new IntVector2D(getGridPosition().getX() + 1, getGridPosition().getY());
         if (getLevel().getLevelSize().getX() > getGridPosition().getX()) {
-            if (getLevel().getTile(getGridPosition()).getRight() == getLevel().getTile(xTry).getRight()) {
+            if ((getLevel().getTile(getGridPosition()).getBottomRight() == getLevel().getTile(xTry).getBottomRight()) && (getLevel().getTile(getGridPosition()).getTopRight() == getLevel().getTile(xTry).getTopRight())) {
                 return true;
             }
         }
@@ -83,7 +79,7 @@ public abstract class Character extends Sprite {
     protected boolean canMoveLeft(int x, int y) {
         IntVector2D xTry = new IntVector2D(getGridPosition().getX() - 1, getGridPosition().getY());
         if (getLevel().getLevelSize().getX() < getGridPosition().getX()) {
-            if (getLevel().getTile(getGridPosition()).getLeft() == getLevel().getTile(xTry).getLeft()) {
+            if ((getLevel().getTile(getGridPosition()).getBottomLeft() == getLevel().getTile(xTry).getBottomLeft()) && (getLevel().getTile(getGridPosition()).getTopLeft() == getLevel().getTile(xTry).getTopLeft())) {
                 return true;
             }
         }
@@ -125,16 +121,6 @@ public abstract class Character extends Sprite {
      */
     @Override
     public void tick(int time) {
-
-    }
-
-    /**
-     * Draws this item to the canvas.
-     *
-     * @param gc GraphicsContext for creating draw class.
-     */
-    @Override
-    public void draw(GraphicsContext gc) {
 
     }
 }

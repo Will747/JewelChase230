@@ -3,7 +3,7 @@ package com.example.jewelchase230.items;
 /**
  * A collectable item that holds a reward when collected.
  *
- * @author Will Kaye
+ * @author Will Kaye and Ben Stott
  */
 public class Loot extends Item {
     /** The type of loot. */
@@ -20,12 +20,21 @@ public class Loot extends Item {
     }
 
     /**
-     * Triggered when a thief collides with this item.
+     * Triggered when a player collides with loot
      */
     @Override
     public void doOnCollision() {
-        super.doOnCollision();
+        getLevel().getPlayer().addToActiveScore(type.getValue());
+        remove();
+        checkIfDoorOpen();
+    }
 
-        // Increment player score if the player collided here.
+    /**
+     * Triggered when a thief collides with loot.
+     */
+    @Override
+    public void doOnThiefCollision() {
+        remove();
+        checkIfDoorOpen();
     }
 }

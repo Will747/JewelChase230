@@ -20,20 +20,13 @@ public class LevelFileReader {
     private static int levelTime;
     private static Level levelBuilt;
 
-    public static void main(String[] args) {
-        // Tests that the values are read in correcly.
-        levelFileReader("Level_Files/Level1.txt");
-        System.out.println(xAxis);
-        System.out.println(yAxis);
-        System.out.println(levelTime);
-        System.out.println(levelBuilt.getAllItems().toString());
-    }
 
     /**
      * Method that is called to start the process of reading in the level ASCII file.
      * @param fileName the name / directory of the file being read in.
      */
-    public static Level levelFileReader(String fileName){
+
+    public static Level readInFile(String fileName){
            File levelFile = new File(fileName);
            lineReader(levelFile);
            return levelBuilt;
@@ -58,21 +51,21 @@ public class LevelFileReader {
             levelBuilt = new Level(size);
 
             // Changes the tokens in the text file to tile objects that are added to the level.
-            while (!fileScanner.hasNextInt()) {
-                for (int i = 0; i < yAxis - 1; i++){
-                    for (int j = 0; j < xAxis - 1; i ++){
-                        String tempTileColour = fileScanner.next();
-                        TileColour topLeft = TileColour.getTileColourType(tempTileColour.charAt(1));
-                        TileColour topRight = TileColour.getTileColourType(tempTileColour.charAt(1));
-                        TileColour bottomLeft = TileColour.getTileColourType(tempTileColour.charAt(1));
-                        TileColour bottomRight = TileColour.getTileColourType(tempTileColour.charAt(1));
-                        Tile tempTile = new Tile(topLeft, topRight, bottomLeft, bottomRight);
-                        IntVector2D tempTilePos = new IntVector2D(j, i);
-                        levelBuilt.addTile(tempTilePos, tempTile);
-                    }
-                }
+            for (int i = 0; i < yAxis; i++){
+                 for (int j = 0; j < xAxis; j++){
+                     String tempTileColour = fileScanner.next();
+                     System.out.println(tempTileColour);
+                     TileColour topLeft = TileColour.getTileColourType(tempTileColour.charAt(0));
+                     TileColour topRight = TileColour.getTileColourType(tempTileColour.charAt(1));
+                     TileColour bottomLeft = TileColour.getTileColourType(tempTileColour.charAt(2));
+                     TileColour bottomRight = TileColour.getTileColourType(tempTileColour.charAt(3));
+                     Tile tempTile = new Tile(topLeft, topRight, bottomLeft, bottomRight);
+                     IntVector2D tempTilePos = new IntVector2D(j, i);
+                     levelBuilt.addTile(tempTilePos, tempTile);
+                 }
             }
-            fileScanner.nextLine();
+
+             fileScanner.nextLine();       
             // Makes objects from the provided information.
             while (fileScanner.hasNextLine()) {
                 levelBuilder(fileScanner.nextLine());
@@ -89,6 +82,7 @@ public class LevelFileReader {
      */
     private static void levelBuilder(String value) {
         Scanner lineScanner = new Scanner(value);
+        System.out.println(value);
         int ID = lineScanner.nextInt();
 
         // Makes the appropriate object from the ID provided from the file.
@@ -164,7 +158,7 @@ public class LevelFileReader {
                     String directionString = lineScanner.next();
                     Direction direction = Direction.getDirectionType(directionString);
                     IntVector2D tempItemPos = new IntVector2D(x, y);
-                    FloorFollowingThief tempThief = new FloorFollowingThief(x, y);
+                    FloorFollowingThief tempThief = new FloorFollowingThief();
                     // levelBuilt.addNPC(tempItemPos, tempThief);
                 }
                 break;
@@ -176,7 +170,7 @@ public class LevelFileReader {
                     String directionString = lineScanner.next();
                     Direction direction = Direction.getDirectionType(directionString);
                     IntVector2D tempNPCPos = new IntVector2D(x, y);
-                    FlyingAssassin tempAssassin = new FlyingAssassin(x, y, direction);
+                    FlyingAssassin tempAssassin = new FlyingAssassin(direction);
                     // LevelBuilt.addNPC(tempItemPos, tempAssassin);
                 }
                 break;

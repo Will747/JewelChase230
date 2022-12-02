@@ -1,9 +1,8 @@
 package com.example.jewelchase230;
-import com.example.jewelchase230.items.*;
+import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Represents a game level, including all tiles, items and characters.
@@ -12,10 +11,13 @@ import java.util.Random;
  */
 public class Level {
     /** Tiles on the grid. */
-    private Tile[][] tiles;
+    private final Tile[][] tiles;
 
     /** All characters in the level. */
-    private ArrayList<Character> characters;
+    private final ArrayList<Character> characters;
+
+    /** The time limit on the level. */
+    private int timeLimit;
 
     /**
      * Constructs a new level.
@@ -24,39 +26,30 @@ public class Level {
     public Level(final IntVector2D size) {
         tiles = new Tile[size.getX()][size.getY()];
         characters = new ArrayList<>();
+    }
 
-        /* Temp random tile creator. */
-        for (int x = 0; x < tiles.length; x++) {
-            for (int y = 0; y < tiles[x].length; y++) {
+    /**
+     * Set the time limit for the level.
+     * @param inTimeLimit The new time limit for the level.
+     */
+    public void setTimeLimit(final int inTimeLimit) {
+        timeLimit = inTimeLimit;
+    }
 
-                // Randomly pick a colours
-                TileColour[] colours = new TileColour[4];
-                for (int i = 0; i < 4; i++) {
-                    Random random = new Random();
-                    colours[i] = switch (random.nextInt(4)) {
-                        case 1 -> TileColour.Red;
-                        case 2 -> TileColour.Green;
-                        case 3 -> TileColour.Blue;
-                        default -> TileColour.Yellow;
-                    };
-                }
+    /**
+     * Gets the time limit for the level.
+     * @return The time limit for the level.
+     */
+    public int getTimeLimit() {
+        return timeLimit;
+    }
 
-                Tile randomTile = new Tile(
-                        colours[0], colours[1], colours[2], colours[3]);
-                addTile(new IntVector2D(x, y), randomTile);
-            }
-        }
-
-        addItem(new IntVector2D(0, 0), new Bomb(1));
-        addItem(new IntVector2D(1, 0), new Clock(1));
-        addItem(new IntVector2D(2, 0), new Lever("Red"));
-
-        // Fill remaining tiles with loot to test randomness.
-        for (int i = 3; i < size.getX(); i++) {
-            addItem(new IntVector2D(i, 0), new Loot());
-        }
-        /* End of Temp random tile creator. */
-
+    /**
+     * Adds more time to the time limit.
+     * @param additionalTime The time to be added to the time limit.
+     */
+    public void addTime(final int additionalTime) {
+        timeLimit += additionalTime;
     }
 
     /**
@@ -80,6 +73,10 @@ public class Level {
         getTile(pos).setItem(item);
     }
 
+    /**
+     * Removes an item from a tile.
+     * @param pos The tile position to have item removed from.
+     */
     public void removeItem(final IntVector2D pos) {
         getTile(pos).setItem(null);
     }
@@ -157,7 +154,7 @@ public class Level {
         ArrayList<Item> allItems = getAllItems();
 
         int numOfTiles = tiles.length * tiles[0].length;
-        int numOfRenderables = numOfTiles + allItems.size();
+        int numOfRenderables = numOfTiles + allItems.size() + characters.size();
         Renderable[] result = new Renderable[numOfRenderables];
         int count = 0;
 
@@ -175,14 +172,22 @@ public class Level {
             count++;
         }
 
+        //add characters
+        for (Character character : characters) {
+            result[count] = character;
+            count++;
+        }
+
         return result;
     }
 
     /**
      * Adds characters to the level.
-     * @param character the character being added.
+     * @param pos The position of the character.
+     * @param character The character being added.
      */
-    public void addCharacter(Character character){
+    public void addCharacter(final IntVector2D pos, final Character character) {
+        character.setGridPosition(pos);
         characters.add(character);
     }
 
@@ -190,8 +195,21 @@ public class Level {
      * Returns the array list of characters in the level.
      * @return the array list of characters.
      */
-    public ArrayList<Character> getAllCharacters(){
+    public ArrayList<Character> getAllCharacters() {
         return characters;
+    }
+
+    /**
+     * Gets the current player in the level.
+     * @return The current player.
+     */
+    public Player getPlayer() {
+        for (Character characterInstance : characters) {
+            if (characterInstance instanceof Player) {
+                return ((Player) characterInstance);
+            }
+        }
+        return null;
     }
 
     /**
@@ -200,10 +218,10 @@ public class Level {
      * @param y the y-axis coordinate.
      * @return The wanted character or null if the character doesn't exist.
      */
-    public Character getSpecificCharacter(int x, int y){
+    public Character getSpecificCharacter(final int x, final int y) {
         Character wantedCharacter = null;
-        for (Character c: characters){
-            if (c.getGridPosition().getX() == x && c.getGridPosition().getY() == y){
+        for (Character c: characters) {
+            if (c.getGridPosition().getX() == x && c.getGridPosition().getY() == y) {
                 wantedCharacter =  c;
             }
         }

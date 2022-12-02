@@ -1,7 +1,6 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -19,21 +18,22 @@ import javafx.scene.input.KeyEvent;
 *To add in future once branches merged: 
 *upon Door, when level is completed, calls Profile to change currentLevel of object Profile
 * - Kiwi
+*I also added addToActiveScore in order to add points when collecting items
+* - Ben
 */
 
-public class Player extends Character{
-	
-	public int playerCurrentLevel;
-	public int playerActiveScore; 
-	
+public class Player extends Character {
+
+	private int playerCurrentLevel;
+	private int playerActiveScore;
+
     /**
      * Constructs a renderable component.
-     *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      */
-    public Player(int x, int y) {
-        super(x, y);
+    public Player() {
+        super();
+
+        setImageFromFile("images/CAT_TABBY_SIT.png");
     }
 
     /**
@@ -59,12 +59,16 @@ public class Player extends Character{
                 break;
         }
 
-        //redraw game
-
         keyPress.consume();
     }
 
-
+    /**
+     * Adds score to the active current score of player.
+     * @param score Score to be added to the active score.
+     */
+    public void addToActiveScore(int score) {
+        playerActiveScore += score;
+    }
 
     /**
      * Called just before the grid gets re-rendered.
@@ -72,18 +76,7 @@ public class Player extends Character{
      * @param time Time since last frame in milliseconds.
      */
     @Override
-    public void tick(int time) {
+    public void tick(final int time) {
 
     }
-
-    /**
-     * Draws this item to the canvas.
-     *
-     * @param gc GraphicsContext for creating draw class.
-     */
-    @Override
-    public void draw(GraphicsContext gc) {
-
-    }
-
 }

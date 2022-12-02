@@ -13,6 +13,6 @@ import javafx.scene.input.MouseEvent;
 public final class TestMenu {
     @FXML
     void onBackPressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getMainMenu());
+        Main.switchRoot(Menu.getMainMenu());
     }
 }
