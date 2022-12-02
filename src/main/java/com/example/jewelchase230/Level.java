@@ -1,9 +1,8 @@
 package com.example.jewelchase230;
-import com.example.jewelchase230.items.*;
+import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Represents a game level, including all tiles, items and characters.
@@ -12,10 +11,10 @@ import java.util.Random;
  */
 public class Level {
     /** Tiles on the grid. */
-    private Tile[][] tiles;
+    private final Tile[][] tiles;
 
     /** All characters in the level. */
-    private ArrayList<Character> characters;
+    private final ArrayList<Character> characters;
 
     /** The time limit on the level. */
     private int timeLimit;
@@ -33,7 +32,7 @@ public class Level {
      * Set the time limit for the level.
      * @param inTimeLimit The new time limit for the level.
      */
-    public void setTimeLimit(int inTimeLimit) {
+    public void setTimeLimit(final int inTimeLimit) {
         timeLimit = inTimeLimit;
     }
 
@@ -49,7 +48,7 @@ public class Level {
      * Adds more time to the time limit.
      * @param additionalTime The time to be added to the time limit.
      */
-    public void addTime(int additionalTime) {
+    public void addTime(final int additionalTime) {
         timeLimit += additionalTime;
     }
 
@@ -184,7 +183,8 @@ public class Level {
 
     /**
      * Adds characters to the level.
-     * @param character the character being added.
+     * @param pos The position of the character.
+     * @param character The character being added.
      */
     public void addCharacter(final IntVector2D pos, final Character character) {
         character.setGridPosition(pos);
@@ -218,7 +218,7 @@ public class Level {
      * @param y the y-axis coordinate.
      * @return The wanted character or null if the character doesn't exist.
      */
-    public Character getSpecificCharacter(int x, int y) {
+    public Character getSpecificCharacter(final int x, final int y) {
         Character wantedCharacter = null;
         for (Character c: characters) {
             if (c.getGridPosition().getX() == x && c.getGridPosition().getY() == y) {

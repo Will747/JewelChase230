@@ -29,26 +29,26 @@ public final class MainMenu {
 
     @FXML
     private void onSwitchMenuPressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getTestMenu());
+        Main.switchRoot(Menu.getTestMenu());
     }
 
     @FXML
     private void onSettingsMenuPressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getSettingsMenu());
+        Main.switchRoot(Menu.getSettingsMenu());
     }
 
     @FXML
     private void onHighScoreTablePressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getHighScoreTable());
+        Main.switchRoot(Menu.getHighScoreTable());
     }
 
     @FXML
     private void onProlifeMenuPressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getProfileMenu());
+        Main.switchRoot(Menu.getProfileMenu());
     }
 
     @FXML
     private void onProlifeSelectPressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getProfileSelect());
+        Main.switchRoot(Menu.getProfileSelect());
     }
 }
