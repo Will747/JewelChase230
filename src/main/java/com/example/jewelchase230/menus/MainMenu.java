@@ -42,6 +42,7 @@ public final class MainMenu {
         Main.switchRoot(Menu.getProfileMenu());
     }
 
+    @FXML
     private void onExitPressed(final MouseEvent event) {
         Main.close();
     }

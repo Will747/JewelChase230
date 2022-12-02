@@ -33,7 +33,7 @@ public final class Menu {
     private static HashMap<String, Parent> cachedParents;
 
     private Menu() {
-        
+
     }
 
     /**

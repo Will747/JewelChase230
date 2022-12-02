@@ -97,10 +97,10 @@ public final class Main extends Application {
     }
 
     /**
-     * Closes the FXML window
+     * Closes the FXML window.
      */
-    public static void close(){
-        stage.close();
+    public static void close() {
+        System.exit(0);
     }
 
     /**
