@@ -1,4 +1,5 @@
 package com.example.jewelchase230;
+
 import com.example.jewelchase230.vectors.IntVector2D;
 
 /**
@@ -11,6 +12,7 @@ public class FlyingAssassin extends AICharacter {
 
     /**
      * Constructs a renderable component.
+     *
      * @param d Direction the Flying assassin is facing.
      */
     public FlyingAssassin(final Direction d) {
@@ -29,27 +31,68 @@ public class FlyingAssassin extends AICharacter {
         IntVector2D levelSize = getLevel().getLevelSize();
 
         switch (d) {
-            case UP: if (gridPos.getY() < levelSize.getY()) {
-                setGridPosition(gridPos.add(new IntVector2D(0, 1)));
-            } else {
-                getNextMove(d.getOppositeDirection(d));
-            }
-            case DOWN: if (gridPos.getY() > levelSize.getY()) {
-                setGridPosition(gridPos.add(new IntVector2D(0, -1)));
-            } else {
-                getNextMove(d.getOppositeDirection(d));
-            }
-            case LEFT: if (gridPos.getX() > levelSize.getX()) {
-                setGridPosition(gridPos.add(new IntVector2D(-1, 0)));
-            } else {
-                getNextMove(d.getOppositeDirection(d));
-            }
+            case UP:
+                if (gridPos.getY() < levelSize.getY()) {
+                    IntVector2D newPos = gridPos.add(new IntVector2D(0, 1));
+                    setGridPosition(newPos);
+                    Character npc = getLevel().getSpecificCharacter(newPos.getX(), newPos.getY());
+
+                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+                        getLevel().gameOver();
+                    }
+
+                    if (npc != null) {
+                        getLevel().removeSpecificNPC(newPos);
+                    }
+
+                } else {
+                    getNextMove(d.getOppositeDirection(d));
+                }
+            case DOWN:
+                if (gridPos.getY() > levelSize.getY()) {
+                    IntVector2D newPos = gridPos.add(new IntVector2D(0, -1));
+                    setGridPosition(newPos);
+                    Character npc = getLevel().getSpecificCharacter(newPos.getX(), newPos.getY());
+
+                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+                        getLevel().gameOver();
+                    }
+                    if (npc != null) {
+                        getLevel().removeSpecificNPC(newPos);
+                    }
+                } else {
+                    getNextMove(d.getOppositeDirection(d));
+                }
+            case LEFT:
+                if (gridPos.getX() > levelSize.getX()) {
+                    IntVector2D newPos = gridPos.add(new IntVector2D(-1, 0));
+                    setGridPosition(newPos);
+                    Character npc = getLevel().getSpecificCharacter(newPos.getX(), newPos.getY());
+
+                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+                        getLevel().gameOver();
+                    }
+                    if (npc != null) {
+                        getLevel().removeSpecificNPC(newPos);
+                    }
+                } else {
+                    getNextMove(d.getOppositeDirection(d));
+                }
             default: //RIGHT
                 if (gridPos.getX() < levelSize.getX()) {
-                setGridPosition(gridPos.add(new IntVector2D(1, 0)));
-            } else {
-                getNextMove(d.getOppositeDirection(d));
-            }
+                    IntVector2D newPos = gridPos.add(new IntVector2D(1, 0));
+                    setGridPosition(newPos);
+                    Character npc = getLevel().getSpecificCharacter(newPos.getX(), newPos.getY());
+                    
+                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+                        getLevel().gameOver();
+                    }
+                    if (npc != null) {
+                        getLevel().removeSpecificNPC(newPos);
+                    }
+                } else {
+                    getNextMove(d.getOppositeDirection(d));
+                }
         }
     }
 
@@ -62,16 +105,6 @@ public class FlyingAssassin extends AICharacter {
     public void tick(final int time) {
 
     }
-
-//    /**
-//     * Draws this item to the canvas.
-//     *
-//     * @param gc GraphicsContext for creating draw class.
-//     */
-//    @Override
-//    public void draw(GraphicsContext gc) {
-//        //gc.drawImage(new Image("/images/FLYING_ASSASSIN_LEFT_FACE.png"), 1, 1);
-//    }
 }
 
 

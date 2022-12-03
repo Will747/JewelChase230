@@ -146,11 +146,11 @@ public class Bomb extends Item {
         remove();
     }
 
-    /**
-     * Thief collision is the same as player collision for bombs.
-     */
-    @Override
-    public void doOnThiefCollision() {
-        doOnCollision();
-    }
+//    /**
+//     * Thief collision is the same as player collision for bombs.
+//     */
+//    @Override
+//    public void doOnThiefCollision() {
+//        doOnCollision();
+//    }
 }

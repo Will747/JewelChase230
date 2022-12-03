@@ -228,4 +228,13 @@ public class Level {
         }
         return wantedCharacter;
     }
+
+    public void removeSpecificNPC(final IntVector2D pos) {
+        Character character = getSpecificCharacter(pos.getX(), pos.getY());
+        characters.remove(character);
+    }
+
+    public void gameOver() {
+        Main.switchRoot(Menu.getMainMenu());
+    }
 }

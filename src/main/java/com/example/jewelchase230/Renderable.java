@@ -33,14 +33,6 @@ public abstract class Renderable {
     }
 
     /**
-     * Constructs a renderable component.
-     * @param pos Position of component on grid.
-     */
-    public Renderable(final IntVector2D pos) {
-        gridPosition = pos;
-    }
-
-    /**
      * Construct a renderable component that isn't on
      * the grid.
      */
