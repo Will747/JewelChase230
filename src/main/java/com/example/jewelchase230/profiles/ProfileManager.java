@@ -27,6 +27,9 @@ public class ProfileManager
 	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4; 
 	/** ArrayList which holds a list of Profile names */ 
 	static ArrayList<String> profileNames = new ArrayList<String>();
+	
+	//test
+	
 
 	
     // Reads each line of the text file "Profile.txt"
@@ -123,6 +126,8 @@ public class ProfileManager
 	}
 	
 	public static ArrayList<String> getProfileNames(){
+		String x = "Hi :) "; 
+		profileNames.add(x);
 		return profileNames;
 	}
 	
