@@ -154,6 +154,7 @@ public class ProfileManager
 	}
 	
 	public static ArrayList<String> getProfileNames(){
+		/**
 		Profile a = new Profile(4,1,"Kiwi",4);
     	Profile b = new Profile(1,3,"Adam",8);
     	Profile c = new Profile(7,4,"Will",16);
@@ -168,7 +169,7 @@ public class ProfileManager
     	
     	for (int i = 0; i <= 3; i++) { 
     		profileNames.add(orderedProfilesAccordingToSlot.get(i).getPlayerName());
-    	}
+    	} */
 		return profileNames;
 	}
 
