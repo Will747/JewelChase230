@@ -25,6 +25,8 @@ public class ProfileManager
 	static int uniqueIDFromFile;
 	/** Final int variable which holds the total number of 'splits' to be done */
 	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4; 
+	/** ArrayList which holds a list of Profile names */ 
+	static ArrayList<String> profileNames = new ArrayList<String>();
 
 	
     // Reads each line of the text file "Profile.txt"
@@ -49,6 +51,7 @@ public class ProfileManager
                 uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
                 Profile tempProfile = new Profile(lineDataSplit);
                 listOfProfile.add(tempProfile);
+                profileNames.add(tempProfile.getPlayerName());
             }
             
             input.close();
@@ -118,6 +121,12 @@ public class ProfileManager
 	public static ArrayList<Profile> getListOfProfile(){ 
 		return listOfProfile;
 	}
+	
+	public static ArrayList<String> getProfileNames(){
+		return profileNames;
+	}
+	
+	
 
 	
 
