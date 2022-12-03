@@ -43,9 +43,9 @@ public final class ProfileMenu {
     private void initialize()
     {
         playerOne.setText(ProfileManager.getProfileNames().get(0));
-        playerTwo.setText(ProfileManager.getProfileNames().get(0));
-        playerThree.setText(ProfileManager.getProfileNames().get(0));
-        playerFour.setText(ProfileManager.getProfileNames().get(0));
+        playerTwo.setText(ProfileManager.getProfileNames().get(1));
+        playerThree.setText(ProfileManager.getProfileNames().get(2));
+        playerFour.setText(ProfileManager.getProfileNames().get(3));
     }
 
     @FXML
