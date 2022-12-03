@@ -17,17 +17,7 @@ import java.io.IOException;
 public class ProfileManager
 {
 	
-	/**
-	Profile b = new Profile(1,3,"Adam",8);
-	Profile c = new Profile(7,4,"Will",16);
-	Profile d = new Profile(2,2,"Cos",3);
-	*/
 	
-	/**
-	listOfProfile.add(b);
-	listOfProfile.add(c);
-	listOfProfile.add(d);
-	*/
 	
 	
 	/** ArrayList which holds each line of the Profiles.txt File */
@@ -85,9 +75,22 @@ public class ProfileManager
      */
     
     public static ArrayList<Profile> rearrangeListOfProfile(ArrayList<Profile> listOfProfile) {
-		Profile a = new Profile(4,1,"Kiwi",4);
+		/** TEST START */
+    	
+    	Profile a = new Profile(4,1,"Kiwi",4);
+		/**Profile b = new Profile(1,3,"Adam",8);
+		Profile c = new Profile(7,4,"Will",16);
+		Profile d = new Profile(2,1,"Cos",3); */
 	
+		
     	listOfProfile.add(a);
+	/*	listOfProfile.add(b);
+		listOfProfile.add(c);
+		listOfProfile.add(d); 
+		
+    	
+		/** TEST END */
+
     	for (int k = 0; k < listOfProfile.size(); k++) { 
 
     		

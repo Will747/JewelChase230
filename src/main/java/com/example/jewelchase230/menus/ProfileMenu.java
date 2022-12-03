@@ -43,10 +43,10 @@ public final class ProfileMenu {
     private void initialize()
     {
     	playerOne.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());       
-    	/**playerTwo.setText(ProfileManager.getProfileNames().get(1));
-        playerThree.setText(ProfileManager.getProfileNames().get(2));
-        playerFour.setText(ProfileManager.getProfileNames().get(3));
-        */
+    	playerTwo.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());       
+    	playerThree.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());       
+    	playerFour.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());       
+        
     }
 
     @FXML
