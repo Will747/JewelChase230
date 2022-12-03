@@ -26,9 +26,11 @@ public class ProfileManager
 	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4; 
 	/** ArrayList which holds a list of Profile names */ 
 	static ArrayList<String> profileNames = new ArrayList<String>();
+	/**ArrayList which holds a list of Profile scores */
+	static ArrayList<Integer> profileLevel = new ArrayList<Integer>();
 	
-	//test
-	
+	static ArrayList<Profile> orderedProfilesAccordingToSlot = new ArrayList<Profile>();
+
     // Reads each line of the text file "Profile.txt"
 	/**
     * Reads content from file and stores them appropriately to be handled
@@ -52,13 +54,52 @@ public class ProfileManager
                 Profile tempProfile = new Profile(lineDataSplit);
                 listOfProfile.add(tempProfile);
                 profileNames.add(tempProfile.getPlayerName());
+                profileLevel.add(tempProfile.getLevelReached());
             }
-            
             input.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+    
+    /**
+     * This method reorganises the ArrayList of Profiles in accordance to their Profile Slot (1..4).
+     * @param listOfProfile --> unordered Profile List.
+     * @return orderedProfilesAccordingToSlot --> ordered Profile List.
+     */
+    
+    public static ArrayList<Profile> rearrangeListOfProfile(ArrayList<Profile> listOfProfile) {
+    	Profile a = new Profile(4,1,"Kiwi",4);
+    	Profile b = new Profile(1,3,"Adam",8);
+    	Profile c = new Profile(7,4,"Will",16);
+    	Profile d = new Profile(2,2,"Cos",3);
+
+    	listOfProfile.add(a);
+    	listOfProfile.add(b);
+    	listOfProfile.add(c);
+    	listOfProfile.add(d);
+    	
+    	for (int i = 0; i <= 3; i++) { 
+    	
+    		
+    		switch (listOfProfile.get(i).getPlayerProfileSlot()) {
+    		case 1:
+    			orderedProfilesAccordingToSlot.add(0, listOfProfile.get(i));
+    			break;
+    		case 2:
+    			orderedProfilesAccordingToSlot.add(1, listOfProfile.get(i));
+    			break;
+    		case 3:
+    			orderedProfilesAccordingToSlot.add(2, listOfProfile.get(i));
+    			break;
+    		case 4: 
+    			orderedProfilesAccordingToSlot.add(3, listOfProfile.get(i));
+    			break;
+    		}
+    	}
+		return orderedProfilesAccordingToSlot;
+    
     }
     
     /**
@@ -107,13 +148,20 @@ public class ProfileManager
 		return profilesLineByLineData;
 	}
 	
-	public static ArrayList<Profile> getListOfProfile(){ 
-		return listOfProfile;
+	public static ArrayList<Profile> orderedProfilesAccordingToSlot(){ 
+		return orderedProfilesAccordingToSlot;
 	}
 	
 	public static ArrayList<String> getProfileNames(){
 		String x = "Hi :) "; 
 		profileNames.add(x);
 		return profileNames;
+	}
+
+	/**
+	 * @return the profileLevel
+	 */
+	public static ArrayList<Integer> getProfileLevel() {
+		return profileLevel;
 	}
 }

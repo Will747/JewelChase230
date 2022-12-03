@@ -15,31 +15,35 @@ import java.io.IOException;
  */
 public class LevelFileReader {
     // The lists and variables needed to make the level.
+    /** X Axis. */
     private static int xAxis;
+    /** Y Axis. */
     private static int yAxis;
+    /** Level time. */
     private static int levelTime;
     private static Level levelBuilt;
 
 
     /**
-     * Method that is called to start the process of reading in the level ASCII file.
+     * Method that is called to start the process of reading in
+     * the level ASCII file.
      * @param fileName the name / directory of the file being read in.
      */
 
-    public static Level readInFile(String fileName){
+    public static Level readInFile(final String fileName) {
            File levelFile = new File(fileName);
            lineReader(levelFile);
            return levelBuilt;
     }
 
     /**
-     * Reads the information from the file and processes the values as there needed
-     * to be.
-     * 
-     * @param file the file being read.
+     * Reads the information from the file and processes the values as
+     * there needed to be.
+     * @param levelFile the file being read.
      */
-    private static void lineReader(File levelFile) {
-        // Tries to read the file and sends an error code if the file does not exist.
+    private static void lineReader(final File levelFile) {
+        // Tries to read the file and sends an error code if the file
+        // does not exist.
         try {
             // Sets the values for information about the level.
             Scanner fileScanner = new Scanner(levelFile);
@@ -50,22 +54,24 @@ public class LevelFileReader {
             IntVector2D size = new IntVector2D(xAxis, yAxis);
             levelBuilt = new Level(size);
 
-            // Changes the tokens in the text file to tile objects that are added to the level.
-            for (int i = 0; i < yAxis; i++){
-                 for (int j = 0; j < xAxis; j++){
+            // Changes the tokens in the text file to tile objects
+            // that are added to the level.
+            for (int i = 0; i < yAxis; i++) {
+                 for (int j = 0; j < xAxis; j++) {
                      String tempTileColour = fileScanner.next();
                      System.out.println(tempTileColour);
                      TileColour topLeft = TileColour.getTileColourType(tempTileColour.charAt(0));
                      TileColour topRight = TileColour.getTileColourType(tempTileColour.charAt(1));
                      TileColour bottomLeft = TileColour.getTileColourType(tempTileColour.charAt(2));
                      TileColour bottomRight = TileColour.getTileColourType(tempTileColour.charAt(3));
-                     Tile tempTile = new Tile(topLeft, topRight, bottomLeft, bottomRight);
+                     Tile tempTile = new
+                             Tile(topLeft, topRight, bottomLeft, bottomRight);
                      IntVector2D tempTilePos = new IntVector2D(j, i);
                      levelBuilt.addTile(tempTilePos, tempTile);
                  }
             }
 
-             fileScanner.nextLine();       
+             fileScanner.nextLine();
             // Makes objects from the provided information.
             while (fileScanner.hasNextLine()) {
                 levelBuilder(fileScanner.nextLine());
@@ -76,11 +82,11 @@ public class LevelFileReader {
     }
 
     /**
-     * Makes the objects from the passed information and adds them to an aray list.
-     * 
+     * Makes the objects from the passed information and
+     * adds them to an array list.
      * @param value
      */
-    private static void levelBuilder(String value) {
+    private static void levelBuilder(final String value) {
         Scanner lineScanner = new Scanner(value);
         System.out.println(value);
         int ID = lineScanner.nextInt();
@@ -90,60 +96,58 @@ public class LevelFileReader {
         int y = lineScanner.nextInt();
         IntVector2D tempPos = new IntVector2D(x, y);
         switch (ID) {
-            case 1:{
+            case 1: {
                     Bomb tempBomb = new Bomb();
                     levelBuilt.addItem(tempPos, tempBomb);
                 break;
             }
-            case 2:{
+            case 2: {
                     int time = lineScanner.nextInt();
                     Clock tempClock = new Clock(time);
                     levelBuilt.addItem(tempPos, tempClock);
                 break;
             }
-            case 3:{
+            case 3: {
                     Door tempDoor = new Door();
                     levelBuilt.addItem(tempPos, tempDoor);
                 break;
             }
-            case 4:{
+            case 4: {
                     String colour = lineScanner.next();
                     Lever tempLever = new Lever(colour);
                     levelBuilt.addItem(tempPos, tempLever);
                 break;
             }
-            case 5:{
+            case 5: {
                     String colour = lineScanner.next();
                     Gate tempGate = new Gate(colour);
                     levelBuilt.addItem(tempPos, tempGate);
                 break;
             }
-            case 6:{
+            case 6: {
                     String directionString = lineScanner.next();
                     Direction direction = Direction.getDirectionType(directionString);
                     FloorFollowingThief tempThief = new FloorFollowingThief();
                     // levelBuilt.addNPC(tempItemPos, tempThief);
                 break;
             }
-            case 7:{
+            case 7: {
                     String directionString = lineScanner.next();
                     Direction direction = Direction.getDirectionType(directionString);
                     IntVector2D tempNPCPos = new IntVector2D(x, y);
                     FlyingAssassin tempAssassin = new FlyingAssassin(direction);
-                    // LevelBuilt.addNPC(tempItemPos, tempAssassin);
+                    //levelBuilt.addCharacter(tempNPCPos, tempAssassin);
                 break;
             }
-            case 8:{
+            case 8: {
                     int rarity = lineScanner.nextInt();
                     Loot tempLoot = new Loot();
                     levelBuilt.addItem(tempPos, tempLoot);
                 break;
             }
-            default:{
+            default:
                 System.out.println("Item ID does not exist!");
                 break;
-            }
         }
-
     }
 }
