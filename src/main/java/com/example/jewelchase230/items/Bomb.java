@@ -12,35 +12,53 @@ import java.util.ArrayList;
  */
 public class Bomb extends Item {
 
+    private int timeSinceLastChange;
+    private static final int FRAME_RATE = 10;
+    private static final int MILLISECONDS_IN_A_SECOND = 1000;
+    private int currentImage;
+    private boolean hasCollided = false;
+
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
-    private static final String BOMB_COUNTDOWN_3 = "images/BOMB_3.png";
-    private static final String BOMB_COUNTDOWN_2 = "images/BOMB_2.png";
-    private static final String BOMB_COUNTDOWN_1 = "images/BOMB_1.png";
-
-
-    /** The time until the bomb explodes. */
+    final String[] countdownArray = { "images/BOMB_3.png", "images/BOMB_2.png", "images/BOMB_1.png" };
 
     /**
      * Constructs a new bomb.
+     * 
      * @param inTime The time delay until the bomb explodes.
      */
     public Bomb() {
         super();
         setImageFromFile(BOMB_IMAGE);
+        currentImage = 0;
         setCollidable(false);
+    }
 
-        //May not be in a level at the time of construction
-        //setTriggers(getGridPosition());
+    // May not be in a level at the time of construction
+    // setTriggers(getGridPosition());
+
+    /** The time until the bomb explodes. */
+    @Override
+    public void tick(int time) {
+        timeSinceLastChange += time;
+        if (timeSinceLastChange > 1000) {
+            countdown();
+            timeSinceLastChange = 0;
+        }
+    }
+
+    public void countdown() {
+        if (currentImage < 3 /* && hasCollided */) {
+            currentImage++;
+            setImageFromFile(countdownArray[currentImage]);
+        } else {
+            doOnCollision();
+        }
     }
 
     /**
-     * Sets the time until the bomb explodes.
-     * @param newTime The time.
-     */
-
-    /**
      * Check if item type is valid to be removed.
+     * 
      * @param item Item to have type checked if it's valid to be removed.
      * @return True if item can be removed, false if it cannot.
      */
@@ -53,6 +71,7 @@ public class Bomb extends Item {
 
     /**
      * Gets every neighbouring tile to this bombs position.
+     * 
      * @return Every neighbouring tile.
      */
     public ArrayList<Tile> getNeighbouringTiles() {
@@ -64,7 +83,7 @@ public class Bomb extends Item {
                 if (!(x == 0 && x == 0)) {
                     IntVector2D tempVector = thisPos.add(new IntVector2D(x, y));
                     if (!(tempVector.getX() < 0 || tempVector.getY() < 0) &&
-                    !(tempVector.getX() >= maxSize.getX() || tempVector.getY() >= maxSize.getY())) {
+                            !(tempVector.getX() >= maxSize.getX() || tempVector.getY() >= maxSize.getY())) {
                         tileArray.add(getLevel().getTile(tempVector));
                     }
                 }
@@ -75,6 +94,7 @@ public class Bomb extends Item {
 
     /**
      * Set or remove bomb triggers from neighbouring tiles.
+     * 
      * @param bombPosInTile Current bomb position if triggerd, null if not.
      */
     private void setTriggers(IntVector2D bombPosInTile) {
@@ -84,7 +104,8 @@ public class Bomb extends Item {
     }
 
     /**
-     * Explosion removing all items on the same row and column, expect gates and doors.
+     * Explosion removing all items on the same row and column, expect gates and
+     * doors.
      */
     public void explode() {
         setTriggers(null);
@@ -93,12 +114,12 @@ public class Bomb extends Item {
         final int currentYCoordinate = getGridPosition().getY();
         for (Item itemInstance : itemArray) {
             int itemInstanceX = itemInstance.getGridPosition().getX();
-            int itemInstanceY = itemInstance.getGridPosition().getX();
+            int itemInstanceY = itemInstance.getGridPosition().getY();
             if (itemInstanceX == currentXCoordinate || itemInstanceY == currentYCoordinate) {
-                if (itemInstance instanceof Bomb) {
+                /*if (itemInstance instanceof Bomb) {
                     Bomb newBomb = (Bomb) itemInstance;
                     newBomb.explode();
-                }
+                }*/
                 if (checkValidRemove(itemInstance)) {
                     itemInstance.remove();
                 }
@@ -111,34 +132,17 @@ public class Bomb extends Item {
      */
     @Override
     public void doOnCollision() {
-        for (int i = 0; i < 3; i++) { //change when there are different bomb countdown images
-            tick(1000);
-            //i doubt this will work, but here's some dummy code for this? 
-            
-           /** switch (i) {
-            case 0:
-                setImageFromFile(BOMB_COUNTDOWN_3);
-              break;
-            case 1: 
-            	setImageFromFile(BOMB_COUNTDOWN_2);
-            	break;
-            case 2: 
-            	setImageFromFile(BOMB_COUNTDOWN_1);
-            	break;
-            } 
-            */
-            
-            //change image
-        }
+        timeSinceLastChange = 0;
+        hasCollided = true;
         explode();
         remove();
     }
 
-//    /**
-//     * Thief collision is the same as player collision for bombs.
-//     */
-//    @Override
-//    public void doOnThiefCollision() {
-//        doOnCollision();
-//    }
+    // /**
+    // * Thief collision is the same as player collision for bombs.
+    // */
+    // @Override
+    // public void doOnThiefCollision() {
+    // doOnCollision();
+    // }
 }
