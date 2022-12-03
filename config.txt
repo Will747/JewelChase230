@@ -1,0 +1,2 @@
+musicVolume=5
+sfxVolume=2
