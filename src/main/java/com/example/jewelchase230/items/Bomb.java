@@ -11,15 +11,24 @@ import java.util.ArrayList;
  * @author Ben Stott
  */
 public class Bomb extends Item {
-
-    private int timeSinceLastChange;
+    /** Time since the image last changed. */
+    private int timeSinceLastImageChange = 0;
+    /** The game frame rate. */
     private static final int FRAME_RATE = 10;
+    /** Milliseconds in a second. */
     private static final int MILLISECONDS_IN_A_SECOND = 1000;
-    private int currentImage;
+    /** Time between image change when a fast explode occours. */
+    private static final int FAST_EXPLODE_COUNTDOWN_RATE = 100;
+    /** The index for currently displayed image in countdownArray. */
+    private int currentImageInCountdown = 0;
+    /** Whether the bomb has collided with a character. */
     private boolean hasCollided = false;
+    /**  Whether the bomb has collided with an explosion. */
+    private boolean fastExplode = false;
 
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
+    /** The bomb countdown images. */
     final String[] countdownArray = { "images/BOMB_3.png", "images/BOMB_2.png", "images/BOMB_1.png" };
 
     /**
@@ -30,30 +39,53 @@ public class Bomb extends Item {
     public Bomb() {
         super();
         setImageFromFile(BOMB_IMAGE);
-        currentImage = 0;
         setCollidable(false);
     }
 
     // May not be in a level at the time of construction
     // setTriggers(getGridPosition());
 
-    /** The time until the bomb explodes. */
+    /**
+     * Every game tick checks bomb status.
+     * @param time Time since the last frame.
+     */
     @Override
     public void tick(int time) {
-        timeSinceLastChange += time;
-        if (timeSinceLastChange > 1000) {
-            countdown();
-            timeSinceLastChange = 0;
+        if (fastExplode) {
+            timeSinceLastImageChange += time;
+            if (timeSinceLastImageChange > FAST_EXPLODE_COUNTDOWN_RATE) {
+                countdown();
+                timeSinceLastImageChange = 0;
+            }
+        } else if (hasCollided) {
+            timeSinceLastImageChange += time;
+            if (timeSinceLastImageChange > MILLISECONDS_IN_A_SECOND) {
+                countdown();
+                timeSinceLastImageChange = 0;
+            }
         }
+
     }
 
+    /**
+     * Fast explosion when this bomb gets hit by an explosion.
+     */
+    public void fastExplode() {
+        fastExplode = true;
+    }
+
+    /**
+     * Counts down from 3 and changes the bomb image.
+     */
     public void countdown() {
-        if (currentImage < 3 /* && hasCollided */) {
-            currentImage++;
-            setImageFromFile(countdownArray[currentImage]);
+        if (currentImageInCountdown < 3 && (hasCollided || fastExplode)) {
+            currentImageInCountdown++;
+            setImageFromFile(countdownArray[currentImageInCountdown]);
         } else {
-            doOnCollision();
+            explode();
+            remove();
         }
+
     }
 
     /**
@@ -115,11 +147,14 @@ public class Bomb extends Item {
         for (Item itemInstance : itemArray) {
             int itemInstanceX = itemInstance.getGridPosition().getX();
             int itemInstanceY = itemInstance.getGridPosition().getY();
-            if (itemInstanceX == currentXCoordinate || itemInstanceY == currentYCoordinate) {
-                /*if (itemInstance instanceof Bomb) {
+            if ((itemInstanceX == currentXCoordinate || itemInstanceY == currentYCoordinate)
+            && !(currentXCoordinate == itemInstanceX && currentYCoordinate == itemInstanceY)) {
+                if (itemInstance instanceof Bomb) {
                     Bomb newBomb = (Bomb) itemInstance;
-                    newBomb.explode();
-                }*/
+                    itemInstance.remove();
+                    getLevel().addItem(newBomb.getGridPosition(), newBomb);
+                    newBomb.fastExplode();
+                }
                 if (checkValidRemove(itemInstance)) {
                     itemInstance.remove();
                 }
@@ -132,10 +167,7 @@ public class Bomb extends Item {
      */
     @Override
     public void doOnCollision() {
-        timeSinceLastChange = 0;
         hasCollided = true;
-        explode();
-        remove();
     }
 
     // /**
