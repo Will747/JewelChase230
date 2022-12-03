@@ -6,7 +6,7 @@ public class FloorFollowingThief extends AICharacter {
     /**
      * Constructs a renderable component.
      */
-    public FloorFollowingThief() {
+    public FloorFollowingThief(Direction d) {
         super();
     }
 

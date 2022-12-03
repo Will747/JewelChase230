@@ -120,9 +120,9 @@ public abstract class Character extends Sprite {
     @Override
     public void setGridPosition(final IntVector2D inGridPosition) {
         super.setGridPosition(inGridPosition);
-        Item itemOnTile = getLevel().getTile(inGridPosition).getItem();
+        /*Item itemOnTile = getLevel().getTile(inGridPosition).getItem(); //Get tile causes errors somehow idk how to fix
         if (itemOnTile != null) {
             itemOnTile.doOnCollision();
-        }
+        }*/
     }
 }

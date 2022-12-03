@@ -3,7 +3,6 @@ package com.example.jewelchase230.items;
 import com.example.jewelchase230.Tile;
 import com.example.jewelchase230.Level;
 import com.example.jewelchase230.vectors.IntVector2D;
-
 import java.util.ArrayList;
 
 /**
@@ -23,7 +22,7 @@ public class Bomb extends Item {
     /** The index for currently displayed image in countdownArray. */
     private int currentImageInCountdown = 0;
     /** Whether the bomb has collided with a character. */
-    private boolean hasCollided = true;
+    private boolean hasCollided = false;
     /**  Whether the bomb has collided with an explosion. */
     private boolean fastExplode = false;
     /** The bomb image. */
@@ -243,6 +242,6 @@ public class Bomb extends Item {
      */
     @Override
     public void doOnThiefCollision() {
-    doOnCollision();
+        doOnCollision();
     }
 }
