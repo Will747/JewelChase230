@@ -1,6 +1,7 @@
 package com.example.jewelchase230.items;
 
 import com.example.jewelchase230.Tile;
+import com.example.jewelchase230.Level;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.util.ArrayList;
@@ -22,10 +23,9 @@ public class Bomb extends Item {
     /** The index for currently displayed image in countdownArray. */
     private int currentImageInCountdown = 0;
     /** Whether the bomb has collided with a character. */
-    private boolean hasCollided = false;
+    private boolean hasCollided = true;
     /**  Whether the bomb has collided with an explosion. */
     private boolean fastExplode = false;
-
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
     /** The bomb countdown images. */
@@ -136,27 +136,95 @@ public class Bomb extends Item {
     }
 
     /**
+     * Checks that a position is a valid tile in the current level.
+     * @param posToCheck The tile position to check is valid.
+     * @return True if valid, false if not.
+     */
+    public boolean checkValidTile(IntVector2D posToCheck) {
+        IntVector2D maxSize = getLevel().getLevelSize();
+        if (posToCheck.getX() >= maxSize.getX() || posToCheck.getY() >= maxSize.getY()
+        || posToCheck.getX() < 0 || posToCheck.getY() < 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Produces an explosion on a tile.
+     * @param posToExplode Tile to produce explosion on.
+     */
+    public void explodePosition(IntVector2D posToExplode) {
+        Level currentLevel = getLevel();
+        Item currentItem = currentLevel.getItem(posToExplode);
+        if (currentItem != null) {
+            if (checkValidRemove(currentItem)) {
+                if (currentItem instanceof Bomb) {
+                    Bomb newBomb = (Bomb) currentItem;
+                    currentItem.remove();
+                    getLevel().addItem(newBomb.getGridPosition(), newBomb);
+                    newBomb.fastExplode();
+                } else {
+                    currentLevel.removeItem(posToExplode);
+                    // Here is where an explosion image/animation should be added to the tile
+                }
+            }
+        } else {
+            // Here is where an explosion image/animation should be added to the tile
+        }
+    }
+
+    /**
      * Explosion removing all items on the same row and column, expect gates and
      * doors.
      */
     public void explode() {
         setTriggers(null);
-        ArrayList<Item> itemArray = getLevel().getAllItems();
-        final int currentXCoordinate = getGridPosition().getX();
-        final int currentYCoordinate = getGridPosition().getY();
-        for (Item itemInstance : itemArray) {
-            int itemInstanceX = itemInstance.getGridPosition().getX();
-            int itemInstanceY = itemInstance.getGridPosition().getY();
-            if ((itemInstanceX == currentXCoordinate || itemInstanceY == currentYCoordinate)
-            && !(currentXCoordinate == itemInstanceX && currentYCoordinate == itemInstanceY)) {
-                if (itemInstance instanceof Bomb) {
-                    Bomb newBomb = (Bomb) itemInstance;
-                    itemInstance.remove();
-                    getLevel().addItem(newBomb.getGridPosition(), newBomb);
-                    newBomb.fastExplode();
+        boolean continueExplosionUp = true;
+        boolean continueExplosionDown = true;
+        boolean continueExplosionLeft = true;
+        boolean continueExplosionRight = true;
+        int explodeUp = 0;
+        int explodeDown = 0;
+        int explodeLeft = 0;
+        int explodeRight = 0;
+        final IntVector2D currentPos = getGridPosition();
+        while (continueExplosionUp || continueExplosionDown || 
+        continueExplosionLeft || continueExplosionRight) {
+            if (continueExplosionUp) {
+                explodeUp += 1;
+                IntVector2D newPos = currentPos.add(new IntVector2D(0, explodeUp));
+                if (checkValidTile(newPos)) {
+                    explodePosition(newPos);
+                } else {
+                    continueExplosionUp = false;
                 }
-                if (checkValidRemove(itemInstance)) {
-                    itemInstance.remove();
+            }
+            if (continueExplosionDown) {
+                explodeDown -= 1;
+                IntVector2D newPos = currentPos.add(new IntVector2D(0, explodeDown));
+                if (checkValidTile(newPos)) {
+                    explodePosition(newPos);
+                } else {
+                    continueExplosionDown = false;
+                }
+            }
+            if (continueExplosionLeft) {
+                explodeLeft -= 1;
+                IntVector2D newPos = currentPos.add(new IntVector2D(explodeLeft, 0));
+                if (checkValidTile(newPos)) {
+                    explodePosition(newPos);
+                } else {
+                    continueExplosionLeft = false;
+                }
+            }
+            if (continueExplosionRight) {
+                explodeRight += 1;
+                IntVector2D newPos = currentPos.add(new IntVector2D(explodeRight, 0));
+                if (checkValidTile(newPos)) {
+                    explodePosition(newPos);
+                } else {
+                    continueExplosionRight = false;
                 }
             }
         }
@@ -170,11 +238,11 @@ public class Bomb extends Item {
         hasCollided = true;
     }
 
-    // /**
-    // * Thief collision is the same as player collision for bombs.
-    // */
-    // @Override
-    // public void doOnThiefCollision() {
-    // doOnCollision();
-    // }
+    /**
+     * Thief collision is the same as player collision for bombs.
+     */
+    @Override
+    public void doOnThiefCollision() {
+    doOnCollision();
+    }
 }
