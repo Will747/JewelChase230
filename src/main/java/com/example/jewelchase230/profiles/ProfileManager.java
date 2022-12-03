@@ -32,7 +32,7 @@ public class ProfileManager
 	static ArrayList<Integer> profileLevel = new ArrayList<Integer>();
 	
 	
-	static ArrayList<Profile> orderedProfilesAccordingToSlot = new ArrayList<Profile>();
+	public static ArrayList<Profile> orderedProfilesAccordingToSlot = new ArrayList<Profile>();
 
 	
     // Reads each line of the text file "Profile.txt"
@@ -75,16 +75,7 @@ public class ProfileManager
      */
     
     public static ArrayList<Profile> rearrangeListOfProfile(ArrayList<Profile> listOfProfile) {
-    	Profile a = new Profile(4,1,"Kiwi",4);
-    	Profile b = new Profile(1,3,"Adam",8);
-    	Profile c = new Profile(7,4,"Will",16);
-    	Profile d = new Profile(2,2,"Cos",3);
-
-    	listOfProfile.add(a);
-    	listOfProfile.add(b);
-    	listOfProfile.add(c);
-    	listOfProfile.add(d);
-
+    	
 
     	
     	
@@ -163,8 +154,21 @@ public class ProfileManager
 	}
 	
 	public static ArrayList<String> getProfileNames(){
-		String x = "Hi :) "; 
-		profileNames.add(x);
+		Profile a = new Profile(4,1,"Kiwi",4);
+    	Profile b = new Profile(1,3,"Adam",8);
+    	Profile c = new Profile(7,4,"Will",16);
+    	Profile d = new Profile(2,2,"Cos",3);
+
+    	listOfProfile.add(a);
+    	listOfProfile.add(b);
+    	listOfProfile.add(c);
+    	listOfProfile.add(d);
+
+    	rearrangeListOfProfile(listOfProfile);
+    	
+    	for (int i = 0; i <= 3; i++) { 
+    		profileNames.add(orderedProfilesAccordingToSlot.get(i).getPlayerName());
+    	}
 		return profileNames;
 	}
 
