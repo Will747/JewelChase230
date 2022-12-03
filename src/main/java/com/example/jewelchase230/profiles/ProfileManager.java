@@ -99,27 +99,8 @@ public class ProfileManager
      * Deletes a player profile from the player slots by overwriting its line as null
      * 
      */
-    public static void deleteProfile(Profile profile) throws IOException {
-    	BufferedWriter pmWriter = new BufferedWriter (new FileWriter("Profiles.txt")); 
+    public static void deleteProfile(Profile profile)  {
     	
-    	try {
-    		pmWriter.write(Profile.profileToString(profile));
-    		pmWriter.newLine();
-    		 for (int i = 0; i < profilesLineByLineData.size(); i++) {
-    			 pmWriter.write(profilesLineByLineData.get(i));
-    			 
-    			 if (i == profilesLineByLineData.size()) { 
-    				 pmWriter.newLine();
-    			 }
-    		 }
-    		
-    		pmWriter.close();
-    		
-     
-        } catch (FileNotFoundException e) {
-             System.out.println("An error occurred.");
-             e.printStackTrace();
- 	    } 	 
     }
     
     	
