@@ -42,10 +42,11 @@ public final class ProfileMenu {
     @FXML
     private void initialize()
     {
-        playerOne.setText(ProfileManager.getProfileNames().get(0));
-        playerTwo.setText(ProfileManager.getProfileNames().get(1));
+    	playerOne.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());       
+    	/**playerTwo.setText(ProfileManager.getProfileNames().get(1));
         playerThree.setText(ProfileManager.getProfileNames().get(2));
         playerFour.setText(ProfileManager.getProfileNames().get(3));
+        */
     }
 
     @FXML

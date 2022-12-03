@@ -16,10 +16,24 @@ import java.io.IOException;
 
 public class ProfileManager
 {
+	
+	/**
+	Profile b = new Profile(1,3,"Adam",8);
+	Profile c = new Profile(7,4,"Will",16);
+	Profile d = new Profile(2,2,"Cos",3);
+	*/
+	
+	/**
+	listOfProfile.add(b);
+	listOfProfile.add(c);
+	listOfProfile.add(d);
+	*/
+	
+	
 	/** ArrayList which holds each line of the Profiles.txt File */
 	static ArrayList <String> profilesLineByLineData = new ArrayList<String>();
 	/** ArrayList which holds a list of Profiles */
-	static ArrayList<Profile> listOfProfile = new ArrayList<Profile>();
+	public static ArrayList<Profile> listOfProfile = new ArrayList<Profile>();
 	/**Integer which holds a user's unique player ID */
 	static int uniqueIDFromFile;
 	/** Final int variable which holds the total number of 'splits' to be done */
@@ -71,23 +85,31 @@ public class ProfileManager
      */
     
     public static ArrayList<Profile> rearrangeListOfProfile(ArrayList<Profile> listOfProfile) {
-    	for (int i = 0; i <= 3; i++) { 
-    	
+		Profile a = new Profile(4,1,"Kiwi",4);
+	
+    	listOfProfile.add(a);
+    	for (int k = 0; k < listOfProfile.size(); k++) { 
+
     		
-    		switch (listOfProfile.get(i).getPlayerProfileSlot()) {
+    	
+    		System.out.println("profile slot" + listOfProfile.get(k).getPlayerProfileSlot());
+    		System.out.println("iteration: " + k);
+    		switch (listOfProfile.get(k).getPlayerProfileSlot()) {
+    		
     		case 1:
-    			orderedProfilesAccordingToSlot.add(0, listOfProfile.get(i));
+    			orderedProfilesAccordingToSlot.add(0, listOfProfile.get(k));
     			break;
     		case 2:
-    			orderedProfilesAccordingToSlot.add(1, listOfProfile.get(i));
+    			orderedProfilesAccordingToSlot.add(1, listOfProfile.get(k));
     			break;
     		case 3:
-    			orderedProfilesAccordingToSlot.add(2, listOfProfile.get(i));
+    			orderedProfilesAccordingToSlot.add(2, listOfProfile.get(k));
     			break;
     		case 4: 
-    			orderedProfilesAccordingToSlot.add(3, listOfProfile.get(i));
+    			orderedProfilesAccordingToSlot.add(3, listOfProfile.get(k));
     			break;
     		}
+    		
     	}
 		return orderedProfilesAccordingToSlot;
     
@@ -107,7 +129,7 @@ public class ProfileManager
         {
     		pmWriter.write(Profile.profileToString(profile));
     		pmWriter.newLine();
-    		 for (int i = 0; i < profilesLineByLineData.size(); i++) {
+    		 for (int i = 0; i <= profilesLineByLineData.size(); i++) {
     			 pmWriter.write(profilesLineByLineData.get(i));
     			 
     			 if (i != profilesLineByLineData.size()) { 
@@ -140,25 +162,15 @@ public class ProfileManager
 	}
 	
 	public static ArrayList<Profile> orderedProfilesAccordingToSlot(){ 
+		
+    	System.out.println("Hi");
+    	
+    	
 		return orderedProfilesAccordingToSlot;
 	}
 	
 	public static ArrayList<String> getProfileNames(){
-		Profile a = new Profile(4,1,"Kiwi",4);
-    	Profile b = new Profile(1,3,"Adam",8);
-    	Profile c = new Profile(7,4,"Will",16);
-    	Profile d = new Profile(2,2,"Cos",3);
-
-    	listOfProfile.add(a);
-    	listOfProfile.add(b);
-    	listOfProfile.add(c);
-    	listOfProfile.add(d);
-
-    	rearrangeListOfProfile(listOfProfile);
-    	
-    	for (int i = 0; i <= 3; i++) { 
-    		profileNames.add(orderedProfilesAccordingToSlot.get(i).getPlayerName());
-    	}
+		
 		return profileNames;
 	}
 
