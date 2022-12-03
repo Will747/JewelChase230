@@ -2,7 +2,6 @@ package com.example.jewelchase230.profiles;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -18,12 +17,14 @@ import java.io.IOException;
 
 public class ProfileManager
 {
-
-	private static int lineCount;
-	static ArrayList <String> profilesLineByLineData = new ArrayList<String>(); 
+	/** ArrayList which holds each line of the Profiles.txt File */
+	static ArrayList <String> profilesLineByLineData = new ArrayList<String>();
+	/** ArrayList which holds a list of Profiles */
+	static ArrayList<Profile> listOfProfile = new ArrayList<Profile>();
+	/**Integer which holds a user's unique player ID */
 	static int uniqueIDFromFile;
-	public static final int LINEBYLINEDATA_I = 4; 
-	
+	/** Final int variable which holds the total number of 'splits' to be done */
+	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4; 
 
 	
     // Reads each line of the text file "Profile.txt"
@@ -38,18 +39,16 @@ public class ProfileManager
         try {
             File myFile = new File("Profiles.txt");
             Scanner input = new Scanner(myFile);
-            //print statement for testing
-            System.out.println("readfile");
+           
             
             while (input.hasNextLine()) {
-            	lineCount++;
                 String data = input.nextLine();
                 profilesLineByLineData.add(data); 
-              
-               String[] lineDataSplit = data.split("\\.",4); 
-                uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
                 
-                System.out.println(lineCount);
+               String[] lineDataSplit = data.split("\\.",LINEBYLINEDATA_NUMBER_OF_CASES); 
+                uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
+                Profile tempProfile = new Profile(lineDataSplit);
+                listOfProfile.add(tempProfile);
             }
             
             input.close();
@@ -60,7 +59,7 @@ public class ProfileManager
     }
     
     
-   
+    
     
     
     /**
@@ -72,7 +71,7 @@ public class ProfileManager
        
     public static void saveProfile(Profile profile) throws IOException { 
     	BufferedWriter pmWriter = new BufferedWriter (new FileWriter("Profiles.txt")); 
-
+    	
     	try
         {
     		pmWriter.write(Profile.profileToString(profile));
@@ -93,22 +92,54 @@ public class ProfileManager
              e.printStackTrace();
  	    } 	 
     }
+    
+    
+    
+    /**
+     * Deletes a player profile from the player slots by overwriting its line as null
+     * 
+     */
+    public static void deleteProfile(Profile profile) throws IOException {
+    	BufferedWriter pmWriter = new BufferedWriter (new FileWriter("Profiles.txt")); 
+    	
+    	try {
+    		pmWriter.write(Profile.profileToString(profile));
+    		pmWriter.newLine();
+    		 for (int i = 0; i < profilesLineByLineData.size(); i++) {
+    			 pmWriter.write(profilesLineByLineData.get(i));
+    			 
+    			 if (i == profilesLineByLineData.size()) { 
+    				 pmWriter.newLine();
+    			 }
+    		 }
+    		
+    		pmWriter.close();
+    		
+     
+        } catch (FileNotFoundException e) {
+             System.out.println("An error occurred.");
+             e.printStackTrace();
+ 	    } 	 
+    }
+    
+    	
+
 
 
 
 	/**
-	 * @return the profilesLineByLineData
+	 * @return The profilesLineByLineData arraylist.
 	 */
 	public static ArrayList<String> getProfilesLineByLineData() {
 		return profilesLineByLineData;
 	}
-
-
-
-	/**
-	 * @return the linebylinedataI
-	 */
-	public static int getLinebylinedataI() {
-		return LINEBYLINEDATA_I;
+	
+	public static ArrayList<Profile> getListOfProfile(){ 
+		return listOfProfile;
 	}
+
+	
+
+
+	
 }

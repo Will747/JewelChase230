@@ -10,7 +10,6 @@ public class Profile {
 	
 	
 	
-	
 	private Integer uniquePlayerID;
 	private String playerProfileSlot;
 	private String playerName;
@@ -51,6 +50,10 @@ public class Profile {
 		  
 	  }
 	  
+	 
+	  
+	  
+
 	  /**
 	   * Method which takes a Profile object and returns it to a String format seperating each variable with a '.'.
 	   * This will be fed into the saveProfile() function.
