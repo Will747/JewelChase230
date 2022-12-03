@@ -13,9 +13,9 @@ import javafx.scene.input.KeyEvent;
  * Also added an activePlayerScore which will add score when loot is got, etc
  * These **May** need changed to private, not sure.
  *
- * To add in future once branches merged:
+ * To add in future once ready
  * upon Door, when level is completed, calls Profile to change currentLevel of
- * object Profile
+ * object Profile / or equivilant & other scores that may need updating
  * - Kiwi
  * I also added addToActiveScore in order to add points when collecting items
  * - Ben

@@ -9,13 +9,16 @@ public class Gate extends Item {
 
     /** The gate colour. */
     final private String colour;
+    
+    /** The gate image. */
+    private static final String GATE_IMAGE ="images/GATE.png";
 
     /**
      * Constructs a new gate.
      * @param colour defines the gate colour.
      */
     public Gate(final String colour) {
-        super(null);
+        super(GATE_IMAGE);
         setCollidable(false);
         this.colour = colour;
     }
