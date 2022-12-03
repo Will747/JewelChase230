@@ -26,7 +26,7 @@ public final class ProfileSelectMenu {
     @FXML
     private void initialize()
     {
-        playerOne.setText(ProfileManager.getProfileNames().get(0));
+        playerOne.setText(ProfileManager.getProfileNames().get(ProfileMenu.getProfileSelected()));
     }
 
     @FXML

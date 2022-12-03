@@ -15,6 +15,18 @@ import javafx.scene.input.MouseEvent;
  */
 public final class ProfileMenu {
 
+    private static int profileSelected;
+
+    private static void setProfileSelected(int profile)
+    {
+        profileSelected = profile;
+    }
+
+    public static int getProfileSelected()
+    {
+        return profileSelected;
+    }
+
     @FXML 
     private Label playerOne;
 
@@ -26,9 +38,6 @@ public final class ProfileMenu {
     
     @FXML
     private Label playerFour;
-
-
-
 
     @FXML
     private void initialize()
@@ -47,20 +56,24 @@ public final class ProfileMenu {
     @FXML
     void onP1Pressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileSelect());
+        setProfileSelected(0);
     }
 
     @FXML
     void onP2Pressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileSelect());
+        setProfileSelected(1);
     }
 
     @FXML
     void onP3Pressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileSelect());
+        setProfileSelected(2);
     }
 
     @FXML
     void onP4Pressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileSelect());
+        setProfileSelected(3);
     }
 }
