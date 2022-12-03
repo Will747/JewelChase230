@@ -1,4 +1,5 @@
 package com.example.jewelchase230;
+import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 /**
@@ -28,13 +29,9 @@ public abstract class Character extends Sprite {
 
         if (levelSize.getY() < gridPos.getY()) {
             if (tile.getTopLeft() == newTile.getBottomLeft() && (tile.getTopRight() == newTile.getBottomRight())) {
-                if (newTile.getItem() != null) {
-                    doOnCollision();
-                    return true;
-                }
+                return true;
             }
         }
-        // no interrupting items then make the move
         return false;
     }
 
@@ -52,14 +49,10 @@ public abstract class Character extends Sprite {
 
         if (levelSize.getY() > gridPos.getY()) {
             if (tile.getBottomLeft() == newTile.getTopLeft() && (tile.getBottomRight() == newTile.getTopRight())){
-                if (newTile.getItem() != null) {
-                    doOnCollision();
-                    return true;
-                }
+                return true;
             }
         }
         return false;
-        //no interrupting items then make the move
     }
 
     /**
@@ -76,14 +69,10 @@ public abstract class Character extends Sprite {
 
         if (levelSize.getX() > gridPos.getX()) {
             if (tile.getBottomRight() == newTile.getBottomRight() && (tile.getTopRight() == newTile.getTopRight())) {
-                if (newTile.getItem() != null) {
-                    doOnCollision();
                     return true;
-                }
             }
         }
         return false;
-        //if no interrupting items then make the move
     }
 
     /**
@@ -100,35 +89,17 @@ public abstract class Character extends Sprite {
 
         if (levelSize.getX() < gridPos.getX()) {
             if (tile.getBottomLeft() == newTile.getBottomLeft() && (tile.getTopLeft() == newTile.getTopLeft())) {
-                if (newTile.getItem() != null) {
-                    doOnCollision();
-                    return true;
-                }
+                return true;
             }
         }
         return false;
-        //if no interrupting items then make the move
     }
 
     /**
      * Method to collect item. If Character and Item are at the same tile, item will be collected.
      */
     protected void doOnCollision() {
-        // if item position = character position
-        //pick up
-        //else nothing
-    }
 
-    /**
-     * Method to see if a collision is occurring.
-     *
-     * @param z //just for now.
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
-     * @return True if a collision is taking place on the tile the character is on.
-     */
-    protected boolean collision(boolean z, int x, int y) {
-        return z;
     }
 
     /**
@@ -140,4 +111,16 @@ public abstract class Character extends Sprite {
     public void tick(int time) {
 
     }
+
+    @Override
+    public void setGridPosition(IntVector2D inGridPosition) {
+        super.setGridPosition(inGridPosition);
+        Item itemOnTile = getLevel().getTile(inGridPosition).getItem();
+        if (itemOnTile != null) {
+            itemOnTile.doOnCollision();
+        }
+    }
 }
+
+// if (newTile.getItem() != null) {
+//         doOnCollision();
