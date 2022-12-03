@@ -1,6 +1,15 @@
-4 4
+15 10
 200
-rbrg gbgr bbrr grbr rbrg gbgr bbrr grbr rbrg gbgr bbrr grbr rbrg gbgr bbrr grbr
+bbbb yyyy cccc cccc cccc cccc rrrr yyyy rrrr cccc cccc cccc cccc yyry bbbb
+bbbb bbbb cccc cccc cccc cccg ccgg ccgg ccgg ccgc cccc cccc cccc bbbb cccc
+cccc cccc bbbb cccc cccc cgcg cmcm mmmm mcmc gcgc cccc cccc bbbb bbbb cccc
+cccc cccc bbbb cccc cccc cgcc ggcc gggg ggcc gccc cccc cccc bbbb cccc cccc
+cccc cccc bbbb bbbb cccc cccc cccc cccc cccc cccc cccc bbbb cccc cccc cccc
+cccc cccc cccc bbbb bbbb bbbb mmbb bbbb mmbb bbbb bbbb bbbb cccc cccc cccc
+gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg
+cccc ggcc ggcc ggcc ggcc ggcc rrrr mmmm rrrr ggcc ggcc ggcc ggcc ggcc cccc
+ccyy brmm ccyy ccyy ccyy ccyy rrrr mmmm rrrr ccyy ccyy ccyy ccyy rrmm ccyy
+yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy
 1 1 1 a b 20
 2 0 1 a b 20
 8 1 1 a b 4
