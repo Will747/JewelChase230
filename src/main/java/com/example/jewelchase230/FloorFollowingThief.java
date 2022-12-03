@@ -19,16 +19,16 @@ public class FloorFollowingThief extends AICharacter {
         int x = this.getGridPosition().getX();
         int y = this.getGridPosition().getY();
 
-        if (canMoveUp(x, y)) {
+        if (canMoveUp()) {
             y = y + 1;
         } else {
-            if (canMoveRight(x, y)) {
+            if (canMoveRight()) {
                 x = x + 1;
             } else {
-                if (canMoveDown(x, y)) {
+                if (canMoveDown()) {
                     y = y - 1;
                 } else {
-                    if (canMoveLeft(x, y)) {
+                    if (canMoveLeft()) {
                         x = x - 1;
                     }
                 }

@@ -1,5 +1,4 @@
 package com.example.jewelchase230;
-
 import com.example.jewelchase230.vectors.IntVector2D;
 
 /**
@@ -18,15 +17,21 @@ public abstract class Character extends Sprite {
     /**
      * Checks if the character can move up.
      *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    protected boolean canMoveUp(int x, int y) {
-        IntVector2D yTry = new IntVector2D(getGridPosition().getX(), getGridPosition().getY() + 1);
-        if (getLevel().getLevelSize().getY() < getGridPosition().getY()) {
-            if ((getLevel().getTile(getGridPosition()).getTopLeft() == getLevel().getTile(yTry).getBottomLeft()) && (getLevel().getTile(getGridPosition()).getTopRight() == getLevel().getTile(yTry).getBottomRight())) {
-                return true;
+    protected boolean canMoveUp() {
+        IntVector2D levelSize = getLevel().getLevelSize();
+        IntVector2D gridPos = getGridPosition();
+        IntVector2D yTry = new IntVector2D(gridPos.getX(), gridPos.getY() + 1);
+        Tile tile = getLevel().getTile(gridPos);
+        Tile newTile = getLevel().getTile(yTry);
+
+        if (levelSize.getY() < gridPos.getY()) {
+            if (tile.getTopLeft() == newTile.getBottomLeft() && (tile.getTopRight() == newTile.getBottomRight())) {
+                if (newTile.getItem() != null) {
+                    doOnCollision();
+                    return true;
+                }
             }
         }
         // no interrupting items then make the move
@@ -36,15 +41,21 @@ public abstract class Character extends Sprite {
     /**
      *Checks if the character can move down.
      *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    protected boolean canMoveDown(int x, int y) {
-        IntVector2D yTry = new IntVector2D(getGridPosition().getX(), getGridPosition().getY() - 1);
-        if (getLevel().getLevelSize().getY() > getGridPosition().getY()) {
-            if ((getLevel().getTile(getGridPosition()).getBottomLeft() == getLevel().getTile(yTry).getTopLeft()) && (getLevel().getTile(getGridPosition()).getBottomRight() == getLevel().getTile(yTry).getTopRight())){
-                return true;
+    protected boolean canMoveDown() {
+        IntVector2D levelSize = getLevel().getLevelSize();
+        IntVector2D gridPos = getGridPosition();
+        IntVector2D yTry = new IntVector2D(gridPos.getX(), gridPos.getY() - 1);
+        Tile tile = (getLevel().getTile(gridPos));
+        Tile newTile = getLevel().getTile(yTry);
+
+        if (levelSize.getY() > gridPos.getY()) {
+            if (tile.getBottomLeft() == newTile.getTopLeft() && (tile.getBottomRight() == newTile.getTopRight())){
+                if (newTile.getItem() != null) {
+                    doOnCollision();
+                    return true;
+                }
             }
         }
         return false;
@@ -54,15 +65,21 @@ public abstract class Character extends Sprite {
     /**
      * Checks if the character can move right.
      *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      * @return a boolean, true or false.
      */
-    protected boolean canMoveRight(int x, int y) {
-        IntVector2D xTry = new IntVector2D(getGridPosition().getX() + 1, getGridPosition().getY());
-        if (getLevel().getLevelSize().getX() > getGridPosition().getX()) {
-            if ((getLevel().getTile(getGridPosition()).getBottomRight() == getLevel().getTile(xTry).getBottomRight()) && (getLevel().getTile(getGridPosition()).getTopRight() == getLevel().getTile(xTry).getTopRight())) {
-                return true;
+    protected boolean canMoveRight() {
+        IntVector2D levelSize = getLevel().getLevelSize();
+        IntVector2D gridPos = getGridPosition();
+        IntVector2D xTry = new IntVector2D(gridPos.getX() + 1, gridPos.getY());
+        Tile tile = (getLevel().getTile(gridPos));
+        Tile newTile = getLevel().getTile(xTry);
+
+        if (levelSize.getX() > gridPos.getX()) {
+            if (tile.getBottomRight() == newTile.getBottomRight() && (tile.getTopRight() == newTile.getTopRight())) {
+                if (newTile.getItem() != null) {
+                    doOnCollision();
+                    return true;
+                }
             }
         }
         return false;
@@ -72,15 +89,21 @@ public abstract class Character extends Sprite {
     /**
      * Checks if the character can move left.
      *
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
      * @return a boolean, true or false
      */
-    protected boolean canMoveLeft(int x, int y) {
-        IntVector2D xTry = new IntVector2D(getGridPosition().getX() - 1, getGridPosition().getY());
-        if (getLevel().getLevelSize().getX() < getGridPosition().getX()) {
-            if ((getLevel().getTile(getGridPosition()).getBottomLeft() == getLevel().getTile(xTry).getBottomLeft()) && (getLevel().getTile(getGridPosition()).getTopLeft() == getLevel().getTile(xTry).getTopLeft())) {
-                return true;
+    protected boolean canMoveLeft() {
+        IntVector2D levelSize = getLevel().getLevelSize();
+        IntVector2D gridPos = getGridPosition();
+        IntVector2D xTry = new IntVector2D(gridPos.getX() - 1, gridPos.getY());
+        Tile tile = (getLevel().getTile(gridPos));
+        Tile newTile = getLevel().getTile(xTry);
+
+        if (levelSize.getX() < gridPos.getX()) {
+            if (tile.getBottomLeft() == newTile.getBottomLeft() && (tile.getTopLeft() == newTile.getTopLeft())) {
+                if (newTile.getItem() != null) {
+                    doOnCollision();
+                    return true;
+                }
             }
         }
         return false;
@@ -89,17 +112,11 @@ public abstract class Character extends Sprite {
 
     /**
      * Method to collect item. If Character and Item are at the same tile, item will be collected.
-     *
-     * @param z //just for now.
-     * @param x X position on the grid.
-     * @param y Y position on the grid.
-     * @return True if an item is on the same tile as a character, else false.
      */
-    protected boolean collectItem(boolean z, int x, int y) {
+    protected void doOnCollision() {
         // if item position = character position
         //pick up
         //else nothing
-        return z;
     }
 
     /**

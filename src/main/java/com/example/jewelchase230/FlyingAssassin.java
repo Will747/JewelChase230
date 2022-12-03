@@ -82,6 +82,7 @@ public class FlyingAssassin extends AICharacter {
 //        NPC is flying, it does not respect the floor move-
 //        ment rules and simply always travels straight. The
 //        movement is either vertical or horizontal.
+
 //        If the Flying Assassin connects with (i.e. occupies
 //        the same tile) the player, the player loses. If they
 //        connect with another NPC, that NPC is removed
