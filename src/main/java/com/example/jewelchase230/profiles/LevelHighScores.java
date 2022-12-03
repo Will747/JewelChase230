@@ -13,8 +13,7 @@ import java.util.LinkedList;
  *
  */
 public class LevelHighScores implements Serializable {
-	/** integer which holds the player's current level */
-	private int playerCurrentLevel;
+	
 
 	/** ArrayList holds scores of all players from this Level */
 	private ArrayList<ProfileScore> levelScoreList = new ArrayList<>();
@@ -76,12 +75,9 @@ public class LevelHighScores implements Serializable {
 		return topTenHighScores;
 	}
 
-	/**
-	 * @return the levelID
-	 */
-	public int getLevelID() {
-		return playerCurrentLevel;
-	}
+	
+	
+	
 
 	/**
 	 * @return the levelScoreList
@@ -90,12 +86,7 @@ public class LevelHighScores implements Serializable {
 		return levelScoreList;
 	}
 
-	/**
-	 * @return the playerCurrentLevel
-	 */
-	public int getPlayerCurrentLevel() {
-		return playerCurrentLevel;
-	}
+	
 
 	/**
 	 * @return the playerLevelScore

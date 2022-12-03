@@ -86,106 +86,57 @@ public class LevelFileReader {
         int ID = lineScanner.nextInt();
 
         // Makes the appropriate object from the ID provided from the file.
+        int x = lineScanner.nextInt();
+        int y = lineScanner.nextInt();
+        IntVector2D tempPos = new IntVector2D(x, y);
         switch (ID) {
             case 1:{
-                while (lineScanner.hasNext()) {
-                    int x = lineScanner.nextInt();
-                    int y = lineScanner.nextInt();
-                    IntVector2D tempItemPos = new IntVector2D(x, y);
-                    String name = lineScanner.next();
-                    String fileName = lineScanner.next();
-                    int time = lineScanner.nextInt();
-                    Bomb tempBomb = new Bomb(time);
-                    levelBuilt.addItem(tempItemPos, tempBomb);
-                }
+                    Bomb tempBomb = new Bomb();
+                    levelBuilt.addItem(tempPos, tempBomb);
                 break;
             }
             case 2:{
-                while (lineScanner.hasNext()) {
-                    int x = lineScanner.nextInt();
-                    int y = lineScanner.nextInt();
-                    IntVector2D tempItemPos = new IntVector2D(x, y);
-                    String name = lineScanner.next();
-                    String fileName = lineScanner.next();
                     int time = lineScanner.nextInt();
                     Clock tempClock = new Clock(time);
-                    levelBuilt.addItem(tempItemPos, tempClock);
-                }
+                    levelBuilt.addItem(tempPos, tempClock);
                 break;
             }
             case 3:{
-                while (lineScanner.hasNext()) {
-                    int x = lineScanner.nextInt();
-                    int y = lineScanner.nextInt();
-                    IntVector2D tempItemPos = new IntVector2D(x, y);
-                    String name = lineScanner.next();
-                    String fileName = lineScanner.next();
                     Door tempDoor = new Door();
-                    levelBuilt.addItem(tempItemPos, tempDoor);
-                }
+                    levelBuilt.addItem(tempPos, tempDoor);
                 break;
             }
             case 4:{
-                while (lineScanner.hasNext()) {
-                    int x = lineScanner.nextInt();
-                    int y = lineScanner.nextInt();
-                    IntVector2D tempItemPos = new IntVector2D(x, y);
-                    String name = lineScanner.next();
-                    String fileName = lineScanner.next();
                     String colour = lineScanner.next();
                     Lever tempLever = new Lever(colour);
-                    levelBuilt.addItem(tempItemPos, tempLever);
-                }
+                    levelBuilt.addItem(tempPos, tempLever);
                 break;
             }
             case 5:{
-                while (lineScanner.hasNext()) {
-                    int x = lineScanner.nextInt();
-                    int y = lineScanner.nextInt();
-                    IntVector2D tempItemPos = new IntVector2D(x, y);
-                    String name = lineScanner.next();
-                    String fileName = lineScanner.next();
                     String colour = lineScanner.next();
                     Gate tempGate = new Gate(colour);
-                    levelBuilt.addItem(tempItemPos, tempGate);
-                }
+                    levelBuilt.addItem(tempPos, tempGate);
                 break;
             }
             case 6:{
-                while (lineScanner.hasNext()) {
-                    int x = lineScanner.nextInt();
-                    int y = lineScanner.nextInt();
                     String directionString = lineScanner.next();
                     Direction direction = Direction.getDirectionType(directionString);
-                    IntVector2D tempItemPos = new IntVector2D(x, y);
                     FloorFollowingThief tempThief = new FloorFollowingThief();
                     // levelBuilt.addNPC(tempItemPos, tempThief);
-                }
                 break;
             }
             case 7:{
-                while (lineScanner.hasNext()) {
-                    int x = lineScanner.nextInt();
-                    int y = lineScanner.nextInt();
                     String directionString = lineScanner.next();
                     Direction direction = Direction.getDirectionType(directionString);
                     IntVector2D tempNPCPos = new IntVector2D(x, y);
                     FlyingAssassin tempAssassin = new FlyingAssassin(direction);
                     // LevelBuilt.addNPC(tempItemPos, tempAssassin);
-                }
                 break;
             }
             case 8:{
-                while (lineScanner.hasNext()) {
-                    int x = lineScanner.nextInt();
-                    int y = lineScanner.nextInt();
-                    IntVector2D tempItemPos = new IntVector2D(x, y);
-                    String name = lineScanner.next();
-                    String fileName = lineScanner.next();
                     int rarity = lineScanner.nextInt();
                     Loot tempLoot = new Loot();
-                    levelBuilt.addItem(tempItemPos, tempLoot);
-                }
+                    levelBuilt.addItem(tempPos, tempLoot);
                 break;
             }
             default:{

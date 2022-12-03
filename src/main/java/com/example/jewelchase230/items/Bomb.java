@@ -14,18 +14,21 @@ public class Bomb extends Item {
 
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
+    private static final String BOMB_COUNTDOWN_3 = "images/BOMB_3.png";
+    private static final String BOMB_COUNTDOWN_2 = "images/BOMB_2.png";
+    private static final String BOMB_COUNTDOWN_1 = "images/BOMB_1.png";
+
 
     /** The time until the bomb explodes. */
-    private int time;
 
     /**
      * Constructs a new bomb.
      * @param inTime The time delay until the bomb explodes.
      */
-    public Bomb(final int inTime) {
-        super(BOMB_IMAGE);
+    public Bomb() {
+        super();
+        setImageFromFile(BOMB_IMAGE);
         setCollidable(false);
-        time = inTime;
 
         //May not be in a level at the time of construction
         //setTriggers(getGridPosition());
@@ -35,16 +38,6 @@ public class Bomb extends Item {
      * Sets the time until the bomb explodes.
      * @param newTime The time.
      */
-    public void setTime(final int newTime) {
-        this.time = newTime;
-    }
-
-    /**
-     * @return The time until the bomb explodes.
-     */
-    public int getTime() {
-        return this.time;
-    }
 
     /**
      * Check if item type is valid to be removed.
@@ -120,17 +113,32 @@ public class Bomb extends Item {
     public void doOnCollision() {
         for (int i = 0; i < 3; i++) { //change when there are different bomb countdown images
             tick(1000);
+            //i doubt this will work, but here's some dummy code for this? 
+            
+           /** switch (i) {
+            case 0:
+                setImageFromFile(BOMB_COUNTDOWN_3);
+              break;
+            case 1: 
+            	setImageFromFile(BOMB_COUNTDOWN_2);
+            	break;
+            case 2: 
+            	setImageFromFile(BOMB_COUNTDOWN_1);
+            	break;
+            } 
+            */
+            
             //change image
         }
         explode();
         remove();
     }
 
-    /**
-     * Thief collision is the same as player collision for bombs.
-     */
-    @Override
-    public void doOnThiefCollision() {
-        doOnCollision();
-    }
+//    /**
+//     * Thief collision is the same as player collision for bombs.
+//     */
+//    @Override
+//    public void doOnThiefCollision() {
+//        doOnCollision();
+//    }
 }

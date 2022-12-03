@@ -1,9 +1,10 @@
 package com.example.jewelchase230;
+
 import com.example.jewelchase230.vectors.IntVector2D;
 
 /**
- * Implements the Flying Assassin. A class to implement the move patterns and events of the AICharater
- * Flying Assassin.
+ * Implements the Flying Assassin. A class to implement the move
+ * patterns and events of the AICharater Flying Assassin.
  *
  * @author Caroline Segestaal.
  */
@@ -11,12 +12,13 @@ public class FlyingAssassin extends AICharacter {
 
     /**
      * Constructs a renderable component.
+     *
      * @param d Direction the Flying assassin is facing.
      */
-    public FlyingAssassin(Direction d) {
+    public FlyingAssassin(final Direction d) {
         super();
 
-        setImageFromFile("images/CAT_BLACK_SIT.png");
+        setImageFromFile("images/FLYING_ASSASSIN_LEFT_FACE.png");
     }
 
     /**
@@ -24,28 +26,81 @@ public class FlyingAssassin extends AICharacter {
      *
      * @param d Direction the Flying assassin is facing.
      */
-    protected void getNextMove(Direction d) {
+    protected void getNextMove(final Direction d) {
+        IntVector2D gridPos = getGridPosition();
+        IntVector2D levelSize = getLevel().getLevelSize();
+
         switch (d) {
-            case UP: if (getGridPosition().getY() < getLevel().getLevelSize().getY()) {
-                setGridPosition(new IntVector2D(getGridPosition().getX(), getGridPosition().getY() + 1));
-            } else {
-                getNextMove(d.getOppositeDirection(d));
-            }
-            case DOWN: if (getGridPosition().getY() > getLevel().getLevelSize().getY()) {
-                setGridPosition(new IntVector2D(getGridPosition().getX(), getGridPosition().getY() - 1));
-            } else {
-                getNextMove(d.getOppositeDirection(d));
-            }
-            case LEFT: if (getGridPosition().getX() > getLevel().getLevelSize().getX()) {
-                setGridPosition(new IntVector2D(getGridPosition().getX() - 1, getGridPosition().getY()));
-            } else {
-                getNextMove(d.getOppositeDirection(d));
-            }
-            case RIGHT: if (getGridPosition().getX() < getLevel().getLevelSize().getX()) {
-                setGridPosition(new IntVector2D(getGridPosition().getX() + 1, getGridPosition().getY()));
-            } else {
-                getNextMove(d.getOppositeDirection(d));
-            }
+            case UP:
+                if (gridPos.getY() < levelSize.getY()) {
+                    IntVector2D newPos = gridPos.add(
+                            new IntVector2D(0, 1));
+                    setGridPosition(newPos);
+                    Character npc = getLevel().getSpecificCharacter(
+                            newPos.getX(), newPos.getY());
+
+                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+                        getLevel().gameOver();
+                    }
+
+                    if (npc != null) {
+                        getLevel().removeSpecificNPC(newPos);
+                    }
+
+                } else {
+                    getNextMove(d.getOppositeDirection(d));
+                }
+            case DOWN:
+                if (gridPos.getY() > levelSize.getY()) {
+                    IntVector2D newPos = gridPos.add(
+                            new IntVector2D(0, -1));
+                    setGridPosition(newPos);
+                    Character npc = getLevel().getSpecificCharacter(
+                            newPos.getX(), newPos.getY());
+
+                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+                        getLevel().gameOver();
+                    }
+                    if (npc != null) {
+                        getLevel().removeSpecificNPC(newPos);
+                    }
+                } else {
+                    getNextMove(d.getOppositeDirection(d));
+                }
+            case LEFT:
+                if (gridPos.getX() > levelSize.getX()) {
+                    IntVector2D newPos = gridPos.add(
+                            new IntVector2D(-1, 0));
+                    setGridPosition(newPos);
+                    Character npc = getLevel().getSpecificCharacter(
+                            newPos.getX(), newPos.getY());
+
+                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+                        getLevel().gameOver();
+                    }
+                    if (npc != null) {
+                        getLevel().removeSpecificNPC(newPos);
+                    }
+                } else {
+                    getNextMove(d.getOppositeDirection(d));
+                }
+            default: //RIGHT
+                if (gridPos.getX() < levelSize.getX()) {
+                    IntVector2D newPos = gridPos.add(
+                            new IntVector2D(1, 0));
+                    setGridPosition(newPos);
+                    Character npc = getLevel().getSpecificCharacter(
+                            newPos.getX(), newPos.getY());
+
+                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+                        getLevel().gameOver();
+                    }
+                    if (npc != null) {
+                        getLevel().removeSpecificNPC(newPos);
+                    }
+                } else {
+                    getNextMove(d.getOppositeDirection(d));
+                }
         }
     }
 
@@ -58,16 +113,6 @@ public class FlyingAssassin extends AICharacter {
     public void tick(final int time) {
 
     }
-
-//    /**
-//     * Draws this item to the canvas.
-//     *
-//     * @param gc GraphicsContext for creating draw class.
-//     */
-//    @Override
-//    public void draw(GraphicsContext gc) {
-//        //gc.drawImage(new Image("/images/CAT_BLACK_SIT.png"), 1, 1);
-//    }
 }
 
 
@@ -78,6 +123,7 @@ public class FlyingAssassin extends AICharacter {
 //        NPC is flying, it does not respect the floor move-
 //        ment rules and simply always travels straight. The
 //        movement is either vertical or horizontal.
+
 //        If the Flying Assassin connects with (i.e. occupies
 //        the same tile) the player, the player loses. If they
 //        connect with another NPC, that NPC is removed

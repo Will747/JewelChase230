@@ -10,7 +10,7 @@ public class Clock extends Item {
     private static final String CLOCK_IMAGE = "images/CLOCK.png";
 
     /** Additional time clock provides to player. */
-    private int time;
+    private int timeFromClock;
 
     /**
      * Constructs a clock.
@@ -18,7 +18,7 @@ public class Clock extends Item {
      */
     public Clock(final int inTime) {
         super(CLOCK_IMAGE);
-        time = inTime;
+        timeFromClock = inTime;
     }
 
     /**
@@ -26,7 +26,7 @@ public class Clock extends Item {
      * @param newTime The new additional time value.
      */
     public void setTime(int newTime) {
-        time = newTime;
+        timeFromClock = newTime;
     }
 
     /**
@@ -34,7 +34,7 @@ public class Clock extends Item {
      * @return The additional time value.
      */
     public int getTime() {
-        return time;
+        return timeFromClock;
     }
 
     /**
@@ -42,7 +42,7 @@ public class Clock extends Item {
      */
     @Override
     public void doOnCollision() {
-        getLevel().addTime(time);
+        getLevel().addTime(timeFromClock);
         remove();
     }
 }

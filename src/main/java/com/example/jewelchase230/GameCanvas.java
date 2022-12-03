@@ -14,8 +14,8 @@ public class GameCanvas extends Canvas {
     /**
      * Constructs a new instance of GameCanvas.
      *
-     * @param width width used by canvas before scaling.
-     * @param height height used by canvas before scaling.
+     * @param width initial width used by canvas.
+     * @param height initial height used by canvas.
      */
     public GameCanvas(final double width, final double height) {
         super(width, height);

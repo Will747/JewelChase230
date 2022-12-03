@@ -221,10 +221,27 @@ public class Level {
     public Character getSpecificCharacter(final int x, final int y) {
         Character wantedCharacter = null;
         for (Character c: characters) {
-            if (c.getGridPosition().getX() == x && c.getGridPosition().getY() == y) {
+            IntVector2D cPos = c.getGridPosition();
+            if (cPos.getX() == x && cPos.getY() == y) {
                 wantedCharacter =  c;
             }
         }
         return wantedCharacter;
+    }
+
+    /**
+     * Removes a specific Character from the game.
+     * @param pos The position on the grid the character is on.
+     */
+    public void removeSpecificNPC(final IntVector2D pos) {
+        Character character = getSpecificCharacter(pos.getX(), pos.getY());
+        characters.remove(character);
+    }
+
+    /**
+     * Method to end the game if the player loses.
+     */
+    public void gameOver() {
+        Main.switchRoot(Menu.getMainMenu());
     }
 }

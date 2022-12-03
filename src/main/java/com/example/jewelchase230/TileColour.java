@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 
 /**
  * Tile colour - Holds the image for a colour on a section of a tile.
+ *
+ * @author Will Kaye
  */
 public enum TileColour {
     /** Red Colour. */
@@ -16,7 +18,11 @@ public enum TileColour {
     /** Green Colour. */
     Green("images/WOODFLOOR_GREEN.png"),
     /** Yellow Colour. */
-    Yellow("images/WOODFLOOR_PINK.png");
+    Yellow("images/WOODFLOOR_YELLOW.png"),
+    /** Magenta Colour.*/
+    Magenta("images/WOODFLOOR_MAGENTA.png"),
+    /** Cyan Colour. */
+    Cyan("images/WOODFLOOR_MAGENTA.png");
 
     /** The colour of a section of a tile. */
     private Image image = null;
@@ -39,6 +45,9 @@ public enum TileColour {
             case 'r' -> Red;
             case 'g' -> Green;
             case 'b' -> Blue;
+            case 'm' -> Magenta;
+            case 'c' -> Cyan;
+            case 'y' -> Yellow;
             default -> Yellow;
         };
     }
