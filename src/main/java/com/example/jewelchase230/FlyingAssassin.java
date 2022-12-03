@@ -33,9 +33,11 @@ public class FlyingAssassin extends AICharacter {
         switch (d) {
             case UP:
                 if (gridPos.getY() < levelSize.getY()) {
-                    IntVector2D newPos = gridPos.add(new IntVector2D(0, 1));
+                    IntVector2D newPos = gridPos.add(
+                            new IntVector2D(0, 1));
                     setGridPosition(newPos);
-                    Character npc = getLevel().getSpecificCharacter(newPos.getX(), newPos.getY());
+                    Character npc = getLevel().getSpecificCharacter(
+                            newPos.getX(), newPos.getY());
 
                     if (getLevel().getPlayer().getGridPosition() == newPos) {
                         getLevel().gameOver();
@@ -50,9 +52,11 @@ public class FlyingAssassin extends AICharacter {
                 }
             case DOWN:
                 if (gridPos.getY() > levelSize.getY()) {
-                    IntVector2D newPos = gridPos.add(new IntVector2D(0, -1));
+                    IntVector2D newPos = gridPos.add(
+                            new IntVector2D(0, -1));
                     setGridPosition(newPos);
-                    Character npc = getLevel().getSpecificCharacter(newPos.getX(), newPos.getY());
+                    Character npc = getLevel().getSpecificCharacter(
+                            newPos.getX(), newPos.getY());
 
                     if (getLevel().getPlayer().getGridPosition() == newPos) {
                         getLevel().gameOver();
@@ -65,9 +69,11 @@ public class FlyingAssassin extends AICharacter {
                 }
             case LEFT:
                 if (gridPos.getX() > levelSize.getX()) {
-                    IntVector2D newPos = gridPos.add(new IntVector2D(-1, 0));
+                    IntVector2D newPos = gridPos.add(
+                            new IntVector2D(-1, 0));
                     setGridPosition(newPos);
-                    Character npc = getLevel().getSpecificCharacter(newPos.getX(), newPos.getY());
+                    Character npc = getLevel().getSpecificCharacter(
+                            newPos.getX(), newPos.getY());
 
                     if (getLevel().getPlayer().getGridPosition() == newPos) {
                         getLevel().gameOver();
@@ -80,10 +86,12 @@ public class FlyingAssassin extends AICharacter {
                 }
             default: //RIGHT
                 if (gridPos.getX() < levelSize.getX()) {
-                    IntVector2D newPos = gridPos.add(new IntVector2D(1, 0));
+                    IntVector2D newPos = gridPos.add(
+                            new IntVector2D(1, 0));
                     setGridPosition(newPos);
-                    Character npc = getLevel().getSpecificCharacter(newPos.getX(), newPos.getY());
-                    
+                    Character npc = getLevel().getSpecificCharacter(
+                            newPos.getX(), newPos.getY());
+
                     if (getLevel().getPlayer().getGridPosition() == newPos) {
                         getLevel().gameOver();
                     }

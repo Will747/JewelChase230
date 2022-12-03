@@ -229,11 +229,18 @@ public class Level {
         return wantedCharacter;
     }
 
+    /**
+     * Removes a specific Character from the game.
+     * @param pos The position on the grid the character is on.
+     */
     public void removeSpecificNPC(final IntVector2D pos) {
         Character character = getSpecificCharacter(pos.getX(), pos.getY());
         characters.remove(character);
     }
 
+    /**
+     * Method to end the game if the player loses.
+     */
     public void gameOver() {
         Main.switchRoot(Menu.getMainMenu());
     }

@@ -11,7 +11,7 @@ public final class SmartThief extends AICharacter {
     }
 
     @Override
-    protected void getNextMove(final IntVector2D move) {
-        super.getNextMove(move);
+    protected void getNextMove(final IntVector2D move, final Direction d) {
+        super.getNextMove(move, d);
     }
 }
