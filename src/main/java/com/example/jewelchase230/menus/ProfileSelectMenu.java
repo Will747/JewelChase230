@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
+import com.example.jewelchase230.profiles.ProfileManager;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -24,7 +26,7 @@ public final class ProfileSelectMenu {
     @FXML
     private void initialize()
     {
-        playerOne.setText("");
+        playerOne.setText(ProfileManager.getProfileNames().get(0));
     }
 
     @FXML
