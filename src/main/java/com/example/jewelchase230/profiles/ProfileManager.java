@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 /**
  * This class manages the handling of Profiles, including the .txt files of which
  * Profiles will be written/read from during saving and loading.
@@ -58,10 +57,6 @@ public class ProfileManager
         }
     }
     
-    
-    
-    
-    
     /**
      * Overwrites the Profiles.txt file with updated Profile information
      * 
@@ -93,8 +88,6 @@ public class ProfileManager
  	    } 	 
     }
     
-    
-    
     /**
      * Deletes a player profile from the player slots by overwriting its line as null
      * 
@@ -103,11 +96,6 @@ public class ProfileManager
     	
     }
     
-    	
-
-
-
-
 	/**
 	 * @return The profilesLineByLineData arraylist.
 	 */
@@ -117,10 +105,5 @@ public class ProfileManager
 	
 	public static ArrayList<Profile> getListOfProfile(){ 
 		return listOfProfile;
-	}
-
-	
-
-
-	
+	}	
 }

@@ -24,7 +24,7 @@ public final class ProfileSelectMenu {
     @FXML
     private void initialize()
     {
-        playerOne.setText("IT HAS CHANGED!!!!!!!!!!! LETS GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        playerOne.setText("");
     }
 
     @FXML
