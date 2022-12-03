@@ -29,8 +29,8 @@ public abstract class Character extends Sprite {
         Tile newTile = getLevel().getTile(yTry);
 
         if (levelSize.getY() < gridPos.getY()) {
-            if (tile.getTopLeft() == newTile.getBottomLeft() &&
-                    (tile.getTopRight() == newTile.getBottomRight())) {
+            if (tile.getTopLeft() == newTile.getBottomLeft()
+                    && (tile.getTopRight() == newTile.getBottomRight())) {
                 return true;
             }
         }
@@ -51,8 +51,8 @@ public abstract class Character extends Sprite {
         Tile newTile = getLevel().getTile(yTry);
 
         if (levelSize.getY() > gridPos.getY()) {
-            if (tile.getBottomLeft() == newTile.getTopLeft() &&
-                    (tile.getBottomRight() == newTile.getTopRight())){
+            if (tile.getBottomLeft() == newTile.getTopLeft()
+                    && (tile.getBottomRight() == newTile.getTopRight())) {
                 return true;
             }
         }
@@ -73,8 +73,8 @@ public abstract class Character extends Sprite {
         Tile newTile = getLevel().getTile(xTry);
 
         if (levelSize.getX() > gridPos.getX()) {
-            if (tile.getBottomRight() == newTile.getBottomRight() &&
-                    (tile.getTopRight() == newTile.getTopRight())) {
+            if (tile.getBottomRight() == newTile.getBottomRight()
+                    && (tile.getTopRight() == newTile.getTopRight())) {
                     return true;
             }
         }
@@ -95,8 +95,8 @@ public abstract class Character extends Sprite {
         Tile newTile = getLevel().getTile(xTry);
 
         if (levelSize.getX() < gridPos.getX()) {
-            if (tile.getBottomLeft() == newTile.getBottomLeft() &&
-                    (tile.getTopLeft() == newTile.getTopLeft())) {
+            if (tile.getBottomLeft() == newTile.getBottomLeft()
+                    && (tile.getTopLeft() == newTile.getTopLeft())) {
                 return true;
             }
         }
@@ -117,12 +117,16 @@ public abstract class Character extends Sprite {
      * @param time Time since last frame in milliseconds.
      */
     @Override
-    public void tick(int time) {
+    public void tick(final int time) {
 
     }
 
+    /**
+     * Changes the position of this on the grid.
+     * @param inGridPosition New position on the grid.
+     */
     @Override
-    public void setGridPosition(IntVector2D inGridPosition) {
+    public void setGridPosition(final IntVector2D inGridPosition) {
         super.setGridPosition(inGridPosition);
         Item itemOnTile = getLevel().getTile(inGridPosition).getItem();
         if (itemOnTile != null) {
@@ -130,6 +134,3 @@ public abstract class Character extends Sprite {
         }
     }
 }
-
-// if (newTile.getItem() != null) {
-//         doOnCollision();

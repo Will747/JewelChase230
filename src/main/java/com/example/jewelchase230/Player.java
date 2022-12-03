@@ -26,7 +26,7 @@ public class Player extends Character {
     private int playerCurrentLevel;
 
     /** The players current score. */
-	private int playerActiveScore;
+    private int playerActiveScore;
 
     /**
      * Constructs a renderable component.
