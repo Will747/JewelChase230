@@ -23,12 +23,14 @@ public abstract class Character extends Sprite {
     protected boolean canMoveUp() {
         IntVector2D levelSize = getLevel().getLevelSize();
         IntVector2D gridPos = getGridPosition();
-        IntVector2D yTry = new IntVector2D(gridPos.getX(), gridPos.getY() + 1);
+        IntVector2D yTry =
+                new IntVector2D(gridPos.getX(), gridPos.getY() + 1);
         Tile tile = getLevel().getTile(gridPos);
         Tile newTile = getLevel().getTile(yTry);
 
         if (levelSize.getY() < gridPos.getY()) {
-            if (tile.getTopLeft() == newTile.getBottomLeft() && (tile.getTopRight() == newTile.getBottomRight())) {
+            if (tile.getTopLeft() == newTile.getBottomLeft() &&
+                    (tile.getTopRight() == newTile.getBottomRight())) {
                 return true;
             }
         }
@@ -43,12 +45,14 @@ public abstract class Character extends Sprite {
     protected boolean canMoveDown() {
         IntVector2D levelSize = getLevel().getLevelSize();
         IntVector2D gridPos = getGridPosition();
-        IntVector2D yTry = new IntVector2D(gridPos.getX(), gridPos.getY() - 1);
+        IntVector2D yTry =
+                new IntVector2D(gridPos.getX(), gridPos.getY() - 1);
         Tile tile = (getLevel().getTile(gridPos));
         Tile newTile = getLevel().getTile(yTry);
 
         if (levelSize.getY() > gridPos.getY()) {
-            if (tile.getBottomLeft() == newTile.getTopLeft() && (tile.getBottomRight() == newTile.getTopRight())){
+            if (tile.getBottomLeft() == newTile.getTopLeft() &&
+                    (tile.getBottomRight() == newTile.getTopRight())){
                 return true;
             }
         }
@@ -63,12 +67,14 @@ public abstract class Character extends Sprite {
     protected boolean canMoveRight() {
         IntVector2D levelSize = getLevel().getLevelSize();
         IntVector2D gridPos = getGridPosition();
-        IntVector2D xTry = new IntVector2D(gridPos.getX() + 1, gridPos.getY());
+        IntVector2D xTry =
+                new IntVector2D(gridPos.getX() + 1, gridPos.getY());
         Tile tile = (getLevel().getTile(gridPos));
         Tile newTile = getLevel().getTile(xTry);
 
         if (levelSize.getX() > gridPos.getX()) {
-            if (tile.getBottomRight() == newTile.getBottomRight() && (tile.getTopRight() == newTile.getTopRight())) {
+            if (tile.getBottomRight() == newTile.getBottomRight() &&
+                    (tile.getTopRight() == newTile.getTopRight())) {
                     return true;
             }
         }
@@ -83,12 +89,14 @@ public abstract class Character extends Sprite {
     protected boolean canMoveLeft() {
         IntVector2D levelSize = getLevel().getLevelSize();
         IntVector2D gridPos = getGridPosition();
-        IntVector2D xTry = new IntVector2D(gridPos.getX() - 1, gridPos.getY());
+        IntVector2D xTry =
+                new IntVector2D(gridPos.getX() - 1, gridPos.getY());
         Tile tile = (getLevel().getTile(gridPos));
         Tile newTile = getLevel().getTile(xTry);
 
         if (levelSize.getX() < gridPos.getX()) {
-            if (tile.getBottomLeft() == newTile.getBottomLeft() && (tile.getTopLeft() == newTile.getTopLeft())) {
+            if (tile.getBottomLeft() == newTile.getBottomLeft() &&
+                    (tile.getTopLeft() == newTile.getTopLeft())) {
                 return true;
             }
         }
@@ -96,7 +104,8 @@ public abstract class Character extends Sprite {
     }
 
     /**
-     * Method to collect item. If Character and Item are at the same tile, item will be collected.
+     * Method to collect item. If Character and Item are at the same tile,
+     * item will be collected.
      */
     protected void doOnCollision() {
 
