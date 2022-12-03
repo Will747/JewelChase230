@@ -22,7 +22,7 @@ public class LevelTest {
         Level testLevel = new Level(new IntVector2D(5, 5));
 
         IntVector2D itemPos = new IntVector2D(0, 0);
-        testLevel.addItem(itemPos, new Bomb(5));
+        testLevel.addItem(itemPos, new Bomb());
 
         assertNotNull(testLevel.getItem(itemPos));
     }
@@ -31,8 +31,8 @@ public class LevelTest {
     public void getItemsOfTypeTest() {
         Level testLevel = new Level(new IntVector2D(5, 5));
 
-        testLevel.addItem(new IntVector2D(0, 0), new Bomb(5));
-        testLevel.addItem(new IntVector2D(0, 1), new Bomb(5));
+        testLevel.addItem(new IntVector2D(0, 0), new Bomb());
+        testLevel.addItem(new IntVector2D(0, 1), new Bomb());
         testLevel.addItem(new IntVector2D(0, 2), new Gate("Red"));
 
         ArrayList<Bomb> bombs = testLevel.getAllItemsOfType(Bomb.class);
@@ -43,8 +43,8 @@ public class LevelTest {
     public void getAllItemsTest() {
         Level testLevel = new Level(new IntVector2D(5, 5));
 
-        testLevel.addItem(new IntVector2D(0, 0), new Bomb(5));
-        testLevel.addItem(new IntVector2D(0, 1), new Bomb(5));
+        testLevel.addItem(new IntVector2D(0, 0), new Bomb());
+        testLevel.addItem(new IntVector2D(0, 1), new Bomb());
         testLevel.addItem(new IntVector2D(0, 2), new Gate("Red"));
 
         ArrayList<Item> items = testLevel.getAllItems();

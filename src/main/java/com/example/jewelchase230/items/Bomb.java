@@ -20,17 +20,15 @@ public class Bomb extends Item {
 
 
     /** The time until the bomb explodes. */
-    private int time;
 
     /**
      * Constructs a new bomb.
      * @param inTime The time delay until the bomb explodes.
      */
-    public Bomb(final int inTime) {
+    public Bomb() {
         super();
         setImageFromFile(BOMB_IMAGE);
         setCollidable(false);
-        time = inTime;
 
         //May not be in a level at the time of construction
         //setTriggers(getGridPosition());
@@ -40,16 +38,6 @@ public class Bomb extends Item {
      * Sets the time until the bomb explodes.
      * @param newTime The time.
      */
-    public void setTime(final int newTime) {
-        this.time = newTime;
-    }
-
-    /**
-     * @return The time until the bomb explodes.
-     */
-    public int getTime() {
-        return this.time;
-    }
 
     /**
      * Check if item type is valid to be removed.
