@@ -2,6 +2,7 @@ package com.example.jewelchase230;
 
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.DoubleVector2D;
+
 import javafx.scene.canvas.GraphicsContext;
 
 /**
@@ -9,17 +10,17 @@ import javafx.scene.canvas.GraphicsContext;
  * each side.
  */
 public final class Tile extends Renderable {
-    /** Number of corners in a triangle. */
-    private static final int CORNERS_IN_A_TRIANGLE = 3;
-    /** Top side of tile. */
-    private final TileColour top;
-    /** Bottom side of tile. */
-    private final TileColour bottom;
-    /** Left side of tile. */
-    private final TileColour left;
+    /** The width of the border around the tile. */
+    private static final double BORDER_WIDTH = 0.04;
 
-    /** Right side of tile. */
-    private final TileColour right;
+    /** Top left side of tile. */
+    private final TileColour topLeft;
+    /** Bottom left side of tile. */
+    private final TileColour bottomLeft;
+    /** Top right side of tile. */
+    private final TileColour topRight;
+    /** Bottom right side of tile. */
+    private final TileColour bottomRight;
 
     /**
      * Item currently on this tile.
@@ -29,20 +30,20 @@ public final class Tile extends Renderable {
 
     /**
      * Constructs a new tile.
-     * @param inTop Top colour
-     * @param inBottom Bottom colour
-     * @param inLeft Left colour
-     * @param inRight Right colour
+     * @param inTopLeft Top left colour
+     * @param inTopRight Top right colour
+     * @param inBottomLeft Bottom left colour
+     * @param inBottomRight Bottom right colour
      */
-    public Tile(final TileColour inTop,
-                final TileColour inBottom,
-                final TileColour inLeft,
-                final TileColour inRight) {
+    public Tile(final TileColour inTopLeft,
+                final TileColour inTopRight,
+                final TileColour inBottomLeft,
+                final TileColour inBottomRight) {
         super();
-        top = inTop;
-        bottom = inBottom;
-        left = inLeft;
-        right = inRight;
+        topLeft = inTopLeft;
+        topRight = inTopRight;
+        bottomLeft = inBottomLeft;
+        bottomRight = inBottomRight;
     }
 
     /**
@@ -61,90 +62,54 @@ public final class Tile extends Renderable {
     }
 
     /**
-     * @return Top side of tile
+     * @return Top left part of the tile.
      */
-    public TileColour getTop() {
-        return top;
+    public TileColour getTopLeft() {
+        return topLeft;
     }
 
     /**
-     * @return Left side of tile
+     * @return Top right part of tile.
      */
-    public TileColour getLeft() {
-        return left;
+    public TileColour getTopRight() {
+        return topRight;
     }
 
     /**
-     * @return Right side of tile
+     * @return Bottom left part of tile.
      */
-    public TileColour getRight() {
-        return right;
+    public TileColour getBottomLeft() {
+        return bottomLeft;
     }
 
     /**
-     * @return Bottom side of tile
+     * @return Bottom right part of tile.
      */
-    public TileColour getBottom() {
-        return bottom;
+    public TileColour getBottomRight() {
+        return bottomRight;
     }
 
-    private void drawTriangle(
-            final GraphicsContext gc,
-            final DoubleVector2D[] points,
-            final TileColour colour) {
-        if (points.length == CORNERS_IN_A_TRIANGLE) {
-            double[] xVtx = new double[CORNERS_IN_A_TRIANGLE];
-            double[] yVtx = new double[CORNERS_IN_A_TRIANGLE];
-
-            // Left
-            xVtx[0] = points[0].getX();
-            yVtx[0] = points[0].getY();
-
-            xVtx[1] = points[1].getX();
-            yVtx[1] = points[1].getY();
-
-            xVtx[2] = points[2].getX();
-            yVtx[2] = points[2].getY();
-
-            gc.setFill(colour.getColour());
-            gc.fillPolygon(xVtx, yVtx, CORNERS_IN_A_TRIANGLE);
-        }
-    }
-
+    /**
+     * Draws the tile with all four sections.
+     */
     @Override
     public void draw(final GraphicsContext gc) {
-
         DoubleVector2D pos = getRenderPosition();
-        double size = getCubeSize();
+        double cubeSize = getCubeSize();
+        double halfSize = cubeSize / 2;
 
-        DoubleVector2D topRightCorner = pos.add(
-                new DoubleVector2D(size, 0));
-        DoubleVector2D bottomLeft = pos.add(
-                new DoubleVector2D(0, size)
-        );
-        DoubleVector2D bottomRight = pos.add(size);
-        DoubleVector2D center = pos.add(size / 2);
+        gc.drawImage(
+                topLeft.getImage(), pos.getX(), pos.getY(), halfSize, halfSize);
+        gc.drawImage(
+                topRight.getImage(), pos.getX() + halfSize, pos.getY(),
+                halfSize, halfSize);
+        gc.drawImage(bottomLeft.getImage(), pos.getX(), pos.getY() + halfSize,
+                halfSize, halfSize);
+        gc.drawImage(bottomRight.getImage(), pos.getX() + halfSize,
+                pos.getY() + halfSize, halfSize, halfSize);
 
-        DoubleVector2D[] points = new DoubleVector2D[CORNERS_IN_A_TRIANGLE];
-
-        // Left
-        points[0] = pos;
-        points[1] = center;
-        points[2] = bottomLeft;
-        drawTriangle(gc, points, left);
-
-        // Top
-        points[2] = topRightCorner;
-        drawTriangle(gc, points, top);
-
-        // Right
-        points[0] = bottomRight;
-        drawTriangle(gc, points, right);
-
-        // Bottom
-        points[0] = bottomLeft;
-        points[2] = bottomRight;
-        drawTriangle(gc, points, bottom);
+        gc.setLineWidth(halfSize * BORDER_WIDTH);
+        gc.strokeRect(pos.getX(), pos.getY(), cubeSize, cubeSize);
     }
 
     @Override

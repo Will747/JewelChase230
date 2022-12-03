@@ -1,15 +1,15 @@
 package com.example.jewelchase230;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.Parent;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 
 /**
- * Class containing static functions for getting the scene of any menu in the
- * game.
+ * Class containing static functions for getting the parent nodes of any menu in
+ * the game.
  *
  * @author Will Kaye, Daniel Clark
  */
@@ -29,11 +29,11 @@ public final class Menu {
     private static final String PROFILE_SELECT_FXML = "profile-select.fxml";
 
 
-    /** Already created scenes. */
-    private static HashMap<String, Scene> cachedScenes;
+    /** Already created parent nodes. */
+    private static HashMap<String, Parent> cachedParents;
 
     private Menu() {
-        
+
     }
 
     /**
@@ -41,67 +41,66 @@ public final class Menu {
      * This must be run before any scenes can be accessed.
      */
     public static void initMenus() throws IOException {
-        cachedScenes = new HashMap<>();
+        cachedParents = new HashMap<>();
 
-        createScene(MAIN_MENU_FXML);
-        createScene(TEST_MENU_FXML);
-        createScene(SETTINGS_MENU_FXML);
-        createScene(HIGHSCORE_TABLE_FXML);
-        createScene(PROFILE_MENU_FXML);
-        createScene(PROFILE_SELECT_FXML);
+        createParent(MAIN_MENU_FXML);
+        createParent(TEST_MENU_FXML);
+        createParent(SETTINGS_MENU_FXML);
+        createParent(HIGHSCORE_TABLE_FXML);
+        createParent(PROFILE_MENU_FXML);
+        createParent(PROFILE_SELECT_FXML);
     }
-    
+
     /**
-     * Creates a new scene and adds it to the cache.
+     * Creates a new parent node and adds it to the cache.
      * @param fxmlFile fxmlFile that should be in the scene.
      */
-    private static void createScene(final String fxmlFile) throws IOException {
+    private static void createParent(final String fxmlFile) throws IOException {
         URL url = Menu.class.getResource(fxmlFile);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load());
-        cachedScenes.put(fxmlFile, scene);
+        cachedParents.put(fxmlFile, fxmlLoader.load());
     }
 
     /**
-     * @return main menu scene.
+     * @return main menu node.
      */
-    public static Scene getMainMenu() {
-        return getScene(MAIN_MENU_FXML);
+    public static Parent getMainMenu() {
+        return getParent(MAIN_MENU_FXML);
     }
 
     /**
-     * @return test menu scene.
+     * @return test menu node.
      */
-    public static Scene getTestMenu() {
-        return getScene(TEST_MENU_FXML);
+    public static Parent getTestMenu() {
+        return getParent(TEST_MENU_FXML);
     }
 
     /**
-     * @return profile menu scene.
+     * @return profile menu node.
      */
-    public static Scene getProfileMenu() {
-    	return getScene(PROFILE_MENU_FXML);
+    public static Parent getProfileMenu() {
+    	return getParent(PROFILE_MENU_FXML);
     }
 
     /**
-     * @return profile menu scene.
+     * @return profile menu node.
      */
-    public static Scene getProfileSelect() {
-    	return getScene(PROFILE_SELECT_FXML);
+    public static Parent getProfileSelect() {
+    	return getParent(PROFILE_SELECT_FXML);
     }
 
     /**
-     * @return settings menu scene.
+     * @return settings menu node.
      */
-    public static Scene getSettingsMenu() {
-        return getScene(SETTINGS_MENU_FXML);
+    public static Parent getSettingsMenu() {
+        return getParent(SETTINGS_MENU_FXML);
     }
 
     /**
-     * @return highscores table scene.
+     * @return highscores table node.
      */
-    public static Scene getHighScoreTable() {
-        return getScene(HIGHSCORE_TABLE_FXML);
+    public static Parent getHighScoreTable() {
+        return getParent(HIGHSCORE_TABLE_FXML);
     }
 
     /**
@@ -109,14 +108,7 @@ public final class Menu {
      * @param fxmlFile fxml file being loaded.
      * @return scene containing menu from fxml file.
      */
-    private static Scene getScene(final String fxmlFile) {
-        return cachedScenes.get(fxmlFile);
+    private static Parent getParent(final String fxmlFile) {
+        return cachedParents.get(fxmlFile);
     }
-
-	/**
-	 * @return the cachedScenes
-	 */
-	public static HashMap<String, Scene> getCachedScenes() {
-		return cachedScenes;
-	}
 }

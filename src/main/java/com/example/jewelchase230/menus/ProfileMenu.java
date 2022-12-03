@@ -12,39 +12,39 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Controller for the profile menus - changing scenes
+ * Controller for the profile menus - changing scenes.
  *
  * @author Daniel Clark
  */
 public final class ProfileMenu {
     @FXML
     void onBackToMainMenuPressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getMainMenu());
+        Main.switchRoot(Menu.getMainMenu());
     }
 
     @FXML
     void onBackToProfileMenuPressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getProfileMenu());
+        Main.switchRoot(Menu.getProfileMenu());
     }
 
     @FXML
     void onP1Pressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getProfileSelect());
+        Main.switchRoot(Menu.getProfileSelect());
     }
 
     @FXML
     void onP2Pressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getProfileSelect());
+        Main.switchRoot(Menu.getProfileSelect());
     }
 
     @FXML
     void onP3Pressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getProfileSelect());
+        Main.switchRoot(Menu.getProfileSelect());
     }
 
     @FXML
     void onP4Pressed(final MouseEvent event) {
-        Main.switchToScene(Menu.getProfileSelect());
+        Main.switchRoot(Menu.getProfileSelect());
     }
 
     @FXML

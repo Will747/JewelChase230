@@ -1,5 +1,7 @@
 package com.example.jewelchase230.vectors;
 
+import java.util.Objects;
+
 /**
  * Two-dimensional vector.
  * @param <E> The type used by x,y coordinates.
@@ -54,5 +56,15 @@ public class Vector2D<E extends Number> {
      */
     public void setY(final E inY) {
         y = inY;
+    }
+
+    /**
+     * Compares two vectors returns true if they are the same.
+     * @param value vector to compare against.
+     * @return True if vector is the same.
+     */
+    public boolean equals(final Vector2D value) {
+        return Objects.equals(x, value.getX())
+                && Objects.equals(y, value.getY());
     }
 }

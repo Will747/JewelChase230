@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 /**
  * Represents Sprites in the game.
  *
- * @author Caroline Segestaal.
+ * @author Caroline Segestaal and Will Kaye.
  */
 public abstract class Sprite extends Renderable {
     /**
