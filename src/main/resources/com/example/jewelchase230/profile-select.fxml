@@ -39,7 +39,7 @@
          <children>
             <Button layoutX="65.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onBackToProfileMenuPressed" prefHeight="120.0" prefWidth="120.0" text="Back" />
             <Button layoutX="240.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onStartGamePressed" prefHeight="120.0" prefWidth="120.0" text="Start" />
-            <Button layoutX="420.0" layoutY="14.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" text="Delete" />
+            <Button layoutX="420.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onDeletePressed" prefHeight="120.0" prefWidth="120.0" text="Delete" />
          </children>
       </Pane>
    </children>
