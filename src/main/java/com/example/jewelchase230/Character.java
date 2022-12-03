@@ -104,14 +104,6 @@ public abstract class Character extends Sprite {
     }
 
     /**
-     * Method to collect item. If Character and Item are at the same tile,
-     * item will be collected.
-     */
-    protected void doOnCollision() {
-
-    }
-
-    /**
      * Called just before the grid gets re-rendered.
      *
      * @param time Time since last frame in milliseconds.
@@ -122,7 +114,7 @@ public abstract class Character extends Sprite {
     }
 
     /**
-     * Changes the position of this on the grid.
+     * Changes the position of the character on the grid and handles collisions.
      * @param inGridPosition New position on the grid.
      */
     @Override

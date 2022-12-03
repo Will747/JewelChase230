@@ -15,7 +15,7 @@ public abstract class AICharacter extends Character {
         super();
     }
 
-    protected void getNextMove(final IntVector2D move) {
+    protected void getNextMove(final IntVector2D move, final Direction d) {
 
     }
 }
