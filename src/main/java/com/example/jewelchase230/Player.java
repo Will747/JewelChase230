@@ -23,7 +23,7 @@ import javafx.scene.input.KeyEvent;
 public class Player extends Character {
 
     /** The current level number. */
-	private int playerCurrentLevel;
+    private int playerCurrentLevel;
 
     /** The players current score. */
 	private int playerActiveScore;
