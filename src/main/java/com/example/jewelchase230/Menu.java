@@ -46,6 +46,7 @@ public final class Menu {
      */
     public static void initMenus() throws IOException {
         cachedParents = new HashMap<>();
+        cachedControllers = new HashMap<>();
 
         createParent(MAIN_MENU_FXML);
         createParent(TEST_MENU_FXML);
