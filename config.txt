@@ -1,3 +1,3 @@
 musicVolume=89.09774436090225
 sfxVolume=57.89473684210527
-fullScreen=true
+fullScreen=false
