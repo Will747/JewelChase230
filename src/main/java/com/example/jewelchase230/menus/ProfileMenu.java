@@ -15,66 +15,110 @@ import javafx.scene.input.MouseEvent;
  */
 public final class ProfileMenu {
 
-    private static int profileSelected;
+	private static int profileSelected;
 
-    private static void setProfileSelected(int profile)
-    {
-        profileSelected = profile;
-    }
+	private static void setProfileSelected(int profile) {
+		profileSelected = profile;
+	}
 
-    public static int getProfileSelected()
-    {
-        return profileSelected;
-    }
+	public static int getProfileSelected() {
+		return profileSelected;
+	}
 
-    @FXML 
-    private Label playerOne;
+	@FXML
+	private Label playerOne;
 
-    @FXML
-    private Label playerTwo;
+	@FXML
+	private Label playerTwo;
 
-    @FXML
-    private Label playerThree;
-    
-    @FXML
-    private Label playerFour;
+	@FXML
+	private Label playerThree;
 
-    @FXML
-    private void initialize()
-    {
-    	playerOne.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(0).getPlayerName());       
-    	playerTwo.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(1).getPlayerName());       
-    	playerThree.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(2).getPlayerName());       
-    	playerFour.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(3).getPlayerName());       
-        
-    }
+	@FXML
+	private Label playerFour;
 
-    @FXML
-    void onBackToMainMenuPressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getMainMenu());
-    }
+	@FXML
+	private void initialize() {
+		for (int i = 0; i <= 3; i++) {
 
-    @FXML
-    void onP1Pressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getProfileSelect());
-        setProfileSelected(0);
-    }
+			if (isProfileEmpty(i) == false) {
+				switch (i) {
+				case 0:
+					playerOne.setText(
+							ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(0).getPlayerName());
+					break;
+				case 1:
+					playerTwo.setText(
+							ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(1).getPlayerName());
+					break;
+				case 2:
+					playerThree.setText(
+							ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(2).getPlayerName());
+					break;
+				case 3:
+					playerFour.setText(
+							ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(3).getPlayerName());
+					break;
+				}
 
-    @FXML
-    void onP2Pressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getProfileSelect());
-        setProfileSelected(1);
-    }
+			} else if (isProfileEmpty(i) == true) {
+				switch (i) {
+				case 0:
+					playerOne.setText("P1");
+					break;
+				case 1:
+					playerTwo.setText("P2");
+					break;
+				case 2:
+					playerThree.setText("P3");
+					break;
+				case 3:
+					playerFour.setText("P4");
+					break;
+				}
+			}
+		}
+	}
 
-    @FXML
-    void onP3Pressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getProfileSelect());
-        setProfileSelected(2);
-    }
+	private boolean isProfileEmpty(int i) {
+		boolean isListIEmpty;
 
-    @FXML
-    void onP4Pressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getProfileSelect());
-        setProfileSelected(3);
-    }
+		if (ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(i) == null)
+			 isListIEmpty = true;
+		else { 
+			isListIEmpty = false;
+			
+		}
+	
+		return isListIEmpty;
+	}
+
+	@FXML
+	void onBackToMainMenuPressed(final MouseEvent event) {
+		Main.switchRoot(Menu.getMainMenu());
+	}
+
+	@FXML
+	void onP1Pressed(final MouseEvent event) {
+		Main.switchRoot(Menu.getProfileSelect());
+		setProfileSelected(0);
+	}
+
+	@FXML
+	void onP2Pressed(final MouseEvent event) {
+		Main.switchRoot(Menu.getProfileSelect());
+		setProfileSelected(1);
+	}
+
+	@FXML
+	void onP3Pressed(final MouseEvent event) {
+		Main.switchRoot(Menu.getProfileSelect());
+		setProfileSelected(2);
+	}
+
+	@FXML
+	void onP4Pressed(final MouseEvent event) {
+		Main.switchRoot(Menu.getProfileSelect());
+		setProfileSelected(3);
+	}
 }
