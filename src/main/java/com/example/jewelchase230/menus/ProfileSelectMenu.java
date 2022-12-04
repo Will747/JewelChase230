@@ -21,12 +21,12 @@ import javafx.stage.Modality;
 public final class ProfileSelectMenu {
 
     @FXML 
-    private Label playerOne;
+    private Label selectPlayer;
 
     @FXML
     private void initialize()
     {
-    	playerOne.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());
+    	selectPlayer.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());
     	
     
     }

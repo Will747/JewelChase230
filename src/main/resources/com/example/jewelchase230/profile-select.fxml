@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileSelectMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileSelectMenu">
    <children>
       <Label alignment="TOP_CENTER" text="Profiles" underline="true">
          <font>
@@ -21,7 +21,7 @@
       </Label>
       <Pane prefHeight="166.0" prefWidth="475.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
          <children>
-            <Label fx:id="playerOne" alignment="CENTER" layoutX="156.0" layoutY="10.0" prefHeight="142.0" prefWidth="277.0" text="Player" />
+            <Label fx:id="selectPlayer" alignment="CENTER" layoutX="156.0" layoutY="10.0" prefHeight="142.0" prefWidth="277.0" text="Player" />
             <ImageView fitHeight="142.0" fitWidth="146.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
                <image>
                   <Image url="@../fxmlImages/CAT_BLACK_SIT.png" />
