@@ -49,7 +49,6 @@ public abstract class Character extends Sprite {
      * @return a boolean, true or false.
      */
     protected IntVector2D canMoveUp() {
-        //System.out.println("attempting to move up");
         IntVector2D gridPos = getGridPosition();
         int currentDifference = 0;
         boolean stillInRange = true;
