@@ -25,7 +25,7 @@ public final class Tile extends Renderable {
     /** Bottom right side of tile. */
     private final TileColour bottomRight;
 
-    private IntVector2D bombNextToTile = null;
+    private ArrayList<IntVector2D> bombsNextToTile = new ArrayList<>();
 
     /**
      * Item currently on this tile.
@@ -52,19 +52,28 @@ public final class Tile extends Renderable {
     }
 
     public boolean isNextToBomb(){
-        if(bombNextToTile == null){
+        if(bombsNextToTile.size() < 1){
             return false;
         } else {
             return true;
         }
     }
 
-    public Item getBomb() {
-        return getLevel().getItem(bombNextToTile);
+    public ArrayList<Item> getBombs() {
+        ArrayList<Item> itemArray = new ArrayList<>();
+        for (IntVector2D vectorInstance : bombsNextToTile) {
+            itemArray.add(getLevel().getItem(vectorInstance));
+        }
+        return itemArray;
     }
 
     public void setBombTrigger(IntVector2D bombPos){
-        bombNextToTile = bombPos;
+
+        bombsNextToTile.add(bombPos);
+    }
+
+    public void removeBombTrigger(IntVector2D bombPos) {
+        bombsNextToTile.remove(bombPos);
     }
 
 
