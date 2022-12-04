@@ -109,26 +109,8 @@ public class FlyingAssassin extends AICharacter {
                 break;
         }
     }
-
-//    /**
-//     * Called just before the grid gets re-rendered.
-//     *
-//     * @param time Time since last frame in milliseconds.
-//     */
-//    @Override
-//    public void tick(final int time) {
-//
-//    }
 }
 
-
-//        It moves in a straight line in
-//        the direction it is facing until it reaches the edge
-//        of the level. On reaching the edge, it rotates 180
-//        degrees and continues moving forward. As this
-//        NPC is flying, it does not respect the floor move-
-//        ment rules and simply always travels straight. The
-//        movement is either vertical or horizontal.
 
 //        If the Flying Assassin connects with (i.e. occupies
 //        the same tile) the player, the player loses. If they
