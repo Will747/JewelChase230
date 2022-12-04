@@ -1,5 +1,6 @@
 package com.example.jewelchase230;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -32,6 +33,9 @@ public final class Menu {
     /** Already created parent nodes. */
     private static HashMap<String, Parent> cachedParents;
 
+    /** Already initialized controllers. */
+    private static HashMap<String, Object> cachedControllers;
+
     private Menu() {
 
     }
@@ -42,6 +46,7 @@ public final class Menu {
      */
     public static void initMenus() throws IOException {
         cachedParents = new HashMap<>();
+        cachedControllers = new HashMap<>();
 
         createParent(MAIN_MENU_FXML);
         createParent(TEST_MENU_FXML);
@@ -59,6 +64,7 @@ public final class Menu {
         URL url = Menu.class.getResource(fxmlFile);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         cachedParents.put(fxmlFile, fxmlLoader.load());
+        cachedControllers.put(fxmlFile, fxmlLoader.getController());
     }
 
     /**
@@ -83,7 +89,7 @@ public final class Menu {
     }
 
     /**
-     * @return profile menu node.
+     * @return menu with one profile.
      */
     public static Parent getProfileSelect() {
     	return getParent(PROFILE_SELECT_FXML);
@@ -104,11 +110,20 @@ public final class Menu {
     }
 
     /**
-     * gets a Scene from the cache.
+     * Gets a Parent node from the cache.
      * @param fxmlFile fxml file being loaded.
      * @return scene containing menu from fxml file.
      */
     private static Parent getParent(final String fxmlFile) {
         return cachedParents.get(fxmlFile);
+    }
+
+    /**
+     * Gets a controller from the cache.
+     * @param fxmlFile fxml file being loaded.
+     * @return controller used by fxml file.
+     */
+    private static Object getController(final String fxmlFile) {
+        return cachedControllers.get(fxmlFile);
     }
 }
