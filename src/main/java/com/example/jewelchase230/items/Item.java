@@ -2,10 +2,8 @@ package com.example.jewelchase230.items;
 
 import com.example.jewelchase230.Sprite;
 import com.example.jewelchase230.vectors.IntVector2D;
-import javafx.scene.image.Image;
 import java.util.ArrayList;
 
-import java.io.FileNotFoundException;
 
 /**
  * The default class for all items.

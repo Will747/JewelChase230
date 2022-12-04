@@ -9,6 +9,10 @@ import com.example.jewelchase230.vectors.IntVector2D;
  * @author Caroline Segestaal.
  */
 public class FlyingAssassin extends AICharacter {
+    /** Left facing image. */
+    final static String FACING_LEFT_IMAGE = "images/FLYING_ASSASSIN_LEFT_FACE.png";
+    /** Right facing image. */
+    final static String FACING_RIGHT_IMAGE = "images/FLYING_ASSASSIN_RIGHT_FACE.png";
 
     /**
      * Constructs a renderable component.
@@ -16,7 +20,7 @@ public class FlyingAssassin extends AICharacter {
      */
     public FlyingAssassin(Direction inDirection) {
         setDirection(inDirection);
-        setImageFromFile("images/FLYING_ASSASSIN_LEFT_FACE.png");
+        setImageFromFile(imageManager(inDirection));
     }
 
     /**
@@ -30,8 +34,10 @@ public class FlyingAssassin extends AICharacter {
         int yDiff = newPos.getY();
         IntVector2D potentialPosition = canMove(xDiff, yDiff, this, null);
         if (potentialPosition == currentPos) {
-            currentDirection = currentDirection.getOppositeDirection(currentDirection);
+            Direction newDirection = currentDirection.getOppositeDirection(currentDirection);
+            currentDirection = newDirection;
             setGridPosition(canMove(0-xDiff, 0-yDiff, this, null));
+            setImageFromFile(imageManager(newDirection));
         } else {
             setGridPosition(potentialPosition);
         }
@@ -115,6 +121,19 @@ public class FlyingAssassin extends AICharacter {
                 }
                 break;
         } */
+    }
+
+    /**
+     * Gets the correct image depending on the direction.
+     * @param d new direction.
+     * @return image corresponding with the direction.
+     */
+    private String imageManager(Direction d) {
+        return switch (d) {
+            case LEFT -> FACING_LEFT_IMAGE;
+            case RIGHT -> FACING_RIGHT_IMAGE;
+            default -> FACING_LEFT_IMAGE;
+        };
     }
 }
 

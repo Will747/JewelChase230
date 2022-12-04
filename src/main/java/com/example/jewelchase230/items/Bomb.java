@@ -40,9 +40,6 @@ public class Bomb extends Item {
         setCollidable(false);
     }
 
-    // May not be in a level at the time of construction
-    // setTriggers(getGridPosition());
-
     /**
      * Every game tick checks bomb status.
      * @param time Time since the last frame.
@@ -66,19 +63,12 @@ public class Bomb extends Item {
     }
 
     /**
-     * Fast explosion when this bomb gets hit by an explosion.
-     */
-    /*public void fastExplode() {
-        fastExplode = true;
-    } */
-
-    /**
      * Counts down from 3 and changes the bomb image.
      */
     public void countdown() {
-        if (currentImageInCountdown < countdownArray.length-1 && (hasCollided || fastExplode)) {
-            currentImageInCountdown++;
+        if (currentImageInCountdown < countdownArray.length && (hasCollided || fastExplode)) {
             setImageFromFile(countdownArray[currentImageInCountdown]);
+            currentImageInCountdown++;
         } else {
             explode();
             remove();
@@ -105,7 +95,6 @@ public class Bomb extends Item {
      * doors.
      */
     public void explode() {
-        //setTriggers(null);
         boolean continueExplosionUp = true;
         boolean continueExplosionDown = true;
         boolean continueExplosionLeft = true;
