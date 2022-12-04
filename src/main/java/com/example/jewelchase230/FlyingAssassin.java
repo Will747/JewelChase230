@@ -13,11 +13,10 @@ public class FlyingAssassin extends AICharacter {
     /**
      * Constructs a renderable component.
      *
-     * @param d Direction the Flying assassin is facing.
      */
-    public FlyingAssassin(final Direction d) {
+    public FlyingAssassin(final Direction inDirection) {
         super();
-
+        super.setDirection(inDirection);
         setImageFromFile("images/FLYING_ASSASSIN_LEFT_FACE.png");
     }
 
@@ -26,93 +25,100 @@ public class FlyingAssassin extends AICharacter {
      *
      * @param d Direction the Flying assassin is facing.
      */
-    protected void getNextMove(final Direction d) {
+    protected void getNextMove(Direction d) {
         IntVector2D gridPos = getGridPosition();
-        IntVector2D levelSize = getLevel().getLevelSize();
 
         switch (d) {
             case UP:
-                if (gridPos.getY() < levelSize.getY()) {
-                    IntVector2D newPos = gridPos.add(
-                            new IntVector2D(0, 1));
+                IntVector2D newPos = gridPos.add(new IntVector2D(0, -1));
+                if (getLevel().checkValidTile(newPos)) {
                     setGridPosition(newPos);
-                    Character npc = getLevel().getSpecificCharacter(
-                            newPos.getX(), newPos.getY());
-
-                    if (getLevel().getPlayer().getGridPosition() == newPos) {
-                        getLevel().gameOver();
-                    }
-
-                    if (npc != null) {
-                        getLevel().removeSpecificNPC(newPos);
-                    }
+//                    Character npc = getLevel().getSpecificCharacter(
+//                            newPos.getX(), newPos.getY());
+//
+//                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+//                        getLevel().gameOver();
+//                    }
+//
+//                    if (npc != null) {
+//                        getLevel().removeSpecificNPC(newPos);
+//                    }
 
                 } else {
-                    getNextMove(d.getOppositeDirection(d));
+                    super.setDirection(d.getOppositeDirection(d));
+                    newPos = gridPos.add(new IntVector2D(0, 1));
+                    setGridPosition(newPos);
                 }
+                break;
             case DOWN:
-                if (gridPos.getY() > levelSize.getY()) {
-                    IntVector2D newPos = gridPos.add(
-                            new IntVector2D(0, -1));
+                newPos = gridPos.add(new IntVector2D(0, 1));
+                if (getLevel().checkValidTile(newPos)) {
                     setGridPosition(newPos);
-                    Character npc = getLevel().getSpecificCharacter(
-                            newPos.getX(), newPos.getY());
-
-                    if (getLevel().getPlayer().getGridPosition() == newPos) {
-                        getLevel().gameOver();
-                    }
-                    if (npc != null) {
-                        getLevel().removeSpecificNPC(newPos);
-                    }
+//                    Character npc = getLevel().getSpecificCharacter(
+//                            newPos.getX(), newPos.getY());
+//
+//                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+//                        getLevel().gameOver();
+//                    }
+//                    if (npc != null) {
+//                        getLevel().removeSpecificNPC(newPos);
+//                    }
                 } else {
-                    getNextMove(d.getOppositeDirection(d));
+                    super.setDirection(d.getOppositeDirection(d));
+                    newPos = gridPos.add(new IntVector2D(0, -1));
+                    setGridPosition(newPos);
                 }
+                break;
             case LEFT:
-                if (gridPos.getX() > levelSize.getX()) {
-                    IntVector2D newPos = gridPos.add(
-                            new IntVector2D(-1, 0));
+                newPos = gridPos.add(new IntVector2D(-1, 0));
+                if (getLevel().checkValidTile(newPos)) {
                     setGridPosition(newPos);
-                    Character npc = getLevel().getSpecificCharacter(
-                            newPos.getX(), newPos.getY());
-
-                    if (getLevel().getPlayer().getGridPosition() == newPos) {
-                        getLevel().gameOver();
-                    }
-                    if (npc != null) {
-                        getLevel().removeSpecificNPC(newPos);
-                    }
+//                    Character npc = getLevel().getSpecificCharacter(
+//                            newPos.getX(), newPos.getY());
+//
+//                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+//                        getLevel().gameOver();
+//                    }
+//                    if (npc != null) {
+//                        getLevel().removeSpecificNPC(newPos);
+//                    }
                 } else {
-                    getNextMove(d.getOppositeDirection(d));
+                    super.setDirection(d.getOppositeDirection(d));
+                    newPos = gridPos.add(new IntVector2D(1, 0));
+                    setGridPosition(newPos);
                 }
+                break;
             default: //RIGHT
-                if (gridPos.getX() < levelSize.getX()) {
-                    IntVector2D newPos = gridPos.add(
-                            new IntVector2D(1, 0));
+                newPos = gridPos.add(new IntVector2D(1, 0));
+                if (getLevel().checkValidTile(newPos)) {
                     setGridPosition(newPos);
-                    Character npc = getLevel().getSpecificCharacter(
-                            newPos.getX(), newPos.getY());
-
-                    if (getLevel().getPlayer().getGridPosition() == newPos) {
-                        getLevel().gameOver();
-                    }
-                    if (npc != null) {
-                        getLevel().removeSpecificNPC(newPos);
-                    }
+//                    Character npc = getLevel().getSpecificCharacter(
+//                            newPos.getX(), newPos.getY());
+//
+//                    if (getLevel().getPlayer().getGridPosition() == newPos) {
+//                        getLevel().gameOver();
+//                    }
+//                    if (npc != null) {
+//                        getLevel().removeSpecificNPC(newPos);
+//                    }
                 } else {
-                    getNextMove(d.getOppositeDirection(d));
+                    super.setDirection(d.getOppositeDirection(d));
+                    newPos = gridPos.add(new IntVector2D(-1, 0));
+                    setGridPosition(newPos);
                 }
+                break;
         }
     }
 
-    /**
-     * Called just before the grid gets re-rendered.
-     *
-     * @param time Time since last frame in milliseconds.
-     */
-    @Override
-    public void tick(final int time) {
-
-    }
+//    /**
+//     * Called just before the grid gets re-rendered.
+//     *
+//     * @param time Time since last frame in milliseconds.
+//     */
+//    @Override
+//    public void tick(final int time) {
+//
+//    }
 }
 
 
