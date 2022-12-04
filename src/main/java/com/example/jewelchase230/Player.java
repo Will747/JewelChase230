@@ -45,14 +45,20 @@ public class Player extends Character {
     public void processKeyEvent(final KeyEvent keyPress) {
         IntVector2D gridPos = getGridPosition();
 
+        
         switch (keyPress.getCode()) {
+            //BUG: Multiple key inputs when pressing 1 key
             case UP:
+                System.out.println("moving up");
                 setGridPosition(canMoveUp());
             case DOWN:
+                System.out.println("moving down");
                 setGridPosition(canMoveDown());
             case RIGHT:
+                System.out.println("moving right");
                 setGridPosition(canMoveRight());
             case LEFT:
+                System.out.println("moving left");   
                 setGridPosition(canMoveLeft());
             default:
                 break;
