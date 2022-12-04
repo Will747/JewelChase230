@@ -6,7 +6,7 @@ public class FloorFollowingThief extends AICharacter {
     /**
      * Constructs a renderable component.
      */
-    public FloorFollowingThief() {
+    public FloorFollowingThief(Direction d) {
         super();
     }
 
@@ -19,7 +19,7 @@ public class FloorFollowingThief extends AICharacter {
         int x = this.getGridPosition().getX();
         int y = this.getGridPosition().getY();
 
-        if (canMoveUp()) {
+        /*if (canMoveUp()) {
             y = y + 1;
         } else {
             if (canMoveRight()) {
@@ -33,7 +33,7 @@ public class FloorFollowingThief extends AICharacter {
                     }
                 }
             }
-        }
+        } */
 
         move.setX(x);
         move.setY(y);

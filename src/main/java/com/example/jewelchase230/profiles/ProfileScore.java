@@ -7,8 +7,7 @@ public class ProfileScore implements Serializable {
 	private int highestScore;
 	/** Integer which holds the player's unique ID */
 	private int userUniqueID;
-	
-	
+
 	public ProfileScore(int highestScore, int userUniqueID) {
 		this.highestScore = highestScore; 
 		this.userUniqueID = userUniqueID; 

@@ -31,13 +31,13 @@ public enum Direction {
      */
     public static Direction getDirectionType(String directionString){
         switch(directionString){
-            case "UP":
+            case "u":
                 return UP;
-            case "DOWN":
+            case "d":
                 return DOWN;
-            case "LEFT":
+            case "l":
                 return LEFT;
-            case "RIGHT":
+            case "r":
                 return RIGHT;
         }
         return UP;

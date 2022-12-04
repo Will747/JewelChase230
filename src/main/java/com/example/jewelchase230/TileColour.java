@@ -22,7 +22,7 @@ public enum TileColour {
     /** Magenta Colour.*/
     Magenta("images/WOODFLOOR_MAGENTA.png"),
     /** Cyan Colour. */
-    Cyan("images/WOODFLOOR_MAGENTA.png");
+    Cyan("images/WOODFLOOR_CYAN.png");
 
     /** The colour of a section of a tile. */
     private Image image = null;
