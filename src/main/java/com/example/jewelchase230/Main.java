@@ -40,6 +40,9 @@ public final class Main extends Application {
     /** Size of the window. */
     private static IntVector2D windowSize;
 
+    /** Stage that is shown in the main window. */
+    private static Stage stage;
+
     /** The canvas being used to render the grid/board. */
     private static Canvas canvas;
 
@@ -51,6 +54,9 @@ public final class Main extends Application {
 
     /** Timeline which will cause tick method to be called periodically. */
     private static Timeline tickTimeline;
+
+    /** All config settings for the game. */
+    private static Settings settings;
 
     /**
      * The level currently being played.
@@ -65,6 +71,7 @@ public final class Main extends Application {
     	
         windowSize =
                 new IntVector2D(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
+        settings = new Settings();
 
         Menu.initMenus();
 
@@ -89,13 +96,12 @@ public final class Main extends Application {
         mainScene.heightProperty().addListener(e -> updateWindowSize());
         mainScene.addEventFilter(KeyEvent.KEY_PRESSED, Main::processKeyEvent);
 
-        inStage.setScene(mainScene);
-        inStage.setTitle("Jewel Chase");
-        inStage.setResizable(true);
-        //stage.setFullScreen(true); // Make this an optional setting
-        inStage.show();
-        
-    
+        stage = inStage;
+        stage.setScene(mainScene);
+        stage.setTitle("Jewel Chase");
+        stage.setResizable(true);
+        stage.setFullScreen(settings.isFullScreen());
+        stage.show();
 
         /* Test - Remove this */
         currentLevel = LevelFileReader.readInFile("Level_Files/level1.txt");
@@ -103,9 +109,24 @@ public final class Main extends Application {
     }
 
     /**
+     * @return The game config.
+     */
+    public static Settings getSettings() {
+        return settings;
+    }
+
+    /**
+     * @return The stage used in the main window.
+     */
+    public static Stage getStage() {
+        return stage;
+    }
+
+    /**
      * Closes the FXML window.
      */
     public static void close() {
+        settings.write();
         System.exit(0);
     }
 
