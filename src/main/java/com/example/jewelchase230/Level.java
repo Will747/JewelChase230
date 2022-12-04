@@ -106,7 +106,7 @@ public class Level {
         if(item instanceof Bomb){
             ArrayList<Tile> NeighbouringTiles = getNeighbouringTiles(item.getGridPosition());
             for (Tile tileInstance: NeighbouringTiles){
-                tileInstance.setBombTrigger(null);
+                tileInstance.removeBombTrigger(pos);
             }
         }
         getTile(pos).setItem(null);

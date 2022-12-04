@@ -33,7 +33,10 @@ public abstract class Character extends Sprite {
                             tileItem.doOnCollision();
                         }
                     } else if (nextMoveTile.isNextToBomb()) {
-                        nextMoveTile.getBomb().doOnCollision();
+                        ArrayList<Item> bombArray = nextMoveTile.getBombs();
+                        for (Item bombInstance : bombArray) {
+                            bombInstance.doOnCollision();
+                        }
                         return true;
                 }
                     return true;
