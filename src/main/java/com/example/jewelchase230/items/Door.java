@@ -55,4 +55,12 @@ public class Door extends Item {
             //losing end level situation
         }
     }
+
+    /**
+     * Shouldn't be removed when hit by explosion.
+     */
+    @Override
+    public void doOnExplosionCollision() {
+
+    }
 }

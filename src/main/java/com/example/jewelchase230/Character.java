@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Renders the characters to the game.
  *
- * @author Caroline Segestaal.
+ * @author Caroline Segestaaland and Ben Stott.
  */
 public abstract class Character extends Sprite {
     /**
@@ -16,29 +16,19 @@ public abstract class Character extends Sprite {
         super();
     }
 
+    /**
+     * Checks that the next move is a valid move, if valid, collides
+     * with items as expected
+     * @param nextMoveTile The tile to be moved to.
+     * @return True if valid move, false if not.
+     */
     private boolean validNextMove(final Tile nextMoveTile) {
-
         Tile thisTile = getLevel().getTile(getGridPosition());
         ArrayList<TileColour> thisTileColours = thisTile.getTileColours();
         ArrayList<TileColour> nextTileColours = nextMoveTile.getTileColours();
         for (int i = 0; i < thisTileColours.size(); i++) {
             for (int j = 0; j < nextTileColours.size(); j++) {
                 if (thisTileColours.get(i) == nextTileColours.get(j)) {
-                    Item tileItem =
-                            getLevel().getItem(nextMoveTile.getGridPosition());
-                    if (tileItem != null) {
-                        if (!(tileItem.getCollidable())) {
-                            return false;
-                        } else {
-                            tileItem.doOnCollision();
-                        }
-                    } else if (nextMoveTile.isNextToBomb()) {
-                        ArrayList<Item> bombArray = nextMoveTile.getBombs();
-                        for (Item bombInstance : bombArray) {
-                            bombInstance.doOnCollision();
-                        }
-                        return true;
-                }
                     return true;
                 }
             }
@@ -47,103 +37,88 @@ public abstract class Character extends Sprite {
     }
 
     /**
-     * Checks if the character can move up.
-     *
-     * @return a boolean, true or false.
+     * Checks if a character can move to a new tile.
+     * @param xChange Positive for moving right, negative for moving left.
+     * @param yChange Positive for moving down, negative for moving up.
+     * @param collisionCharacter The character being moved.
+     * @return new tile position, or current position if invalid move.
      */
-    protected IntVector2D canMoveUp() {
-        IntVector2D gridPos = getGridPosition();
-        int currentDifference = 0;
-        boolean stillInRange = true;
-        while (stillInRange) {
-            currentDifference -= 1;
-            IntVector2D yTry =
-                new IntVector2D(gridPos.getX(), gridPos.getY() + currentDifference);
-            if (getLevel().checkValidTile(yTry)) {
-                Tile nextMoveTile = getLevel().getTile(yTry);
-                if (validNextMove(nextMoveTile)) {
-                    return yTry;
-                }
+    protected IntVector2D canMove(int xChange, int yChange, Character collisionCharacter) {
+        IntVector2D currentPos = getGridPosition();
+        if (collisionCharacter instanceof FlyingAssassin) {
+            IntVector2D newPos = currentPos.add(new IntVector2D(xChange, yChange));
+            if (getLevel().checkValidTile(newPos)) {
+                return newPos;
             } else {
-                stillInRange = false;
+                return currentPos;
+            }  
+        } else {
+            int xDiff = 0;
+            int yDiff = 0;
+            boolean stillInRange = true;
+            while (stillInRange) {
+                xDiff += xChange;
+                yDiff += yChange;
+                IntVector2D newPos = currentPos.add(new IntVector2D(xDiff, yDiff));
+                if (getLevel().checkValidTile(newPos)) { //Check the newPos is a valid tile
+                    Tile nextMoveTile = getLevel().getTile(newPos);
+                    if (validNextMove(nextMoveTile)) { //Makes sure the new tile has matching colours
+                        return tileItemManager(nextMoveTile, collisionCharacter);
+                    } 
+                } else {
+                    stillInRange = false;
+                }
             }
         }
-        return gridPos;
+        return getGridPosition();
     }
 
     /**
-     *Checks if the character can move down.
-     *
-     * @return a boolean, true or false.
+     * Manages the logic for moving to a new tile.
+     * @param tile tile to be moved to.
+     * @param collisionCharacter Character moving to tile.
+     * @return new tile position, or current position if invalid move.
      */
-    protected IntVector2D canMoveDown() {
-        IntVector2D gridPos = getGridPosition();
-        int currentDifference = 0;
-        boolean stillInRange = true;
-        while (stillInRange) {
-            currentDifference += 1;
-            IntVector2D yTry =
-                new IntVector2D(gridPos.getX(), gridPos.getY() + currentDifference);
-            if (getLevel().checkValidTile(yTry)) {
-                Tile nextMoveTile = getLevel().getTile(yTry);
-                if (validNextMove(nextMoveTile)) {
-                    return yTry;
-                }
+    private IntVector2D tileItemManager(Tile tile, Character collisionCharacter) {
+        Item tileItem = tile.getItem();
+        IntVector2D tilePos = tile.getGridPosition();
+        if (!(tileItem == null)) { // checks tile has an item
+            if (tileItem.getCollidable()) {
+                collisionManager(tileItem, collisionCharacter);
+                return tilePos;
             } else {
-                stillInRange = false;
+                return getGridPosition();
             }
         }
-        return gridPos;
+        if (tile.isNextToBomb()) { //Checks tile is near a bomb
+            bombManager(tile, collisionCharacter);
+        }
+        return tilePos;
     }
 
     /**
-     * Checks if the character can move right.
-     *
-     * @return a boolean, true or false.
+     * Manages triggering bombs.
+     * @param tile tile with at least 1 bomb trigger.
+     * @param collisionCharacter Character triggering the bomb.
      */
-    protected IntVector2D canMoveRight() {
-        IntVector2D gridPos = getGridPosition();
-        int currentDifference = 0;
-        boolean stillInRange = true;
-        while (stillInRange) {
-            currentDifference += 1;
-            IntVector2D xTry =
-                new IntVector2D(gridPos.getX() + currentDifference, gridPos.getY());
-            if (getLevel().checkValidTile(xTry)) {
-                Tile nextMoveTile = getLevel().getTile(xTry);
-                if (validNextMove(nextMoveTile)) {
-                    return xTry;
-                }
-            } else {
-                stillInRange = false;
-            }
+    private void bombManager(Tile tile, Character collisionCharacter) {
+        ArrayList<Item> bombArray = tile.getBombs();
+        for (Item bombInstance : bombArray) {
+            collisionManager(bombInstance, collisionCharacter);
         }
-        return gridPos;
     }
 
     /**
-     * Checks if the character can move left.
-     *
-     * @return a boolean, true or false
+     * Manages collisions between characters and items.
+     * @param item Item colliding.
+     * @param collisionCharacter Character colliding.
      */
-    protected IntVector2D canMoveLeft() {
-        IntVector2D gridPos = getGridPosition();
-        int currentDifference = 0;
-        boolean stillInRange = true;
-        while (stillInRange) {
-            currentDifference -= 1;
-            IntVector2D xTry =
-                new IntVector2D(gridPos.getX() + currentDifference, gridPos.getY());
-            if (getLevel().checkValidTile(xTry)) {
-                Tile nextMoveTile = getLevel().getTile(xTry);
-                if (validNextMove(nextMoveTile)) {
-                    return xTry;
-                }
-            } else {
-                stillInRange = false;
-            }
+    private void collisionManager(Item item, Character collisionCharacter) {
+        if (collisionCharacter instanceof AICharacter) {
+            item.doOnThiefCollision();
+        } else if (collisionCharacter instanceof Player) {
+            item.doOnCollision();
         }
-        return gridPos;
     }
 
     /**
@@ -163,12 +138,5 @@ public abstract class Character extends Sprite {
     @Override
     public void setGridPosition(final IntVector2D inGridPosition) {
         super.setGridPosition(inGridPosition);
-        /*Level level = getLevel();
-        if (level != null) {
-            Item itemOnTile = level.getTile(inGridPosition).getItem();
-            if (itemOnTile != null) {
-                itemOnTile.doOnCollision();
-            }
-        }*/
     }
 }

@@ -24,7 +24,7 @@ public final class Tile extends Renderable {
     private final TileColour topRight;
     /** Bottom right side of tile. */
     private final TileColour bottomRight;
-
+    /** List of all nearby bombs. */
     private ArrayList<IntVector2D> bombsNextToTile = new ArrayList<>();
 
     /**
@@ -51,6 +51,10 @@ public final class Tile extends Renderable {
         bottomRight = inBottomRight;
     }
 
+    /**
+     * Checks if there is a bomb on a neighbouring tile.
+     * @return True if theres a bomb near, false if not.
+     */
     public boolean isNextToBomb(){
         if(bombsNextToTile.size() < 1){
             return false;
@@ -59,6 +63,10 @@ public final class Tile extends Renderable {
         }
     }
 
+    /**
+     * Get a list of all nearby bombs.
+     * @return ArrayList of bombs.
+     */
     public ArrayList<Item> getBombs() {
         ArrayList<Item> itemArray = new ArrayList<>();
         for (IntVector2D vectorInstance : bombsNextToTile) {
@@ -67,11 +75,18 @@ public final class Tile extends Renderable {
         return itemArray;
     }
 
+    /**
+     * Add a bomb trigger to this tile.
+     * @param bombPos
+     */
     public void setBombTrigger(IntVector2D bombPos){
-
         bombsNextToTile.add(bombPos);
     }
 
+    /**
+     * 
+     * @param bombPos
+     */
     public void removeBombTrigger(IntVector2D bombPos) {
         bombsNextToTile.remove(bombPos);
     }
@@ -102,15 +117,6 @@ public final class Tile extends Renderable {
         coloursArray.add(getTopRight());
         coloursArray.add(getBottomLeft());
         coloursArray.add(getBottomRight());
-        /*if (!(coloursArray.contains(getBottomLeft()))) {
-            coloursArray.add(getTopRight());
-        }
-        if (!(coloursArray.contains(getBottomLeft()))) {
-            coloursArray.add(getTopRight());
-        }
-        if (!(coloursArray.contains(getBottomRight()))) {
-            coloursArray.add(getBottomRight());
-        } */
         return coloursArray;
     }
 

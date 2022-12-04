@@ -46,4 +46,12 @@ public class Gate extends Item {
     public void doOnThiefCollision() {
 
     }
+
+    /**
+     * Shouldn't be removed when hit by an explosion.
+     */
+    @Override
+    public void doOnExplosionCollision() {
+
+    }
 }

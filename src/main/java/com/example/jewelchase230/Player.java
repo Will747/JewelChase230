@@ -47,22 +47,17 @@ public class Player extends Character {
 
         
         switch (keyPress.getCode()) {
-            //BUG: Multiple key inputs when pressing 1 key
             case UP:
-                //System.out.println("moving up");
-                setGridPosition(canMoveUp());
+                setGridPosition(canMove(0, -1, this));
                 break;
             case DOWN:
-                //System.out.println("moving down");
-                setGridPosition(canMoveDown());
+                setGridPosition(canMove(0, 1, this));
                 break;
             case RIGHT:
-                //System.out.println("moving right");
-                setGridPosition(canMoveRight());
+                setGridPosition(canMove(1, 0, this));
                 break;
-            case LEFT:
-                //System.out.println("moving left");   
-                setGridPosition(canMoveLeft());
+            case LEFT:   
+                setGridPosition(canMove(-1, 0, this));
                 break;
             default:
                 break;

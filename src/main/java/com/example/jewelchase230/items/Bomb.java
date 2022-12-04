@@ -87,53 +87,6 @@ public class Bomb extends Item {
     }
 
     /**
-     * Check if item type is valid to be removed.
-     * 
-     * @param item Item to have type checked if it's valid to be removed.
-     * @return True if item can be removed, false if it cannot.
-     */
-    private Boolean checkValidRemove(Item item) {
-        if (item instanceof Gate || item instanceof Door) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Gets every neighbouring tile to this bombs position.
-     * 
-     * @return Every neighbouring tile.
-     */
-    /*ublic ArrayList<Tile> getNeighbouringTiles() {
-        final IntVector2D maxSize = getLevel().getLevelSize();
-        ArrayList<Tile> tileArray = new ArrayList<>();
-        final IntVector2D thisPos = getGridPosition();
-        for (int x = -1; x <= 1; x++) {
-            for (int y = -1; y <= 1; y++) {
-                if (!(x == 0 && x == 0)) {
-                    IntVector2D tempVector = thisPos.add(new IntVector2D(x, y));
-                    if (!(tempVector.getX() < 0 || tempVector.getY() < 0) &&
-                            !(tempVector.getX() >= maxSize.getX() || tempVector.getY() >= maxSize.getY())) {
-                        tileArray.add(getLevel().getTile(tempVector));
-                    }
-                }
-            }
-        }
-        return tileArray;
-    }*/
-
-    /**
-     * Set or remove bomb triggers from neighbouring tiles.
-     * 
-     * @param bombPosInTile Current bomb position if triggerd, null if not.
-     */
-    /*private void setTriggers(IntVector2D bombPosInTile) {
-        for (Tile tileInstance : getNeighbouringTiles()) {
-            tileInstance.setNextToBomb(bombPosInTile);
-        }
-    }*/
-
-    /**
      * Produces an explosion on a tile.
      * @param posToExplode Tile to produce explosion on.
      */
@@ -141,9 +94,7 @@ public class Bomb extends Item {
         Level currentLevel = getLevel();
         Item currentItem = currentLevel.getItem(posToExplode);
         if (currentItem != null) {
-            if (checkValidRemove(currentItem)) {
-                currentItem.doOnExplosionCollision();
-            }
+            currentItem.doOnExplosionCollision();
         } else {
             // Here is where an explosion image/animation should be added to the tile
         }
@@ -221,6 +172,9 @@ public class Bomb extends Item {
         doOnCollision();
     }
 
+    /**
+     * Collision with an explosion.
+     */
     @Override
     public void doOnExplosionCollision() {
         fastExplode = true;

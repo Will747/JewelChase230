@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Represents a game level, including all tiles, items and characters.
  *
- * @author Will Kaye and Adam Smith
+ * @author Will Kaye and Adam Smith and Ben Stott.
  */
 public class Level {
     /** Tiles on the grid. */
@@ -80,8 +80,12 @@ public class Level {
         }
     }
 
+    /**
+     * Finds all tiles around a certain position.
+     * @param position The centre tile.
+     * @return ArrayList of the tiles around the centre tile.
+     */
     public ArrayList<Tile> getNeighbouringTiles(IntVector2D position) {
-        final IntVector2D maxSize = getLevelSize();
         ArrayList<Tile> tileArray = new ArrayList<>();
         final IntVector2D thisPos = position;
         for (int x = -1; x <= 1; x++) {
