@@ -1,5 +1,6 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.profiles.ProfileManager;
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -59,6 +60,9 @@ public final class Main extends Application {
 
     @Override
     public void start(final Stage inStage) throws IOException {
+    	
+        ProfileManager.readLines();
+    	
         windowSize =
                 new IntVector2D(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 
@@ -90,6 +94,8 @@ public final class Main extends Application {
         inStage.setResizable(true);
         //stage.setFullScreen(true); // Make this an optional setting
         inStage.show();
+        
+    
 
         /* Test - Remove this */
         currentLevel = LevelFileReader.readInFile("Level_Files/level1.txt");

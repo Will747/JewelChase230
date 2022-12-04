@@ -37,61 +37,21 @@ public final class ProfileMenu {
 	@FXML
 	private Label playerFour;
 
-	@FXML
-	private void initialize() {
-		for (int i = 0; i <= 3; i++) {
-
-			if (isProfileEmpty(i) == false) {
-				switch (i) {
-				case 0:
-					playerOne.setText(
-							ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(0).getPlayerName());
-					break;
-				case 1:
-					playerTwo.setText(
-							ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(1).getPlayerName());
-					break;
-				case 2:
-					playerThree.setText(
-							ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(2).getPlayerName());
-					break;
-				case 3:
-					playerFour.setText(
-							ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(3).getPlayerName());
-					break;
-				}
-
-			} else if (isProfileEmpty(i) == true) {
-				switch (i) {
-				case 0:
-					playerOne.setText("P1");
-					break;
-				case 1:
-					playerTwo.setText("P2");
-					break;
-				case 2:
-					playerThree.setText("P3");
-					break;
-				case 3:
-					playerFour.setText("P4");
-					break;
-				}
-			}
-		}
-	}
-
-	private boolean isProfileEmpty(int i) {
-		boolean isListIEmpty;
-
-		if (ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(i) == null)
-			 isListIEmpty = true;
-		else { 
-			isListIEmpty = false;
-			
-		}
 	
-		return isListIEmpty;
+	@FXML
+	  private void initialize() {
+
+		playerOne.setText(ProfileManager.listOfProfile.get(0).getPlayerName());
+
+		playerTwo.setText(ProfileManager.listOfProfile.get(1).getPlayerName());
+
+		playerThree.setText(ProfileManager.listOfProfile.get(2).getPlayerName());
+
+		playerFour.setText(ProfileManager.listOfProfile.get(3).getPlayerName());
+		
+
 	}
+	
 
 	@FXML
 	void onBackToMainMenuPressed(final MouseEvent event) {
