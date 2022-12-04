@@ -68,9 +68,9 @@ public class Bomb extends Item {
     /**
      * Fast explosion when this bomb gets hit by an explosion.
      */
-    public void fastExplode() {
+    /*public void fastExplode() {
         fastExplode = true;
-    }
+    } */
 
     /**
      * Counts down from 3 and changes the bomb image.
@@ -142,15 +142,7 @@ public class Bomb extends Item {
         Item currentItem = currentLevel.getItem(posToExplode);
         if (currentItem != null) {
             if (checkValidRemove(currentItem)) {
-                if (currentItem instanceof Bomb) {
-                    Bomb newBomb = (Bomb) currentItem;
-                    currentItem.remove();
-                    getLevel().addItem(newBomb.getGridPosition(), newBomb);
-                    newBomb.fastExplode();
-                } else {
-                    currentLevel.removeItem(posToExplode);
-                    // Here is where an explosion image/animation should be added to the tile
-                }
+                currentItem.doOnExplosionCollision();
             }
         } else {
             // Here is where an explosion image/animation should be added to the tile
@@ -227,5 +219,10 @@ public class Bomb extends Item {
     @Override
     public void doOnThiefCollision() {
         doOnCollision();
+    }
+
+    @Override
+    public void doOnExplosionCollision() {
+        fastExplode = true;
     }
 }

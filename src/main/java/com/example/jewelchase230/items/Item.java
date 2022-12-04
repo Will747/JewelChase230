@@ -81,6 +81,10 @@ public abstract class Item extends Sprite {
         remove();
     }
 
+    public void doOnExplosionCollision() {
+        remove();
+    }
+
     /**
      * Default thief collision for all items.
      */
