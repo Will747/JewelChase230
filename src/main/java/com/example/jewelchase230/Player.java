@@ -47,21 +47,13 @@ public class Player extends Character {
 
         switch (keyPress.getCode()) {
             case UP:
-                if (canMoveUp() != null) {
-                    setGridPosition(canMoveUp());
-                }
+                setGridPosition(canMoveUp());
             case DOWN:
-                if (canMoveDown() != null) {
-                    setGridPosition(canMoveDown());
-                }
+                setGridPosition(canMoveDown());
             case RIGHT:
-                if (canMoveRight() != null) {
-                    setGridPosition(canMoveRight());
-                }
+                setGridPosition(canMoveRight());
             case LEFT:
-                if (canMoveLeft() != null) {
-                    setGridPosition(canMoveLeft());
-                }
+                setGridPosition(canMoveLeft());
             default:
                 break;
         }

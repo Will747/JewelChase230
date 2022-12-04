@@ -52,7 +52,7 @@ public abstract class Character extends Sprite {
                 stillInRange = false;
             }
         }
-        return null;
+        return gridPos;
         /*Tile tile = getLevel().getTile(gridPos);
         Tile newTile = getLevel().getTile(yTry);
         
@@ -101,7 +101,7 @@ public abstract class Character extends Sprite {
                 stillInRange = false;
             }
         }
-        return null;
+        return gridPos;
     }
 
     /**
@@ -140,7 +140,7 @@ public abstract class Character extends Sprite {
                 stillInRange = false;
             }
         }
-        return null;
+        return gridPos;
     }
 
     /**
@@ -169,7 +169,7 @@ public abstract class Character extends Sprite {
         while (stillInRange) {
             currentDifference -= 1;
             IntVector2D xTry =
-                new IntVector2D(gridPos.getX() + currentDifference, gridPos.getY());
+                new IntVector2D(gridPos.getX() + currentDifference, gridPos.getY()); 
             if (getLevel().checkValidTile(xTry)) {
                 Tile nextMoveTile = getLevel().getTile(xTry);
                 if (validNextMove(nextMoveTile)) {
@@ -179,7 +179,7 @@ public abstract class Character extends Sprite {
                 stillInRange = false;
             }
         }
-        return null;
+        return gridPos;
     }
 
     /**
