@@ -36,7 +36,7 @@ public abstract class Character extends Sprite {
      * @return a boolean, true or false.
      */
     protected IntVector2D canMoveUp() {
-        System.out.println("attempting to move up");
+        //System.out.println("attempting to move up");
         IntVector2D gridPos = getGridPosition();
         int currentDifference = 0;
         boolean stillInRange = true;
@@ -86,7 +86,7 @@ public abstract class Character extends Sprite {
             }
         }
         return false; */
-        System.out.println("attempting to move down");
+        //System.out.println("attempting to move down");
         IntVector2D gridPos = getGridPosition();
         int currentDifference = 0;
         boolean stillInRange = true;
@@ -126,7 +126,7 @@ public abstract class Character extends Sprite {
             }
         }
         return false; */
-        System.out.println("attempting to move right");
+        //System.out.println("attempting to move right");
         IntVector2D gridPos = getGridPosition();
         int currentDifference = 0;
         boolean stillInRange = true;
@@ -166,7 +166,7 @@ public abstract class Character extends Sprite {
             }
         }
         return false; */
-        System.out.println("attempting to move left");
+        //System.out.println("attempting to move left");
         IntVector2D gridPos = getGridPosition();
         int currentDifference = 0;
         boolean stillInRange = true;
