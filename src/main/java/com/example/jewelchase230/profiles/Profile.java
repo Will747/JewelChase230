@@ -27,7 +27,7 @@ public class Profile {
 	 * @param overallScore
 	 * @param currentLevel
 	 */
-	  public Profile(Integer uniquePlayerID, Integer playerProfileSlot, String playerName, Integer levelReached) {
+	  public Profile(Integer playerProfileSlow, Integer uniquePlayerID, String playerName, Integer levelReached) {
 		  this.uniquePlayerID = uniquePlayerID;
 		  this.playerProfileSlot = playerProfileSlot;
 		  this.playerName = playerName; 
@@ -42,8 +42,8 @@ public class Profile {
 	   * @param lineDataSplit
 	   */
 	  public Profile(String[] lineDataSplit) { 
-		  uniquePlayerID = Integer.parseInt(lineDataSplit[0]);
-		  playerProfileSlot = Integer.parseInt(lineDataSplit[1]); 
+		  playerProfileSlot = Integer.parseInt(lineDataSplit[0]); 
+		  uniquePlayerID = Integer.parseInt(lineDataSplit[1]);
 		  playerName = lineDataSplit[2]; 
 		  levelReached = Integer.parseInt(lineDataSplit[3]);
 		 
@@ -61,7 +61,7 @@ public class Profile {
 	   * @return profileToString
 	   */
 	  public static String profileToString(Profile profile) { 
-		  String profileToString = (profile.getUniquePlayerID() + "." + profile.getPlayerProfileSlot() + "." + profile.getPlayerName()
+		  String profileToString = (profile.getPlayerProfileSlot() + "." + profile.getUniquePlayerID() + "." + profile.getPlayerName()
 + "." + profile.getLevelReached());
 		return profileToString;		 
 	  }

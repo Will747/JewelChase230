@@ -4,6 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import com.example.jewelchase230.menus.ProfileMenu;
+
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,6 +28,10 @@ public class ProfileManager {
 	static int uniqueIDFromFile;
 	/** Final int variable which holds the total number of 'splits' to be done */
 	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4;
+	/** Name of Text File to be read */
+	static String profilesFile = "Profiles.txt";
+	/** BLANK PROFILE LINE */
+	private static final String BLANK_PROFILE_STRING = "0.CREATE_PROFILE.0";
 
 	// Reads each line of the text file "Profile.txt"
 	/**
@@ -37,7 +44,7 @@ public class ProfileManager {
 
 	public static void readLines() {
 		try {
-			File myFile = new File("Profiles.txt");
+			File myFile = new File(profilesFile);
 			Scanner input = new Scanner(myFile);
 
 			while (input.hasNextLine()) {
@@ -45,7 +52,7 @@ public class ProfileManager {
 				profilesLineByLineData.add(data);
 
 				String[] lineDataSplit = data.split("\\.", LINEBYLINEDATA_NUMBER_OF_CASES);
-				uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
+				uniqueIDFromFile = Integer.parseInt(lineDataSplit[1]);
 				Profile tempProfile = new Profile(lineDataSplit);
 				listOfProfile.add(tempProfile);
 			}
@@ -57,8 +64,6 @@ public class ProfileManager {
 		System.out.println(listOfProfile.size());
 	}
 
-	
-	
 	/**
 	 * Overwrites the Profiles.txt file with updated Profile information
 	 * 
@@ -67,11 +72,9 @@ public class ProfileManager {
 	 */
 
 	public static void saveProfile(Profile profile) throws IOException {
-		
-		
-		BufferedWriter pmWriter = new BufferedWriter(new FileWriter("Profiles.txt"));
 
-		
+		BufferedWriter pmWriter = new BufferedWriter(new FileWriter(profilesFile));
+
 		try {
 			pmWriter.write(Profile.profileToString(profile));
 			pmWriter.newLine();
@@ -90,13 +93,34 @@ public class ProfileManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Deletes a player profile from the player slots by overwriting its line as
-	 * null
+	 * a blank profile.
 	 * 
 	 */
-	public static void deleteProfile(Profile profile) {
+	public static void deleteProfile(Profile profile) throws IOException {
+		BufferedWriter pmWriter = new BufferedWriter(new FileWriter(profilesFile));
+		Scanner in = new Scanner(profilesFile);
+
+		try {
+			while (in.hasNextLine()) {
+				String data = in.nextLine();
+				profilesLineByLineData.add(data);
+
+				String[] lineDataSplit = data.split("\\.", LINEBYLINEDATA_NUMBER_OF_CASES);
+				uniqueIDFromFile = Integer.parseInt(lineDataSplit[1]);
+				if ((listOfProfile.get(ProfileMenu.getProfileSelected())).getUniquePlayerID() == uniqueIDFromFile) {
+					pmWriter.write(ProfileMenu.getProfileSelected() + BLANK_PROFILE_STRING);
+				}
+
+			}
+			pmWriter.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occured.");
+			e.printStackTrace();
+		}
 
 	}
 
@@ -105,6 +129,13 @@ public class ProfileManager {
 	 */
 	public static ArrayList<String> getProfilesLineByLineData() {
 		return profilesLineByLineData;
+	}
+
+	/**
+	 * @return the blankProfile
+	 */
+	public static String getBlankProfile() {
+		return BLANK_PROFILE_STRING;
 	}
 
 	/**

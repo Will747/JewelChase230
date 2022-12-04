@@ -1,5 +1,6 @@
 package com.example.jewelchase230.menus;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import com.example.jewelchase230.Main;
@@ -47,7 +48,7 @@ public final class ProfileSelectMenu {
     }
 
     @FXML
-    private void onDeletePressed(final MouseEvent event) {
+    private void onDeletePressed(final MouseEvent event) throws IOException {
         Alert.AlertType type = Alert.AlertType.CONFIRMATION;
 
         Alert alert = new Alert(type, "");
@@ -60,7 +61,9 @@ public final class ProfileSelectMenu {
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == ButtonType.OK)
         {
+        	ProfileManager.deleteProfile(ProfileManager.listOfProfile.get(ProfileMenu.getProfileSelected()));
             System.out.println("profile deleted.");
+           
         }
         else if (result.get() == ButtonType.CANCEL)
         {
