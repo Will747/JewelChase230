@@ -16,6 +16,9 @@ public class Settings extends Config {
     /** The sound effects volume level. */
     private int sfxVolume;
 
+    /** True if the game should be full screened. */
+    private boolean fullScreen;
+
     /**
      * Constructs a new settings object.
      * Setting all fields based on the config file.
@@ -50,5 +53,19 @@ public class Settings extends Config {
      */
     public void setSfxVolume(final int inSfxVolume) {
         sfxVolume = inSfxVolume;
+    }
+
+    /**
+     * @return True if the game should be full screened.
+     */
+    public boolean isFullScreen() {
+        return fullScreen;
+    }
+
+    /**
+     * @param inFullScreen True if the game should be full screened.
+     */
+    public void setFullScreen(final boolean inFullScreen) {
+        fullScreen = inFullScreen;
     }
 }
