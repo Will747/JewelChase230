@@ -94,7 +94,6 @@ public class Level {
                 }
             }
         }
-        System.out.println(tileArray.size());
         return tileArray;
     }
 

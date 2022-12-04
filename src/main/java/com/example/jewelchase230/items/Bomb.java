@@ -76,7 +76,7 @@ public class Bomb extends Item {
      * Counts down from 3 and changes the bomb image.
      */
     public void countdown() {
-        if (currentImageInCountdown < 3 && (hasCollided || fastExplode)) {
+        if (currentImageInCountdown < countdownArray.length-1 && (hasCollided || fastExplode)) {
             currentImageInCountdown++;
             setImageFromFile(countdownArray[currentImageInCountdown]);
         } else {
