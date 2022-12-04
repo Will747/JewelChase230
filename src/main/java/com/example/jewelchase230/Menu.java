@@ -1,6 +1,6 @@
 package com.example.jewelchase230;
 
-import javafx.fxml.FXML;
+import com.example.jewelchase230.menus.ProfileSelectMenu;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -93,6 +93,13 @@ public final class Menu {
      */
     public static Parent getProfileSelect() {
     	return getParent(PROFILE_SELECT_FXML);
+    }
+
+    /**
+     * @return The profile select controller.
+     */
+    public static ProfileSelectMenu getProfileSelectController() {
+        return (ProfileSelectMenu) getController(PROFILE_SELECT_FXML);
     }
 
     /**
