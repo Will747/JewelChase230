@@ -20,10 +20,15 @@ import javafx.stage.Modality;
  */
 public final class ProfileSelectMenu {
     @FXML 
-    private Label selectPlayer;
+    private Label selectPlayerName;
+
+    @FXML
+    private Label selectPlayerLevel;
+
 
     public void setProfile(){
-        selectPlayer.setText(ProfileManager.listOfProfile.get(ProfileMenu.getProfileSelected()).getPlayerName());
+        selectPlayerName.setText(ProfileManager.listOfProfile.get(ProfileMenu.getProfileSelected()).getPlayerName());
+        selectPlayerLevel.setText("LEVEL : " + String.valueOf(ProfileManager.listOfProfile.get(ProfileMenu.getProfileSelected()).getLevelReached()));
     }
 
     @FXML

@@ -25,12 +25,6 @@ public class ProfileManager {
 	static int uniqueIDFromFile;
 	/** Final int variable which holds the total number of 'splits' to be done */
 	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4;
-	/** ArrayList which holds a list of Profile names */
-	public static ArrayList<String> profileNames = new ArrayList<String>();
-	/** ArrayList which holds a list of Profile scores */
-	static ArrayList<Integer> profileLevel = new ArrayList<Integer>();
-
-	public static ArrayList<Profile> orderedProfilesAccordingToSlot = new ArrayList<Profile>();
 
 	// Reads each line of the text file "Profile.txt"
 	/**
@@ -54,8 +48,6 @@ public class ProfileManager {
 				uniqueIDFromFile = Integer.parseInt(lineDataSplit[0]);
 				Profile tempProfile = new Profile(lineDataSplit);
 				listOfProfile.add(tempProfile);
-				profileNames.add(tempProfile.getPlayerName());
-				profileLevel.add(tempProfile.getLevelReached());
 			}
 			input.close();
 		} catch (FileNotFoundException e) {
@@ -97,13 +89,7 @@ public class ProfileManager {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
-		
-		
-
 	}
-
-	
-	
 	
 	/**
 	 * Deletes a player profile from the player slots by overwriting its line as
@@ -121,22 +107,7 @@ public class ProfileManager {
 		return profilesLineByLineData;
 	}
 
-	public static ArrayList<Profile> orderedProfilesAccordingToSlot() {
-
-		System.out.println("Hi");
-
-		return orderedProfilesAccordingToSlot;
-	}
-	
-	public static ArrayList<String> getProfileNames(){
-		
-		return profileNames;
-	}
-
 	/**
 	 * @return the profileLevel
 	 */
-	public static ArrayList<Integer> getProfileLevel() {
-		return profileLevel;
-	}
 }
