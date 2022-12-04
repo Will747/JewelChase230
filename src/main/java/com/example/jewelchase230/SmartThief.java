@@ -6,7 +6,7 @@ public final class SmartThief extends AICharacter {
     /**
      * Constructs a renderable component.
      */
-    public SmartThief(Direction d) {
+    public SmartThief() {
         super();
     }
 
