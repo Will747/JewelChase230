@@ -33,6 +33,7 @@ public class Door extends Item {
      */
     public void setIsDoorOpen(boolean openOrClose) {
         isDoorOpen = openOrClose;
+        setCollidable(true);
     }
 
     /**

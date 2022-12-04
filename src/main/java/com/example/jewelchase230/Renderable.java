@@ -21,7 +21,7 @@ public abstract class Renderable {
     private IntVector2D gridPosition;
 
     /** Position of a neighbouring bomb, null if no bomb. */
-    private IntVector2D bombPosition;
+    //private IntVector2D bombPosition;
 
     /**
      * Constructs a renderable component.
@@ -52,17 +52,17 @@ public abstract class Renderable {
      * Returns whether the tile neighbours a bomb.
      * @return True if a bomb is on a neighbouring tile
      */
-    public IntVector2D isNextToBomb() {
+    /*public IntVector2D isNextToBomb() {
         return bombPosition;
-    }
+    }*/
 
     /**
      * Takes in the bomb position if a bomb is on a neighbouring tile.
      * @param inBombPosition The position of the neighbouring bomb.
      */
-    public void setNextToBomb(final IntVector2D inBombPosition) {
+   /* public void setNextToBomb(final IntVector2D inBombPosition) {
         bombPosition = inBombPosition;
-    }
+    }*/
 
     /**
      * The top left position on the canvas that this item should

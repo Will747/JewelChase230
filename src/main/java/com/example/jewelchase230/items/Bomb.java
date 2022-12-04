@@ -32,8 +32,7 @@ public class Bomb extends Item {
 
     /**
      * Constructs a new bomb.
-     * 
-     * @param inTime The time delay until the bomb explodes.
+     *
      */
     public Bomb() {
         super();
@@ -105,7 +104,7 @@ public class Bomb extends Item {
      * 
      * @return Every neighbouring tile.
      */
-    public ArrayList<Tile> getNeighbouringTiles() {
+    /*ublic ArrayList<Tile> getNeighbouringTiles() {
         final IntVector2D maxSize = getLevel().getLevelSize();
         ArrayList<Tile> tileArray = new ArrayList<>();
         final IntVector2D thisPos = getGridPosition();
@@ -121,18 +120,18 @@ public class Bomb extends Item {
             }
         }
         return tileArray;
-    }
+    }*/
 
     /**
      * Set or remove bomb triggers from neighbouring tiles.
      * 
      * @param bombPosInTile Current bomb position if triggerd, null if not.
      */
-    private void setTriggers(IntVector2D bombPosInTile) {
+    /*private void setTriggers(IntVector2D bombPosInTile) {
         for (Tile tileInstance : getNeighbouringTiles()) {
             tileInstance.setNextToBomb(bombPosInTile);
         }
-    }
+    }*/
 
     /**
      * Produces an explosion on a tile.
@@ -163,7 +162,7 @@ public class Bomb extends Item {
      * doors.
      */
     public void explode() {
-        setTriggers(null);
+        //setTriggers(null);
         boolean continueExplosionUp = true;
         boolean continueExplosionDown = true;
         boolean continueExplosionLeft = true;

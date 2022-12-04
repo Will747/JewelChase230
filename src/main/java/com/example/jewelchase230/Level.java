@@ -1,4 +1,5 @@
 package com.example.jewelchase230;
+import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.IntVector2D;
 
@@ -71,6 +72,30 @@ public class Level {
     public void addItem(final IntVector2D pos, final Item item) {
         item.setGridPosition(pos);
         getTile(pos).setItem(item);
+        if(item instanceof Bomb){
+            ArrayList<Tile> NeighbouringTiles = getNeighbouringTiles(item.getGridPosition());
+            for (int i = 0 ; i < NeighbouringTiles.size(); i++){
+                NeighbouringTiles.get(i).setBombTrigger(item.getGridPosition());
+            }
+        }
+    }
+
+    public ArrayList<Tile> getNeighbouringTiles(IntVector2D position) {
+        final IntVector2D maxSize = getLevelSize();
+        ArrayList<Tile> tileArray = new ArrayList<>();
+        final IntVector2D thisPos = position;
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                if (!(x == 0 && y == 0)) {
+                    IntVector2D tempVector = thisPos.add(new IntVector2D(x, y));
+                    if (checkValidTile(tempVector)) {
+                        tileArray.add(getTile(tempVector));
+                    }
+                }
+            }
+        }
+        System.out.println(tileArray.size());
+        return tileArray;
     }
 
     /**
@@ -78,6 +103,13 @@ public class Level {
      * @param pos The tile position to have item removed from.
      */
     public void removeItem(final IntVector2D pos) {
+        Item item = getItem(pos);
+        if(item instanceof Bomb){
+            ArrayList<Tile> NeighbouringTiles = getNeighbouringTiles(item.getGridPosition());
+            for (Tile tileInstance: NeighbouringTiles){
+                tileInstance.setBombTrigger(null);
+            }
+        }
         getTile(pos).setItem(null);
     }
 

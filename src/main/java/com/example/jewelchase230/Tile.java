@@ -1,7 +1,9 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.items.Item;
+import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.vectors.DoubleVector2D;
+import com.example.jewelchase230.vectors.IntVector2D;
 import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -22,6 +24,8 @@ public final class Tile extends Renderable {
     private final TileColour topRight;
     /** Bottom right side of tile. */
     private final TileColour bottomRight;
+
+    private IntVector2D bombNextToTile = null;
 
     /**
      * Item currently on this tile.
@@ -46,6 +50,23 @@ public final class Tile extends Renderable {
         bottomLeft = inBottomLeft;
         bottomRight = inBottomRight;
     }
+
+    public boolean isNextToBomb(){
+        if(bombNextToTile == null){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Item getBomb() {
+        return getLevel().getItem(bombNextToTile);
+    }
+
+    public void setBombTrigger(IntVector2D bombPos){
+        bombNextToTile = bombPos;
+    }
+
 
     /**
      * @return The item on this tile or null if there isn't one.
