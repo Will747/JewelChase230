@@ -51,15 +51,19 @@ public class Player extends Character {
             case UP:
                 System.out.println("moving up");
                 setGridPosition(canMoveUp());
+                break;
             case DOWN:
                 System.out.println("moving down");
                 setGridPosition(canMoveDown());
+                break;
             case RIGHT:
                 System.out.println("moving right");
                 setGridPosition(canMoveRight());
+                break;
             case LEFT:
                 System.out.println("moving left");   
                 setGridPosition(canMoveLeft());
+                break;
             default:
                 break;
         }
