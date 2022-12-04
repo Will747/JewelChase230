@@ -135,21 +135,6 @@ public class Bomb extends Item {
     }
 
     /**
-     * Checks that a position is a valid tile in the current level.
-     * @param posToCheck The tile position to check is valid.
-     * @return True if valid, false if not.
-     */
-    public boolean checkValidTile(IntVector2D posToCheck) {
-        IntVector2D maxSize = getLevel().getLevelSize();
-        if (posToCheck.getX() >= maxSize.getX() || posToCheck.getY() >= maxSize.getY()
-        || posToCheck.getX() < 0 || posToCheck.getY() < 0) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
      * Produces an explosion on a tile.
      * @param posToExplode Tile to produce explosion on.
      */
@@ -193,7 +178,7 @@ public class Bomb extends Item {
             if (continueExplosionUp) {
                 explodeUp += 1;
                 IntVector2D newPos = currentPos.add(new IntVector2D(0, explodeUp));
-                if (checkValidTile(newPos)) {
+                if (getLevel().checkValidTile(newPos)) {
                     explodePosition(newPos);
                 } else {
                     continueExplosionUp = false;
@@ -202,7 +187,7 @@ public class Bomb extends Item {
             if (continueExplosionDown) {
                 explodeDown -= 1;
                 IntVector2D newPos = currentPos.add(new IntVector2D(0, explodeDown));
-                if (checkValidTile(newPos)) {
+                if (getLevel().checkValidTile(newPos)) {
                     explodePosition(newPos);
                 } else {
                     continueExplosionDown = false;
@@ -211,7 +196,7 @@ public class Bomb extends Item {
             if (continueExplosionLeft) {
                 explodeLeft -= 1;
                 IntVector2D newPos = currentPos.add(new IntVector2D(explodeLeft, 0));
-                if (checkValidTile(newPos)) {
+                if (getLevel().checkValidTile(newPos)) {
                     explodePosition(newPos);
                 } else {
                     continueExplosionLeft = false;
@@ -220,7 +205,7 @@ public class Bomb extends Item {
             if (continueExplosionRight) {
                 explodeRight += 1;
                 IntVector2D newPos = currentPos.add(new IntVector2D(explodeRight, 0));
-                if (checkValidTile(newPos)) {
+                if (getLevel().checkValidTile(newPos)) {
                     explodePosition(newPos);
                 } else {
                     continueExplosionRight = false;

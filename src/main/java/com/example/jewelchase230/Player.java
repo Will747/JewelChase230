@@ -47,20 +47,20 @@ public class Player extends Character {
 
         switch (keyPress.getCode()) {
             case UP:
-                if (canMoveUp()) {
-                    setGridPosition(gridPos.add(new IntVector2D(0, 1)));
+                if (canMoveUp() != null) {
+                    setGridPosition(canMoveUp());
                 }
             case DOWN:
-                if (canMoveDown()) {
-                    setGridPosition(gridPos.add(new IntVector2D(0, -1)));
+                if (canMoveDown() != null) {
+                    setGridPosition(canMoveDown());
                 }
             case RIGHT:
-                if (canMoveRight()) {
-                    setGridPosition(gridPos.add(new IntVector2D(1, 0)));
+                if (canMoveRight() != null) {
+                    setGridPosition(canMoveRight());
                 }
             case LEFT:
-                if (canMoveLeft()) {
-                    setGridPosition(gridPos.add(new IntVector2D(-1, 0)));
+                if (canMoveLeft() != null) {
+                    setGridPosition(canMoveLeft());
                 }
             default:
                 break;

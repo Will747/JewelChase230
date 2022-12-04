@@ -91,6 +91,21 @@ public class Level {
     }
 
     /**
+     * Checks that a position is a valid tile in the current level.
+     * @param posToCheck The tile position to check is valid.
+     * @return True if valid, false if not.
+     */
+    public boolean checkValidTile(IntVector2D posToCheck) {
+        IntVector2D maxSize = getLevelSize();
+        if (posToCheck.getX() >= maxSize.getX() || posToCheck.getY() >= maxSize.getY()
+        || posToCheck.getX() < 0 || posToCheck.getY() < 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Gets the item at a position on the grid.
      * @param pos Position on the grid.
      * @return The item or null if none exist.

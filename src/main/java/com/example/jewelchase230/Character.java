@@ -1,6 +1,7 @@
 package com.example.jewelchase230;
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.IntVector2D;
+import java.util.ArrayList;
 
 /**
  * Renders the characters to the game.
@@ -15,26 +16,53 @@ public abstract class Character extends Sprite {
         super();
     }
 
+    private boolean validNextMove(Tile nextMoveTile) {
+        Tile thisTile = getLevel().getTile(getGridPosition());
+        ArrayList<TileColour> thisTileColours = thisTile.getTileColours();
+        ArrayList<TileColour> nextTileColours = nextMoveTile.getTileColours();
+        for (int i = 0; i < thisTileColours.size(); i++) {
+            for (int j = 0; j < nextTileColours.size(); j++) {
+                if (thisTileColours.get(i) == nextTileColours.get(j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * Checks if the character can move up.
      *
      * @return a boolean, true or false.
      */
-    protected boolean canMoveUp() {
-        IntVector2D levelSize = getLevel().getLevelSize();
+    protected IntVector2D canMoveUp() {
         IntVector2D gridPos = getGridPosition();
-        IntVector2D yTry =
-                new IntVector2D(gridPos.getX(), gridPos.getY() + 1);
-        Tile tile = getLevel().getTile(gridPos);
+        int currentDifference = 0;
+        boolean stillInRange = true;
+        while (stillInRange) {
+            currentDifference -= 1;
+            IntVector2D yTry =
+                new IntVector2D(gridPos.getX(), gridPos.getY() + currentDifference);
+            if (getLevel().checkValidTile(yTry)) {
+                Tile nextMoveTile = getLevel().getTile(yTry);
+                if (validNextMove(nextMoveTile)) {
+                    return yTry;
+                }
+            } else {
+                stillInRange = false;
+            }
+        }
+        return null;
+        /*Tile tile = getLevel().getTile(gridPos);
         Tile newTile = getLevel().getTile(yTry);
-
+        
         if (levelSize.getY() < gridPos.getY()) {
             if (tile.getTopLeft() == newTile.getBottomLeft()
                     && (tile.getTopRight() == newTile.getBottomRight())) {
                 return true;
             }
         }
-        return false;
+        */
     }
 
     /**
@@ -42,8 +70,8 @@ public abstract class Character extends Sprite {
      *
      * @return a boolean, true or false.
      */
-    protected boolean canMoveDown() {
-        IntVector2D levelSize = getLevel().getLevelSize();
+    protected IntVector2D canMoveDown() {
+        /*IntVector2D levelSize = getLevel().getLevelSize();
         IntVector2D gridPos = getGridPosition();
         IntVector2D yTry =
                 new IntVector2D(gridPos.getX(), gridPos.getY() - 1);
@@ -56,7 +84,24 @@ public abstract class Character extends Sprite {
                 return true;
             }
         }
-        return false;
+        return false; */
+        IntVector2D gridPos = getGridPosition();
+        int currentDifference = 0;
+        boolean stillInRange = true;
+        while (stillInRange) {
+            currentDifference += 1;
+            IntVector2D yTry =
+                new IntVector2D(gridPos.getX(), gridPos.getY() + currentDifference);
+            if (getLevel().checkValidTile(yTry)) {
+                Tile nextMoveTile = getLevel().getTile(yTry);
+                if (validNextMove(nextMoveTile)) {
+                    return yTry;
+                }
+            } else {
+                stillInRange = false;
+            }
+        }
+        return null;
     }
 
     /**
@@ -64,8 +109,8 @@ public abstract class Character extends Sprite {
      *
      * @return a boolean, true or false.
      */
-    protected boolean canMoveRight() {
-        IntVector2D levelSize = getLevel().getLevelSize();
+    protected IntVector2D canMoveRight() {
+        /*IntVector2D levelSize = getLevel().getLevelSize();
         IntVector2D gridPos = getGridPosition();
         IntVector2D xTry =
                 new IntVector2D(gridPos.getX() + 1, gridPos.getY());
@@ -78,7 +123,24 @@ public abstract class Character extends Sprite {
                     return true;
             }
         }
-        return false;
+        return false; */
+        IntVector2D gridPos = getGridPosition();
+        int currentDifference = 0;
+        boolean stillInRange = true;
+        while (stillInRange) {
+            currentDifference += 1;
+            IntVector2D xTry =
+                new IntVector2D(gridPos.getX() + currentDifference, gridPos.getY());
+            if (getLevel().checkValidTile(xTry)) {
+                Tile nextMoveTile = getLevel().getTile(xTry);
+                if (validNextMove(nextMoveTile)) {
+                    return xTry;
+                }
+            } else {
+                stillInRange = false;
+            }
+        }
+        return null;
     }
 
     /**
@@ -86,8 +148,8 @@ public abstract class Character extends Sprite {
      *
      * @return a boolean, true or false
      */
-    protected boolean canMoveLeft() {
-        IntVector2D levelSize = getLevel().getLevelSize();
+    protected IntVector2D canMoveLeft() {
+        /*IntVector2D levelSize = getLevel().getLevelSize();
         IntVector2D gridPos = getGridPosition();
         IntVector2D xTry =
                 new IntVector2D(gridPos.getX() - 1, gridPos.getY());
@@ -100,7 +162,24 @@ public abstract class Character extends Sprite {
                 return true;
             }
         }
-        return false;
+        return false; */
+        IntVector2D gridPos = getGridPosition();
+        int currentDifference = 0;
+        boolean stillInRange = true;
+        while (stillInRange) {
+            currentDifference -= 1;
+            IntVector2D xTry =
+                new IntVector2D(gridPos.getX() + currentDifference, gridPos.getY());
+            if (getLevel().checkValidTile(xTry)) {
+                Tile nextMoveTile = getLevel().getTile(xTry);
+                if (validNextMove(nextMoveTile)) {
+                    return xTry;
+                }
+            } else {
+                stillInRange = false;
+            }
+        }
+        return null;
     }
 
     /**
