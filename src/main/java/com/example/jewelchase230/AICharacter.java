@@ -9,8 +9,11 @@ import com.example.jewelchase230.vectors.IntVector2D;
  */
 public abstract class AICharacter extends Character {
 
-    private final int MILLISECONDS_PER_MOVE = 1000;
+    /** Time between moves. */
+    private static final int MILLISECONDS_PER_MOVE = 1000;
+    /** Direction. */
     private Direction d;
+    /** Time since last tick. */
     private int timeSinceLastImageChange = 0;
     /**
      * Constructs a renderable component.
@@ -40,7 +43,11 @@ public abstract class AICharacter extends Character {
         }
     }
 
-    protected void setDirection(Direction inDirection) {
+    /**
+     * Sets direction of the NPC.
+     * @param inDirection the direction it is currently facing.
+     */
+    protected void setDirection(final Direction inDirection) {
         d = inDirection;
     }
 }
