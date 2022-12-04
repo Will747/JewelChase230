@@ -27,8 +27,6 @@ public final class ProfileSelectMenu {
     private void initialize()
     {
     	selectPlayer.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());
-    	
-    
     }
     @FXML
     void onBackToMainMenuPressed(final MouseEvent event) {

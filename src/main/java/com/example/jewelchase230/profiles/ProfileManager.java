@@ -78,14 +78,14 @@ public class ProfileManager
 		/** TEST START */
     	
     	Profile a = new Profile(4,1,"Kiwi",4);
-		/**Profile b = new Profile(1,3,"Adam",8);
+		Profile b = new Profile(1,3,"Adam",8);
 		Profile c = new Profile(7,4,"Will",16);
-		Profile d = new Profile(2,1,"Cos",3); */
+		Profile d = new Profile(2,1,"Cos",3);
 	
-		
+		// PROBLEM WITH PROF b AND c (assuming it being becuase playerProfileSlot is not 1)
     	listOfProfile.add(a);
-	/*	listOfProfile.add(b);
-		listOfProfile.add(c);
+		listOfProfile.add(d);
+		listOfProfile.add(a);
 		listOfProfile.add(d); 
 		
     	
