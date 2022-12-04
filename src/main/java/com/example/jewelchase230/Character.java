@@ -1,5 +1,4 @@
 package com.example.jewelchase230;
-import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.IntVector2D;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public abstract class Character extends Sprite {
         super();
     }
 
-    private boolean validNextMove(Tile nextMoveTile) {
+    private boolean validNextMove(final Tile nextMoveTile) {
 
         Tile thisTile = getLevel().getTile(getGridPosition());
         ArrayList<TileColour> thisTileColours = thisTile.getTileColours();
@@ -25,7 +24,8 @@ public abstract class Character extends Sprite {
         for (int i = 0; i < thisTileColours.size(); i++) {
             for (int j = 0; j < nextTileColours.size(); j++) {
                 if (thisTileColours.get(i) == nextTileColours.get(j)) {
-                    Item tileItem = getLevel().getItem(nextMoveTile.getGridPosition());
+                    Item tileItem =
+                            getLevel().getItem(nextMoveTile.getGridPosition());
                     if (tileItem != null) {
                         if (!(tileItem.getCollidable())) {
                             return false;
@@ -133,7 +133,7 @@ public abstract class Character extends Sprite {
         while (stillInRange) {
             currentDifference -= 1;
             IntVector2D xTry =
-                new IntVector2D(gridPos.getX() + currentDifference, gridPos.getY()); 
+                new IntVector2D(gridPos.getX() + currentDifference, gridPos.getY());
             if (getLevel().checkValidTile(xTry)) {
                 Tile nextMoveTile = getLevel().getTile(xTry);
                 if (validNextMove(nextMoveTile)) {

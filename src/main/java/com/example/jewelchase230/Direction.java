@@ -6,6 +6,7 @@ package com.example.jewelchase230;
  * @author Caroline Segestaal.
  */
 public enum Direction {
+    /** The four directions. */
     UP, DOWN, LEFT, RIGHT;
 
     /**
@@ -30,7 +31,7 @@ public enum Direction {
      * @return The wanted enum from the passed string.
      */
     public static Direction getDirectionType(String directionString){
-        switch(directionString){
+        switch (directionString) {
             case "u":
                 return UP;
             case "d":
