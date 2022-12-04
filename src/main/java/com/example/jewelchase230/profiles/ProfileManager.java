@@ -26,7 +26,7 @@ public class ProfileManager {
 	/** Final int variable which holds the total number of 'splits' to be done */
 	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4;
 	/** ArrayList which holds a list of Profile names */
-	static ArrayList<String> profileNames = new ArrayList<String>();
+	public static ArrayList<String> profileNames = new ArrayList<String>();
 	/** ArrayList which holds a list of Profile scores */
 	static ArrayList<Integer> profileLevel = new ArrayList<Integer>();
 
@@ -62,67 +62,11 @@ public class ProfileManager {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
+		System.out.println(listOfProfile.size());
 	}
 
-	/**
-	 * This method reorganises the ArrayList of Profiles in accordance to their
-	 * Profile Slot (1..4).
-	 * 
-	 * @param listOfProfile --> unordered Profile List.
-	 * @return orderedProfilesAccordingToSlot --> ordered Profile List.
-	 */
-
-	public static ArrayList<Profile> rearrangeListOfProfile(ArrayList<Profile> listOfProfile) {
-		/** TEST START */
-		orderedProfilesAccordingToSlot.add(0,null);
-		orderedProfilesAccordingToSlot.add(1,null);
-		orderedProfilesAccordingToSlot.add(2,null);
-		orderedProfilesAccordingToSlot.add(3,null);
-
-
-
-		Profile a = new Profile(4, 2, "Kiwi", 4);
-		Profile b = new Profile(1, 1, "Adam", 8);
-		// Profile c = new Profile(7,4,"Will",16);
-		// Profile d = new Profile(2,3,"Cos",3);
-
-		// ERROR IF playerProfileSlot is not 1)
-		listOfProfile.add(a);
-		listOfProfile.add(b);
-		// listOfProfile.add(c);
-		// listOfProfile.add(d);
-
-		/** TEST END */
-
-		for (int k = 0; k < listOfProfile.size(); k++) {
-
-			System.out.println("profile slot" + listOfProfile.get(k).getPlayerProfileSlot());
-			System.out.println("iteration: " + k);
-			if (listOfProfile.get(k) != null) {
-				switch (listOfProfile.get(k).getPlayerProfileSlot()) {
-
-				case 1:
-
-					orderedProfilesAccordingToSlot.add(0, listOfProfile.get(k));
-					break;
-				case 2:
-					orderedProfilesAccordingToSlot.add(1, listOfProfile.get(k));
-					break;
-				case 3:
-					orderedProfilesAccordingToSlot.add(2, listOfProfile.get(k));
-					break;
-				case 4:
-					orderedProfilesAccordingToSlot.add(3, listOfProfile.get(k));
-					break;
-				}
-
-			}
-		}
-		return orderedProfilesAccordingToSlot;
-
-
-	}
-
+	
+	
 	/**
 	 * Overwrites the Profiles.txt file with updated Profile information
 	 * 
@@ -131,8 +75,11 @@ public class ProfileManager {
 	 */
 
 	public static void saveProfile(Profile profile) throws IOException {
+		
+		
 		BufferedWriter pmWriter = new BufferedWriter(new FileWriter("Profiles.txt"));
 
+		
 		try {
 			pmWriter.write(Profile.profileToString(profile));
 			pmWriter.newLine();
@@ -150,8 +97,14 @@ public class ProfileManager {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
+		
+		
+
 	}
 
+	
+	
+	
 	/**
 	 * Deletes a player profile from the player slots by overwriting its line as
 	 * null

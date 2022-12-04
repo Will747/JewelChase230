@@ -19,15 +19,13 @@ import javafx.stage.Modality;
  * @author Daniel Clark
  */
 public final class ProfileSelectMenu {
-
     @FXML 
     private Label selectPlayer;
 
-    @FXML
-    private void initialize()
-    {
-    //	selectPlayer.setText(ProfileManager.rearrangeListOfProfile(ProfileManager.listOfProfile).get(ProfileMenu.getProfileSelected()).getPlayerName());
+    public void setProfile(){
+        selectPlayer.setText(ProfileManager.listOfProfile.get(ProfileMenu.getProfileSelected()).getPlayerName());
     }
+
     @FXML
     void onBackToMainMenuPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getMainMenu());

@@ -1,5 +1,6 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.profiles.ProfileManager;
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -65,6 +66,9 @@ public final class Main extends Application {
 
     @Override
     public void start(final Stage inStage) throws IOException {
+    	
+        ProfileManager.readLines();
+    	
         windowSize =
                 new IntVector2D(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
         settings = new Settings();
