@@ -96,55 +96,63 @@ public class LevelFileReader {
         int y = lineScanner.nextInt();
         IntVector2D tempPos = new IntVector2D(x, y);
         switch (ID) {
-            case 1: {
+            case 1: { //Bomb
                     Bomb tempBomb = new Bomb();
                     levelBuilt.addItem(tempPos, tempBomb);
                 break;
             }
-            case 2: {
+            case 2: { //Clock
                     int time = lineScanner.nextInt();
                     Clock tempClock = new Clock(time);
                     levelBuilt.addItem(tempPos, tempClock);
                 break;
             }
-            case 3: {
+            case 3: { //Door
                     Door tempDoor = new Door();
                     levelBuilt.addItem(tempPos, tempDoor);
                 break;
             }
-            case 4: {
+            case 4: { //Lever
                     String colour = lineScanner.next();
                     Lever tempLever = new Lever(colour);
                     levelBuilt.addItem(tempPos, tempLever);
                 break;
             }
-            case 5: {
+            case 5: { //Gate
                     String colour = lineScanner.next();
                     Gate tempGate = new Gate(colour);
                     levelBuilt.addItem(tempPos, tempGate);
                 break;
             }
-            case 6: {
+            case 6: { //Floor Following Thief
                     String directionString = lineScanner.next();
-                    Direction direction = Direction.getDirectionType(directionString);
-                    FloorFollowingThief tempThief = new FloorFollowingThief();
-                    // levelBuilt.addNPC(tempItemPos, tempThief);
+                    FloorFollowingThief tempThief = new FloorFollowingThief(Direction.getDirectionType(directionString));
+                    levelBuilt.addCharacter(tempPos, tempThief); //wont show as no image yet
                 break;
             }
-            case 7: {
+            case 7: { //Flying Assassin
                     String directionString = lineScanner.next();
-                    Direction direction = Direction.getDirectionType(directionString);
-                    IntVector2D tempNPCPos = new IntVector2D(x, y);
-                    FlyingAssassin tempAssassin = new FlyingAssassin(direction);
-                    //levelBuilt.addCharacter(tempNPCPos, tempAssassin);
+                    FlyingAssassin tempAssassin = new FlyingAssassin(Direction.getDirectionType(directionString));
+                    levelBuilt.addCharacter(tempPos, tempAssassin); //erroring on setGridPos
                 break;
             }
-            case 8: {
+            case 8: { //Loot
                     int rarity = lineScanner.nextInt();
                     Loot tempLoot = new Loot();
                     levelBuilt.addItem(tempPos, tempLoot);
                 break;
             }
+            case 9: { //Player
+                Player tempPlayer = new Player();
+                levelBuilt.addCharacter(tempPos, tempPlayer);
+            break;
+            }
+            case 10: { //Smart Thief
+                String directionString = lineScanner.next();
+                SmartThief tempAssassin = new SmartThief(Direction.getDirectionType(directionString));
+                levelBuilt.addCharacter(tempPos, tempAssassin); //wont show as no image yet
+            break;
+        }
             default:
                 System.out.println("Item ID does not exist!");
                 break;

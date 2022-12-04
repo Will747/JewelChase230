@@ -174,9 +174,24 @@ public class ProfileManager {
 
 		return orderedProfilesAccordingToSlot;
 	}
+	
+	public static ArrayList<String> getProfileNames(){
+		/**
+		Profile a = new Profile(4,1,"Kiwi",4);
+    	Profile b = new Profile(1,3,"Adam",8);
+    	Profile c = new Profile(7,4,"Will",16);
+    	Profile d = new Profile(2,2,"Cos",3);
 
-	public static ArrayList<String> getProfileNames() {
+    	listOfProfile.add(a);
+    	listOfProfile.add(b);
+    	listOfProfile.add(c);
+    	listOfProfile.add(d);
 
+    	rearrangeListOfProfile(listOfProfile);
+    	
+    	for (int i = 0; i <= 3; i++) { 
+    		profileNames.add(orderedProfilesAccordingToSlot.get(i).getPlayerName());
+    	} */
 		return profileNames;
 	}
 

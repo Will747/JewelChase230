@@ -2,6 +2,7 @@ package com.example.jewelchase230;
 
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.DoubleVector2D;
+import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
 
@@ -59,6 +60,28 @@ public final class Tile extends Renderable {
      */
     public void setItem(final Item inItem) {
         item = inItem;
+    }
+
+    /**
+     * Gets all the colours contained in this tile.
+     * @return Array of tile colours.
+     */
+    public ArrayList<TileColour> getTileColours() {
+        ArrayList<TileColour> coloursArray = new ArrayList<>();
+        coloursArray.add(getTopLeft());
+        coloursArray.add(getTopRight());
+        coloursArray.add(getBottomLeft());
+        coloursArray.add(getBottomRight());
+        /*if (!(coloursArray.contains(getBottomLeft()))) {
+            coloursArray.add(getTopRight());
+        }
+        if (!(coloursArray.contains(getBottomLeft()))) {
+            coloursArray.add(getTopRight());
+        }
+        if (!(coloursArray.contains(getBottomRight()))) {
+            coloursArray.add(getBottomRight());
+        } */
+        return coloursArray;
     }
 
     /**
