@@ -126,7 +126,8 @@ public class LevelFileReader {
             }
             case 6: { //Floor Following Thief
                     String directionString = lineScanner.next();
-                    FloorFollowingThief tempThief = new FloorFollowingThief(Direction.getDirectionType(directionString));
+                    String colourToFollow = lineScanner.next();
+                    FloorFollowingThief tempThief = new FloorFollowingThief(Direction.getDirectionType(directionString), TileColour.getTileColourType(colourToFollow.charAt(0)));
                     levelBuilt.addCharacter(tempPos, tempThief); //wont show as no image yet
                 break;
             }

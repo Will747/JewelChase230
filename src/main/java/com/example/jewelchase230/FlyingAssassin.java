@@ -14,21 +14,28 @@ public class FlyingAssassin extends AICharacter {
      * Constructs a renderable component.
      *
      */
-    public FlyingAssassin(final Direction inDirection) {
-        super();
-        super.setDirection(inDirection);
+    public FlyingAssassin(Direction inDirection) {
+        setDirection(inDirection);
         setImageFromFile("images/FLYING_ASSASSIN_LEFT_FACE.png");
     }
 
     /**
      * Controls the next move of the Flying Assassin.
-     *
-     * @param d Direction the Flying assassin is facing.
      */
-    protected void getNextMove(Direction d) {
-        IntVector2D gridPos = getGridPosition();
-
-        switch (d) {
+    @Override
+    public void getNextMove() {
+        IntVector2D currentPos = getGridPosition();
+        IntVector2D newPos = getMoveDifference(currentDirection);
+        int xDiff = newPos.getX();
+        int yDiff = newPos.getY();
+        IntVector2D potentialPosition = canMove(xDiff, yDiff, this, null);
+        if (potentialPosition == currentPos) {
+            currentDirection = currentDirection.getOppositeDirection(currentDirection);
+            setGridPosition(canMove(0-xDiff, 0-yDiff, this, null));
+        } else {
+            setGridPosition(potentialPosition);
+        }
+        /* switch (d) {
             case UP:
                 IntVector2D newPos = gridPos.add(new IntVector2D(0, -1));
                 if (getLevel().checkValidTile(newPos)) {
@@ -107,7 +114,7 @@ public class FlyingAssassin extends AICharacter {
                     setGridPosition(newPos);
                 }
                 break;
-        }
+        } */
     }
 }
 

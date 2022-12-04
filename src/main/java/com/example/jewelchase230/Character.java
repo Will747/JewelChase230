@@ -22,10 +22,15 @@ public abstract class Character extends Sprite {
      * @param nextMoveTile The tile to be moved to.
      * @return True if valid move, false if not.
      */
-    private boolean validNextMove(final Tile nextMoveTile) {
+    private boolean validNextMove(final Tile nextMoveTile, final TileColour colourFollow) {
         Tile thisTile = getLevel().getTile(getGridPosition());
-        ArrayList<TileColour> thisTileColours = thisTile.getTileColours();
+        ArrayList<TileColour> thisTileColours = new ArrayList<>();
         ArrayList<TileColour> nextTileColours = nextMoveTile.getTileColours();
+        if (colourFollow == null) {
+            thisTileColours = thisTile.getTileColours();
+        } else {
+            thisTileColours.add(colourFollow);
+        }
         for (int i = 0; i < thisTileColours.size(); i++) {
             for (int j = 0; j < nextTileColours.size(); j++) {
                 if (thisTileColours.get(i) == nextTileColours.get(j)) {
@@ -41,9 +46,10 @@ public abstract class Character extends Sprite {
      * @param xChange Positive for moving right, negative for moving left.
      * @param yChange Positive for moving down, negative for moving up.
      * @param collisionCharacter The character being moved.
+     * @param colourFollow next tile must be of specific colour, null if none.
      * @return new tile position, or current position if invalid move.
      */
-    protected IntVector2D canMove(int xChange, int yChange, Character collisionCharacter) {
+    protected IntVector2D canMove(final int xChange, final int yChange, final Character collisionCharacter, final TileColour colourFollow) {
         IntVector2D currentPos = getGridPosition();
         if (collisionCharacter instanceof FlyingAssassin) {
             IntVector2D newPos = currentPos.add(new IntVector2D(xChange, yChange));
@@ -62,7 +68,7 @@ public abstract class Character extends Sprite {
                 IntVector2D newPos = currentPos.add(new IntVector2D(xDiff, yDiff));
                 if (getLevel().checkValidTile(newPos)) { //Check the newPos is a valid tile
                     Tile nextMoveTile = getLevel().getTile(newPos);
-                    if (validNextMove(nextMoveTile)) { //Makes sure the new tile has matching colours
+                    if (validNextMove(nextMoveTile, colourFollow)) { //Makes sure the new tile has matching colours
                         return tileItemManager(nextMoveTile, collisionCharacter);
                     } 
                 } else {
