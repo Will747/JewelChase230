@@ -43,6 +43,8 @@ public final class ProfileMenu {
 	private Profile player2;
 	private Profile player3;
 	private Profile player4;
+	
+	static ArrayList<Profile> profileList = new ArrayList<Profile>();
 
 	@FXML
 	private void initialize() {
@@ -52,7 +54,7 @@ public final class ProfileMenu {
 	}
 
 	public void refresh() {
-		ArrayList<Profile> profileList = ProfileManager.getListOfProfile();
+		 profileList = ProfileManager.getListOfProfile();
 
 		playerOneLabel.setText(profileList.get(0).getPlayerName());
 		player1 = profileList.get(0);
@@ -123,5 +125,12 @@ public final class ProfileMenu {
 		ProfileSelectMenu selectController = Menu.getProfileSelectController();
 		selectController.setProfile(player4);
 		Main.switchRoot(Menu.getProfileSelect());
+	}
+
+	/**
+	 * @return the profileList
+	 */
+	public ArrayList<Profile> getProfileList() {
+		return profileList;
 	}
 }

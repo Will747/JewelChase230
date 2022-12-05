@@ -1,11 +1,21 @@
 package com.example.jewelchase230.menus;
 
+import java.io.IOException;
+import java.util.Optional;
+
+import com.example.jewelchase230.Menu;
+import com.example.jewelchase230.profiles.Profile;
+import com.example.jewelchase230.profiles.ProfileManager;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 
 /**
  * Controller for the create profile menu.
@@ -27,10 +37,62 @@ public final class ProfileCreateMenu {
 	@FXML
 	private Button createProfileMenuButton;
 	
+	int profileNewSlot;
+	
 	
 	@FXML
-	void onCreateProfilePressed(final MouseEvent event) { 
+	/** 
+	 * This method creates a profile using the user's name input
+	 * @param event: MouseClick
+	 * @throws IOException
+	 */
+	void onCreateProfilePressed(final MouseEvent event) throws IOException { 
 		profileCreatedName = createProfileName.getText();
+		System.out.println(profileCreatedName);
+		choosePlayerSlot();
+		
+		Profile newProfile = new Profile(choosePlayerSlot(),1,profileCreatedName,0);
+		Menu.getProfileMenuController().refresh();
+		ProfileManager.saveProfile(newProfile);
+	}
+	
+	/**
+	 * This method decides, based on how many profiles exist in profileList, which playerSlot a new player has
+	 * @return int profileNewSlot
+	 */
+	int choosePlayerSlot() { 
+		if (ProfileMenu.profileList.size() < 1) { 
+			 profileNewSlot = 1;
+		} 
+		else if(ProfileMenu.profileList.size() == 1) { 
+			 profileNewSlot = 2;
+
+		}
+		else if(ProfileMenu.profileList.size() == 2) {
+			 profileNewSlot = 3;
+
+		}
+		else if(ProfileMenu.profileList.size() == 3) {
+			 profileNewSlot = 4;
+
+		} else { 
+			Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+
+	        Alert alert = new Alert(type, "");
+
+	        alert.initModality(Modality.APPLICATION_MODAL);
+	        //alert.initOwner(stage);
+	        alert.getDialogPane().setContentText("Too many profiles!");
+	        alert.getDialogPane().setHeaderText("Please delete a Profile to continue");
+
+	        Optional<ButtonType> result = alert.showAndWait();
+	        if(result.get() == ButtonType.OK)
+	        {
+	        	//do
+	           
+	        }
+		}
+		return profileNewSlot;
 	}
 	
 	
