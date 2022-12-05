@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileMenu">
    <children>
       <Label alignment="TOP_CENTER" text="Profiles" underline="true">
          <font>
@@ -32,9 +32,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
+            <Pane fx:id="playerOnePane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
                <children>
-                  <Label fx:id="playerOne" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
+                  <Label fx:id="playerOneLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
                      <image>
                         <Image url="@../fxmlImages/CAT_BLACK_SIT.png" />
@@ -43,9 +43,9 @@
                   <Button mnemonicParsing="false" onMouseClicked="#onP1Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1">
+            <Pane fx:id="playerTwoPane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1">
                <children>
-                  <Label fx:id="playerTwo" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P2" />
+                  <Label fx:id="playerTwoLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P2" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../fxmlImages/CAT_OREO_SIT.png" />
@@ -54,9 +54,9 @@
                   <Button mnemonicParsing="false" onMouseClicked="#onP2Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.rowIndex="1">
+            <Pane fx:id="playerThreePane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="playerThree" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P3" />
+                  <Label fx:id="playerThreeLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P3" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../fxmlImages/CAT_TABBY_SIT.png" />
@@ -65,9 +65,9 @@
                   <Button mnemonicParsing="false" onMouseClicked="#onP3Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Pane fx:id="playerFourPane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="playerFour" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P4" />
+                  <Label fx:id="playerFourLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P4" />
                   <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../fxmlImages/CAT_WHITE_SIT.png" />
@@ -88,5 +88,6 @@
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin></Button>
+      <Button fx:id="createProfileMenuButton" mnemonicParsing="false" onMouseClicked="#onProfileCreateMenuPressed" text="Create Profile" />
    </children>
 </VBox>

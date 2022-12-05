@@ -1,5 +1,6 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.menus.ProfileMenu;
 import com.example.jewelchase230.menus.ProfileSelectMenu;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,6 +29,8 @@ public final class Menu {
     private static final String HIGHSCORE_TABLE_FXML = "highScore-table.fxml";
     /** Profile Select fxml file. */
     private static final String PROFILE_SELECT_FXML = "profile-select.fxml";
+    /** Profile creating fxml file. */
+    private static final String PROFILE_CREATE_MENU_FXML = "profile-create-menu.fxml";
 
 
     /** Already created parent nodes. */
@@ -54,6 +57,7 @@ public final class Menu {
         createParent(HIGHSCORE_TABLE_FXML);
         createParent(PROFILE_MENU_FXML);
         createParent(PROFILE_SELECT_FXML);
+        createParent(PROFILE_CREATE_MENU_FXML);
     }
 
     /**
@@ -96,6 +100,14 @@ public final class Menu {
     }
 
     /**
+     * 
+     * @return The profile Menu select controller.
+     */
+    public static ProfileMenu getProfileMenuController() {
+        return (ProfileMenu) getController(PROFILE_MENU_FXML);
+    }
+    
+    /**
      * @return The profile select controller.
      */
     public static ProfileSelectMenu getProfileSelectController() {
@@ -109,6 +121,13 @@ public final class Menu {
         return getParent(SETTINGS_MENU_FXML);
     }
 
+    /* 
+     * @return The profile creation node.
+     */
+    public static Parent getProfileCreateMenu() { 
+    	return getParent(PROFILE_CREATE_MENU_FXML);
+    }
+    
     /**
      * @return highscores table node.
      */

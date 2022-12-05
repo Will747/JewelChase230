@@ -1,17 +1,11 @@
 package com.example.jewelchase230.profiles;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.example.jewelchase230.menus.ProfileMenu;
-
-import javafx.scene.chart.PieChart.Data;
-
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -34,8 +28,7 @@ public class ProfileManager {
 	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4;
 	/** Name of Text File to be read */
 	static String profilesFile = "Profiles.txt";
-	/** BLANK PROFILE LINE */
-	private static final String BLANK_PROFILE_STRING = "0.CREATE_PROFILE.0";
+	
 
 	// Reads each line of the text file "Profile.txt"
 	/**
@@ -106,24 +99,20 @@ public class ProfileManager {
 	 * 
 	 */
 	public static void deleteProfile(Profile profile) throws IOException {
-		String data, newData = "";
-		BufferedReader pmReader = new BufferedReader(new FileReader(profilesFile));
-		for(int i = 0; i < 4; i++){
-			data = pmReader.readLine();
-			if(i == ProfileMenu.getProfileSelected())
-			{
-				data = "0.0.0.0";
-			}
-			newData = newData + "\n" + data;
-		}
-		System.out.println(newData);
 		
-		BufferedWriter pmWriter = new BufferedWriter(new FileWriter(profilesFile));
-		pmWriter.write(newData);
-		pmWriter.close();
-		pmReader.close();
+		 listOfProfile.remove(profile);
 			
 
+	}
+	
+	public static Profile searchProfile(int playerSlot) { 
+		//go thru the list and check for if player slot == list i.get(uniqueID)
+		for(int i = 0;  i <= listOfProfile.size(); i++) { 
+			if (playerSlot == listOfProfile.get(i).getPlayerProfileSlot());
+			return listOfProfile.get(i);
+		}
+		return null;
+		
 	}
 
 	/**
@@ -133,11 +122,12 @@ public class ProfileManager {
 		return profilesLineByLineData;
 	}
 
+	
 	/**
-	 * @return the blankProfile
+	 * @return the listOfProfile
 	 */
-	public static String getBlankProfile() {
-		return BLANK_PROFILE_STRING;
+	public static ArrayList<Profile> getListOfProfile() {
+		return listOfProfile;
 	}
 
 	/**

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
+import com.example.jewelchase230.profiles.Profile;
 import com.example.jewelchase230.profiles.ProfileManager;
 
 import javafx.fxml.FXML;
@@ -25,11 +26,14 @@ public final class ProfileSelectMenu {
 
     @FXML
     private Label selectPlayerLevel;
+    
+    private Profile currentProfile;
 
 
-    public void setProfile(){
-        selectPlayerName.setText(ProfileManager.listOfProfile.get(ProfileMenu.getProfileSelected()).getPlayerName());
-        selectPlayerLevel.setText("LEVEL : " + String.valueOf(ProfileManager.listOfProfile.get(ProfileMenu.getProfileSelected()).getLevelReached()));
+    public void setProfile(Profile p){
+        selectPlayerName.setText(p.getPlayerName());
+        selectPlayerLevel.setText("LEVEL : " + String.valueOf(p.getLevelReached()));
+        currentProfile = p;
     }
 
     @FXML
@@ -61,8 +65,8 @@ public final class ProfileSelectMenu {
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == ButtonType.OK)
         {
-        	ProfileManager.deleteProfile(ProfileManager.listOfProfile.get(ProfileMenu.getProfileSelected()));
-            System.out.println("profile deleted.");
+        	ProfileManager.deleteProfile(currentProfile);
+        	Menu.getProfileMenuController().refresh();
            
         }
         else if (result.get() == ButtonType.CANCEL)
