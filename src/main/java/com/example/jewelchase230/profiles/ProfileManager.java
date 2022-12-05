@@ -1,5 +1,6 @@
 package com.example.jewelchase230.profiles;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.util.ArrayList;
@@ -7,7 +8,10 @@ import java.util.Scanner;
 
 import com.example.jewelchase230.menus.ProfileMenu;
 
+import javafx.scene.chart.PieChart.Data;
+
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -98,29 +102,27 @@ public class ProfileManager {
 	 * Deletes a player profile from the player slots by overwriting its line as
 	 * a blank profile.
 	 * 
+	 * ERROR NEEDS TO WRITE TO LINE 1 OF TXT FILE NOT LINE 2
+	 * 
 	 */
 	public static void deleteProfile(Profile profile) throws IOException {
-		BufferedWriter pmWriter = new BufferedWriter(new FileWriter(profilesFile));
-		Scanner in = new Scanner(profilesFile);
-
-		try {
-			while (in.hasNextLine()) {
-				String data = in.nextLine();
-				profilesLineByLineData.add(data);
-
-				String[] lineDataSplit = data.split("\\.", LINEBYLINEDATA_NUMBER_OF_CASES);
-				uniqueIDFromFile = Integer.parseInt(lineDataSplit[1]);
-				if ((listOfProfile.get(ProfileMenu.getProfileSelected())).getUniquePlayerID() == uniqueIDFromFile) {
-					pmWriter.write(ProfileMenu.getProfileSelected() + BLANK_PROFILE_STRING);
-				}
-
+		String data, newData = "";
+		BufferedReader pmReader = new BufferedReader(new FileReader(profilesFile));
+		for(int i = 0; i < 4; i++){
+			data = pmReader.readLine();
+			if(i == ProfileMenu.getProfileSelected())
+			{
+				data = "0.0.0.0";
 			}
-			pmWriter.close();
-
-		} catch (FileNotFoundException e) {
-			System.out.println("An error occured.");
-			e.printStackTrace();
+			newData = newData + "\n" + data;
 		}
+		System.out.println(newData);
+		
+		BufferedWriter pmWriter = new BufferedWriter(new FileWriter(profilesFile));
+		pmWriter.write(newData);
+		pmWriter.close();
+		pmReader.close();
+			
 
 	}
 
