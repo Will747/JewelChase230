@@ -73,11 +73,14 @@ public abstract class AICharacter extends Character {
      */
     @Override
     public void tick(final int time) {
-        timeSinceLastImageChange += time;
-        if (timeSinceLastImageChange > MILLISECONDS_PER_MOVE) {
-            getNextMove();
-            timeSinceLastImageChange = 0;
+        if (isAlive) {
+            timeSinceLastImageChange += time;
+            if (timeSinceLastImageChange > MILLISECONDS_PER_MOVE) {
+                getNextMove();
+                timeSinceLastImageChange = 0;
+            }
         }
+        
     }
 
     /**

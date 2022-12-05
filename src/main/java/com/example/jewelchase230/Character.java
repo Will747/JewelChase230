@@ -9,6 +9,11 @@ import java.util.ArrayList;
  * @author Caroline Segestaaland and Ben Stott.
  */
 public abstract class Character extends Sprite {
+    /** True if the character is aliv.e */
+    protected boolean isAlive = true;
+    /** Bones image. */
+    private static final String BONES_IMAGE = "images/CAT_OREO_SIT.png";
+    
     /**
      * Constructs a renderable component.
      */
@@ -90,7 +95,7 @@ public abstract class Character extends Sprite {
         IntVector2D tilePos = tile.getGridPosition();
         if (!(tileItem == null)) { // checks tile has an item
             if (tileItem.getCollidable()) {
-                collisionManager(tileItem, collisionCharacter);
+                itemCollisionManager(tileItem, collisionCharacter);
                 return tilePos;
             } else {
                 return getGridPosition();
@@ -110,7 +115,7 @@ public abstract class Character extends Sprite {
     private void bombManager(Tile tile, Character collisionCharacter) {
         ArrayList<Item> bombArray = tile.getBombs();
         for (Item bombInstance : bombArray) {
-            collisionManager(bombInstance, collisionCharacter);
+            itemCollisionManager(bombInstance, collisionCharacter);
         }
     }
 
@@ -119,7 +124,7 @@ public abstract class Character extends Sprite {
      * @param item Item colliding.
      * @param collisionCharacter Character colliding.
      */
-    private void collisionManager(Item item, Character collisionCharacter) {
+    private void itemCollisionManager(Item item, Character collisionCharacter) {
         if (collisionCharacter instanceof AICharacter) {
             item.doOnThiefCollision();
         } else if (collisionCharacter instanceof Player) {
@@ -134,7 +139,12 @@ public abstract class Character extends Sprite {
      */
     @Override
     public void tick(final int time) {
+        
+    }
 
+    public void doOnCollision() {
+        isAlive = false;
+        setImageFromFile(BONES_IMAGE);
     }
 
     /**

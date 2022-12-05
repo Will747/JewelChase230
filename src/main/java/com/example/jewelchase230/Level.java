@@ -284,7 +284,7 @@ public class Level {
      * @param pos The position on the grid the character is on.
      */
     public void removeSpecificNPC(final IntVector2D pos) {
-        Character character = getSpecificCharacter(pos.getX(), pos.getY());
+        Character character = getSpecificCharacter(pos.getX(),pos.getY());
         characters.remove(character);
     }
 

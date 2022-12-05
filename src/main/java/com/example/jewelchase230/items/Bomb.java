@@ -2,6 +2,7 @@ package com.example.jewelchase230.items;
 
 import com.example.jewelchase230.Tile;
 import com.example.jewelchase230.Level;
+import com.example.jewelchase230.Character;
 import com.example.jewelchase230.vectors.IntVector2D;
 import java.util.ArrayList;
 
@@ -81,8 +82,12 @@ public class Bomb extends Item {
     public void explodePosition(IntVector2D posToExplode) {
         Level currentLevel = getLevel();
         Item currentItem = currentLevel.getItem(posToExplode);
+        Character currentCharacter = currentLevel.getSpecificCharacter(posToExplode.getX(),posToExplode.getY());
         if (currentItem != null) {
             currentItem.doOnExplosionCollision();
+        }
+        if (currentCharacter != null) {
+            currentCharacter.doOnCollision();
         }
     }
 

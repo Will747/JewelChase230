@@ -43,27 +43,29 @@ public class Player extends Character {
      * @param keyPress Reads the keypress from the user.
      */
     public void processKeyEvent(final KeyEvent keyPress) {
-        IntVector2D gridPos = getGridPosition();
+        if (isAlive) {
+            switch (keyPress.getCode()) {
+                case UP:
+                    setGridPosition(canMove(0, -1, this, null));
+                    break;
+                case DOWN:
+                    setGridPosition(canMove(0, 1, this, null));
+                    break;
+                case RIGHT:
+                    setGridPosition(canMove(1, 0, this, null));
+                    break;
+                 case LEFT:   
+                    setGridPosition(canMove(-1, 0, this, null));
+                    break;
+                default:
+                    break;
+            }
 
-        
-        switch (keyPress.getCode()) {
-            case UP:
-                setGridPosition(canMove(0, -1, this, null));
-                break;
-            case DOWN:
-                setGridPosition(canMove(0, 1, this, null));
-                break;
-            case RIGHT:
-                setGridPosition(canMove(1, 0, this, null));
-                break;
-            case LEFT:   
-                setGridPosition(canMove(-1, 0, this, null));
-                break;
-            default:
-                break;
+            keyPress.consume();
         }
 
-        keyPress.consume();
+        
+       
     }
 
     /**
@@ -80,15 +82,5 @@ public class Player extends Character {
      */
     public int getPlayerCurrentLevel(){
         return playerCurrentLevel;
-    }
-
-    /**
-     * Called just before the grid gets re-rendered.
-     *
-     * @param time Time since last frame in milliseconds.
-     */
-    @Override
-    public void tick(final int time) {
-
     }
 }

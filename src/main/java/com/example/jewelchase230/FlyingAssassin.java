@@ -41,86 +41,14 @@ public class FlyingAssassin extends AICharacter {
         } else {
             setGridPosition(potentialPosition);
         }
-        /* switch (d) {
-            case UP:
-                IntVector2D newPos = gridPos.add(new IntVector2D(0, -1));
-                if (getLevel().checkValidTile(newPos)) {
-                    setGridPosition(newPos);
-//                    Character npc = getLevel().getSpecificCharacter(
-//                            newPos.getX(), newPos.getY());
-//
-//                    if (getLevel().getPlayer().getGridPosition() == newPos) {
-//                        getLevel().gameOver();
-//                    }
-//
-//                    if (npc != null) {
-//                        getLevel().removeSpecificNPC(newPos);
-//                    }
+    }
 
-                } else {
-                    super.setDirection(d.getOppositeDirection(d));
-                    newPos = gridPos.add(new IntVector2D(0, 1));
-                    setGridPosition(newPos);
-                }
-                break;
-            case DOWN:
-                newPos = gridPos.add(new IntVector2D(0, 1));
-                if (getLevel().checkValidTile(newPos)) {
-                    setGridPosition(newPos);
-//                    Character npc = getLevel().getSpecificCharacter(
-//                            newPos.getX(), newPos.getY());
-//
-//                    if (getLevel().getPlayer().getGridPosition() == newPos) {
-//                        getLevel().gameOver();
-//                    }
-//                    if (npc != null) {
-//                        getLevel().removeSpecificNPC(newPos);
-//                    }
-                } else {
-                    super.setDirection(d.getOppositeDirection(d));
-                    newPos = gridPos.add(new IntVector2D(0, -1));
-                    setGridPosition(newPos);
-                }
-                break;
-            case LEFT:
-                newPos = gridPos.add(new IntVector2D(-1, 0));
-                if (getLevel().checkValidTile(newPos)) {
-                    setGridPosition(newPos);
-//                    Character npc = getLevel().getSpecificCharacter(
-//                            newPos.getX(), newPos.getY());
-//
-//                    if (getLevel().getPlayer().getGridPosition() == newPos) {
-//                        getLevel().gameOver();
-//                    }
-//                    if (npc != null) {
-//                        getLevel().removeSpecificNPC(newPos);
-//                    }
-                } else {
-                    super.setDirection(d.getOppositeDirection(d));
-                    newPos = gridPos.add(new IntVector2D(1, 0));
-                    setGridPosition(newPos);
-                }
-                break;
-            default: //RIGHT
-                newPos = gridPos.add(new IntVector2D(1, 0));
-                if (getLevel().checkValidTile(newPos)) {
-                    setGridPosition(newPos);
-//                    Character npc = getLevel().getSpecificCharacter(
-//                            newPos.getX(), newPos.getY());
-//
-//                    if (getLevel().getPlayer().getGridPosition() == newPos) {
-//                        getLevel().gameOver();
-//                    }
-//                    if (npc != null) {
-//                        getLevel().removeSpecificNPC(newPos);
-//                    }
-                } else {
-                    super.setDirection(d.getOppositeDirection(d));
-                    newPos = gridPos.add(new IntVector2D(-1, 0));
-                    setGridPosition(newPos);
-                }
-                break;
-        } */
+    /**
+     * Flying assassin cannot be destroyed.
+     */
+    @Override
+    public void doOnCollision() {
+
     }
 
     /**
