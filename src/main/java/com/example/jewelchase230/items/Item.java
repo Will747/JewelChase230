@@ -12,6 +12,9 @@ import java.util.ArrayList;
  */
 public abstract class Item extends Sprite {
 
+    private static final String ASHES_IMAGE = "images/CAT_OREO_SIT.png";
+    /** The bomb countdown images. */
+
     /** True if the player can be on the same tile as item. */
     private boolean isCollidable = true;
 
@@ -64,6 +67,13 @@ public abstract class Item extends Sprite {
         }
     }
 
+    /** Turns the current item into ash in the level. */
+    public void makeAsh() {
+        IntVector2D previousPos = getGridPosition();
+        remove();
+        getLevel().addItem(previousPos, new ImageItem(ASHES_IMAGE));
+    }
+
     /**
      * Removes the item from the level.
      */
@@ -83,7 +93,7 @@ public abstract class Item extends Sprite {
      * Default explosion collision for all items.
      */
     public void doOnExplosionCollision() {
-        remove();
+        makeAsh();
     }
 
     /**

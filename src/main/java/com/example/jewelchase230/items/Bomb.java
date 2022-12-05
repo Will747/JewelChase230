@@ -14,8 +14,6 @@ public class Bomb extends Item {
     /** Time since the image last changed. */
     private int timeSinceLastImageChange = 0;
     /** The game frame rate. */
-    private static final int FRAME_RATE = 10;
-    /** Milliseconds in a second. */
     private static final int MILLISECONDS_IN_A_SECOND = 1000;
     /** Time between image change when a fast explode occours. */
     private static final int FAST_EXPLODE_COUNTDOWN_RATE = 100;
@@ -27,6 +25,8 @@ public class Bomb extends Item {
     private boolean fastExplode = false;
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
+    /** The bomb countdown images. */
+    private static final String BONES_IMAGE = "images/CAT_BLACK_SIT.png";
     /** The bomb countdown images. */
     final String[] countdownArray = { "images/BOMB_3.png", "images/BOMB_2.png", "images/BOMB_1.png" };
 
@@ -85,8 +85,6 @@ public class Bomb extends Item {
         Item currentItem = currentLevel.getItem(posToExplode);
         if (currentItem != null) {
             currentItem.doOnExplosionCollision();
-        } else {
-            // Here is where an explosion image/animation should be added to the tile
         }
     }
 

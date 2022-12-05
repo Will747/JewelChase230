@@ -1,5 +1,7 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.vectors.IntVector2D;
+
 /**
  * A collectable item that holds a reward when collected.
  *
@@ -35,6 +37,12 @@ public class Loot extends Item {
     @Override
     public void doOnThiefCollision() {
         remove();
+        checkIfDoorOpen();
+    }
+
+    @Override 
+    public void doOnExplosionCollision() {
+        makeAsh();
         checkIfDoorOpen();
     }
 }
