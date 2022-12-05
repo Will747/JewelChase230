@@ -1,5 +1,6 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.Renderable;
 import com.example.jewelchase230.Sprite;
 import com.example.jewelchase230.vectors.IntVector2D;
 import java.util.ArrayList;
@@ -17,6 +18,9 @@ public abstract class Item extends Sprite {
 
     /** True if the player can be on the same tile as item. */
     private boolean isCollidable = true;
+
+    /** True if the item has been hit by an explosion. */
+    private boolean hasExploded = false;
 
     /**
      * Constructs a new item without image to render.
@@ -67,19 +71,17 @@ public abstract class Item extends Sprite {
         }
     }
 
-    /** Turns the current item into ash in the level. */
-    public void makeAsh() {
-        IntVector2D previousPos = getGridPosition();
-        remove();
-        getLevel().addItem(previousPos, new ImageItem(ASHES_IMAGE));
-    }
-
     /**
      * Removes the item from the level.
      */
     public void remove() {
-        getLevel().removeItem(getGridPosition());
-        this.setGridPosition(new IntVector2D(-1, -1));
+        if (!(hasExploded)) {
+            getLevel().removeItem(getGridPosition());
+            setGridPosition(new IntVector2D(-1, -1));
+        } else {
+            doOnExplosionCollision();
+        }
+
     }
 
     /**
@@ -92,8 +94,9 @@ public abstract class Item extends Sprite {
     /**
      * Default explosion collision for all items.
      */
-    public void doOnExplosionCollision() {
-        makeAsh();
+    public void doOnExplosionCollision() { //put explode in tile
+        hasExploded = true;
+        setImageFromFile(ASHES_IMAGE);
     }
 
     /**

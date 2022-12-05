@@ -26,8 +26,6 @@ public class Bomb extends Item {
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
     /** The bomb countdown images. */
-    private static final String BONES_IMAGE = "images/CAT_BLACK_SIT.png";
-    /** The bomb countdown images. */
     final String[] countdownArray = { "images/BOMB_3.png", "images/BOMB_2.png", "images/BOMB_1.png" };
 
     /**
