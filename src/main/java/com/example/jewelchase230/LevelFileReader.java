@@ -37,6 +37,18 @@ public class LevelFileReader {
     }
 
     /**
+     * Loads in a specific level based on the current level of the player.
+     * @param p The player object being used.
+     */
+    public static void levelToLoad(Player p){
+        switch(p.getPlayerCurrentLevel() + 1){
+            case 1 -> readInFile("Level1.txt");
+            case 2 -> readInFile("Level2.txt");
+            // Add more when total levels is known.
+        }
+    }
+
+    /**
      * Reads the information from the file and processes the values as
      * there needed to be.
      * @param levelFile the file being read.
@@ -59,7 +71,6 @@ public class LevelFileReader {
             for (int i = 0; i < yAxis; i++) {
                  for (int j = 0; j < xAxis; j++) {
                      String tempTileColour = fileScanner.next();
-                     System.out.println(tempTileColour);
                      TileColour topLeft = TileColour.getTileColourType(tempTileColour.charAt(0));
                      TileColour topRight = TileColour.getTileColourType(tempTileColour.charAt(1));
                      TileColour bottomLeft = TileColour.getTileColourType(tempTileColour.charAt(2));
@@ -88,7 +99,6 @@ public class LevelFileReader {
      */
     private static void levelBuilder(final String value) {
         Scanner lineScanner = new Scanner(value);
-        System.out.println(value);
         int ID = lineScanner.nextInt();
 
         // Makes the appropriate object from the ID provided from the file.

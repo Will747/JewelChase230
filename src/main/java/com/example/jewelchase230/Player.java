@@ -75,6 +75,14 @@ public class Player extends Character {
     }
 
     /**
+     * Returns the players current level.
+     * @return The current level of the player as a int.
+     */
+    public int getPlayerCurrentLevel(){
+        return playerCurrentLevel;
+    }
+
+    /**
      * Called just before the grid gets re-rendered.
      *
      * @param time Time since last frame in milliseconds.
