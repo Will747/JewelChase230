@@ -99,10 +99,7 @@ public class ProfileManager {
 	 * 
 	 */
 	public static void deleteProfile(Profile profile) throws IOException {
-		
 		 listOfProfile.remove(profile);
-			
-
 	}
 	
 	public static Profile searchProfile(int playerSlot) { 

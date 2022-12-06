@@ -47,7 +47,7 @@ public final class ProfileCreateMenu {
 	 * @param event: MouseClick
 	 * @throws IOException
 	 */
-
+	
 	void onCreateProfilePressed(final MouseEvent event) throws IOException { 
 		profileCreatedName = createProfileName.getText();
 		System.out.println(profileCreatedName);
@@ -104,5 +104,23 @@ public final class ProfileCreateMenu {
     void onBackToProfileMenuPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileMenu());
     }
-	
+
+	// ADD WHEN ALL THE CREATE ERRORS DISAPEAR !!!
+	//boolean acceptableName(String name)
+	//{
+	//	boolean valid = false;
+	//	if(name == "")
+	//	{
+	//		System.out.println("No name was entered");
+	//	}
+	//	else if(name.matches("[a-zA-Z]+"))
+	//	{
+	//		System.out.println("invalid charecter in name");
+	//	}
+	//	else
+	//	{
+	//		valid = true;
+	//	}
+	//	return(valid);
+	//}
 }
