@@ -18,13 +18,13 @@ public class Loot extends Item {
         type = LootType.getRandomType();
         setImageFromFile(type.getImage());
     }
-    
+
     /**
      * Triggered when a player collides with loot.
      */
     @Override
     public void doOnCollision() {
-        getLevel().getPlayer().addToActiveScore(type.getValue());
+        getLevel().incrementPlayerScore(type.getValue());
         remove();
         checkIfDoorOpen();
     }

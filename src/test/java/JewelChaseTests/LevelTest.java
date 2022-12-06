@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LevelTest {
     @Test
     public void addItemTest() {
-        Level testLevel = new Level(new IntVector2D(5, 5));
+        Level testLevel = new Level(new IntVector2D(5, 5), 1);
 
         IntVector2D itemPos = new IntVector2D(0, 0);
         testLevel.addItem(itemPos, new Bomb());
@@ -29,7 +29,7 @@ public class LevelTest {
 
     @Test
     public void getItemsOfTypeTest() {
-        Level testLevel = new Level(new IntVector2D(5, 5));
+        Level testLevel = new Level(new IntVector2D(5, 5), 1);
 
         testLevel.addItem(new IntVector2D(0, 0), new Bomb());
         testLevel.addItem(new IntVector2D(0, 1), new Bomb());
@@ -41,7 +41,7 @@ public class LevelTest {
 
     @Test
     public void getAllItemsTest() {
-        Level testLevel = new Level(new IntVector2D(5, 5));
+        Level testLevel = new Level(new IntVector2D(5, 5), 1);
 
         testLevel.addItem(new IntVector2D(0, 0), new Bomb());
         testLevel.addItem(new IntVector2D(0, 1), new Bomb());

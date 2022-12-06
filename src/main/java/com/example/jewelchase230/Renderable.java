@@ -17,6 +17,11 @@ public abstract class Renderable {
      */
     private static final double BORDER_PERCENTAGE = 0.05;
 
+    /**
+     * Additional offset at the top for text.
+     */
+    private static final double TOP_OFFSET = 0.25;
+
     /** Position in the level item should be rendered to. */
     private IntVector2D gridPosition;
 
@@ -59,7 +64,8 @@ public abstract class Renderable {
         double cubeSize = getCubeSize();
         DoubleVector2D gridSize = levelSize.toDouble().multiply(cubeSize);
         DoubleVector2D gridTopLeft = canvasSize.toDouble()
-                .minus(gridSize).divide(2);
+                .minus(gridSize).divide(2)
+                .add(new DoubleVector2D(0, cubeSize * TOP_OFFSET));
 
         return gridPosition.toDouble().multiply(cubeSize).add(gridTopLeft);
     }
@@ -74,11 +80,14 @@ public abstract class Renderable {
         IntVector2D levelSize = level.getLevelSize();
         IntVector2D canvasSize = Main.getCanvasSize();
 
+        // Includes an extra row at the top for text
+        IntVector2D gridSize = levelSize.add(new IntVector2D(0, 1));
+
         // Take 20% from canvas so there is a border
-        DoubleVector2D gridSize = canvasSize.toDouble()
+        DoubleVector2D playableSize = canvasSize.toDouble()
                 .multiply(1 - BORDER_PERCENTAGE);
 
-        DoubleVector2D potentialSize = gridSize.divide(levelSize);
+        DoubleVector2D potentialSize = playableSize.divide(gridSize);
         return Math.min(potentialSize.getX(), potentialSize.getY());
     }
 
@@ -102,7 +111,8 @@ public abstract class Renderable {
      * Called just before the grid gets re-rendered.
      * @param time Time since last frame in milliseconds.
      */
-    public abstract void tick(int time);
+    public void tick(final int time) {
+    }
 
     /**
      * Draws this item to the canvas.

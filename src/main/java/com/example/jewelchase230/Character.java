@@ -12,7 +12,7 @@ public abstract class Character extends Sprite {
     /** True if the character is alive. */
     protected boolean isAlive = true;
     /** Bones image. */
-    private static final String BONES_IMAGE = "images/CAT_OREO_SIT.png";
+    private static final String BONES_IMAGE = "images/BONES.png";
     /**
      * Constructs a renderable component.
      */
