@@ -80,13 +80,22 @@ public final class ProfileMenu {
 					playerTwoPane.setVisible(false);
 					if (profileList.size() < 1) {
 						playerOnePane.setVisible(false);
-
 					}
-
+					else{
+						playerOnePane.setVisible(true);
+					}
+				}
+				else{
+					playerTwoPane.setVisible(true);
 				}
 			}
+			else{
+				playerThreePane.setVisible(true);
+			}
 		}
-
+		else{
+			playerFourPane.setVisible(true);
+		}
 	}
 
 	@FXML

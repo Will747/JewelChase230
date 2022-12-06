@@ -3,6 +3,7 @@ package com.example.jewelchase230.menus;
 import java.io.IOException;
 import java.util.Optional;
 
+import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.profiles.Profile;
 import com.example.jewelchase230.profiles.ProfileManager;
@@ -46,14 +47,19 @@ public final class ProfileCreateMenu {
 	 * @param event: MouseClick
 	 * @throws IOException
 	 */
+
 	void onCreateProfilePressed(final MouseEvent event) throws IOException { 
 		profileCreatedName = createProfileName.getText();
 		System.out.println(profileCreatedName);
 		choosePlayerSlot();
 		
 		Profile newProfile = new Profile(choosePlayerSlot(),1,profileCreatedName,0);
+		ProfileManager.listOfProfile.add(newProfile);
 		Menu.getProfileMenuController().refresh();
-		ProfileManager.saveProfile(newProfile);
+		System.out.println(ProfileManager.getListOfProfile().get(3).getPlayerName());
+		//ProfileManager.readLines();
+		//ProfileManager.saveProfile(newProfile);
+		Main.switchRoot(Menu.getProfileMenu());
 	}
 	
 	/**
@@ -76,7 +82,7 @@ public final class ProfileCreateMenu {
 			 profileNewSlot = 4;
 
 		} else { 
-			Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+			Alert.AlertType type = Alert.AlertType.WARNING;
 
 	        Alert alert = new Alert(type, "");
 
@@ -94,6 +100,9 @@ public final class ProfileCreateMenu {
 		}
 		return profileNewSlot;
 	}
-	
+	@FXML
+    void onBackToProfileMenuPressed(final MouseEvent event) {
+        Main.switchRoot(Menu.getProfileMenu());
+    }
 	
 }
