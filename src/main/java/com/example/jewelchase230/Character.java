@@ -163,7 +163,7 @@ public abstract class Character extends Sprite {
             } else if (currentCharacter instanceof FlyingAssassin) {
                 collidingCharacter.doOnCollision();
                 return true;
-            } else if (collidingCharacter.isAlive){
+            } else if (collidingCharacter.isAlive) {
                 return false;
             } else {
                 return true;

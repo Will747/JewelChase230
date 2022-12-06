@@ -49,6 +49,8 @@ public class Player extends Character {
             }
 
             keyPress.consume();
+        } else {
+            getLevel().gameOver();
         }
     }
 
