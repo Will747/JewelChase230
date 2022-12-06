@@ -109,7 +109,7 @@ public final class ProfileCreateMenu {
     void onBackToProfileMenuPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileMenu());
     }
-	//Only allows charecters a-z and A-Z as well as non empty names
+	//Only allows charecters a-z, A-Z and numbers 1.. as well as non empty names
 	boolean acceptableName(String name)
 	{
 		boolean valid = false;
@@ -117,7 +117,7 @@ public final class ProfileCreateMenu {
 		{
 			System.out.println("No name was entered");
 		}
-		else if(!name.matches("[a-zA-Z]+"))
+		else if(!name.matches("[a-zA-Z1-9]+"))
 		{
 			System.out.println("invalid charecter in name");
 		}
