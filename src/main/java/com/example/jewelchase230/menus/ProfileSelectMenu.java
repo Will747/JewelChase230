@@ -58,7 +58,6 @@ public final class ProfileSelectMenu {
         Alert alert = new Alert(type, "");
 
         alert.initModality(Modality.APPLICATION_MODAL);
-        //alert.initOwner(stage);
         alert.getDialogPane().setContentText("are you sure?");
         alert.getDialogPane().setHeaderText("You are about to delete this profile");
 

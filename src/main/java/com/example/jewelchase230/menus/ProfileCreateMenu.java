@@ -56,7 +56,6 @@ public final class ProfileCreateMenu {
 			Profile newProfile = new Profile(choosePlayerSlot(),1,profileCreatedName,0);
 			ProfileManager.listOfProfile.add(newProfile);
 			Menu.getProfileMenuController().refresh();
-			System.out.println(ProfileManager.getListOfProfile().get(3).getPlayerName());
 			//ProfileManager.readLines();
 			//ProfileManager.saveProfile(newProfile);
 			Main.switchRoot(Menu.getProfileMenu());
@@ -70,8 +69,9 @@ public final class ProfileCreateMenu {
 	/**
 	 * This method decides, based on how many profiles exist in profileList, which playerSlot a new player has
 	 * @return int profileNewSlot
+	 * @throws IOException
 	 */
-	int choosePlayerSlot() { 
+	int choosePlayerSlot() throws IOException { 
 		if (ProfileMenu.profileList.size() < 1) { 
 			 profileNewSlot = 1;
 		} 
@@ -87,21 +87,7 @@ public final class ProfileCreateMenu {
 			 profileNewSlot = 4;
 
 		} else { 
-			Alert.AlertType type = Alert.AlertType.WARNING;
-
-	        Alert alert = new Alert(type, "");
-
-	        alert.initModality(Modality.APPLICATION_MODAL);
-	        //alert.initOwner(stage);
-	        alert.getDialogPane().setContentText("Too many profiles!");
-	        alert.getDialogPane().setHeaderText("Please delete a Profile to continue");
-
-	        Optional<ButtonType> result = alert.showAndWait();
-	        if(result.get() == ButtonType.OK)
-	        {
-	        	//do
-	           
-	        }
+			fullProfiles();
 		}
 		return profileNewSlot;
 	}
@@ -126,5 +112,17 @@ public final class ProfileCreateMenu {
 			valid = true;
 		}
 		return(valid);
+	}
+
+	private void fullProfiles() throws IOException{
+		Alert.AlertType type = Alert.AlertType.WARNING;
+
+		Alert alert = new Alert(type, "");
+
+		alert.initModality(Modality.APPLICATION_MODAL);
+		alert.getDialogPane().setContentText("Too many profiles!");
+		alert.getDialogPane().setHeaderText("Please delete a Profile to continue");
+
+		alert.show();
 	}
 }
