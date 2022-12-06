@@ -186,7 +186,7 @@ public final class Main extends Application {
         int timeSinceLastFrameInt = (int) Math.round(timeSinceLastFrame);
         if (currentLevel != null) {
             resetCanvas();
-
+            currentLevel.tick(timeSinceLastFrameInt);
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
             Renderable[] renderables = currentLevel.getRenderables();

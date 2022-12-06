@@ -18,7 +18,7 @@ public class Level {
     private final ArrayList<Character> characters;
 
     /** The time limit on the level. */
-    private int timeLimit;
+    private int timeLeftInMilliseconds;
 
     /**
      * Constructs a new level.
@@ -34,7 +34,7 @@ public class Level {
      * @param inTimeLimit The new time limit for the level.
      */
     public void setTimeLimit(final int inTimeLimit) {
-        timeLimit = inTimeLimit;
+        timeLeftInMilliseconds = inTimeLimit;
     }
 
     /**
@@ -42,7 +42,7 @@ public class Level {
      * @return The time limit for the level.
      */
     public int getTimeLimit() {
-        return timeLimit;
+        return timeLeftInMilliseconds;
     }
 
     /**
@@ -50,7 +50,7 @@ public class Level {
      * @param additionalTime The time to be added to the time limit.
      */
     public void addTime(final int additionalTime) {
-        timeLimit += additionalTime;
+        timeLeftInMilliseconds += additionalTime;
     }
 
     /**
@@ -286,6 +286,11 @@ public class Level {
     public void removeSpecificNPC(final IntVector2D pos) {
         Character character = getSpecificCharacter(pos.getX(),pos.getY());
         characters.remove(character);
+    }
+
+    /** Called just before the grid gets re-rendered. */
+    public void tick(int time) {
+        timeLeftInMilliseconds -= time;
     }
 
     /**
