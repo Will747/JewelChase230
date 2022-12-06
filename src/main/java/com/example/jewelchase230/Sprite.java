@@ -74,7 +74,7 @@ public abstract class Sprite extends Renderable {
     private static Image getImageFromFile(final String fileName)
             throws FileNotFoundException {
         return new Image(new FileInputStream(fileName));
-    }    
+    }
 
     /**
      * Called just before the grid gets re-rendered.

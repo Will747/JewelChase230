@@ -79,14 +79,14 @@ public final class Menu {
      * @return profile menu node.
      */
     public static Parent getProfileMenu() {
-    	return getParent(PROFILE_MENU_FXML);
+        return getParent(PROFILE_MENU_FXML);
     }
 
     /**
      * @return profile menu node.
      */
     public static Parent getProfileSelect() {
-    	return getParent(PROFILE_SELECT_FXML);
+        return getParent(PROFILE_SELECT_FXML);
     }
 
     /**

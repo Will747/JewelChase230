@@ -4,7 +4,7 @@ import com.example.jewelchase230.vectors.IntVector2D;
 
 /**
  * Implements the Flying Assassin. A class to implement the move
- * patterns and events of the AICharater Flying Assassin.
+ * patterns and events of the AICharacter Flying Assassin.
  *
  * @author Caroline Segestaal.
  */
@@ -68,8 +68,3 @@ public class FlyingAssassin extends AICharacter {
     }
 }
 
-
-//        If the Flying Assassin connects with (i.e. occupies
-//        the same tile) the player, the player loses. If they
-//        connect with another NPC, that NPC is removed
-//        from the game.

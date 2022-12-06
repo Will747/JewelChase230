@@ -13,7 +13,6 @@ public abstract class Character extends Sprite {
     protected boolean isAlive = true;
     /** Bones image. */
     private static final String BONES_IMAGE = "images/CAT_OREO_SIT.png";
-    
     /**
      * Constructs a renderable component.
      */
@@ -43,7 +42,8 @@ public abstract class Character extends Sprite {
         for (int i = 0; i < thisTileColours.size(); i++) {
             for (int j = 0; j < nextTileColours.size(); j++) {
                 if (thisTileColours.get(i) == nextTileColours.get(j)) {
-                    return characterCollisionManager(nextMoveTile.getGridPosition(), currentCharacter);
+                    return characterCollisionManager(
+                            nextMoveTile.getGridPosition(), currentCharacter);
                 }
             }
         }
@@ -65,7 +65,8 @@ public abstract class Character extends Sprite {
         if (collisionCharacter instanceof FlyingAssassin) {
             IntVector2D newPos =
                     currentPos.add(new IntVector2D(xChange, yChange));
-            if (getLevel().checkValidTile(newPos) && characterCollisionManager(newPos, collisionCharacter)) {
+            if (getLevel().checkValidTile(newPos)
+                    && characterCollisionManager(newPos, collisionCharacter)) {
                 return newPos;
             } else {
                 return currentPos;
@@ -83,8 +84,10 @@ public abstract class Character extends Sprite {
                 if (getLevel().checkValidTile(newPos)) {
                     Tile nextMoveTile = getLevel().getTile(newPos);
                     //Makes sure the new tile has matching colours
-                    if (validNextMove(nextMoveTile, colourFollow, collisionCharacter)) {
-                        return tileItemManager(nextMoveTile, collisionCharacter);
+                    if (validNextMove(nextMoveTile, colourFollow,
+                            collisionCharacter)) {
+                        return tileItemManager(nextMoveTile,
+                                collisionCharacter);
                     }
                 } else {
                     stillInRange = false;
@@ -100,7 +103,8 @@ public abstract class Character extends Sprite {
      * @param collisionCharacter Character moving to tile.
      * @return new tile position, or current position if invalid move.
      */
-    private IntVector2D tileItemManager(Tile tile, Character collisionCharacter) {
+    private IntVector2D tileItemManager(Tile tile,
+                                        Character collisionCharacter) {
         Item tileItem = tile.getItem();
         IntVector2D tilePos = tile.getGridPosition();
         if (!(tileItem == null)) { // checks tile has an item
@@ -148,8 +152,10 @@ public abstract class Character extends Sprite {
      * @param currentCharacter The current character attempting to move.
      * @return True if the player can move, false if not.
      */
-    private boolean characterCollisionManager(IntVector2D nextTilePosition, Character currentCharacter) {
-        Character collidingCharacter = getLevel().getSpecificCharacter(nextTilePosition.getX(), nextTilePosition.getY());
+    private boolean characterCollisionManager(IntVector2D nextTilePosition,
+                                              Character currentCharacter) {
+        Character collidingCharacter = getLevel().getSpecificCharacter(
+                nextTilePosition.getX(), nextTilePosition.getY());
         if (collidingCharacter != null) {
             if (collidingCharacter instanceof FlyingAssassin) {
                 currentCharacter.doOnCollision();

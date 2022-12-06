@@ -72,10 +72,11 @@ public class Level {
     public void addItem(final IntVector2D pos, final Item item) {
         item.setGridPosition(pos);
         getTile(pos).setItem(item);
-        if(item instanceof Bomb){
-            ArrayList<Tile> NeighbouringTiles = getNeighbouringTiles(item.getGridPosition());
-            for (int i = 0 ; i < NeighbouringTiles.size(); i++){
-                NeighbouringTiles.get(i).setBombTrigger(item.getGridPosition());
+        if (item instanceof Bomb) {
+            ArrayList<Tile> neighbouringTiles =
+                    getNeighbouringTiles(item.getGridPosition());
+            for (int i = 0; i < neighbouringTiles.size(); i++) {
+                neighbouringTiles.get(i).setBombTrigger(item.getGridPosition());
             }
         }
     }
@@ -107,9 +108,10 @@ public class Level {
      */
     public void removeItem(final IntVector2D pos) {
         Item item = getItem(pos);
-        if(item instanceof Bomb){
-            ArrayList<Tile> NeighbouringTiles = getNeighbouringTiles(item.getGridPosition());
-            for (Tile tileInstance: NeighbouringTiles){
+        if (item instanceof Bomb) {
+            ArrayList<Tile> neighbouringTiles =
+                    getNeighbouringTiles(item.getGridPosition());
+            for (Tile tileInstance: neighbouringTiles) {
                 tileInstance.removeBombTrigger(pos);
             }
         }
@@ -132,8 +134,9 @@ public class Level {
      */
     public boolean checkValidTile(IntVector2D posToCheck) {
         IntVector2D maxSize = getLevelSize();
-        if (posToCheck.getX() >= maxSize.getX() || posToCheck.getY() >= maxSize.getY()
-        || posToCheck.getX() < 0 || posToCheck.getY() < 0) {
+        if (posToCheck.getX() >= maxSize.getX() || posToCheck.getY()
+                >= maxSize.getY() || posToCheck.getX() < 0
+                || posToCheck.getY() < 0) {
             return false;
         } else {
             return true;
@@ -284,7 +287,7 @@ public class Level {
      * @param pos The position on the grid the character is on.
      */
     public void removeSpecificNPC(final IntVector2D pos) {
-        Character character = getSpecificCharacter(pos.getX(),pos.getY());
+        Character character = getSpecificCharacter(pos.getX(), pos.getY());
         characters.remove(character);
     }
 

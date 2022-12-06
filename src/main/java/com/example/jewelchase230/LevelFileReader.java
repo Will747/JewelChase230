@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.example.jewelchase230.items.*;
 import com.example.jewelchase230.vectors.IntVector2D;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -28,8 +27,8 @@ public class LevelFileReader {
      * Method that is called to start the process of reading in
      * the level ASCII file.
      * @param fileName the name / directory of the file being read in.
+     * @return Returns the built level.
      */
-
     public static Level readInFile(final String fileName) {
            File levelFile = new File(fileName);
            lineReader(levelFile);
@@ -40,11 +39,12 @@ public class LevelFileReader {
      * Loads in a specific level based on the current level of the player.
      * @param p The player object being used.
      */
-    public static void levelToLoad(Player p){
-        switch(p.getPlayerCurrentLevel() + 1){
+    public static void levelToLoad(Player p) {
+        switch (p.getPlayerCurrentLevel() + 1) {
             case 1 -> readInFile("Level1.txt");
             case 2 -> readInFile("Level2.txt");
             // Add more when total levels is known.
+            default -> readInFile("Level1.txt");
         }
     }
 
@@ -71,10 +71,14 @@ public class LevelFileReader {
             for (int i = 0; i < yAxis; i++) {
                  for (int j = 0; j < xAxis; j++) {
                      String tempTileColour = fileScanner.next();
-                     TileColour topLeft = TileColour.getTileColourType(tempTileColour.charAt(0));
-                     TileColour topRight = TileColour.getTileColourType(tempTileColour.charAt(1));
-                     TileColour bottomLeft = TileColour.getTileColourType(tempTileColour.charAt(2));
-                     TileColour bottomRight = TileColour.getTileColourType(tempTileColour.charAt(3));
+                     TileColour topLeft = TileColour.getTileColourType(
+                             tempTileColour.charAt(0));
+                     TileColour topRight = TileColour.getTileColourType(
+                             tempTileColour.charAt(1));
+                     TileColour bottomLeft = TileColour.getTileColourType(
+                             tempTileColour.charAt(2));
+                     TileColour bottomRight = TileColour.getTileColourType(
+                             tempTileColour.charAt(3));
                      Tile tempTile = new
                              Tile(topLeft, topRight, bottomLeft, bottomRight);
                      IntVector2D tempTilePos = new IntVector2D(j, i);
@@ -99,13 +103,13 @@ public class LevelFileReader {
      */
     private static void levelBuilder(final String value) {
         Scanner lineScanner = new Scanner(value);
-        int ID = lineScanner.nextInt();
+        int id = lineScanner.nextInt();
 
-        // Makes the appropriate object from the ID provided from the file.
+        // Makes the appropriate object from the id provided from the file.
         int x = lineScanner.nextInt();
         int y = lineScanner.nextInt();
         IntVector2D tempPos = new IntVector2D(x, y);
-        switch (ID) {
+        switch (id) {
             case 1: { //Bomb
                     Bomb tempBomb = new Bomb();
                     levelBuilt.addItem(tempPos, tempBomb);
@@ -137,14 +141,19 @@ public class LevelFileReader {
             case 6: { //Floor Following Thief
                     String directionString = lineScanner.next();
                     String colourToFollow = lineScanner.next();
-                    FloorFollowingThief tempThief = new FloorFollowingThief(Direction.getDirectionType(directionString), TileColour.getTileColourType(colourToFollow.charAt(0)));
-                    levelBuilt.addCharacter(tempPos, tempThief); //wont show as no image yet
+                    FloorFollowingThief tempThief = new FloorFollowingThief(
+                            Direction.getDirectionType(directionString),
+                            TileColour.getTileColourType(
+                                    colourToFollow.charAt(0)));
+                    //won't show as no image yet
+                    levelBuilt.addCharacter(tempPos, tempThief);
                 break;
             }
             case 7: { //Flying Assassin
                     String directionString = lineScanner.next();
-                    FlyingAssassin tempAssassin = new FlyingAssassin(Direction.getDirectionType(directionString));
-                    levelBuilt.addCharacter(tempPos, tempAssassin); //erroring on setGridPos
+                    FlyingAssassin tempAssassin = new FlyingAssassin(
+                            Direction.getDirectionType(directionString));
+                    levelBuilt.addCharacter(tempPos, tempAssassin);
                 break;
             }
             case 8: { //Loot
@@ -160,12 +169,14 @@ public class LevelFileReader {
             }
             case 10: { //Smart Thief
                 String directionString = lineScanner.next();
-                SmartThief tempAssassin = new SmartThief(Direction.getDirectionType(directionString));
-                levelBuilt.addCharacter(tempPos, tempAssassin); //wont show as no image yet
+                SmartThief tempAssassin = new
+                        SmartThief(Direction.getDirectionType(directionString));
+                //won't show as no image yet
+                levelBuilt.addCharacter(tempPos, tempAssassin);
             break;
         }
             default:
-                System.out.println("Item ID does not exist!");
+                System.out.println("Item id does not exist!");
                 break;
         }
     }

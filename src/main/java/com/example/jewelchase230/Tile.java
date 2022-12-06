@@ -1,7 +1,6 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.items.Item;
-import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.vectors.DoubleVector2D;
 import com.example.jewelchase230.vectors.IntVector2D;
 import java.util.ArrayList;
@@ -55,8 +54,8 @@ public final class Tile extends Renderable {
      * Checks if there is a bomb on a neighbouring tile.
      * @return True if theres a bomb near, false if not.
      */
-    public boolean isNextToBomb(){
-        if(bombsNextToTile.size() < 1){
+    public boolean isNextToBomb() {
+        if (bombsNextToTile.size() < 1) {
             return false;
         } else {
             return true;
@@ -77,15 +76,15 @@ public final class Tile extends Renderable {
 
     /**
      * Add a bomb trigger to this tile.
-     * @param bombPos
+     * @param bombPos Bomb position.
      */
-    public void setBombTrigger(IntVector2D bombPos){
+    public void setBombTrigger(IntVector2D bombPos) {
         bombsNextToTile.add(bombPos);
     }
 
     /**
-     * 
-     * @param bombPos
+     * Remove a bomb.
+     * @param bombPos The bomb's position.
      */
     public void removeBombTrigger(IntVector2D bombPos) {
         bombsNextToTile.remove(bombPos);

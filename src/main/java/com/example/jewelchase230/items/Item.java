@@ -14,7 +14,6 @@ public abstract class Item extends Sprite {
 
     /** Image for when the bomb has exploded. */
     private static final String ASHES_IMAGE = "images/CAT_OREO_SIT.png";
-    /** The bomb countdown images. */
 
     /** True if the player can be on the same tile as item. */
     private boolean isCollidable = true;
@@ -65,7 +64,8 @@ public abstract class Item extends Sprite {
         ArrayList<Lever> leverArray = getLevel().getAllItemsOfType(Lever.class);
         ArrayList<Loot> lootArray = getLevel().getAllItemsOfType(Loot.class);
         if (leverArray.size() == 0 && lootArray.size() == 0) {
-            ArrayList<Door> doorArray = getLevel().getAllItemsOfType(Door.class);
+            ArrayList<Door> doorArray =
+                    getLevel().getAllItemsOfType(Door.class);
             for (Door doorInstance : doorArray) {
                 doorInstance.setIsDoorOpen(true);
             }

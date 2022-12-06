@@ -1,10 +1,8 @@
 package com.example.jewelchase230.items;
 
-import com.example.jewelchase230.Tile;
 import com.example.jewelchase230.Level;
 import com.example.jewelchase230.Character;
 import com.example.jewelchase230.vectors.IntVector2D;
-import java.util.ArrayList;
 
 /**
  * A class to implement bombs and provide function when interacted with.
@@ -27,7 +25,8 @@ public class Bomb extends Item {
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
     /** The bomb countdown images. */
-    final String[] countdownArray = { "images/BOMB_3.png", "images/BOMB_2.png", "images/BOMB_1.png" };
+    private final String[] countdownArray = {"images/BOMB_3.png",
+            "images/BOMB_2.png", "images/BOMB_1.png" };
 
     /**
      * Constructs a new bomb.
@@ -65,7 +64,8 @@ public class Bomb extends Item {
      * Counts down from 3 and changes the bomb image.
      */
     public void countdown() {
-        if (currentImageInCountdown < countdownArray.length && (hasCollided || fastExplode)) {
+        if (currentImageInCountdown < countdownArray.length
+                && (hasCollided || fastExplode)) {
             setImageFromFile(countdownArray[currentImageInCountdown]);
             currentImageInCountdown++;
         } else {
@@ -82,7 +82,8 @@ public class Bomb extends Item {
     public void explodePosition(IntVector2D posToExplode) {
         Level currentLevel = getLevel();
         Item currentItem = currentLevel.getItem(posToExplode);
-        Character currentCharacter = currentLevel.getSpecificCharacter(posToExplode.getX(),posToExplode.getY());
+        Character currentCharacter = currentLevel.getSpecificCharacter(
+                posToExplode.getX(), posToExplode.getY());
         if (currentItem != null) {
             currentItem.doOnExplosionCollision();
         }
@@ -105,11 +106,12 @@ public class Bomb extends Item {
         int explodeLeft = 0;
         int explodeRight = 0;
         final IntVector2D currentPos = getGridPosition();
-        while (continueExplosionUp || continueExplosionDown || 
-        continueExplosionLeft || continueExplosionRight) {
+        while (continueExplosionUp || continueExplosionDown
+                || continueExplosionLeft || continueExplosionRight) {
             if (continueExplosionUp) {
                 explodeUp += 1;
-                IntVector2D newPos = currentPos.add(new IntVector2D(0, explodeUp));
+                IntVector2D newPos =
+                        currentPos.add(new IntVector2D(0, explodeUp));
                 if (getLevel().checkValidTile(newPos)) {
                     explodePosition(newPos);
                 } else {
@@ -118,7 +120,8 @@ public class Bomb extends Item {
             }
             if (continueExplosionDown) {
                 explodeDown -= 1;
-                IntVector2D newPos = currentPos.add(new IntVector2D(0, explodeDown));
+                IntVector2D newPos =
+                        currentPos.add(new IntVector2D(0, explodeDown));
                 if (getLevel().checkValidTile(newPos)) {
                     explodePosition(newPos);
                 } else {
@@ -127,7 +130,8 @@ public class Bomb extends Item {
             }
             if (continueExplosionLeft) {
                 explodeLeft -= 1;
-                IntVector2D newPos = currentPos.add(new IntVector2D(explodeLeft, 0));
+                IntVector2D newPos =
+                        currentPos.add(new IntVector2D(explodeLeft, 0));
                 if (getLevel().checkValidTile(newPos)) {
                     explodePosition(newPos);
                 } else {
@@ -136,7 +140,8 @@ public class Bomb extends Item {
             }
             if (continueExplosionRight) {
                 explodeRight += 1;
-                IntVector2D newPos = currentPos.add(new IntVector2D(explodeRight, 0));
+                IntVector2D newPos =
+                        currentPos.add(new IntVector2D(explodeRight, 0));
                 if (getLevel().checkValidTile(newPos)) {
                     explodePosition(newPos);
                 } else {

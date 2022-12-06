@@ -15,14 +15,13 @@ public enum Direction {
      * @param d The direction the AICharacter is facing.
      * @return Returns the new direction the AICharacter is facing.
      */
-    public Direction getOppositeDirection(Direction d) {
-        switch (d) {
-            case UP -> d = DOWN;
-            case DOWN -> d = UP;
-            case LEFT -> d = RIGHT;
-            case RIGHT -> d = LEFT;
-        }
-        return d;
+    public Direction getOppositeDirection(final Direction d) {
+        return switch (d) {
+            case UP -> DOWN;
+            case DOWN -> UP;
+            case LEFT -> RIGHT;
+            case RIGHT -> LEFT;
+        };
     }
 
     /**
@@ -30,12 +29,12 @@ public enum Direction {
      * @param d Direction in.
      * @return New direction.
      */
-    public Direction getLeftDirection(Direction d) {
+    public Direction getLeftDirection(final Direction d) {
         return switch (d) {
-            case UP -> d = LEFT;
-            case DOWN -> d = RIGHT;
-            case LEFT -> d = DOWN;
-            case RIGHT -> d = UP;
+            case UP -> LEFT;
+            case DOWN -> RIGHT;
+            case LEFT -> DOWN;
+            case RIGHT -> UP;
         };
     }
 
@@ -44,32 +43,28 @@ public enum Direction {
      * @param d Direction in.
      * @return New Direction.
      */
-    public Direction getRightDirection(Direction d) {
+    public Direction getRightDirection(final Direction d) {
         return switch (d) {
-            case UP -> d = RIGHT;
-            case DOWN -> d = LEFT;
-            case LEFT -> d = UP;
-            case RIGHT -> d = DOWN;
+            case UP -> RIGHT;
+            case DOWN -> LEFT;
+            case LEFT -> UP;
+            case RIGHT -> DOWN;
         };
     }
 
     /**
-     * Allows for a string parameter to be passed and a enum to be returned
+     * Allows for a string parameter to be passed and an enum to be returned
      * for object creation.
-     * @param directionString
+     * @param directionString The inputted direction from the level file.
      * @return The wanted enum from the passed string.
      */
     public static Direction getDirectionType(final String directionString) {
-        switch (directionString) {
-            case "u":
-                return UP;
-            case "d":
-                return DOWN;
-            case "l":
-                return LEFT;
-            case "r":
-                return RIGHT;
-        }
-        return UP;
+        return switch (directionString) {
+            case "u" -> UP;
+            case "d" -> DOWN;
+            case "l" -> LEFT;
+            case "r" -> RIGHT;
+            default -> UP;
+        };
     }
 }
