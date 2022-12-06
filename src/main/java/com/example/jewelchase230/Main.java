@@ -1,5 +1,8 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.text.LevelNumText;
+import com.example.jewelchase230.text.ScoreText;
+import com.example.jewelchase230.text.TimeText;
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -16,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Jewel Chase application. This class manages the initial startup,
@@ -34,7 +38,11 @@ public final class Main extends Application {
     private static final int FRAME_RATE = 10;
 
     /** The number of milliseconds in a second. */
-    private static final int MILLISECONDS_IN_A_SECOND = 1000;
+    public static final int MILLISECONDS_IN_A_SECOND = 1000;
+
+    /** URL to style sheet with cool font. */
+    private static final String SILKSCREEN_FONT =
+            "https://fonts.googleapis.com/css2?family=Silkscreen";
 
     /** Size of the window. */
     private static IntVector2D windowSize;
@@ -56,6 +64,11 @@ public final class Main extends Application {
      * null if no level is being played.
      */
     private static Level currentLevel;
+
+    /**
+     * Any renderables permanently shown on the canvas.
+     */
+    private static ArrayList<Renderable> renderables;
 
     @Override
     public void start(final Stage inStage) throws IOException {
@@ -81,6 +94,7 @@ public final class Main extends Application {
 
         // Show main menu at first
         mainScene = new ScalingScene(Menu.getMainMenu());
+        mainScene.getStylesheets().add(SILKSCREEN_FONT);
         mainScene.widthProperty().addListener(e -> updateWindowSize());
         mainScene.heightProperty().addListener(e -> updateWindowSize());
         mainScene.addEventFilter(KeyEvent.KEY_PRESSED, Main::processKeyEvent);
@@ -90,6 +104,12 @@ public final class Main extends Application {
         inStage.setResizable(true);
         //stage.setFullScreen(true); // Make this an optional setting
         inStage.show();
+
+        // Static renderables shown on all levels.
+        renderables = new ArrayList<>();
+        renderables.add(new ScoreText());
+        renderables.add(new LevelNumText());
+        renderables.add(new TimeText());
 
         /* Test - Remove this */
         currentLevel = LevelFileReader.readInFile("Level_Files/level1.txt");
@@ -189,7 +209,14 @@ public final class Main extends Application {
             currentLevel.tick(timeSinceLastFrameInt);
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
-            Renderable[] renderables = currentLevel.getRenderables();
+            // Render and tick level.
+            Renderable[] levelRenderables = currentLevel.getRenderables();
+            for (Renderable renderable : levelRenderables) {
+                renderable.tick(timeSinceLastFrameInt);
+                renderable.draw(gc);
+            }
+
+            // Render any static renderables
             for (Renderable renderable : renderables) {
                 renderable.tick(timeSinceLastFrameInt);
                 renderable.draw(gc);

@@ -40,7 +40,7 @@ public class LevelFileReader {
      * @param p The player object being used.
      */
     public static void levelToLoad(Player p) {
-        switch (p.getPlayerCurrentLevel() + 1) {
+        switch (1) {
             case 1 -> readInFile("Level1.txt");
             case 2 -> readInFile("Level2.txt");
             // Add more when total levels is known.
@@ -64,7 +64,7 @@ public class LevelFileReader {
             levelTime = fileScanner.nextInt();
 
             IntVector2D size = new IntVector2D(xAxis, yAxis);
-            levelBuilt = new Level(size);
+            levelBuilt = new Level(size, 1);
 
             // Changes the tokens in the text file to tile objects
             // that are added to the level.

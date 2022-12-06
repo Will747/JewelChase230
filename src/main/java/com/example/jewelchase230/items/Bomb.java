@@ -45,7 +45,7 @@ public class Bomb extends Item {
      * @param time Time since the last frame.
      */
     @Override
-    public void tick(int time) {
+    public void tick(final int time) {
         if (hasExploded) {
             timeSinceLastImageChange += time;
             if (timeSinceLastImageChange >= MILLISECONDS_IN_A_SECOND) {
@@ -88,7 +88,7 @@ public class Bomb extends Item {
      * Produces an explosion on a tile.
      * @param posToExplode Tile to produce explosion on.
      */
-    public void explodePosition(IntVector2D posToExplode) {
+    public void explodePosition(final IntVector2D posToExplode) {
         Level currentLevel = getLevel();
         Item currentItem = currentLevel.getItem(posToExplode);
         Character currentCharacter = currentLevel.getSpecificCharacter(

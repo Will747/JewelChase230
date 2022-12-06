@@ -1,7 +1,6 @@
 package com.example.jewelchase230.items;
 
 import com.example.jewelchase230.Sprite;
-import com.example.jewelchase230.vectors.IntVector2D;
 import java.util.ArrayList;
 
 
@@ -78,11 +77,9 @@ public abstract class Item extends Sprite {
     public void remove() {
         if (!(hasExploded)) {
             getLevel().removeItem(getGridPosition());
-            setGridPosition(new IntVector2D(-1, -1));
         } else {
             doOnExplosionCollision();
         }
-
     }
 
     /**

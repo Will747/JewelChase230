@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Represents a game level, including all tiles, items and characters.
  *
- * @author Will Kaye and Adam Smith and Ben Stott.
+ * @author Will Kaye, Adam Smith and Ben Stott.
  */
 public class Level {
     /** Tiles on the grid. */
@@ -17,16 +17,24 @@ public class Level {
     /** All characters in the level. */
     private final ArrayList<Character> characters;
 
+    /** The level number. */
+    private final int levelNumber;
+
     /** The time limit on the level. */
     private int timeLeftInMilliseconds;
+
+    /** The current score. */
+    private int playerScore;
 
     /**
      * Constructs a new level.
      * @param size The size of the level (Num of tiles).
+     * @param inLevelNumber The level number.
      */
-    public Level(final IntVector2D size) {
+    public Level(final IntVector2D size, final int inLevelNumber) {
         tiles = new Tile[size.getX()][size.getY()];
         characters = new ArrayList<>();
+        levelNumber = inLevelNumber;
     }
 
     /**
@@ -86,7 +94,7 @@ public class Level {
      * @param position The centre tile.
      * @return ArrayList of the tiles around the centre tile.
      */
-    public ArrayList<Tile> getNeighbouringTiles(IntVector2D position) {
+    public ArrayList<Tile> getNeighbouringTiles(final IntVector2D position) {
         ArrayList<Tile> tileArray = new ArrayList<>();
         final IntVector2D thisPos = position;
         for (int x = -1; x <= 1; x++) {
@@ -132,15 +140,12 @@ public class Level {
      * @param posToCheck The tile position to check is valid.
      * @return True if valid, false if not.
      */
-    public boolean checkValidTile(IntVector2D posToCheck) {
+    public boolean checkValidTile(final IntVector2D posToCheck) {
         IntVector2D maxSize = getLevelSize();
-        if (posToCheck.getX() >= maxSize.getX() || posToCheck.getY()
-                >= maxSize.getY() || posToCheck.getX() < 0
-                || posToCheck.getY() < 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return posToCheck.getX() < maxSize.getX()
+                && posToCheck.getY() < maxSize.getY()
+                && posToCheck.getX() >= 0
+                && posToCheck.getY() >= 0;
     }
 
     /**
@@ -291,8 +296,11 @@ public class Level {
         characters.remove(character);
     }
 
-    /** Called just before the grid gets re-rendered. */
-    public void tick(int time) {
+    /**
+     * Called just before the grid gets re-rendered.
+     * @param time Time in milliseconds since last frame.
+     */
+    public void tick(final int time) {
         timeLeftInMilliseconds -= time;
     }
 
@@ -301,5 +309,27 @@ public class Level {
      */
     public void gameOver() {
         Main.switchRoot(Menu.getMainMenu());
+    }
+
+    /**
+     * @return The level number.
+     */
+    public int getLevelNumber() {
+        return levelNumber;
+    }
+
+    /**
+     * @return The current player score.
+     */
+    public int getPlayerScore() {
+        return playerScore;
+    }
+
+    /**
+     * Increases the players score.
+     * @param value Amount to increase by.
+     */
+    public void incrementPlayerScore(final int value) {
+        playerScore += value;
     }
 }
