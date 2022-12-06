@@ -8,10 +8,9 @@ package com.example.jewelchase230.items;
 public class Gate extends Item {
 
     /** The gate colour. */
-    final private String colour;
-    
-    /** The gate image. */
-    private static final String GATE_IMAGE ="images/GATE.png";
+    private final String colour;
+    /** The gate image.*/
+    private static final String GATE_IMAGE = "images/GATE.png";
 
     /**
      * Constructs a new gate.
@@ -27,7 +26,7 @@ public class Gate extends Item {
      * Returns the colour of the gate.
      * @return colour of the gate.
      */
-    public String getColour(){
+    public String getColour() {
         return colour;
     }
 
@@ -36,11 +35,10 @@ public class Gate extends Item {
      */
     @Override
     public void doOnCollision() {
-        
     }
 
     /**
-     * Shouldn't be collidable and if it is collided nothing should happen
+     * Shouldn't be collidable and if it is collided nothing should happen.
      */
     @Override
     public void doOnThiefCollision() {

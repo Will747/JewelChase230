@@ -54,11 +54,12 @@ public enum Direction {
     }
 
     /**
-     * Allows for a string parameter to be passed and a enum to be returned for object creation.
+     * Allows for a string parameter to be passed and a enum to be returned
+     * for object creation.
      * @param directionString
      * @return The wanted enum from the passed string.
      */
-    public static Direction getDirectionType(String directionString){
+    public static Direction getDirectionType(final String directionString) {
         switch (directionString) {
             case "u":
                 return UP;

@@ -39,15 +39,16 @@ public abstract class AICharacter extends Character {
                 break;
             case RIGHT: xDiff = 1;
                 break;
-            default: System.out.print("ERROR: No direction given to flying assassin!");
+            default:
+                System.out.print("ERROR: No direction for flying assassin!");
                 break;
         }
         return (new IntVector2D(xDiff, yDiff));
     }
-   
 
     /**
      * Constructs a renderable component.
+     * @param inDirection The direction given.
      */
     public AICharacter(Direction inDirection) {
         super();
@@ -80,9 +81,7 @@ public abstract class AICharacter extends Character {
                 timeSinceLastImageChange = 0;
             }
         }
-        
     }
-
     /**
      * Sets direction of the NPC.
      * @param inDirection the direction it is currently facing.

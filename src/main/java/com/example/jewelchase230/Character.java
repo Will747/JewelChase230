@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author Caroline Segestaaland and Ben Stott.
  */
 public abstract class Character extends Sprite {
-    /** True if the character is aliv.e */
+    /** True if the character is alive. */
     protected boolean isAlive = true;
     /** Bones image. */
     private static final String BONES_IMAGE = "images/CAT_OREO_SIT.png";
@@ -23,13 +23,15 @@ public abstract class Character extends Sprite {
 
     /**
      * Checks that the next move is a valid move, if valid, collides
-     * with items as expected
+     * with items as expected.
      * @param nextMoveTile The tile to be moved to.
-     * @colourFollow The specific colour the next tile must be, if provided.
-     * @currentCharacter The current character attempting to move.
+     * @param colourFollow The specific colour the next tile must be.
+     * @param currentCharacter The current character attempting to move.
      * @return True if valid move, false if not.
      */
-    private boolean validNextMove(final Tile nextMoveTile, final TileColour colourFollow, Character currentCharacter) {
+    private boolean validNextMove(final Tile nextMoveTile,
+                                  final TileColour colourFollow,
+                                  final Character currentCharacter) {
         Tile thisTile = getLevel().getTile(getGridPosition());
         ArrayList<TileColour> thisTileColours = new ArrayList<>();
         ArrayList<TileColour> nextTileColours = nextMoveTile.getTileColours();
@@ -56,15 +58,18 @@ public abstract class Character extends Sprite {
      * @param colourFollow next tile must be of specific colour, null if none.
      * @return new tile position, or current position if invalid move.
      */
-    protected IntVector2D canMove(final int xChange, final int yChange, final Character collisionCharacter, final TileColour colourFollow) {
+    protected IntVector2D canMove(final int xChange, final int yChange,
+                                  final Character collisionCharacter,
+                                  final TileColour colourFollow) {
         IntVector2D currentPos = getGridPosition();
         if (collisionCharacter instanceof FlyingAssassin) {
-            IntVector2D newPos = currentPos.add(new IntVector2D(xChange, yChange));
+            IntVector2D newPos =
+                    currentPos.add(new IntVector2D(xChange, yChange));
             if (getLevel().checkValidTile(newPos) && characterCollisionManager(newPos, collisionCharacter)) {
                 return newPos;
             } else {
                 return currentPos;
-            }  
+            }
         } else {
             int xDiff = 0;
             int yDiff = 0;
@@ -72,12 +77,15 @@ public abstract class Character extends Sprite {
             while (stillInRange) {
                 xDiff += xChange;
                 yDiff += yChange;
-                IntVector2D newPos = currentPos.add(new IntVector2D(xDiff, yDiff));
-                if (getLevel().checkValidTile(newPos)) { //Check the newPos is a valid tile
+                IntVector2D newPos =
+                        currentPos.add(new IntVector2D(xDiff, yDiff));
+                //Check the newPos is a valid tile
+                if (getLevel().checkValidTile(newPos)) {
                     Tile nextMoveTile = getLevel().getTile(newPos);
-                    if (validNextMove(nextMoveTile, colourFollow, collisionCharacter)) { //Makes sure the new tile has matching colours
+                    //Makes sure the new tile has matching colours
+                    if (validNextMove(nextMoveTile, colourFollow, collisionCharacter)) {
                         return tileItemManager(nextMoveTile, collisionCharacter);
-                    } 
+                    }
                 } else {
                     stillInRange = false;
                 }
@@ -164,9 +172,11 @@ public abstract class Character extends Sprite {
      */
     @Override
     public void tick(final int time) {
-        
     }
 
+    /**
+     * Handles a collision event.
+     */
     public void doOnCollision() {
         isAlive = false;
         setImageFromFile(BONES_IMAGE);

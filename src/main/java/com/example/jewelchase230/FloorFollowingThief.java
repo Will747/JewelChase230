@@ -2,7 +2,7 @@ package com.example.jewelchase230;
 
 import com.example.jewelchase230.vectors.IntVector2D;
 /**
- * Class to control the Floor Following Thiefs
+ * Class to control the Floor Following Thiefs.
  *
  * @author Ben Stott.
  */
@@ -12,8 +12,10 @@ public class FloorFollowingThief extends AICharacter {
 
     /**
      * Constructs a renderable component.
+     * @param d The direction.
+     * @param c The tile colour.
      */
-    public FloorFollowingThief(Direction d, TileColour c) {
+    public FloorFollowingThief(final Direction d, final TileColour c) {
         super();
         setDirection(d);
         setImageFromFile("images/CAT_WHITE_SIT.png"); //TEMPORARY IMAGE
@@ -25,7 +27,7 @@ public class FloorFollowingThief extends AICharacter {
      * @param d Current direction.
      * @return x and y difference values to check next move
      */
-    private IntVector2D getLeftDiff(Direction d) {
+    private IntVector2D getLeftDiff(final Direction d) {
         return getMoveDifference(d.getLeftDirection(d));
     }
 
@@ -34,7 +36,7 @@ public class FloorFollowingThief extends AICharacter {
      * @param d Current direction.
      * @return x and y difference values to check next move
      */
-    private IntVector2D getRightDiff(Direction d) {
+    private IntVector2D getRightDiff(final Direction d) {
         return getMoveDifference(d.getRightDirection(d));
     }
 
@@ -43,7 +45,7 @@ public class FloorFollowingThief extends AICharacter {
      * @param d Current direction.
      * @return x and y difference values to check next move
      */
-    private IntVector2D getBehindtDiff(Direction d) {
+    private IntVector2D getBehindtDiff(final Direction d) {
         return getMoveDifference(d.getOppositeDirection(d));
     }
 
@@ -58,7 +60,8 @@ public class FloorFollowingThief extends AICharacter {
         int leftXDiff = potentialLeftTurnDiffVector.getX();
         int leftYDiff = potentialLeftTurnDiffVector.getY();
 
-        IntVector2D potentialForwardDiffVector = getMoveDifference(currentDirection);
+        IntVector2D potentialForwardDiffVector =
+                getMoveDifference(currentDirection);
         int forwardXDiff = potentialForwardDiffVector.getX();
         int forwardYDiff = potentialForwardDiffVector.getY();
 
@@ -66,14 +69,19 @@ public class FloorFollowingThief extends AICharacter {
         int rightXDiff = potentialRightDiffVector.getX();
         int rightYDiff = potentialRightDiffVector.getY();
 
-        IntVector2D potentialBehindtDiffVector = getBehindtDiff(currentDirection);
+        IntVector2D potentialBehindtDiffVector =
+                getBehindtDiff(currentDirection);
         int behindXDiff = potentialBehindtDiffVector.getX();
         int behindYDiff = potentialBehindtDiffVector.getY();
 
-        IntVector2D potentialLeftTurnPos = canMove(leftXDiff, leftYDiff, this, colourToFollow);
-        IntVector2D potentialForwardPos = canMove(forwardXDiff, forwardYDiff, this, colourToFollow);
-        IntVector2D potentialRightTurnPos = canMove(rightXDiff, rightYDiff, this, colourToFollow);
-        IntVector2D potentialBehindPos = canMove(behindXDiff, behindYDiff, this, colourToFollow);
+        IntVector2D potentialLeftTurnPos =
+                canMove(leftXDiff, leftYDiff, this, colourToFollow);
+        IntVector2D potentialForwardPos =
+                canMove(forwardXDiff, forwardYDiff, this, colourToFollow);
+        IntVector2D potentialRightTurnPos =
+                canMove(rightXDiff, rightYDiff, this, colourToFollow);
+        IntVector2D potentialBehindPos =
+                canMove(behindXDiff, behindYDiff, this, colourToFollow);
         if (!(potentialLeftTurnPos == currentPos)) {
             setGridPosition(potentialLeftTurnPos);
             setDirection(currentDirection.getLeftDirection(currentDirection));
@@ -85,6 +93,6 @@ public class FloorFollowingThief extends AICharacter {
         } else if (!(potentialBehindPos == currentPos)) {
             setGridPosition(potentialBehindPos);
             setDirection(currentDirection.getOppositeDirection(currentDirection));
-        } 
+        }
     }
 }
