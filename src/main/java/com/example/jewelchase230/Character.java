@@ -25,9 +25,11 @@ public abstract class Character extends Sprite {
      * Checks that the next move is a valid move, if valid, collides
      * with items as expected
      * @param nextMoveTile The tile to be moved to.
+     * @colourFollow The specific colour the next tile must be, if provided.
+     * @currentCharacter The current character attempting to move.
      * @return True if valid move, false if not.
      */
-    private boolean validNextMove(final Tile nextMoveTile, final TileColour colourFollow) {
+    private boolean validNextMove(final Tile nextMoveTile, final TileColour colourFollow, Character currentCharacter) {
         Tile thisTile = getLevel().getTile(getGridPosition());
         ArrayList<TileColour> thisTileColours = new ArrayList<>();
         ArrayList<TileColour> nextTileColours = nextMoveTile.getTileColours();
@@ -39,7 +41,7 @@ public abstract class Character extends Sprite {
         for (int i = 0; i < thisTileColours.size(); i++) {
             for (int j = 0; j < nextTileColours.size(); j++) {
                 if (thisTileColours.get(i) == nextTileColours.get(j)) {
-                    return true;
+                    return characterCollisionManager(nextMoveTile.getGridPosition(), currentCharacter);
                 }
             }
         }
@@ -58,7 +60,7 @@ public abstract class Character extends Sprite {
         IntVector2D currentPos = getGridPosition();
         if (collisionCharacter instanceof FlyingAssassin) {
             IntVector2D newPos = currentPos.add(new IntVector2D(xChange, yChange));
-            if (getLevel().checkValidTile(newPos)) {
+            if (getLevel().checkValidTile(newPos) && characterCollisionManager(newPos, collisionCharacter)) {
                 return newPos;
             } else {
                 return currentPos;
@@ -73,7 +75,7 @@ public abstract class Character extends Sprite {
                 IntVector2D newPos = currentPos.add(new IntVector2D(xDiff, yDiff));
                 if (getLevel().checkValidTile(newPos)) { //Check the newPos is a valid tile
                     Tile nextMoveTile = getLevel().getTile(newPos);
-                    if (validNextMove(nextMoveTile, colourFollow)) { //Makes sure the new tile has matching colours
+                    if (validNextMove(nextMoveTile, colourFollow, collisionCharacter)) { //Makes sure the new tile has matching colours
                         return tileItemManager(nextMoveTile, collisionCharacter);
                     } 
                 } else {
@@ -129,6 +131,29 @@ public abstract class Character extends Sprite {
             item.doOnThiefCollision();
         } else if (collisionCharacter instanceof Player) {
             item.doOnCollision();
+        }
+    }
+
+    /**
+     * Manages collisions between characters.
+     * @param nextTilePosition The position of next moves tile.
+     * @param currentCharacter The current character attempting to move.
+     * @return True if the player can move, false if not.
+     */
+    private boolean characterCollisionManager(IntVector2D nextTilePosition, Character currentCharacter) {
+        Character collidingCharacter = getLevel().getSpecificCharacter(nextTilePosition.getX(), nextTilePosition.getY());
+        if (collidingCharacter != null) {
+            if (collidingCharacter instanceof FlyingAssassin) {
+                currentCharacter.doOnCollision();
+                return true;
+            } else if (currentCharacter instanceof FlyingAssassin) {
+                collidingCharacter.doOnCollision();
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
         }
     }
 

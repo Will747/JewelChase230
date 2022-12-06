@@ -7,18 +7,6 @@ import javafx.scene.input.KeyEvent;
  * A class to control the Player character.
  *
  * @author Caroline Segestaal.
- *
- * Hi :) I added a currentLevel integer for me to use in the highScoreClass.
- * This should increment the integer by 1 each time a level is completed
- * Also added an activePlayerScore which will add score when loot is got, etc
- * These **May** need changed to private, not sure.
- *
- * To add in future once ready
- * upon Door, when level is completed, calls Profile to change currentLevel of
- * object Profile / or equivilant & other scores that may need updating
- * - Kiwi
- * I also added addToActiveScore in order to add points when collecting items
- * - Ben
  */
 public class Player extends Character {
 
