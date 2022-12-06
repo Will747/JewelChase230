@@ -13,13 +13,13 @@ import java.util.ArrayList;
 public abstract class Item extends Sprite {
 
     /** Image for when the bomb has exploded. */
-    private static final String ASHES_IMAGE = "images/CAT_OREO_SIT.png";
+    private static final String ASHES_IMAGE = "images/BOMB_ASHES.png";
 
     /** True if the player can be on the same tile as item. */
     private boolean isCollidable = true;
 
     /** True if the item has been hit by an explosion. */
-    private boolean hasExploded = false;
+    protected boolean hasExploded = false;
 
     /**
      * Constructs a new item without image to render.
@@ -97,6 +97,7 @@ public abstract class Item extends Sprite {
      */
     public void doOnExplosionCollision() { //put explode in tile
         hasExploded = true;
+        isCollidable = true;
         setImageFromFile(ASHES_IMAGE);
     }
 

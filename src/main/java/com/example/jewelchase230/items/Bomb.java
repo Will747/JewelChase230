@@ -24,11 +24,11 @@ public class Bomb extends Item {
     private boolean fastExplode = false;
     /** The bomb image. */
     private static final String BOMB_IMAGE = "images/BOMB.png";
+    /** The explosion image. */
+    private static final String EXPLOSION_IMAGE = "images/BOMB_EXPLOSION.png";
     /** The bomb countdown images. */
-
     private final String[] countdownArray = {"images/BOMB_3.png",
-            "images/BOMB_2.png", "images/BOMB_1.png",
-            "images/BOMB_EXPLOSION.png"};
+            "images/BOMB_2.png", "images/BOMB_1.png"};
 
     /**
      * Constructs a new bomb.
@@ -46,17 +46,20 @@ public class Bomb extends Item {
      */
     @Override
     public void tick(int time) {
-        if (fastExplode) {
+        if (hasExploded) {
             timeSinceLastImageChange += time;
-            if (timeSinceLastImageChange > FAST_EXPLODE_COUNTDOWN_RATE) {
+            if (timeSinceLastImageChange >= MILLISECONDS_IN_A_SECOND) {
                 countdown();
-                timeSinceLastImageChange = 0;
+            }
+        } else if (fastExplode) {
+            timeSinceLastImageChange += time;
+            if (timeSinceLastImageChange >= FAST_EXPLODE_COUNTDOWN_RATE) {
+                countdown();
             }
         } else if (hasCollided) {
             timeSinceLastImageChange += time;
-            if (timeSinceLastImageChange > MILLISECONDS_IN_A_SECOND) {
+            if (timeSinceLastImageChange >= MILLISECONDS_IN_A_SECOND) {
                 countdown();
-                timeSinceLastImageChange = 0;
             }
         }
 
@@ -66,13 +69,17 @@ public class Bomb extends Item {
      * Counts down from 3 and changes the bomb image.
      */
     public void countdown() {
+        timeSinceLastImageChange = 0;
         if (currentImageInCountdown < countdownArray.length
                 && (hasCollided || fastExplode)) {
             setImageFromFile(countdownArray[currentImageInCountdown]);
             currentImageInCountdown++;
-        } else {
+        } else if (!(hasExploded)){
+            setImageFromFile(EXPLOSION_IMAGE);
             explode();
-            remove();
+            hasExploded = true;
+        } else {
+            super.doOnExplosionCollision();
         }
 
     }
@@ -99,6 +106,7 @@ public class Bomb extends Item {
      * doors.
      */
     public void explode() {
+        setImageFromFile(EXPLOSION_IMAGE);
         boolean continueExplosionUp = true;
         boolean continueExplosionDown = true;
         boolean continueExplosionLeft = true;
