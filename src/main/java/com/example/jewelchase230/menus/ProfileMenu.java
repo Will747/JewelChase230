@@ -55,19 +55,21 @@ public final class ProfileMenu {
 
 	public void refresh() {
 		 profileList = ProfileManager.getListOfProfile();
+		if(profileList.size() > 0)
+		{
+			playerOneLabel.setText(profileList.get(0).getPlayerName());
+			player1 = profileList.get(0);
+			if (profileList.size() > 1) {
+				playerTwoLabel.setText(profileList.get(1).getPlayerName());
+				player2 = profileList.get(1);
+				if (profileList.size() > 2) {
+					playerThreeLabel.setText(profileList.get(2).getPlayerName());
+					player3 = profileList.get(2);
+					if (profileList.size() > 3) {
+						playerFourLabel.setText(profileList.get(3).getPlayerName());
+						player4 = profileList.get(3);
 
-		playerOneLabel.setText(profileList.get(0).getPlayerName());
-		player1 = profileList.get(0);
-		if (profileList.size() > 1) {
-			playerTwoLabel.setText(profileList.get(1).getPlayerName());
-			player2 = profileList.get(1);
-			if (profileList.size() > 2) {
-				playerThreeLabel.setText(profileList.get(2).getPlayerName());
-				player3 = profileList.get(2);
-				if (profileList.size() > 3) {
-					playerFourLabel.setText(profileList.get(3).getPlayerName());
-					player4 = profileList.get(3);
-
+					}
 				}
 			}
 		}
