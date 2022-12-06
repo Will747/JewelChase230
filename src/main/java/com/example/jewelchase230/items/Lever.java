@@ -11,12 +11,12 @@ public class Lever extends Item {
     /** The lever image. */
     private static final String LEVER_IMAGE = "images/LEVER.png";
 
-    /** The colour of the gate */ 
+    /** The colour of the gate. */
     private String colour;
 
     /**
-     * Constructs a new lever
-     * @param inColour Settings the lever colour
+     * Constructs a new lever.
+     * @param inColour Settings the lever colour.
      */
     public Lever(final String inColour) {
         super(LEVER_IMAGE);
@@ -24,23 +24,23 @@ public class Lever extends Item {
     }
 
     /**
-     * Setting a new colour
-     * @param newColour Changing the current lever colour
+     * Setting a new colour.
+     * @param newColour Changing the current lever colour.
      */
-    public void setColour(String newColour){
+    public void setColour(String newColour) {
         colour = newColour;
     }
 
     /**
-    * Get the lever colour
-    * @return The lever colour
+    * Get the lever colour.
+    * @return The lever colour.
     */
-    public String getColour(){
+    public String getColour() {
         return colour;
     }
-    
+
     /**
-     * Finds all gates of the same colour as this lever and removes them
+     * Finds all gates of the same colour as this lever and removes them.
      */
     public void removeGates() {
         ArrayList<Gate> gateArray = getLevel().getAllItemsOfType(Gate.class);
@@ -52,7 +52,7 @@ public class Lever extends Item {
     }
 
     /**
-     * When collided with, removes all gates then remove the level itself
+     * When collided with, removes all gates then remove the level itself.
      */
     @Override
     public void doOnCollision() {
