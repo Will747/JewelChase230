@@ -1,7 +1,5 @@
 package com.example.jewelchase230.items;
 
-import com.example.jewelchase230.vectors.IntVector2D;
-
 /**
  * A collectable item that holds a reward when collected.
  *
@@ -20,9 +18,9 @@ public class Loot extends Item {
         type = LootType.getRandomType();
         setImageFromFile(type.getImage());
     }
-
+    
     /**
-     * Triggered when a player collides with loot
+     * Triggered when a player collides with loot.
      */
     @Override
     public void doOnCollision() {
@@ -40,8 +38,8 @@ public class Loot extends Item {
         checkIfDoorOpen();
     }
 
-    /** Explosion collision for loot */
-    @Override 
+    /** Explosion collision for loot. */
+    @Override
     public void doOnExplosionCollision() {
         checkIfDoorOpen();
         super.doOnExplosionCollision();

@@ -1,6 +1,5 @@
 package com.example.jewelchase230;
 
-import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -42,7 +41,7 @@ public class Player extends Character {
                 case RIGHT:
                     setGridPosition(canMove(1, 0, this, null));
                     break;
-                 case LEFT:   
+                case LEFT:
                     setGridPosition(canMove(-1, 0, this, null));
                     break;
                 default:
@@ -51,9 +50,6 @@ public class Player extends Character {
 
             keyPress.consume();
         }
-
-        
-       
     }
 
     /**
@@ -66,9 +62,9 @@ public class Player extends Character {
 
     /**
      * Returns the players current level.
-     * @return The current level of the player as a int.
+     * @return The current level of the player as an int.
      */
-    public int getPlayerCurrentLevel(){
+    public int getPlayerCurrentLevel() {
         return playerCurrentLevel;
     }
 }
