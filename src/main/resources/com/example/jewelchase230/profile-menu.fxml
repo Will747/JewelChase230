@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileMenu">
    <children>
       <Label alignment="TOP_CENTER" text="Profiles" underline="true">
          <font>
@@ -32,6 +32,46 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <Pane opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
+               <children>
+                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="SLOT EMPTY" />
+                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../fxmlImages/CAT_BLACK_SLEEP-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.rowIndex="1">
+               <children>
+                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="SLOT EMPTY" />
+                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../fxmlImages/CAT_TABBY_SLEEP-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="SLOT EMPTY" />
+                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../fxmlImages/CAT_WHITE_SLEEP-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane opacity="0.9" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1">
+               <children>
+                  <Label alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="SLOT EMPTY" />
+                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../fxmlImages/CAT_OREO_SLEEP-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
             <Pane fx:id="playerOnePane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
                <children>
                   <Label fx:id="playerOneLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
@@ -41,17 +81,6 @@
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" onMouseClicked="#onP1Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
-               </children>
-            </Pane>
-            <Pane fx:id="playerTwoPane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1">
-               <children>
-                  <Label fx:id="playerTwoLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P2" />
-                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../fxmlImages/CAT_OREO_SIT.png" />
-                     </image>
-                  </ImageView>
-                  <Button mnemonicParsing="false" onMouseClicked="#onP2Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
             <Pane fx:id="playerThreePane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.rowIndex="1">
@@ -74,6 +103,17 @@
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" onMouseClicked="#onP4Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="playerTwoPane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="playerTwoLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P2" />
+                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../fxmlImages/CAT_OREO_SIT.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#onP2Pressed" opacity="0.0" prefHeight="106.0" prefWidth="300.0" />
                </children>
             </Pane>
          </children>
