@@ -27,10 +27,8 @@ public class Bomb extends Item {
     /** The bomb countdown images. */
 
     private final String[] countdownArray = {"images/BOMB_3.png",
-            "images/BOMB_2.png", "images/BOMB_1.png" };
-
-    final String[] countdownArray = { "images/BOMB_3.png", "images/BOMB_2.png", "images/BOMB_1.png", "images/BOMB_EXPLOSION.png" };
-
+            "images/BOMB_2.png", "images/BOMB_1.png",
+            "images/BOMB_EXPLOSION.png"};
 
     /**
      * Constructs a new bomb.

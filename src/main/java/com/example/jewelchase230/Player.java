@@ -62,7 +62,7 @@ public class Player extends Character {
 
     /**
      * Returns the players current level.
-     * @return The current level of the player as a int.
+     * @return The current level of the player as an int.
      */
     public int getPlayerCurrentLevel() {
         return playerCurrentLevel;
