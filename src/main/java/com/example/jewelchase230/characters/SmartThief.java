@@ -1,6 +1,5 @@
 package com.example.jewelchase230.characters;
 
-
 import com.example.jewelchase230.Direction;
 
 public final class SmartThief extends AICharacter {
@@ -8,7 +7,7 @@ public final class SmartThief extends AICharacter {
     /**
      * Constructs a renderable component.
      */
-    public SmartThief() {
+    public SmartThief(final Direction d) {
         super();
         setDirection(d);
     }
