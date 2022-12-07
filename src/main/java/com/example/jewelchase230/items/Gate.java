@@ -1,5 +1,7 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.characters.Character;
+
 /**
  * A class to implement gates of a certain colour.
  *
@@ -14,12 +16,12 @@ public class Gate extends Item {
 
     /**
      * Constructs a new gate.
-     * @param colour defines the gate colour.
+     * @param inColour defines the gate colour.
      */
-    public Gate(final String colour) {
+    public Gate(final String inColour) {
         super(GATE_IMAGE);
         setCollidable(false);
-        this.colour = colour;
+        colour = inColour;
     }
 
     /**
@@ -34,15 +36,7 @@ public class Gate extends Item {
      * Shouldn't be collidable and if it is collided nothing should happen.
      */
     @Override
-    public void doOnCollision() {
-    }
-
-    /**
-     * Shouldn't be collidable and if it is collided nothing should happen.
-     */
-    @Override
-    public void doOnThiefCollision() {
-
+    public void onCollision(final Character collidingCharacter) {
     }
 
     /**

@@ -36,12 +36,12 @@ public class FlyingAssassin extends AICharacter {
         IntVector2D newPos = getMoveDifference(currentDirection);
         int xDiff = newPos.getX();
         int yDiff = newPos.getY();
-        IntVector2D potentialPosition = canMove(xDiff, yDiff, this, null);
+        IntVector2D potentialPosition = canMove(xDiff, yDiff);
         if (potentialPosition == currentPos) {
             Direction newDirection =
                     currentDirection.getOppositeDirection(currentDirection);
             setDirection(newDirection);
-            setGridPosition(canMove(-xDiff, -yDiff, this, null));
+            setGridPosition(canMove(-xDiff, -yDiff));
             setImageFromFile(imageManager(newDirection));
         } else {
             setGridPosition(potentialPosition);
@@ -49,11 +49,58 @@ public class FlyingAssassin extends AICharacter {
     }
 
     /**
+     * Checks if a character can move to a new tile.
+     * @param xChange Positive for moving right, negative for moving left.
+     * @param yChange Positive for moving down, negative for moving up.
+     * @return new tile position, or current position if invalid move.
+     */
+    @Override
+    protected IntVector2D canMove(final int xChange, final int yChange) {
+        IntVector2D currentPos = getGridPosition();
+        IntVector2D newPos =
+                currentPos.add(new IntVector2D(xChange, yChange));
+        if (getLevel().checkValidTile(newPos)
+                && canCharactersCollide(newPos)) {
+            return newPos;
+        } else {
+            return currentPos;
+        }
+    }
+
+    /**
+     * @return The flying assassin can kill others.
+     */
+    @Override
+    public boolean canKill() {
+        return true;
+    }
+
+    /**
+     * @return Other characters can collide with a flying assassin.
+     */
+    @Override
+    public boolean isCollidable() {
+        return true;
+    }
+
+    /**
+     * The flying assassin is not a thief so doesn't collect/collide with items.
+     * @return False - As the assassin is flying.
+     */
+    @Override
+    public boolean canInteractWithItems() {
+        return false;
+    }
+
+    /**
      * Flying assassin cannot be destroyed.
      */
     @Override
-    public void doOnCollision() {
-
+    public void onCollision(final Character character) {
+        // Kill character colliding with the assassin.
+        if (character != null) {
+            character.kill();
+        }
     }
 
     /**

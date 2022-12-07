@@ -3,6 +3,7 @@ package com.example.jewelchase230.characters;
 import com.example.jewelchase230.Direction;
 import com.example.jewelchase230.TileColour;
 import com.example.jewelchase230.vectors.IntVector2D;
+
 /**
  * Class to control the Floor Following Thief.
  *
@@ -77,14 +78,15 @@ public class FloorFollowingThief extends AICharacter {
         int behindXDiff = potentialBehindDiffVector.getX();
         int behindYDiff = potentialBehindDiffVector.getY();
 
+        // TODO: Override can move!
         IntVector2D potentialLeftTurnPos =
-                canMove(leftXDiff, leftYDiff, this, colourToFollow);
+                canMove(leftXDiff, leftYDiff);
         IntVector2D potentialForwardPos =
-                canMove(forwardXDiff, forwardYDiff, this, colourToFollow);
+                canMove(forwardXDiff, forwardYDiff);
         IntVector2D potentialRightTurnPos =
-                canMove(rightXDiff, rightYDiff, this, colourToFollow);
+                canMove(rightXDiff, rightYDiff);
         IntVector2D potentialBehindPos =
-                canMove(behindXDiff, behindYDiff, this, colourToFollow);
+                canMove(behindXDiff, behindYDiff);
         if (!(potentialLeftTurnPos == currentPos)) {
             setGridPosition(potentialLeftTurnPos);
             setDirection(currentDirection.getLeftDirection(currentDirection));

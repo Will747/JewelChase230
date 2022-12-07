@@ -116,7 +116,7 @@ public final class Main extends Application {
         /* Test - Remove this */
         Level1 = LevelFileReader.readInFile("Level_Files/level1.txt");
         Level2 = LevelFileReader.readInFile("Level_Files/level2.txt");
-        setLevel(Level2);
+        setLevel(Level1);
         /* Test - Remove this */
     }
 

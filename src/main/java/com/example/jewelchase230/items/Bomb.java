@@ -91,13 +91,14 @@ public class Bomb extends Item {
     public void explodePosition(final IntVector2D posToExplode) {
         Level currentLevel = getLevel();
         Item currentItem = currentLevel.getItem(posToExplode);
-        Character currentCharacter = currentLevel.getSpecificCharacter(
-                posToExplode.getX(), posToExplode.getY());
+        Character currentCharacter =
+                currentLevel.getSpecificCharacter(posToExplode);
         if (currentItem != null) {
             currentItem.doOnExplosionCollision();
         }
+
         if (currentCharacter != null) {
-            currentCharacter.doOnCollision();
+            currentCharacter.onCollision(null);
         }
     }
 
@@ -165,16 +166,8 @@ public class Bomb extends Item {
      * Counts down from 3 then explodes.
      */
     @Override
-    public void doOnCollision() {
+    public void onCollision(final Character collidingCharacter) {
         hasCollided = true;
-    }
-
-    /**
-     * Thief collision is the same as player collision for bombs.
-     */
-    @Override
-    public void doOnThiefCollision() {
-        doOnCollision();
     }
 
     /**

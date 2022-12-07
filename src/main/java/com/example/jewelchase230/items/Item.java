@@ -1,6 +1,8 @@
 package com.example.jewelchase230.items;
-
+import com.example.jewelchase230.Collidable;
+import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.Sprite;
+
 import java.util.ArrayList;
 
 
@@ -9,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Ben Stott and Scott Williams
  */
-public abstract class Item extends Sprite {
+public abstract class Item extends Sprite implements Collidable {
 
     /** Image for when the bomb has exploded. */
     private static final String ASHES_IMAGE = "images/BOMB_ASHES.png";
@@ -39,10 +41,11 @@ public abstract class Item extends Sprite {
     }
 
     /**
-     * Returns if the tile the item is on can be shared with a player.
+     * Returns if the item can be shared with a character.
      * @return True if collidable, False if not.
      */
-    public boolean getCollidable() {
+    @Override
+    public boolean isCollidable() {
         return isCollidable;
     }
 
@@ -53,7 +56,6 @@ public abstract class Item extends Sprite {
     public void setCollidable(final boolean newCollidable) {
         isCollidable = newCollidable;
     }
-
 
     /**
      * Checks if all loot and levers have been collected and opens the
@@ -84,8 +86,9 @@ public abstract class Item extends Sprite {
 
     /**
      * Default player collision for all items.
+     * @param collidingCharacter The character colliding with this item.
      */
-    public void doOnCollision() {
+    public void onCollision(final Character collidingCharacter) {
         remove();
     }
 
@@ -96,12 +99,5 @@ public abstract class Item extends Sprite {
         hasExploded = true;
         isCollidable = true;
         setImageFromFile(ASHES_IMAGE);
-    }
-
-    /**
-     * Default thief collision for all items.
-     */
-    public void doOnThiefCollision() {
-        remove();
     }
 }

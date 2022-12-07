@@ -1,5 +1,7 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.characters.Character;
+
 import java.util.ArrayList;
 
 /**
@@ -27,7 +29,7 @@ public class Lever extends Item {
      * Setting a new colour.
      * @param newColour Changing the current lever colour.
      */
-    public void setColour(String newColour) {
+    public void setColour(final String newColour) {
         colour = newColour;
     }
 
@@ -45,7 +47,7 @@ public class Lever extends Item {
     public void removeGates() {
         ArrayList<Gate> gateArray = getLevel().getAllItemsOfType(Gate.class);
         for (Gate gateInstance: gateArray) {
-            if (gateInstance.getColour() == colour) {
+            if (gateInstance.getColour().equals(colour)) {
                 gateInstance.remove();
             }
         }
@@ -55,18 +57,9 @@ public class Lever extends Item {
      * When collided with, removes all gates then remove the level itself.
      */
     @Override
-    public void doOnCollision() {
+    public void onCollision(final Character collidingCharacter) {
         removeGates();
         remove();
         checkIfDoorOpen();
     }
-
-    /**
-     * Thief collision is the same as player collision for levers.
-     */
-    @Override
-    public void doOnThiefCollision() {
-        doOnCollision();
-    }
-
 }

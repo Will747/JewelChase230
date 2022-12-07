@@ -75,6 +75,25 @@ public class Level {
     }
 
     /**
+     * Should be called whenever a character is moved so that
+     * the tile can be checked for collisions with items or
+     * other characters.
+     * @param movingCharacter The character moving to a new position.
+     * @param newPos The position the character is moving to.
+     */
+    public void onCharacterMove(final Character movingCharacter,
+                                final IntVector2D newPos) {
+        Tile tile = getTile(newPos);
+        Character collidingCharacter = getSpecificCharacter(newPos);
+
+        tile.onCollision(movingCharacter);
+
+        if (collidingCharacter != null) {
+            collidingCharacter.onCollision(movingCharacter);
+        }
+    }
+
+    /**
      * Adds an item to a tile on the level.
      * @param pos Position of tile.
      * @param item The item.
@@ -85,8 +104,8 @@ public class Level {
         if (item instanceof Bomb) {
             ArrayList<Tile> neighbouringTiles =
                     getNeighbouringTiles(item.getGridPosition());
-            for (int i = 0; i < neighbouringTiles.size(); i++) {
-                neighbouringTiles.get(i).setBombTrigger(item.getGridPosition());
+            for (Tile neighbouringTile : neighbouringTiles) {
+                neighbouringTile.setBombTrigger(pos);
             }
         }
     }
@@ -98,13 +117,12 @@ public class Level {
      */
     public ArrayList<Tile> getNeighbouringTiles(final IntVector2D position) {
         ArrayList<Tile> tileArray = new ArrayList<>();
-        final IntVector2D thisPos = position;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
                 if (!(x == 0 && y == 0)) {
-                    IntVector2D tempVector = thisPos.add(new IntVector2D(x, y));
-                    if (checkValidTile(tempVector)) {
-                        tileArray.add(getTile(tempVector));
+                    IntVector2D tempVtr = position.add(new IntVector2D(x, y));
+                    if (checkValidTile(tempVtr)) {
+                        tileArray.add(getTile(tempVtr));
                     }
                 }
             }
@@ -274,15 +292,14 @@ public class Level {
 
     /**
      * Gets a specific character in the level.
-     * @param x the x-axis coordinate.
-     * @param y the y-axis coordinate.
+     * @param pos The position of the character on the grid.
      * @return The wanted character or null if the character doesn't exist.
      */
-    public Character getSpecificCharacter(final int x, final int y) {
+    public Character getSpecificCharacter(final IntVector2D pos) {
         Character wantedCharacter = null;
         for (Character c: characters) {
             IntVector2D cPos = c.getGridPosition();
-            if (cPos.getX() == x && cPos.getY() == y) {
+            if (cPos.equals(pos)) {
                 wantedCharacter =  c;
             }
         }
@@ -294,7 +311,7 @@ public class Level {
      * @param pos The position on the grid the character is on.
      */
     public void removeSpecificNPC(final IntVector2D pos) {
-        Character character = getSpecificCharacter(pos.getX(), pos.getY());
+        Character character = getSpecificCharacter(pos);
         characters.remove(character);
     }
 

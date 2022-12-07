@@ -1,5 +1,8 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.characters.Character;
+import com.example.jewelchase230.characters.Player;
+
 /**
  * A class to implement clocks which add additional time to the level.
  *
@@ -41,8 +44,10 @@ public class Clock extends Item {
      * Adds time to the remaining time of the level.
      */
     @Override
-    public void doOnCollision() {
-        getLevel().addTime(timeFromClock);
+    public void onCollision(final Character collidingCharacter) {
+        if (collidingCharacter instanceof Player) {
+            getLevel().addTime(timeFromClock);
+        }
         remove();
     }
 }

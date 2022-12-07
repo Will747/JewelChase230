@@ -1,5 +1,7 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.characters.Character;
+import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.DoubleVector2D;
 import com.example.jewelchase230.vectors.IntVector2D;
@@ -11,7 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
  * A tile is one square on the grid that can have a different colour for
  * each side.
  */
-public final class Tile extends Renderable {
+public final class Tile extends Renderable implements Collidable {
     /** The width of the border around the tile. */
     private static final double BORDER_WIDTH = 0.04;
 
@@ -52,13 +54,42 @@ public final class Tile extends Renderable {
 
     /**
      * Checks if there is a bomb on a neighbouring tile.
-     * @return True if theres a bomb near, false if not.
+     * @return True if there's a bomb near, false if not.
      */
     public boolean isNextToBomb() {
-        if (bombsNextToTile.size() < 1) {
-            return false;
-        } else {
-            return true;
+        return bombsNextToTile.size() > 0;
+    }
+
+    @Override
+    public void onCollision(final Character movingCharacter) {
+        if (movingCharacter.canInteractWithItems()) {
+            if (isNextToBomb()) {
+                triggerAllNearbyBombs(movingCharacter);
+            }
+
+            if (item != null) {
+                item.onCollision(movingCharacter);
+            }
+        }
+    }
+
+    @Override
+    public boolean isCollidable() {
+        if (item != null) {
+            return item.isCollidable();
+        }
+
+        return true;
+    }
+
+    /**
+     * Triggers all bombs next to this tile to explode.
+     * @param character The character causing the explosion.
+     */
+    private void triggerAllNearbyBombs(final Character character) {
+        ArrayList<Bomb> bombs = getBombs();
+        for (Bomb bomb : bombs) {
+            bomb.onCollision(character);
         }
     }
 
@@ -66,10 +97,10 @@ public final class Tile extends Renderable {
      * Get a list of all nearby bombs.
      * @return ArrayList of bombs.
      */
-    public ArrayList<Item> getBombs() {
-        ArrayList<Item> itemArray = new ArrayList<>();
+    private ArrayList<Bomb> getBombs() {
+        ArrayList<Bomb> itemArray = new ArrayList<>();
         for (IntVector2D vectorInstance : bombsNextToTile) {
-            itemArray.add(getLevel().getItem(vectorInstance));
+            itemArray.add((Bomb) getLevel().getItem(vectorInstance));
         }
         return itemArray;
     }
@@ -89,7 +120,6 @@ public final class Tile extends Renderable {
     public void removeBombTrigger(IntVector2D bombPos) {
         bombsNextToTile.remove(bombPos);
     }
-
 
     /**
      * @return The item on this tile or null if there isn't one.
@@ -168,10 +198,5 @@ public final class Tile extends Renderable {
 
         gc.setLineWidth(halfSize * BORDER_WIDTH);
         gc.strokeRect(pos.getX(), pos.getY(), cubeSize, cubeSize);
-    }
-
-    @Override
-    public void tick(final int time) {
-
     }
 }

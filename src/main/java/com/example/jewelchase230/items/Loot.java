@@ -1,5 +1,8 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.characters.Character;
+import com.example.jewelchase230.characters.Player;
+
 /**
  * A collectable item that holds a reward when collected.
  *
@@ -41,17 +44,11 @@ public class Loot extends Item {
      * Triggered when a player collides with loot.
      */
     @Override
-    public void doOnCollision() {
-        getLevel().incrementPlayerScore(type.getValue());
-        remove();
-        checkIfDoorOpen();
-    }
+    public void onCollision(final Character collidingCharacter) {
+        if (collidingCharacter instanceof Player) {
+            getLevel().incrementPlayerScore(type.getValue());
+        }
 
-    /**
-     * Triggered when a thief collides with loot.
-     */
-    @Override
-    public void doOnThiefCollision() {
         remove();
         checkIfDoorOpen();
     }
