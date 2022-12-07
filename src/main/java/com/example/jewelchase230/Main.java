@@ -113,9 +113,6 @@ public final class Main extends Application {
 
         /* Test - Remove this */
         currentLevel = LevelFileReader.readInFile("Level_Files/level1.txt");
-        // Change line to:
-        // currentLevel= LevelFileReader.levelToLoad(player);
-        // player being the currently used player object.
         /* Test - Remove this */
     }
 
@@ -168,7 +165,7 @@ public final class Main extends Application {
         }
 
         if (event.getCode() == KeyCode.ESCAPE) {
-            switchRoot(Menu.getMainMenu());
+            switchRoot(Menu.getPauseMenu());
         }
     }
 

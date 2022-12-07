@@ -27,6 +27,8 @@ public final class Menu {
     private static final String HIGHSCORE_TABLE_FXML = "highScore-table.fxml";
     /** Profile Select fxml file. */
     private static final String PROFILE_SELECT_FXML = "profile-select.fxml";
+    /** Pause menu fxml file */
+    private static final String PAUSE_MENU_FXML = "pause-menu.fxml"; 
 
 
     /** Already created parent nodes. */
@@ -49,6 +51,7 @@ public final class Menu {
         createParent(HIGHSCORE_TABLE_FXML);
         createParent(PROFILE_MENU_FXML);
         createParent(PROFILE_SELECT_FXML);
+        createParent(PAUSE_MENU_FXML);
     }
 
     /**
@@ -66,6 +69,13 @@ public final class Menu {
      */
     public static Parent getMainMenu() {
         return getParent(MAIN_MENU_FXML);
+    }
+
+    /**
+     * @return pause menu node.
+     */
+    public static Parent getPauseMenu() {
+        return getParent(PAUSE_MENU_FXML);
     }
 
     /**

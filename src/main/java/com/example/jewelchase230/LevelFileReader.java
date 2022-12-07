@@ -36,16 +36,30 @@ public class LevelFileReader {
     }
 
     /**
-     * Loads in a specific level based on the current level of the player.
-     * @param p The player object being used.
+     * Loads in a specific level based on a int passed in.
+     * @param l The int that is passed to represent the level.
      */
-    public static void levelToLoad(Player p) {
-        switch (1) {
-            case 1 -> readInFile("Level1.txt");
-            case 2 -> readInFile("Level2.txt");
-            // Add more when total levels is known.
-            default -> readInFile("Level1.txt");
+    public static Level getLevel(int l) {
+        switch (l) {
+            case 1:
+                return readInFile("Level_Files/Level1.txt");
+            case 2:
+                 return readInFile("Level_Files/Level2.txt");
+            case 3:
+                return readInFile("Level_Files/Level3.txt");
+            case 4:
+                return readInFile("Level_Files/Level4.txt");
+            case 5:
+                return readInFile("Level_Files/Level5.txt");
+            default:
+                return readInFile("Level_Files/Level1.txt");
         }
+    }
+
+    public static int getMaxLevel(){
+        File levelFolder = new File("Level_Files");
+        int numLevels = levelFolder.list().length;
+        return numLevels;
     }
 
     /**
