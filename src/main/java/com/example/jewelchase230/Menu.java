@@ -1,5 +1,7 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.menus.ProfileMenu;
+import com.example.jewelchase230.menus.ProfileSelectMenu;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -11,7 +13,7 @@ import java.util.HashMap;
  * Class containing static functions for getting the parent nodes of any menu in
  * the game.
  *
- * @author Will Kaye
+ * @author Will Kaye, Daniel Clark
  */
 public final class Menu {
     // Filenames of all fxml files
@@ -28,11 +30,15 @@ public final class Menu {
     /** Profile Select fxml file. */
     private static final String PROFILE_SELECT_FXML = "profile-select.fxml";
     /** Pause menu fxml file */
-    private static final String PAUSE_MENU_FXML = "pause-menu.fxml"; 
-
+    private static final String PAUSE_MENU_FXML = "pause-menu.fxml";
+    /** Profile creating fxml file. */
+    private static final String PROFILE_CREATE_MENU_FXML = "profile-create-menu.fxml";
 
     /** Already created parent nodes. */
     private static HashMap<String, Parent> cachedParents;
+
+    /** Already initialized controllers. */
+    private static HashMap<String, Object> cachedControllers;
 
     private Menu() {
 
@@ -44,6 +50,7 @@ public final class Menu {
      */
     public static void initMenus() throws IOException {
         cachedParents = new HashMap<>();
+        cachedControllers = new HashMap<>();
 
         createParent(MAIN_MENU_FXML);
         createParent(TEST_MENU_FXML);
@@ -52,6 +59,7 @@ public final class Menu {
         createParent(PROFILE_MENU_FXML);
         createParent(PROFILE_SELECT_FXML);
         createParent(PAUSE_MENU_FXML);
+        createParent(PROFILE_CREATE_MENU_FXML);
     }
 
     /**
@@ -62,6 +70,7 @@ public final class Menu {
         URL url = Menu.class.getResource(fxmlFile);
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         cachedParents.put(fxmlFile, fxmlLoader.load());
+        cachedControllers.put(fxmlFile, fxmlLoader.getController());
     }
 
     /**
@@ -93,10 +102,25 @@ public final class Menu {
     }
 
     /**
-     * @return profile menu node.
+     * @return menu with one profile.
      */
     public static Parent getProfileSelect() {
         return getParent(PROFILE_SELECT_FXML);
+    }
+
+    /**
+     * 
+     * @return The profile Menu select controller.
+     */
+    public static ProfileMenu getProfileMenuController() {
+        return (ProfileMenu) getController(PROFILE_MENU_FXML);
+    }
+    
+    /**
+     * @return The profile select controller.
+     */
+    public static ProfileSelectMenu getProfileSelectController() {
+        return (ProfileSelectMenu) getController(PROFILE_SELECT_FXML);
     }
 
     /**
@@ -107,6 +131,13 @@ public final class Menu {
     }
 
     /**
+     * @return The profile creation node.
+     */
+    public static Parent getProfileCreateMenu() { 
+    	return getParent(PROFILE_CREATE_MENU_FXML);
+    }
+
+    /**
      * @return highscores table node.
      */
     public static Parent getHighScoreTable() {
@@ -114,11 +145,20 @@ public final class Menu {
     }
 
     /**
-     * gets a Scene from the cache.
+     * Gets a Parent node from the cache.
      * @param fxmlFile fxml file being loaded.
      * @return scene containing menu from fxml file.
      */
     private static Parent getParent(final String fxmlFile) {
         return cachedParents.get(fxmlFile);
+    }
+
+    /**
+     * Gets a controller from the cache.
+     * @param fxmlFile fxml file being loaded.
+     * @return controller used by fxml file.
+     */
+    private static Object getController(final String fxmlFile) {
+        return cachedControllers.get(fxmlFile);
     }
 }

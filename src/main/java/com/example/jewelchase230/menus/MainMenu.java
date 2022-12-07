@@ -23,11 +23,6 @@ public final class MainMenu {
     }
 
     @FXML
-    private void onStartGamePressed(final MouseEvent event) {
-        Main.switchToCanvas();
-    }
-
-    @FXML
     private void onSwitchMenuPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getTestMenu());
     }
@@ -48,7 +43,7 @@ public final class MainMenu {
     }
 
     @FXML
-    private void onProlifeSelectPressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getProfileSelect());
+    private void onExitPressed(final MouseEvent event) {
+        Main.close();
     }
 }

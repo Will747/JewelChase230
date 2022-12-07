@@ -1,10 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.TestMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.ProfileSelectMenu">
    <children>
-      <Button mnemonicParsing="false" onMouseClicked="#onBackPressed" text="Back" />
+      <Label alignment="TOP_CENTER" text="Profiles" underline="true">
+         <font>
+            <Font name="Franklin Gothic Medium Italic" size="35.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </Label>
+      <Pane prefHeight="166.0" prefWidth="475.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
+         <children>
+            <Label fx:id="selectPlayerName" alignment="CENTER" layoutX="156.0" layoutY="43.0" prefHeight="40.0" prefWidth="277.0" text="Player" />
+            <ImageView fitHeight="142.0" fitWidth="146.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../fxmlImages/CAT_BLACK_SIT.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="selectPlayerLevel" alignment="CENTER" layoutX="156.0" layoutY="81.0" prefHeight="31.0" prefWidth="277.0" text="Level" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets left="60.0" right="60.0" />
+         </VBox.margin>
+      </Pane>
+      <Pane prefHeight="162.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="65.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onBackToProfileMenuPressed" prefHeight="120.0" prefWidth="120.0" text="Back" />
+            <Button layoutX="240.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onStartGamePressed" prefHeight="120.0" prefWidth="120.0" text="Start" />
+            <Button layoutX="420.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onDeletePressed" prefHeight="120.0" prefWidth="120.0" text="Delete" />
+         </children>
+      </Pane>
    </children>
 </VBox>

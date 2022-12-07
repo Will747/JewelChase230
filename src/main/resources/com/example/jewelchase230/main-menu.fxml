@@ -21,7 +21,7 @@
             <Insets bottom="40.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Label>
-      <Button centerShape="false" mnemonicParsing="false" onMouseClicked="#onStartGamePressed" text="Start Game">
+      <Button centerShape="false" mnemonicParsing="false" onMouseClicked="#onProlifeMenuPressed" text="Start Game">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></Button>
@@ -31,7 +31,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Button>
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onSwitchMenuPressed" text="Exit">
+      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onExitPressed" text="Exit">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>

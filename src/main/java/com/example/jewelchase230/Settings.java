@@ -11,10 +11,10 @@ public class Settings extends Config {
     private static final String SETTINGS_FILE = "config.txt";
 
     /** The music volume level. */
-    private int musicVolume;
+    private double musicVolume;
 
     /** The sound effects volume level. */
-    private int sfxVolume;
+    private double sfxVolume;
 
     /** True if the game should be full screened. */
     private boolean fullScreen;
@@ -28,30 +28,37 @@ public class Settings extends Config {
     }
 
     /**
+     * Saves the current state of the settings to a config file.
+     */
+    public void write() {
+        write(SETTINGS_FILE);
+    }
+
+    /**
      * @return The music volume level.
      */
-    public int getMusicVolume() {
+    public double getMusicVolume() {
         return musicVolume;
     }
 
     /**
      * @param inMusicVolume The music volume level.
      */
-    public void setMusicVolume(final int inMusicVolume) {
+    public void setMusicVolume(final double inMusicVolume) {
         musicVolume = inMusicVolume;
     }
 
     /**
      * @return The sound effects volume level.
      */
-    public int getSfxVolume() {
+    public double getSfxVolume() {
         return sfxVolume;
     }
 
     /**
      * @param inSfxVolume The sound effects volume level.
      */
-    public void setSfxVolume(final int inSfxVolume) {
+    public void setSfxVolume(final double inSfxVolume) {
         sfxVolume = inSfxVolume;
     }
 
@@ -67,5 +74,6 @@ public class Settings extends Config {
      */
     public void setFullScreen(final boolean inFullScreen) {
         fullScreen = inFullScreen;
+        Main.getStage().setFullScreen(fullScreen);
     }
 }

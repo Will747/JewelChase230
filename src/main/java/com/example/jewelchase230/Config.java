@@ -17,6 +17,7 @@ import java.util.Scanner;
  * read back in.
  * Only supports the following generic fields:
  * - int
+ * - double
  * - boolean
  * - string
  *
@@ -35,7 +36,7 @@ public abstract class Config {
      * Saves the current state of this class to the config file.
      * @param filePath The file path and name to the config file.
      */
-    public void write(final String filePath) {
+    protected void write(final String filePath) {
         try {
             FileWriter writer = new FileWriter(filePath);
             Field[] fields = getClass().getDeclaredFields();
@@ -45,6 +46,7 @@ public abstract class Config {
 
                 if (!Modifier.isStatic(modifiers)) {
                     String fieldName = field.getName();
+                    field.setAccessible(true);
                     String fieldValue = field.get(this).toString();
 
                     writer.write(fieldName + "=" + fieldValue + "\n");
@@ -73,7 +75,7 @@ public abstract class Config {
                 String[] fieldData = scanner.nextLine().split("=");
                 if (fieldData.length == 2) {
                     Field field = null;
-                    //Find field
+                    // Find field
                     int i = 0;
                     while (i < fields.length && field == null) {
                         if (fieldData[0].equals(fields[i].getName())) {
@@ -82,13 +84,17 @@ public abstract class Config {
                         i++;
                     }
 
+                    // Set field
                     if (field != null) {
+                        field.setAccessible(true);
                         Type type = field.getGenericType();
                         String typeName = type.getTypeName();
                         if (typeName.equals(int.class.getName())) {
                             field.set(this, Integer.parseInt(fieldData[1]));
                         } else if (typeName.equals(boolean.class.getName())) {
                             field.set(this, Boolean.valueOf(fieldData[1]));
+                        } else if (typeName.equals(double.class.getName())) {
+                            field.set(this, Double.valueOf(fieldData[1]));
                         } else {
                             field.set(this, fieldData[1]);
                         }

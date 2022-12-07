@@ -1,6 +1,7 @@
 module com.example.jewelchase230 {
     requires javafx.controls;
     requires javafx.fxml;
+	requires javafx.graphics;
 
 
     opens com.example.jewelchase230 to javafx.fxml;
