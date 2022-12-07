@@ -64,6 +64,8 @@ public final class Main extends Application {
      * null if no level is being played.
      */
     private static Level currentLevel;
+    private static Level Level1;
+    private static Level Level2;
 
     /**
      * Any renderables permanently shown on the canvas.
@@ -112,8 +114,9 @@ public final class Main extends Application {
         renderables.add(new TimeText());
 
         /* Test - Remove this */
-        //currentLevel = LevelFileReader.readInFile("Level_Files/level1.txt");
-        currentLevel = LevelFileReader.readInFile("Level_Files/level2.txt");
+        Level1 = LevelFileReader.readInFile("Level_Files/level1.txt");
+        Level2 = LevelFileReader.readInFile("Level_Files/level2.txt");
+        setLevel(Level2);
         /* Test - Remove this */
     }
 
