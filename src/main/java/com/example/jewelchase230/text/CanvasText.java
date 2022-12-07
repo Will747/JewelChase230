@@ -18,8 +18,8 @@ public abstract class CanvasText extends Renderable {
     /** Font name. */
     private static final String FONT_NAME = "Silkscreen";
 
-    /** Distance from top of grid. */
-    private static final int Y_OFFSET = 8;
+    /** Distance from other things on the grid. */
+    private static final int PADDING = 8;
 
     /** The position of text above the grid. */
     private final TextPosition position;
@@ -56,21 +56,34 @@ public abstract class CanvasText extends Renderable {
         DoubleVector2D renderPos = getRenderPosition();
         IntVector2D canvasSize = Main.getCanvasSize();
         IntVector2D levelSize = getLevel().getLevelSize();
-        double maxHeight = getCubeSize();
+        double cubeSize = getCubeSize();
+        double border = cubeSize / PADDING;
 
-        double fontSize = maxHeight / 2;
+        // Can only take up a third of the total top of the grid.
+        double maxWidth = levelSize.getX() * cubeSize
+                / TextPosition.values().length - border;
+
+        double fontSize = cubeSize / 2;
         Font font = new Font(FONT_NAME, fontSize);
         double width = getStringWidth(font, text);
+
+        // Shrink font size until it is below the maxWidth
+        while (width > maxWidth) {
+            fontSize--;
+            font = new Font(FONT_NAME, fontSize);
+            width = getStringWidth(font, text);
+        }
+
         double xPos = renderPos.getX();
 
         if (position == TextPosition.Middle) {
             xPos = (double) canvasSize.getX() / 2 - width / 2;
         } else if (position == TextPosition.Right) {
-            xPos += levelSize.getX() * maxHeight - width;
+            xPos += levelSize.getX() * cubeSize - width;
         }
 
         gc.setFill(Color.BLACK);
         gc.setFont(font);
-        gc.fillText(text, xPos, renderPos.getY() + maxHeight - Y_OFFSET);
+        gc.fillText(text, xPos, renderPos.getY() + cubeSize - border);
     }
 }
