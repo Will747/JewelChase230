@@ -9,7 +9,8 @@ public class Door extends Item {
     /** Is the door open or closed. */
     private boolean isDoorOpen = false;
     /** The Door image. */
-    private static final String DOOR_IMAGE = "/images/DOOR.png";
+    private static final String DOOR_IMAGE = "images/DOOR.png";
+   
 
     /**
      * Constructs a new door.

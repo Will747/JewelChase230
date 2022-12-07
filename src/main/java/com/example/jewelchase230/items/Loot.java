@@ -7,15 +7,33 @@ package com.example.jewelchase230.items;
  */
 public class Loot extends Item {
     /** The type of loot. */
-    private final LootType type;
+    private LootType type;
 
     /**
      * Constructs a new item of loot.
      * Randomly selecting the type.
      */
-    public Loot() {
+    public Loot(int rarity) {
         super();
-        type = LootType.getRandomType();
+        switch (rarity) {
+            case 1: {
+                type = LootType.Coins;
+                break;
+            }
+            case 2: {
+                type = LootType.Bag;
+                break;
+            }
+            case 3: {
+                type = LootType.Beer;
+                break;
+            }
+            case 4: {
+                type = LootType.Cocktail;
+                break;
+            }
+        }
+        // type = LootType.getRandomType();
         setImageFromFile(type.getImage());
     }
 

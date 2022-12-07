@@ -183,7 +183,7 @@ public class LevelFileReader {
             }
             case 8: { //Loot
                     int rarity = lineScanner.nextInt();
-                    Loot tempLoot = new Loot();
+                    Loot tempLoot = new Loot(rarity);
                     levelBuilt.addItem(tempPos, tempLoot);
                 break;
             }

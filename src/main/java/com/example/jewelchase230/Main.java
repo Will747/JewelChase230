@@ -112,7 +112,8 @@ public final class Main extends Application {
         renderables.add(new TimeText());
 
         /* Test - Remove this */
-        currentLevel = LevelFileReader.readInFile("Level_Files/level1.txt");
+        //currentLevel = LevelFileReader.readInFile("Level_Files/level1.txt");
+        currentLevel = LevelFileReader.readInFile("Level_Files/level2.txt");
         /* Test - Remove this */
     }
 
