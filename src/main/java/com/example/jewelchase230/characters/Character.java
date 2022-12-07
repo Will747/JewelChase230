@@ -25,23 +25,21 @@ public abstract class Character extends Sprite implements Collidable {
     }
 
     /**
-     * Checks that the next move is a valid move, if valid, collides
-     * with items as expected.
+     * Checks that the next move is a valid move.
      * @param nextMoveTile The tile to be moved to.
      * @return True if valid move, false if not.
      */
-    private boolean validNextTile(final Tile nextMoveTile) {
+    protected boolean validNextTile(final Tile nextMoveTile) {
         return validNextTile(nextMoveTile, null);
     }
 
     /**
-     * Checks that the next move is a valid move, if valid, collides
-     * with items as expected.
+     * Checks that the next move is a valid move.
      * @param nextMoveTile The tile to be moved to.
      * @param colourFollow The specific colour the next tile must be.
      * @return True if valid move, false if not.
      */
-    private boolean validNextTile(final Tile nextMoveTile,
+    protected boolean validNextTile(final Tile nextMoveTile,
                                   final TileColour colourFollow) {
         Tile thisTile = getLevel().getTile(getGridPosition());
 

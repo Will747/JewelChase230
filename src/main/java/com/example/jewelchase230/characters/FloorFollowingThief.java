@@ -1,6 +1,7 @@
 package com.example.jewelchase230.characters;
 
 import com.example.jewelchase230.Direction;
+import com.example.jewelchase230.Tile;
 import com.example.jewelchase230.TileColour;
 import com.example.jewelchase230.vectors.IntVector2D;
 
@@ -53,6 +54,16 @@ public class FloorFollowingThief extends AICharacter {
     }
 
     /**
+     * Checks that the next move is a valid move.
+     * @param nextMoveTile The tile to be moved to.
+     * @return True if valid move, false if not.
+     */
+    @Override
+    protected boolean validNextTile(final Tile nextMoveTile) {
+        return super.validNextTile(nextMoveTile, colourToFollow);
+    }
+
+    /**
      * Gets the next move for the Floor Following Thief.
      */
     @Override
@@ -78,7 +89,6 @@ public class FloorFollowingThief extends AICharacter {
         int behindXDiff = potentialBehindDiffVector.getX();
         int behindYDiff = potentialBehindDiffVector.getY();
 
-        // TODO: Override can move!
         IntVector2D potentialLeftTurnPos =
                 canMove(leftXDiff, leftYDiff);
         IntVector2D potentialForwardPos =
