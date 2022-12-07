@@ -1,5 +1,6 @@
-package com.example.jewelchase230;
+package com.example.jewelchase230.characters;
 
+import com.example.jewelchase230.Direction;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 /**
@@ -13,7 +14,7 @@ public abstract class AICharacter extends Character {
     /** Time between moves. */
     protected static final int MILLISECONDS_PER_MOVE = 1000;
     /** Current Direction. */
-    protected Direction currentDirection;
+    private Direction currentDirection;
 
     /**
      * Constructs a renderable component.
@@ -27,7 +28,7 @@ public abstract class AICharacter extends Character {
      * @param inDirection Direction to be faced.
      * @return x and y coordinates to change.
      */
-    public IntVector2D getMoveDifference(Direction inDirection) {
+    public IntVector2D getMoveDifference(final Direction inDirection) {
         int xDiff = 0;
         int yDiff = 0;
         switch (inDirection) {
@@ -50,14 +51,12 @@ public abstract class AICharacter extends Character {
      * Constructs a renderable component.
      * @param inDirection The direction given.
      */
-    public AICharacter(Direction inDirection) {
+    public AICharacter(final Direction inDirection) {
         super();
     }
 
     /** The default next move. */
-    protected void getNextMove() {
-
-    }
+    protected abstract void getNextMove();
 
     /**
      * Gets the current direction.

@@ -11,4 +11,6 @@ module com.example.jewelchase230 {
     opens com.example.jewelchase230.items to javafx.fxml;
     exports com.example.jewelchase230.menus;
     opens com.example.jewelchase230.menus to javafx.fxml;
+    exports com.example.jewelchase230.characters;
+    opens com.example.jewelchase230.characters to javafx.fxml;
 }

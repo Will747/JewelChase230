@@ -1,5 +1,6 @@
-package com.example.jewelchase230;
+package com.example.jewelchase230.characters;
 
+import com.example.jewelchase230.Direction;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 /**
@@ -30,6 +31,7 @@ public class FlyingAssassin extends AICharacter {
      */
     @Override
     public void getNextMove() {
+        Direction currentDirection = getDirection();
         IntVector2D currentPos = getGridPosition();
         IntVector2D newPos = getMoveDifference(currentDirection);
         int xDiff = newPos.getX();
@@ -38,8 +40,8 @@ public class FlyingAssassin extends AICharacter {
         if (potentialPosition == currentPos) {
             Direction newDirection =
                     currentDirection.getOppositeDirection(currentDirection);
-            currentDirection = newDirection;
-            setGridPosition(canMove(0 - xDiff, 0 - yDiff, this, null));
+            setDirection(newDirection);
+            setGridPosition(canMove(-xDiff, -yDiff, this, null));
             setImageFromFile(imageManager(newDirection));
         } else {
             setGridPosition(potentialPosition);

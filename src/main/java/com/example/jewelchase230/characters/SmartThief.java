@@ -1,6 +1,7 @@
-package com.example.jewelchase230;
+package com.example.jewelchase230.characters;
 
-import com.example.jewelchase230.vectors.IntVector2D;
+
+import com.example.jewelchase230.Direction;
 
 public final class SmartThief extends AICharacter {
 

@@ -1,5 +1,7 @@
-package com.example.jewelchase230;
+package com.example.jewelchase230.characters;
 
+import com.example.jewelchase230.Direction;
+import com.example.jewelchase230.TileColour;
 import com.example.jewelchase230.vectors.IntVector2D;
 /**
  * Class to control the Floor Following Thief.
@@ -55,6 +57,7 @@ public class FloorFollowingThief extends AICharacter {
     @Override
     protected void getNextMove() {
         IntVector2D currentPos = getGridPosition();
+        Direction currentDirection = getDirection();
 
         IntVector2D potentialLeftTurnDiffVector = getLeftDiff(currentDirection);
         int leftXDiff = potentialLeftTurnDiffVector.getX();

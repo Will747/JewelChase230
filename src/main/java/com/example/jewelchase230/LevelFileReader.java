@@ -2,7 +2,18 @@ package com.example.jewelchase230;
 
 import java.util.Scanner;
 
-import com.example.jewelchase230.items.*;
+import com.example.jewelchase230.characters.FloorFollowingThief;
+import com.example.jewelchase230.characters.FlyingAssassin;
+import com.example.jewelchase230.characters.Player;
+import com.example.jewelchase230.characters.SmartThief;
+
+import com.example.jewelchase230.items.Bomb;
+import com.example.jewelchase230.items.Loot;
+import com.example.jewelchase230.items.Clock;
+import com.example.jewelchase230.items.Door;
+import com.example.jewelchase230.items.Lever;
+import com.example.jewelchase230.items.Gate;
+
 import com.example.jewelchase230.vectors.IntVector2D;
 import java.io.File;
 import java.io.IOException;

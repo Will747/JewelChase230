@@ -1,7 +1,7 @@
 package com.example.jewelchase230.items;
 
 import com.example.jewelchase230.Level;
-import com.example.jewelchase230.Character;
+import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 /**

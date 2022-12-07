@@ -1,4 +1,7 @@
-package com.example.jewelchase230;
+package com.example.jewelchase230.characters;
+import com.example.jewelchase230.Sprite;
+import com.example.jewelchase230.Tile;
+import com.example.jewelchase230.TileColour;
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.IntVector2D;
 import java.util.ArrayList;

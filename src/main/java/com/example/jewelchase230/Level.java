@@ -1,4 +1,6 @@
 package com.example.jewelchase230;
+import com.example.jewelchase230.characters.Character;
+import com.example.jewelchase230.characters.Player;
 import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.IntVector2D;

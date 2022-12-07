@@ -1,4 +1,4 @@
-package com.example.jewelchase230;
+package com.example.jewelchase230.characters;
 
 import javafx.scene.input.KeyEvent;
 
