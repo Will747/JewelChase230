@@ -66,6 +66,7 @@ public final class Main extends Application {
     private static Level currentLevel;
     private static Level Level1;
     private static Level Level2;
+    private static Level Level3;
 
     /**
      * Any renderables permanently shown on the canvas.
@@ -116,7 +117,8 @@ public final class Main extends Application {
         /* Test - Remove this */
         Level1 = LevelFileReader.readInFile("Level_Files/level1.txt");
         Level2 = LevelFileReader.readInFile("Level_Files/level2.txt");
-        setLevel(Level1);
+        Level3 = LevelFileReader.readInFile("Level_Files/level3.txt");
+        setLevel(Level3);
         /* Test - Remove this */
     }
 
