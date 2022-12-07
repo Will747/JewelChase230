@@ -56,7 +56,7 @@ public abstract class AICharacter extends Character {
     }
 
     /** The default next move. */
-    protected abstract void getNextMove();
+    protected abstract void makeNextMove();
 
     /**
      * Gets the current direction.
@@ -76,7 +76,7 @@ public abstract class AICharacter extends Character {
         if (isAlive) {
             timeSinceLastImageChange += time;
             if (timeSinceLastImageChange > MILLISECONDS_PER_MOVE) {
-                getNextMove();
+                makeNextMove();
                 timeSinceLastImageChange = 0;
             }
         }

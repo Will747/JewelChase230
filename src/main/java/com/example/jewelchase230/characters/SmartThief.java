@@ -14,7 +14,7 @@ public final class SmartThief extends AICharacter {
     }
 
     @Override
-    protected void getNextMove() {
+    protected void makeNextMove() {
     }
 }
 

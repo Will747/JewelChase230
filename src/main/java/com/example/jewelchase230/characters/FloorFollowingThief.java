@@ -55,7 +55,7 @@ public class FloorFollowingThief extends AICharacter {
      * Gets the next move for the Floor Following Thief.
      */
     @Override
-    protected void getNextMove() {
+    protected void makeNextMove() {
         IntVector2D currentPos = getGridPosition();
         Direction currentDirection = getDirection();
 

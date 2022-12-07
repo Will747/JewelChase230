@@ -30,7 +30,7 @@ public class FlyingAssassin extends AICharacter {
      * Controls the next move of the Flying Assassin.
      */
     @Override
-    public void getNextMove() {
+    public void makeNextMove() {
         Direction currentDirection = getDirection();
         IntVector2D currentPos = getGridPosition();
         IntVector2D newPos = getMoveDifference(currentDirection);
