@@ -67,6 +67,10 @@ public class LevelFileReader {
         }
     }
 
+    /**
+     * Returns the number of levels the game has.
+     * @return the number of levels.
+     */
     public static int getMaxLevel(){
         File levelFolder = new File("Level_Files");
         int numLevels = levelFolder.list().length;
