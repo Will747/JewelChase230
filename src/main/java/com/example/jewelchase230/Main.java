@@ -1,5 +1,6 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.profiles.HighScoreTable;
 import com.example.jewelchase230.text.LevelNumText;
 import com.example.jewelchase230.text.ScoreText;
 import com.example.jewelchase230.text.TimeText;
@@ -66,6 +67,9 @@ public final class Main extends Application {
     /** All config settings for the game. */
     private static Settings settings;
 
+    /** Table containing all highscores. */
+    private static HighScoreTable highScoreTable;
+
     /**
      * The level currently being played.
      * null if no level is being played.
@@ -121,6 +125,8 @@ public final class Main extends Application {
         renderables.add(new ScoreText());
         renderables.add(new LevelNumText());
         renderables.add(new TimeText());
+
+        highScoreTable = HighScoreTable.read();
     }
 
     /**
@@ -143,6 +149,7 @@ public final class Main extends Application {
     public static void close() {
         settings.write();
         ProfileManager.saveProfiles();
+        highScoreTable.save();
         System.exit(0);
     }
 
@@ -249,6 +256,13 @@ public final class Main extends Application {
                 renderable.draw(gc);
             }
         }
+    }
+
+    /**
+     * @return The high score table.
+     */
+    public static HighScoreTable getHighScoreTable() {
+        return highScoreTable;
     }
 
     /**

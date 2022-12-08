@@ -11,10 +11,10 @@ public class HighScoreTableTests {
 
         HighScoreTable highScoreTable = HighScoreTable.read();
 
-        highScoreTable.addScore(0, testProfile, 5);
+        highScoreTable.addScore(1, testProfile, 5);
         highScoreTable.save();
 
         HighScoreTable highScoreTable1 = HighScoreTable.read();
-        assert(highScoreTable1.getLevelHighScores(0).getScoreList().size() > 0);
+        assert(highScoreTable1.getLevelHighScores(1).getScoreList().size() > 0);
     }
 }

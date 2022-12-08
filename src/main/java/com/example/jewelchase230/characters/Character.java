@@ -93,7 +93,9 @@ public abstract class Character extends Sprite implements Collidable {
      * @return new tile position, or current position if invalid move.
      */
     protected IntVector2D canMove(final int xChange, final int yChange) {
-        return canMove(getGridPosition(), new IntVector2D(xChange, yChange), true);
+        return canMove(getGridPosition(),
+                new IntVector2D(xChange, yChange),
+                true);
     }
 
     /**
