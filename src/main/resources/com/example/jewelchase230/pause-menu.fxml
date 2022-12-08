@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.PauseMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.PauseMenu">
    <children>
-      <Label text="Jewel Chase">
-         <font>
-            <Font name="Franklin Gothic Medium Italic" size="45.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="5.0" />
-         </VBox.margin>
-      </Label>
-      <Button centerShape="false" mnemonicParsing="false" onMouseClicked="#onResumeGamePressed" text="Resume Game">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></Button>
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onSettingsMenuPressed" text="Settings" />
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onHighScoreTablePressed" text="High Score" />
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="fale" onMouseClicked="#onExitPressed" text="Exit" />
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin>
-      </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#onResumeGamePressed" text="Resume" />
+      <Button mnemonicParsing="false" onMouseClicked="#onSettingsMenuPressed" text="Settings" />
+      <Button mnemonicParsing="false" onMouseClicked="#onHighScoreTablePressed" text="HighScores" />
+      <Button mnemonicParsing="false" onMouseClicked="#onExitPressed" text="Exit" />
    </children>
 </VBox>
