@@ -48,10 +48,7 @@ public final class HighScoreMenu {
 	private int levelScore;
     
 	
-	public HighScoreMenu(String profileName, int level, int levelScore){ 
-		this.profileName = profileName;
-		this.level = level;
-		this.levelScore = levelScore;
+	public HighScoreMenu() {
 	}
     
     //ObservableList<ProfileScore> topTenObservableList = FXCollections.observableArrayList(
