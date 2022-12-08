@@ -20,6 +20,7 @@ public class ProfileScore implements Serializable {
 	}
 
 	
+	
 /**
  * @return player name.
  */

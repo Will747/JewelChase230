@@ -56,7 +56,15 @@ public final class HighScoreMenu {
 	ObservableList<ProfileScore> list = FXCollections.observableArrayList(
 		new	ProfileScore (600,7,"Poo", 3),
 		new ProfileScore(400,1,"hi", 4),
-		new	ProfileScore (5000,2,"PeePee",6)
+		new	ProfileScore (5600,2,"gksfg",6),
+		new	ProfileScore (6000,2,"Cos",6),
+		new	ProfileScore (5700,2,"Adam",6),
+		new	ProfileScore (9000,2,"Will",6),
+		new	ProfileScore (7500,2,"Me",6),
+
+		new	ProfileScore (5000,2,"Ben",6)
+
+		
 	);
 
 	@FXML
