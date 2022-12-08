@@ -40,9 +40,9 @@ public class LevelFileReader {
      * @param fileName the name / directory of the file being read in.
      * @return Returns the built level.
      */
-    public static Level readInFile(final String fileName) {
+    public static Level readInFile(final String fileName, int levelNum) {
            File levelFile = new File(fileName);
-           lineReader(levelFile);
+           lineReader(levelFile, levelNum);
            return levelBuilt;
     }
 
@@ -53,20 +53,24 @@ public class LevelFileReader {
     public static Level getLevel(int l) {
         switch (l) {
             case 1:
-                return readInFile("Level_Files/Level1.txt");
+                return readInFile("Level_Files/Level1.txt", 1);
             case 2:
-                 return readInFile("Level_Files/Level2.txt");
+                 return readInFile("Level_Files/Level2.txt", 2);
             case 3:
-                return readInFile("Level_Files/Level3.txt");
+                return readInFile("Level_Files/Level3.txt", 3);
             case 4:
-                return readInFile("Level_Files/Level4.txt");
+                return readInFile("Level_Files/Level4.txt", 4);
             case 5:
-                return readInFile("Level_Files/Level5.txt");
+                return readInFile("Level_Files/Level5.txt", 5);
             default:
-                return readInFile("Level_Files/Level1.txt");
+                return readInFile("Level_Files/Level1.txt", 1);
         }
     }
 
+    /**
+     * Returns the number of levels the game has.
+     * @return the number of levels.
+     */
     public static int getMaxLevel(){
         File levelFolder = new File("Level_Files");
         int numLevels = levelFolder.list().length;
@@ -78,7 +82,7 @@ public class LevelFileReader {
      * there needed to be.
      * @param levelFile the file being read.
      */
-    private static void lineReader(final File levelFile) {
+    private static void lineReader(final File levelFile, int levelNum) {
         // Tries to read the file and sends an error code if the file
         // does not exist.
         try {
@@ -89,7 +93,7 @@ public class LevelFileReader {
             levelTime = fileScanner.nextInt();
 
             IntVector2D size = new IntVector2D(xAxis, yAxis);
-            levelBuilt = new Level(size, 1);
+            levelBuilt = new Level(size, levelNum);
 
             // Changes the tokens in the text file to tile objects
             // that are added to the level.
