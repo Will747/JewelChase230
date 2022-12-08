@@ -1,6 +1,0 @@
-3 3
-200
-mmmm mmmm mmmm 
-mmcc mmmm gggg 
-cccc mmmm mmmm 
-9 0 0

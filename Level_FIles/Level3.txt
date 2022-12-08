@@ -1,30 +1,6 @@
-8 8
+3 3
 200
-mmmm gggg gggg gggg gggg gggg gggg rrrr
-mmcc mmmm gggg gggg gggg gggg rrrr rrcc
-cccc mmmm mmmm gggg gggg rrrr rrrr cccc
-cccc cccc mmmm mcmg crgr rrrr cccc cccc
-cccc cccc rrrr rgrc gmcm mmmm cccc cccc
-cccc rrrr rrrr gggg gggg mmmm mmmm cccc
-ccrr rrrr gggg gggg gggg gggg mmmm ccmm
-rrrr gggg gggg gggg gggg gggg gggg mmmm
+mmmm mmmm mmmm 
+mmcc mmmm gggg 
+cccc mmmm mmmm 
 9 0 0
-7 0 3 r
-7 7 4 l
-8 3 0 2
-8 4 0 2
-8 2 1 3
-8 5 1 3
-8 2 2 1
-2 7 2 10
-8 6 3 4
-8 7 3 3
-8 0 4 3
-8 1 4 4
-8 5 4 1
-2 0 5 10
-8 2 6 3
-8 5 6 3
-3 0 7
-8 3 7 2
-8 4 7 2
