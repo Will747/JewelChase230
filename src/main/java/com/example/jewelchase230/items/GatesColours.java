@@ -1,31 +1,20 @@
 package com.example.jewelchase230.items;
 
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public enum GatesColours {
-    /**
-     * Red Colour.
-     */
+    /** Red Colour.*/
     Red(new Color(1, 0, 0, 1)),
-    /**
-     * Blue Colour.
-     */
+    /** Blue Colour.*/
     Blue(new Color(0, 0, 1, 1)),
-    /**
-     * Green Colour.
-     */
+    /** Green Colour.*/
     Green(new Color(0, 1, 0, 1)),
-    /**
-     * Yellow Colour.
-     */
+    /** Yellow Colour. */
     Yellow(new Color(1, 1, 0, 1)),
-    /**
-     * Cyan colour.
-     */
+    /** Cyan colour.*/
     Cyan(new Color(0, 0.7, 0.7, 1)),
-    /**
-     * Magenta colour.
-     */
+    /** Magenta colour.*/
     Magenta(new Color(0.7, 0, 1, 1));
 
     /** colour. */
