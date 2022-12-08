@@ -14,6 +14,7 @@ public class Clock extends Item {
 
     /** Additional time clock provides to player. */
     private int timeFromClock;
+    private int secondsToMilliseconds = 1000;
 
     /**
      * Constructs a clock.
@@ -21,7 +22,7 @@ public class Clock extends Item {
      */
     public Clock(final int inTime) {
         super(CLOCK_IMAGE);
-        timeFromClock = inTime;
+        timeFromClock = inTime * secondsToMilliseconds;
     }
 
     /**

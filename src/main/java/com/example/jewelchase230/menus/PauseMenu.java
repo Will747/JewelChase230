@@ -24,7 +24,7 @@ public class PauseMenu {
      */
     @FXML
     private void onSettingsMenuPressed(final MouseEvent event) {
-        Menu.getSettingsMenuController().setPreviousParent(Menu.getPauseMenu());
+        Menu.getSettingsMenuController().setPreviousParent(Menu.getMainMenu()); //Menu.getPauseMenu());
         Main.switchRoot(Menu.getSettingsMenu());
     }
 
@@ -34,10 +34,23 @@ public class PauseMenu {
      */
     @FXML
     private void onHighScoreTablePressed(final MouseEvent event) {
-        Menu.getHighScoreMenuController().setPreviousParent(Menu.getPauseMenu());
+        Menu.getHighScoreMenuController().setPreviousParent(Menu.getMainMenu());//Menu.getPauseMenu());
         Main.switchRoot(Menu.getHighScoreTable());
     }
 
+    /**
+     * Saves the game at the current point.
+     * @param event A user input.
+     */
+    @FXML
+    private void onSaveGamePressed(final MouseEvent event) {
+        // Add save game functionality.
+    }
+
+    /**
+     * Exits the game to the main menu.
+     * @param event A user input.
+     */
     @FXML
     private void onExitPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getMainMenu());
