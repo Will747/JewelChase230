@@ -21,7 +21,8 @@
             <Insets bottom="10.0" />
          </VBox.margin></Button>
       <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onSettingsMenuPressed" text="Settings" />
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onHighScoreTablePressed" text="High Score">
+      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onHighScoreTablePressed" text="High Score" />
+      <Button alignment="CENTER" centerShape="false" mnemonicParsing="fale" onMouseClicked="#onExitPressed" text="Exit" />
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>

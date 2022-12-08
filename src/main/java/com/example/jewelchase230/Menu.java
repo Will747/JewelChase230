@@ -1,7 +1,10 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.menus.HighScoreMenu;
 import com.example.jewelchase230.menus.ProfileMenu;
 import com.example.jewelchase230.menus.ProfileSelectMenu;
+import com.example.jewelchase230.menus.SettingsMenu;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -122,6 +125,21 @@ public final class Menu {
     public static ProfileSelectMenu getProfileSelectController() {
         return (ProfileSelectMenu) getController(PROFILE_SELECT_FXML);
     }
+
+    /**
+     * @return The setting menu controller.
+     */
+    public static SettingsMenu getSettingsMenuController() {
+        return (SettingsMenu) getController(SETTINGS_MENU_FXML);
+    }
+
+    /**
+     * @return The high score table controller
+     */
+    public static HighScoreMenu getHighScoreMenuController() {
+        return (HighScoreMenu) getController(HIGHSCORE_TABLE_FXML);
+    }
+
 
     /**
      * @return settings menu node.

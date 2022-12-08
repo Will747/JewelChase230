@@ -1,31 +1,27 @@
 package com.example.jewelchase230.items;
 
+//import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
+//import java.io.FileInputStream;
+//import java.io.FileNotFoundException;
+
+/**
+ * Gates colours.
+ * @author Caroline Segestahl.
+ */
 public enum GatesColours {
-    /**
-     * Red Colour.
-     */
+    /** Red Colour.*/
     Red(new Color(1, 0, 0, 1)),
-    /**
-     * Blue Colour.
-     */
+    /** Blue Colour.*/
     Blue(new Color(0, 0, 1, 1)),
-    /**
-     * Green Colour.
-     */
+    /** Green Colour.*/
     Green(new Color(0, 1, 0, 1)),
-    /**
-     * Yellow Colour.
-     */
+    /** Yellow Colour. */
     Yellow(new Color(1, 1, 0, 1)),
-    /**
-     * Cyan colour.
-     */
+    /** Cyan colour.*/
     Cyan(new Color(0, 0.7, 0.7, 1)),
-    /**
-     * Magenta colour.
-     */
+    /** Magenta colour.*/
     Magenta(new Color(0.7, 0, 1, 1));
 
     /** colour. */
@@ -35,6 +31,15 @@ public enum GatesColours {
         colour = inColour;
     }
 
+//    /** Gate image. */
+//    private Image image = null;
+//
+//    GatesColours(final String imageFileName) {
+//        try {
+//            image = new Image(new FileInputStream(imageFileName));
+//        } catch (FileNotFoundException e) {
+//            System.out.println(imageFileName + " file not found");
+//        }
     /**
      * Converts a character to colour.
      *
@@ -52,5 +57,11 @@ public enum GatesColours {
             default -> Yellow;
         };
     }
+
+//        /** Returns the image.
+//         * @return The gate image. */
+//        public Image getImage() {
+//            return image;
+//        }
 
 }

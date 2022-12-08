@@ -9,7 +9,6 @@ import javafx.scene.input.MouseEvent;
  * @author Adam Smith
  */
 public class PauseMenu {
-
     /**
      * Resumes the game to the current state.
      * @param event A user input.
@@ -25,6 +24,7 @@ public class PauseMenu {
      */
     @FXML
     private void onSettingsMenuPressed(final MouseEvent event) {
+        Menu.getSettingsMenuController().setPreviousParent(Menu.getPauseMenu());
         Main.switchRoot(Menu.getSettingsMenu());
     }
 
@@ -34,6 +34,12 @@ public class PauseMenu {
      */
     @FXML
     private void onHighScoreTablePressed(final MouseEvent event) {
+        Menu.getHighScoreMenuController().setPreviousParent(Menu.getPauseMenu());
         Main.switchRoot(Menu.getHighScoreTable());
+    }
+
+    @FXML
+    private void onExitPressed(final MouseEvent event) {
+        Main.switchRoot(Menu.getMainMenu());
     }
 }
