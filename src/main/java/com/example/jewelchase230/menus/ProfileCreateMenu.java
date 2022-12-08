@@ -22,6 +22,7 @@ import javafx.stage.Modality;
  * Controller for the create profile menu.
  * 
  * @author Kellie Robinson
+ * @author Daniel Clarke
  *
  */
 
@@ -56,7 +57,6 @@ public final class ProfileCreateMenu {
 			ProfileManager.listOfProfile.add(newProfile);
 			ProfileManager.saveProfile(newProfile);
 			Menu.getProfileMenuController().refresh();
-			//ProfileManager.readLines();
 			Main.switchRoot(Menu.getProfileMenu());
 		}
 		else{
@@ -90,11 +90,21 @@ public final class ProfileCreateMenu {
 		}
 		return profileNewSlot;
 	}
+	/**
+	 * Method which allows user to navigate back to the Main Menu.
+	 * @param event (MouseClick)
+	 */
 	@FXML
     void onBackToProfileMenuPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileMenu());
     }
-	//Only allows charecters a-z, A-Z and numbers 1.. as well as non empty names
+
+	
+	/** 
+	 * Method which checks if a name is valid (only characters and numbers).
+	 * @param name
+	 * @return boolean value valid.
+	 */
 	boolean acceptableName(String name)
 	{
 		boolean valid = false;
@@ -112,7 +122,10 @@ public final class ProfileCreateMenu {
 		}
 		return(valid);
 	}
-
+	/**
+	 * Method which throws error on pretense that all profile slots are occupied.
+	 * @throws IOException
+	 */
 	private void fullProfiles() throws IOException{
 		Alert.AlertType type = Alert.AlertType.WARNING;
 
