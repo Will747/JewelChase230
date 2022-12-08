@@ -40,6 +40,11 @@ public abstract class Item extends Sprite implements Collidable {
         }
     }
 
+    /** Returns hasExploded. */
+    public boolean hasExploded() {
+        return hasExploded;
+    }
+
     /**
      * Returns if the item can be shared with a character.
      * @return True if collidable, False if not.
@@ -55,22 +60,6 @@ public abstract class Item extends Sprite implements Collidable {
      */
     public void setCollidable(final boolean newCollidable) {
         isCollidable = newCollidable;
-    }
-
-    /**
-     * Checks if all loot and levers have been collected and opens the
-     * door if they have.
-     */
-    public void checkIfDoorOpen() {
-        ArrayList<Lever> leverArray = getLevel().getAllItemsOfType(Lever.class);
-        ArrayList<Loot> lootArray = getLevel().getAllItemsOfType(Loot.class);
-        if (leverArray.size() == 0 && lootArray.size() == 0) {
-            ArrayList<Door> doorArray =
-                    getLevel().getAllItemsOfType(Door.class);
-            for (Door doorInstance : doorArray) {
-                doorInstance.setIsDoorOpen(true);
-            }
-        }
     }
 
     /**

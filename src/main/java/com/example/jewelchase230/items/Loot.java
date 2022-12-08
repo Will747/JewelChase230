@@ -50,13 +50,11 @@ public class Loot extends Item {
         }
 
         remove();
-        checkIfDoorOpen();
     }
 
     /** Explosion collision for loot. */
     @Override
     public void doOnExplosionCollision() {
-        checkIfDoorOpen();
         super.doOnExplosionCollision();
     }
 }

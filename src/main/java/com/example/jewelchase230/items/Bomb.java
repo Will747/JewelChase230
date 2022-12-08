@@ -160,6 +160,7 @@ public class Bomb extends Item {
                 }
             }
         }
+        getLevel().checkIfDoorOpen();
     }
 
     /**

@@ -44,6 +44,7 @@ public final class HighScoreMenu  {
 	@FXML
 	private TableColumn<Profile, String> playerCol;
 	
+
 	//@FXML
 	//private TableColumn<Profile, Integer> levelCol;
 	
@@ -68,7 +69,6 @@ public final class HighScoreMenu  {
 		hsTable.setItems(null);
 		hsTable.setItems(list);
 	}
-	
     @FXML
     void onBackPressed(final MouseEvent event) {
         Main.switchRoot(previousMenu);

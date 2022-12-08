@@ -3,6 +3,9 @@ import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.characters.Player;
 import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.items.Item;
+import com.example.jewelchase230.items.Loot;
+import com.example.jewelchase230.items.Lever;
+import com.example.jewelchase230.items.Door;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.util.ArrayList;
@@ -102,6 +105,30 @@ public class Level {
     }
 
     /**
+     * Checks if all loot and levers have been collected and opens the
+     * door if they have.
+     */
+    public void checkIfDoorOpen() {
+        ArrayList<Lever> leverArray = getAllItemsOfType(Lever.class);
+        ArrayList<Loot> lootArray = getAllItemsOfType(Loot.class);
+        for (Lever leverInstance : leverArray) {
+            if (!(leverInstance.hasExploded())) {
+                return;
+            }
+        }
+        for (Loot lootInstance : lootArray) {
+            if (!(lootInstance.hasExploded())) {
+                return;
+            }
+        }
+        ArrayList<Door> doorArray =
+        getAllItemsOfType(Door.class);
+        for (Door doorInstance : doorArray) {
+             doorInstance.setIsDoorOpen(true);
+        }
+    }
+
+    /**
      * Adds an item to a tile on the level.
      * @param pos Position of tile.
      * @param item The item.
@@ -150,6 +177,8 @@ public class Level {
             for (Tile tileInstance: neighbouringTiles) {
                 tileInstance.removeBombTrigger(pos);
             }
+        } else if (item instanceof Loot || item instanceof Lever) {
+            checkIfDoorOpen();
         }
         getTile(pos).setItem(null);
     }
