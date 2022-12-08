@@ -3,6 +3,7 @@ package com.example.jewelchase230.menus;
 import java.io.IOException;
 import java.util.Optional;
 
+import com.example.jewelchase230.LevelFileReader;
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.profiles.Profile;
@@ -48,6 +49,8 @@ public final class ProfileSelectMenu {
 
     @FXML
     private void onStartGamePressed(final MouseEvent event) {
+        // TODO: Show level select menu
+        Main.setLevel(LevelFileReader.getLevel(2));
         Main.switchToCanvas();
     }
 

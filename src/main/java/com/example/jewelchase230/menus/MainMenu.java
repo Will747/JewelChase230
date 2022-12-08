@@ -23,11 +23,6 @@ public final class MainMenu {
     }
 
     @FXML
-    private void onSwitchMenuPressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getTestMenu());
-    }
-
-    @FXML
     private void onSettingsMenuPressed(final MouseEvent event) {
         Menu.getSettingsMenuController().setPreviousParent(Menu.getMainMenu());
         Main.switchRoot(Menu.getSettingsMenu());
