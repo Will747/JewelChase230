@@ -13,6 +13,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -33,6 +35,14 @@ public final class ProfileCreateMenu {
 	private Button buttonCreateProfile; 
 	@FXML 
 	private TextField createProfileName;
+	@FXML
+	private TableView hsTable;
+	@FXML
+	private TableColumn nameCol;
+	@FXML
+	private TableColumn levelCol;
+	@FXML 
+	private TableColumn hsCol;
 	
 	public String profileCreatedName; 
 	
@@ -40,6 +50,7 @@ public final class ProfileCreateMenu {
 	private Button createProfileMenuButton;
 	
 	int profileNewSlot;
+	
 	
 	
 	@FXML

@@ -24,11 +24,11 @@
             <Insets bottom="10.0" left="450.0" />
          </VBox.margin>
       </CheckBox>
-      <TableView prefHeight="200.0" prefWidth="884.0">
+      <TableView fx:id="hsTable" prefHeight="200.0" prefWidth="884.0">
         <columns>
-          <TableColumn prefWidth="200.0" text="Player" />
-          <TableColumn text="Level" />
-            <TableColumn prefWidth="340.0" text="High Score" />
+          <TableColumn fx:id="playerCol" prefWidth="200.0" text="Player" />
+          <TableColumn fx:id="levelCol" text="Level" />
+            <TableColumn fx:id="hsCol" prefWidth="340.0" text="High Score" />
         </columns>
       </TableView>
       <Button fx:id="prevLevelButton" mnemonicParsing="false" onMouseClicked="#onPrevLevelButtonPressed" text="&lt;- Previous Level" />
