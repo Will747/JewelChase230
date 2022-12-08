@@ -41,7 +41,7 @@ public class HighScoreTable implements Serializable {
 	public HighScoreTable() {
 		// Temp until the number of level is decided
 		highScores = new LevelHighScores[10];
-		highScores[0] = new LevelHighScores();
+		//highScores[0] = new LevelHighScores(); <-- commented out as it is throwing an error (?) 
 		// Temp until the number of level is decided
 	}
 
