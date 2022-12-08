@@ -23,55 +23,67 @@ import java.io.IOException;
  * information needed to make the level.
  * @author Adam Smith.
  */
-public class LevelFileReader {
-    // The lists and variables needed to make the level.
-    /** X Axis. */
-    private static int xAxis;
-    /** Y Axis. */
-    private static int yAxis;
-    /** Level time. */
-    private static int levelTime;
+public final class LevelFileReader {
+    /**
+     * All types of sprite that can be read from
+     * the level file.
+     */
+    private enum SpriteCode {
+        /** Bomb. */
+        Bomb,
+        /** Clock. */
+        Clock,
+        /** Door. */
+        Door,
+        /** Lever. */
+        Lever,
+        /** Gate. */
+        Gate,
+        /** Floor Following Thief. */
+        FfThief,
+        /** Flying Assassin. */
+        FAssassin,
+        /** Loot. */
+        Loot,
+        /** Player. */
+        Player,
+        /** Smart Thief. */
+        SmartThief;
+    }
+
+    /** The level being built. */
     private static Level levelBuilt;
 
+    private LevelFileReader() {
+    }
 
     /**
      * Method that is called to start the process of reading in
      * the level ASCII file.
-     * @param fileName the name / directory of the file being read in.
+     * @param fileName The name / directory of the file being read in.
+     * @param levelNum The number of this level.
      * @return Returns the built level.
      */
-    public static Level readInFile(final String fileName, int levelNum) {
+    public static Level readInFile(final String fileName, final int levelNum) {
            File levelFile = new File(fileName);
            lineReader(levelFile, levelNum);
            return levelBuilt;
     }
 
     /**
-     * Loads in a specific level based on a int passed in.
-     * @param l The int that is passed to represent the level.
+     * Loads in a specific level based on the level number passed in.
+     * @param levelNum The int that is passed to represent the level.
+     * @return The level being returned.
      */
-    public static Level getLevel(int l) {
-        switch (l) {
-            case 1:
-                return readInFile("Level_Files/Level1.txt", 1);
-            case 2:
-                 return readInFile("Level_Files/Level2.txt", 2);
-            case 3:
-                return readInFile("Level_Files/Level3.txt", 3);
-            case 4:
-                return readInFile("Level_Files/Level4.txt", 4);
-            case 5:
-                return readInFile("Level_Files/Level5.txt", 5);
-            default:
-                return readInFile("Level_Files/Level6.txt", 1);
-        }
+    public static Level getLevel(final int levelNum) {
+        return readInFile("Level_Files/Level" + levelNum + ".txt", levelNum);
     }
 
     /**
      * Returns the number of levels the game has.
      * @return the number of levels.
      */
-    public static int getMaxLevel(){
+    public static int getMaxLevel() {
         File levelFolder = new File("Level_Files");
         int numLevels = levelFolder.list().length;
         return numLevels;
@@ -80,18 +92,18 @@ public class LevelFileReader {
     /**
      * Reads the information from the file and processes the values as
      * there needed to be.
-     * @param levelFile the file being read.
+     * @param levelFile The file being read.
+     * @param levelNum The level number.
      */
-    private static void lineReader(final File levelFile, int levelNum) {
+    private static void lineReader(final File levelFile, final int levelNum) {
         // Tries to read the file and sends an error code if the file
         // does not exist.
         try {
             // Sets the values for information about the level.
             Scanner fileScanner = new Scanner(levelFile);
-            xAxis = fileScanner.nextInt();
-            yAxis = fileScanner.nextInt();
-            levelTime = fileScanner.nextInt();
-            System.out.println(levelTime);
+            int xAxis = fileScanner.nextInt();
+            int yAxis = fileScanner.nextInt();
+            int levelTime = fileScanner.nextInt();
 
             IntVector2D size = new IntVector2D(xAxis, yAxis);
             levelBuilt = new Level(size, levelNum);
@@ -102,14 +114,23 @@ public class LevelFileReader {
             for (int i = 0; i < yAxis; i++) {
                  for (int j = 0; j < xAxis; j++) {
                      String tempTileColour = fileScanner.next();
+
+                     int charIdx = 0;
                      TileColour topLeft = TileColour.getTileColourType(
-                             tempTileColour.charAt(0));
+                             tempTileColour.charAt(charIdx));
+                     charIdx++;
+
                      TileColour topRight = TileColour.getTileColourType(
-                             tempTileColour.charAt(1));
+                             tempTileColour.charAt(charIdx));
+                     charIdx++;
+
                      TileColour bottomLeft = TileColour.getTileColourType(
-                             tempTileColour.charAt(2));
+                             tempTileColour.charAt(charIdx));
+                     charIdx++;
+
                      TileColour bottomRight = TileColour.getTileColourType(
-                             tempTileColour.charAt(3));
+                             tempTileColour.charAt(charIdx));
+
                      Tile tempTile = new
                              Tile(topLeft, topRight, bottomLeft, bottomRight);
                      IntVector2D tempTilePos = new IntVector2D(j, i);
@@ -120,7 +141,7 @@ public class LevelFileReader {
              fileScanner.nextLine();
             // Makes objects from the provided information.
             while (fileScanner.hasNextLine()) {
-                levelBuilder(fileScanner.nextLine());
+                spriteBuilder(fileScanner.nextLine());
             }
         } catch (IOException e) {
             System.out.println("File not found.");
@@ -130,83 +151,72 @@ public class LevelFileReader {
     /**
      * Makes the objects from the passed information and
      * adds them to an array list.
-     * @param value
+     * @param value The serialized data.
      */
-    private static void levelBuilder(final String value) {
+    private static void spriteBuilder(final String value) {
         Scanner lineScanner = new Scanner(value);
         int id = lineScanner.nextInt();
         // Makes the appropriate object from the id provided from the file.
         int x = lineScanner.nextInt();
         int y = lineScanner.nextInt();
         IntVector2D tempPos = new IntVector2D(x, y);
-        switch (id) {
-            case 1: { //Bomb
-                    Bomb tempBomb = new Bomb();
-                    levelBuilt.addItem(tempPos, tempBomb);
-                break;
+        SpriteCode spriteCode = SpriteCode.values()[id - 1];
+        switch (spriteCode) {
+            case Bomb -> {
+                Bomb tempBomb = new Bomb();
+                levelBuilt.addItem(tempPos, tempBomb);
             }
-            case 2: { //Clock
-                    int time = lineScanner.nextInt();
-                    Clock tempClock = new Clock(time);
-                    levelBuilt.addItem(tempPos, tempClock);
-                break;
+            case Clock -> {
+                int time = lineScanner.nextInt();
+                Clock tempClock = new Clock(time);
+                levelBuilt.addItem(tempPos, tempClock);
             }
-            case 3: { //Door
-                    Door tempDoor = new Door();
-                    levelBuilt.addItem(tempPos, tempDoor);
-                break;
+            case Door -> {
+                Door tempDoor = new Door();
+                levelBuilt.addItem(tempPos, tempDoor);
             }
-            case 4: { //Lever
-                    String colour = lineScanner.next();
-                    Lever tempLever = new Lever(colour);
-                    levelBuilt.addItem(tempPos, tempLever);
-                break;
+            case Lever -> {
+                String colour = lineScanner.next();
+                Lever tempLever = new Lever(colour);
+                levelBuilt.addItem(tempPos, tempLever);
             }
-            case 5: { //Gate
-                    String colour = lineScanner.next();
-                    Gate tempGate = new Gate(colour);
-                    levelBuilt.addItem(tempPos, tempGate);
-                break;
+            case Gate -> {
+                String colour = lineScanner.next();
+                Gate tempGate = new Gate(colour);
+                levelBuilt.addItem(tempPos, tempGate);
             }
-            case 6: { //Floor Following Thief
-                    String directionString = lineScanner.next();
-                    String colourToFollow = lineScanner.next();
-                    FloorFollowingThief tempThief = new FloorFollowingThief(
-                            Direction.getDirectionType(directionString),
-                            TileColour.getTileColourType(
-                                    colourToFollow.charAt(0)));
-                    //won't show as no image yet
-                    levelBuilt.addCharacter(tempPos, tempThief);
-                break;
+            case FfThief -> {
+                String directionString = lineScanner.next();
+                String colourToFollow = lineScanner.next();
+                FloorFollowingThief tempThief = new FloorFollowingThief(
+                        Direction.getDirectionType(directionString),
+                        TileColour.getTileColourType(
+                                colourToFollow.charAt(0)));
+                //won't show as no image yet
+                levelBuilt.addCharacter(tempPos, tempThief);
             }
-            case 7: { //Flying Assassin
-                    String directionString = lineScanner.next();
-                    FlyingAssassin tempAssassin = new FlyingAssassin(
-                            Direction.getDirectionType(directionString));
-                    levelBuilt.addCharacter(tempPos, tempAssassin);
-                break;
+            case FAssassin -> {
+                String directionString = lineScanner.next();
+                FlyingAssassin tempAssassin = new FlyingAssassin(
+                        Direction.getDirectionType(directionString));
+                levelBuilt.addCharacter(tempPos, tempAssassin);
             }
-            case 8: { //Loot
-                    int rarity = lineScanner.nextInt();
-                    Loot tempLoot = new Loot(rarity);
-                    levelBuilt.addItem(tempPos, tempLoot);
-                break;
+            case Loot -> {
+                int rarity = lineScanner.nextInt();
+                Loot tempLoot = new Loot(rarity);
+                levelBuilt.addItem(tempPos, tempLoot);
             }
-            case 9: { //Player
+            case Player -> {
                 Player tempPlayer = new Player();
                 levelBuilt.addCharacter(tempPos, tempPlayer);
-            break;
             }
-            case 10: { //Smart Thief
+            case SmartThief -> {
                 String directionString = lineScanner.next();
                 SmartThief tempAssassin = new
                         SmartThief(Direction.getDirectionType(directionString));
                 levelBuilt.addCharacter(tempPos, tempAssassin);
-            break;
-        }
-            default:
-                System.out.println("Item id does not exist!");
-                break;
+            }
+            default -> System.out.println("Item id does not exist!");
         }
     }
 }
