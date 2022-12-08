@@ -205,7 +205,7 @@ public final class Main extends Application {
         }
 
         if (event.getCode() == KeyCode.ESCAPE) {
-            //switchRoot(Menu.getPauseMenu());
+            switchRoot(Menu.getPauseMenu());
         }
     }
 

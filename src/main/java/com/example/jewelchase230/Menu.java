@@ -63,7 +63,7 @@ public final class Menu {
         createParent(HIGHSCORE_TABLE_FXML);
         createParent(PROFILE_MENU_FXML);
         createParent(PROFILE_SELECT_FXML);
-        // createParent(PAUSE_MENU_FXML);
+        createParent(PAUSE_MENU_FXML);
         createParent(PROFILE_CREATE_MENU_FXML);
         // createParent(GAME_OVER_FXML);
     }
@@ -89,11 +89,9 @@ public final class Menu {
     /**
      * @return pause menu node.
      */
-    /*
     public static Parent getPauseMenu() {
         return getParent(PAUSE_MENU_FXML);
     }
-    */
 
     /**
      * @return test menu node.
