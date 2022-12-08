@@ -36,6 +36,8 @@ public final class Menu {
     private static final String PAUSE_MENU_FXML = "pause-menu.fxml";
     /** Profile creating fxml file. */
     private static final String PROFILE_CREATE_MENU_FXML = "profile-create-menu.fxml";
+    /** Level selecting fxml file. */
+    private static final String LEVEL_SELECT_MENU_FXML = "level-select-menu.fxml";
     /** Game over fxml file. */
     private static final String GAME_OVER_FXML = "game-over-menu.fxml";
 
@@ -65,6 +67,7 @@ public final class Menu {
         createParent(PROFILE_SELECT_FXML);
         createParent(PAUSE_MENU_FXML);
         createParent(PROFILE_CREATE_MENU_FXML);
+        createParent(LEVEL_SELECT_MENU_FXML);
         // createParent(GAME_OVER_FXML);
     }
 
@@ -112,6 +115,10 @@ public final class Menu {
      */
     public static Parent getProfileSelect() {
         return getParent(PROFILE_SELECT_FXML);
+    }
+
+    public static Parent getLevelSelectMenu() {
+        return getParent(LEVEL_SELECT_MENU_FXML);
     }
 
     /**

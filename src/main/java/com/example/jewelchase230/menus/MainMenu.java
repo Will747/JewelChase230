@@ -40,6 +40,11 @@ public final class MainMenu {
     }
 
     @FXML
+    private void onLevelSelectMenuPressed(final MouseEvent event) {
+        Main.switchRoot(Menu.getProfileMenu());
+    }
+
+    @FXML
     private void onExitPressed(final MouseEvent event) {
         Main.close();
     }

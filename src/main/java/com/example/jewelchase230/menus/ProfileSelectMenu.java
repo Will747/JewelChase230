@@ -47,11 +47,16 @@ public final class ProfileSelectMenu {
         Main.switchRoot(Menu.getProfileMenu());
     }
 
-    @FXML
+    /*@FXML
     private void onStartGamePressed(final MouseEvent event) {
-        // TODO: Show level select menu
         Main.setLevel(LevelFileReader.getLevel(1));
         Main.switchToCanvas();
+    }*/
+
+    @FXML
+    private void onStartGamePressed(final MouseEvent event) {
+        Main.setLevel(LevelFileReader.getLevel(1));
+        Main.switchRoot(Menu.getLevelSelectMenu());
     }
 
     @FXML
