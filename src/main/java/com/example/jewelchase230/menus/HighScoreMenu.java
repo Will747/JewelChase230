@@ -2,12 +2,17 @@ package com.example.jewelchase230.menus;
 
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
+import com.example.jewelchase230.profiles.ProfileScore;
+
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 /**
  * Test menu to test out switching between menus.
@@ -27,7 +32,33 @@ public final class HighScoreMenu {
     /** This will be assigned 0 if Prev button is clicked, and 1 if Next button is clicked*/ 
     private int navigationSelected;
     
-
+    @FXML
+	private TableView hsTable;
+	@FXML
+	private TableColumn<ProfileScore, String> nameCol;
+	
+	@FXML
+	private TableColumn<ProfileScore, Integer> levelCol;
+	
+	@FXML 
+	private TableColumn<ProfileScore, Integer> hsCol;
+	
+	private String profileName;
+	private int level;
+	private int levelScore;
+    
+	
+	public HighScoreMenu(String profileName, int level, int levelScore){ 
+		this.profileName = profileName;
+		this.level = level;
+		this.levelScore = levelScore;
+	}
+    
+    ObservableList<ProfileScore> topTenObservableList = FXCollections.observableArrayList(
+    		new H ("Hi",2,1000)
+    		); 
+    
+    
     @FXML
     void onBackPressed(final MouseEvent event) {
         Main.switchRoot(previousMenu);

@@ -35,14 +35,7 @@ public final class ProfileCreateMenu {
 	private Button buttonCreateProfile; 
 	@FXML 
 	private TextField createProfileName;
-	@FXML
-	private TableView hsTable;
-	@FXML
-	private TableColumn nameCol;
-	@FXML
-	private TableColumn levelCol;
-	@FXML 
-	private TableColumn hsCol;
+	
 	
 	public String profileCreatedName; 
 	
