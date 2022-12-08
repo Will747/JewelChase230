@@ -1,5 +1,7 @@
 package com.example.jewelchase230;
 
+import com.example.jewelchase230.vectors.IntVector2D;
+
 /**
  * Direction the AICharacter is facing and moving.
  *
@@ -7,48 +9,48 @@ package com.example.jewelchase230;
  */
 public enum Direction {
     /** The four directions. */
-    UP, DOWN, LEFT, RIGHT;
+    UP, DOWN, LEFT, RIGHT, NONE;
 
     /**
      * Changes the direction the AICharacter is facing by 180 degrees.
      *
-     * @param d The direction the AICharacter is facing.
      * @return Returns the new direction the AICharacter is facing.
      */
-    public Direction getOppositeDirection(final Direction d) {
-        return switch (d) {
+    public Direction getOppositeDirection() {
+        return switch (this) {
             case UP -> DOWN;
             case DOWN -> UP;
             case LEFT -> RIGHT;
             case RIGHT -> LEFT;
+            default -> NONE;
         };
     }
 
     /**
      * Finds the direction after a left turn.
-     * @param d Direction in.
      * @return New direction.
      */
-    public Direction getLeftDirection(final Direction d) {
-        return switch (d) {
+    public Direction getLeftDirection() {
+        return switch (this) {
             case UP -> LEFT;
             case DOWN -> RIGHT;
             case LEFT -> DOWN;
             case RIGHT -> UP;
+            default -> NONE;
         };
     }
 
     /**
      * Finds the direction after a right turn.
-     * @param d Direction in.
      * @return New Direction.
      */
-    public Direction getRightDirection(final Direction d) {
-        return switch (d) {
+    public Direction getRightDirection() {
+        return switch (this) {
             case UP -> RIGHT;
             case DOWN -> LEFT;
             case LEFT -> UP;
             case RIGHT -> DOWN;
+            default -> NONE;
         };
     }
 
@@ -64,7 +66,30 @@ public enum Direction {
             case "d" -> DOWN;
             case "l" -> LEFT;
             case "r" -> RIGHT;
-            default -> UP;
+            default -> NONE;
         };
+    }
+
+    /**
+     * Generates a unit vector based on direction.
+     * @return The unit vector.
+     */
+    public IntVector2D getDirectionVector() {
+        int xDiff = 0;
+        int yDiff = 0;
+        switch (this) {
+            case UP: yDiff = -1;
+                break;
+            case DOWN: yDiff = 1;
+                break;
+            case LEFT: xDiff = -1;
+                break;
+            case RIGHT: xDiff = 1;
+                break;
+            default:
+                System.out.print("ERROR: No direction for flying assassin!");
+                break;
+        }
+        return new IntVector2D(xDiff, yDiff);
     }
 }

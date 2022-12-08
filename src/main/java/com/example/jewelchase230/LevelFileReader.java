@@ -95,7 +95,7 @@ public class LevelFileReader {
 
             IntVector2D size = new IntVector2D(xAxis, yAxis);
             levelBuilt = new Level(size, levelNum);
-            levelBuilt.setTime(levelTime);
+            levelBuilt.setTimeLimit(levelTime);
 
             // Changes the tokens in the text file to tile objects
             // that are added to the level.
@@ -201,7 +201,6 @@ public class LevelFileReader {
                 String directionString = lineScanner.next();
                 SmartThief tempAssassin = new
                         SmartThief(Direction.getDirectionType(directionString));
-                //won't show as no image yet
                 levelBuilt.addCharacter(tempPos, tempAssassin);
             break;
         }

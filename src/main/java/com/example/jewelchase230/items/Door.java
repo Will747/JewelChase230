@@ -50,9 +50,10 @@ public class Door extends Item {
     public void onCollision(final Character collidingCharacter) {
         if (isDoorOpen && collidingCharacter instanceof Player) {
             //winning end level situation
+            getLevel().addTimeLeftScore();
             i = i + 1;
             Main.setLevel(Main.getNextLevel(i));
-        } else {
+        } else if (isDoorOpen) {
             getLevel().gameOver();
         }
     }

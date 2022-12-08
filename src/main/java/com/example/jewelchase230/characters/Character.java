@@ -1,9 +1,5 @@
 package com.example.jewelchase230.characters;
-import com.example.jewelchase230.Collidable;
-import com.example.jewelchase230.Level;
-import com.example.jewelchase230.Sprite;
-import com.example.jewelchase230.Tile;
-import com.example.jewelchase230.TileColour;
+import com.example.jewelchase230.*;
 import com.example.jewelchase230.vectors.IntVector2D;
 import java.util.ArrayList;
 
@@ -41,7 +37,25 @@ public abstract class Character extends Sprite implements Collidable {
      */
     protected boolean validNextTile(final Tile nextMoveTile,
                                   final TileColour colourFollow) {
-        Tile thisTile = getLevel().getTile(getGridPosition());
+        return validNextTile(nextMoveTile, colourFollow,
+                getGridPosition(), true);
+    }
+
+    /**
+     * Compares two tiles and decides if it is possible to move between them.
+     * Ignoring the current positions of other characters.
+     * @param nextMoveTile The tile to be moved to.
+     * @param colourFollow The specific colour the next tile must be.
+     * @param currentPos The current position.
+     * @param checkCharacters True if other characters should be
+     *                        considered.
+     * @return True if valid move, false if not.
+     */
+    protected boolean validNextTile(final Tile nextMoveTile,
+                                    final TileColour colourFollow,
+                                    final IntVector2D currentPos,
+                                    final boolean checkCharacters) {
+        Tile thisTile = getLevel().getTile(currentPos);
 
         // Check if the tile/item can be collided with.
         if (!nextMoveTile.isCollidable()) {
@@ -61,8 +75,11 @@ public abstract class Character extends Sprite implements Collidable {
         for (int i = 0; i < thisTileColours.size(); i++) {
             for (int j = 0; j < nextTileColours.size(); j++) {
                 if (thisTileColours.get(i) == nextTileColours.get(j)) {
-                    return canCharactersCollide(
-                            nextMoveTile.getGridPosition());
+                    if (checkCharacters) {
+                        return canCharactersCollide(
+                                nextMoveTile.getGridPosition());
+                    }
+                    return true;
                 }
             }
         }
@@ -76,27 +93,70 @@ public abstract class Character extends Sprite implements Collidable {
      * @return new tile position, or current position if invalid move.
      */
     protected IntVector2D canMove(final int xChange, final int yChange) {
-        IntVector2D currentPos = getGridPosition();
+        return canMove(getGridPosition(), new IntVector2D(xChange, yChange), true);
+    }
+
+    /**
+     * Checks if a character can move in a certain direction from a
+     * particular tile.
+     * @param startPos The initial position.
+     * @param direction The direction the character wants to move in.
+     * @param checkCharacters True if characters on the grid should be
+     *                        considered.
+     * @return The final position after making move or startPos if invalid move.
+     */
+    protected IntVector2D canMove(final IntVector2D startPos,
+                                  final Direction direction,
+                                  final boolean checkCharacters) {
+        return canMove(startPos, direction.getDirectionVector(),
+                checkCharacters);
+    }
+
+    /**
+     * Checks if a character can move in a certain direction from a
+     * particular tile.
+     * @param startPos The initial position.
+     * @param direction The direction the character wants to move in.
+     * @return The final position after making move or startPos if invalid move.
+     */
+    protected IntVector2D canMove(final IntVector2D startPos,
+                                  final Direction direction) {
+        return canMove(startPos, direction.getDirectionVector(), true);
+    }
+
+    /**
+     * Checks if a character can move in a certain direction from a
+     * particular tile.
+     * @param startPos The initial position.
+     * @param direction The direction the character wants to move in.
+     * @param checkCharacters True if characters on the grid should be
+     *                        considered.
+     * @return The final position after making move or startPos if invalid move.
+     */
+    protected IntVector2D canMove(final IntVector2D startPos,
+                                  final IntVector2D direction,
+                                  final boolean checkCharacters) {
         int xDiff = 0;
         int yDiff = 0;
         boolean stillInRange = true;
         while (stillInRange) {
-            xDiff += xChange;
-            yDiff += yChange;
+            xDiff += direction.getX();
+            yDiff += direction.getY();
             IntVector2D newPos =
-                    currentPos.add(new IntVector2D(xDiff, yDiff));
+                    startPos.add(new IntVector2D(xDiff, yDiff));
             //Check the newPos is a valid tile
-            if (getLevel().checkValidTile(newPos)) {
+            if (getLevel().checkTileExists(newPos)) {
                 Tile nextMoveTile = getLevel().getTile(newPos);
                 //Makes sure the new tile has matching colours
-                if (validNextTile(nextMoveTile)) {
+                if (validNextTile(nextMoveTile, null,
+                        startPos, checkCharacters)) {
                     return newPos;
                 }
             } else {
                 stillInRange = false;
             }
         }
-        return getGridPosition();
+        return startPos;
     }
 
     /**

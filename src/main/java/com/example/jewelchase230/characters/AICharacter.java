@@ -44,7 +44,7 @@ public abstract class AICharacter extends Character {
                 System.out.print("ERROR: No direction for flying assassin!");
                 break;
         }
-        return (new IntVector2D(xDiff, yDiff));
+        return new IntVector2D(xDiff, yDiff);
     }
 
     /**

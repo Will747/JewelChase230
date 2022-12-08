@@ -48,7 +48,6 @@ public class Loot extends Item {
         if (collidingCharacter instanceof Player) {
             getLevel().incrementPlayerScore(type.getValue());
         }
-
         remove();
     }
 
