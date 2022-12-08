@@ -29,7 +29,7 @@ public class Clock extends Item {
      * Changes the current additional time value.
      * @param newTime The new additional time value.
      */
-    public void setTime(int newTime) {
+    public void setTime(final int newTime) {
         timeFromClock = newTime;
     }
 
