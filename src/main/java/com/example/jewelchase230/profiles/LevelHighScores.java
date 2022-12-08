@@ -2,8 +2,6 @@ package com.example.jewelchase230.profiles;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 
 /**
  * This class will manage player High Scores for a specific level.
@@ -76,8 +74,13 @@ public class LevelHighScores implements Serializable {
 			(x, y) ->
 			x.getHighestScore() > y.getHighestScore() ? 1 : 0);
 
-		ProfileScore[] scores = new ProfileScore[LEGAL_HIGH_SCORE_NUM];
-		for (int i = 0; i < LEGAL_HIGH_SCORE_NUM; i++) {
+		int numOfScores = LEGAL_HIGH_SCORE_NUM;
+		if (scoreList.size() < numOfScores) {
+			numOfScores = scoreList.size();
+		}
+
+		ProfileScore[] scores = new ProfileScore[numOfScores];
+		for (int i = 0; i < numOfScores; i++) {
 			scores[i] = scoreList.get(i);
 		}
 

@@ -51,6 +51,7 @@ public class Door extends Item {
             //winning end level situation
             level.addTimeLeftScore();
             int nextLevelNum = level.getLevelNumber() + 1;
+            Main.setLevel(null);
             Main.setLevel(LevelFileReader.getLevel(nextLevelNum));
         } else if (isDoorOpen) {
             getLevel().gameOver();
