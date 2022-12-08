@@ -1,5 +1,6 @@
 package com.example.jewelchase230.vectors;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Objects;
  * @param <E> The type used by x,y coordinates.
  * @author Will Kaye
  */
-public class Vector2D<E extends Number> {
+public class Vector2D<E extends Number> implements Serializable {
     // Components of the vector.
     /** x component. */
     private E x;

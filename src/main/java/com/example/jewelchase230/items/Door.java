@@ -51,9 +51,11 @@ public class Door extends Item {
         if (isDoorOpen && collidingCharacter instanceof Player) {
             level.addTimeLeftScore();
             int nextLevelNum = level.getLevelNumber() + 1;
-            //set level in instance of profile
+            Profile playerProfile = level.getCurrentProfile();
             Main.setLevel(null);
             Main.setLevel(LevelFileReader.getLevel(nextLevelNum));
+            level = getLevel();
+            level.setProfile(playerProfile);
         } else if (isDoorOpen) {
             getLevel().gameOver();
         }

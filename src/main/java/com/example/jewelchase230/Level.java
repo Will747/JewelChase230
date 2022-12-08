@@ -6,8 +6,10 @@ import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.items.Loot;
 import com.example.jewelchase230.items.Lever;
 import com.example.jewelchase230.items.Door;
+import com.example.jewelchase230.profiles.Profile;
 import com.example.jewelchase230.vectors.IntVector2D;
 
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Will Kaye, Adam Smith and Ben Stott.
  */
-public class Level {
+public class Level implements Serializable {
     /** Tiles on the grid. */
     private final Tile[][] tiles;
 
@@ -30,6 +32,9 @@ public class Level {
 
     /** The current score. */
     private int playerScore;
+
+    /** The profile of the player playing the game. */
+    private transient Profile currentProfile;
 
     /** Time left score multiplyer when level is complete. */
     private static final int TIME_LEFT_SCORE_MULTIPLYER = 5;
@@ -73,8 +78,9 @@ public class Level {
      * When level is complete, additional score added for time left.
      */
     public void addTimeLeftScore() {
-        incrementPlayerScore((timeLeftInMilliseconds/Main.MILLISECONDS_IN_A_SECOND)
-        * TIME_LEFT_SCORE_MULTIPLYER);
+        incrementPlayerScore(
+            (timeLeftInMilliseconds / Main.MILLISECONDS_IN_A_SECOND)
+                * TIME_LEFT_SCORE_MULTIPLYER);
         System.out.println("Final score: " + playerScore); //temporary
     }
 
@@ -395,5 +401,42 @@ public class Level {
      */
     public void incrementPlayerScore(final int value) {
         playerScore += value;
+    }
+
+    /**
+     * Sets the profile playing this level.
+     * @param inCurrentProfile The player's profile.
+     */
+    public void setProfile(final Profile inCurrentProfile) {
+        currentProfile = inCurrentProfile;
+    }
+
+    /**
+     * @return The profile of the player playing this level.
+     */
+    public Profile getCurrentProfile() {
+        return currentProfile;
+    }
+
+    /**
+     * Saves the current state of the level to a file.
+     */
+    public void saveGame() {
+        String saveFile = currentProfile.getSaveGamePath();
+        try {
+            FileOutputStream fileOutputStream = new
+                    FileOutputStream(saveFile);
+            ObjectOutputStream objectOutputStream = new
+                    ObjectOutputStream(fileOutputStream);
+
+            objectOutputStream.writeObject(this);
+
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Failed to save game, couldn't write to file!");
+        } catch (IOException e) {
+            System.out.println("Failed to save game!");
+        }
     }
 }

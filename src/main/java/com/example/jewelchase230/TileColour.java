@@ -4,13 +4,14 @@ import javafx.scene.image.Image;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 
 /**
  * Tile colour - Holds the image for a colour on a section of a tile.
  *
  * @author Will Kaye
  */
-public enum TileColour {
+public enum TileColour implements Serializable {
     /** Red Colour. */
     Red("images/WOODFLOOR_RED.png"),
     /** Blue Colour. */

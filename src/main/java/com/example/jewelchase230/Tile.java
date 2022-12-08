@@ -6,14 +6,17 @@ import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.DoubleVector2D;
 import com.example.jewelchase230.vectors.IntVector2D;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
  * A tile is one square on the grid that can have a different colour for
  * each side.
+ *
+ * @author Will Kaye
  */
-public final class Tile extends Renderable implements Collidable {
+public final class Tile extends Renderable implements Collidable, Serializable {
     /** The width of the border around the tile. */
     private static final double BORDER_WIDTH = 0.04;
 
@@ -109,7 +112,7 @@ public final class Tile extends Renderable implements Collidable {
      * Add a bomb trigger to this tile.
      * @param bombPos Bomb position.
      */
-    public void setBombTrigger(IntVector2D bombPos) {
+    public void setBombTrigger(final IntVector2D bombPos) {
         bombsNextToTile.add(bombPos);
     }
 
@@ -117,7 +120,7 @@ public final class Tile extends Renderable implements Collidable {
      * Remove a bomb.
      * @param bombPos The bomb's position.
      */
-    public void removeBombTrigger(IntVector2D bombPos) {
+    public void removeBombTrigger(final IntVector2D bombPos) {
         bombsNextToTile.remove(bombPos);
     }
 

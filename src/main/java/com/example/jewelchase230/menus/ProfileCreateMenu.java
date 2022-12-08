@@ -16,7 +16,7 @@ import javafx.stage.Modality;
 
 /**
  * Controller for the create profile menu.
- * 
+ *
  * @author Kellie Robinson
  * @author Daniel Clarke
  *

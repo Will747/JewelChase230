@@ -44,7 +44,7 @@ public class Bomb extends Item {
      */
     @Override
     public void tick(final int time) {
-        if (hasExploded) {
+        if (hasExploded()) {
             timeSinceLastImageChange += time;
             if (timeSinceLastImageChange >= Main.MILLISECONDS_IN_A_SECOND) {
                 countdown();
@@ -72,10 +72,10 @@ public class Bomb extends Item {
                 && (hasCollided || fastExplode)) {
             setImageFromFile(countdownArray[currentImageInCountdown]);
             currentImageInCountdown++;
-        } else if (!(hasExploded)){
+        } else if (!(hasExploded())) {
             setImageFromFile(EXPLOSION_IMAGE);
             explode();
-            hasExploded = true;
+            setHasExploded();
         } else {
             super.doOnExplosionCollision();
         }

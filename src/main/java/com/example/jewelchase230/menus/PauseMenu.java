@@ -1,6 +1,8 @@
 package com.example.jewelchase230.menus;
+import com.example.jewelchase230.Level;
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
+import com.example.jewelchase230.profiles.Profile;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
@@ -44,15 +46,26 @@ public class PauseMenu {
      */
     @FXML
     private void onSaveGamePressed(final MouseEvent event) {
-        // Add save game functionality.
+        Level level = Main.getCurrentLevel();
+        level.saveGame();
     }
 
     /**
-     * Exits the game to the main menu.
+     * Exits game to menu.
+     * @param event A user input.
+     */
+    @FXML
+    private void onMainMenuPressed(final MouseEvent event) {
+        Main.setLevel(null);
+        Main.switchRoot(Menu.getMainMenu());
+    }
+
+    /**
+     * Exits the game.
      * @param event A user input.
      */
     @FXML
     private void onExitPressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getMainMenu());
+        Main.close();
     }
 }

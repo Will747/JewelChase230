@@ -74,6 +74,13 @@ public class Profile {
 	}
 
 	/**
+	 * @return The file path to this profiles last saved game.
+	 */
+	public String getSaveGamePath() {
+		return "SaveGames/" + uniquePlayerID.toString() + ".sav";
+	}
+
+	/**
 	 * @param newLevelReached the levelReached to set
 	 */
 	public void setLevelReached(final Integer newLevelReached) {

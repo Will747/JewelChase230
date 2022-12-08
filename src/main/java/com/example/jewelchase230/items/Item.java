@@ -3,7 +3,7 @@ import com.example.jewelchase230.Collidable;
 import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.Sprite;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
 
 /**
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Ben Stott and Scott Williams
  */
-public abstract class Item extends Sprite implements Collidable {
+public abstract class Item extends Sprite implements Collidable, Serializable {
 
     /** Image for when the bomb has exploded. */
     private static final String ASHES_IMAGE = "images/BOMB_ASHES.png";
@@ -20,7 +20,7 @@ public abstract class Item extends Sprite implements Collidable {
     private boolean isCollidable = true;
 
     /** True if the item has been hit by an explosion. */
-    protected boolean hasExploded = false;
+    private boolean hasExploded = false;
 
     /**
      * Constructs a new item without image to render.
@@ -40,9 +40,16 @@ public abstract class Item extends Sprite implements Collidable {
         }
     }
 
-    /** Returns hasExploded. */
+    /** @return hasExploded. */
     public boolean hasExploded() {
         return hasExploded;
+    }
+
+    /**
+     * Sets 'hasExploded' to true.
+     */
+    public void setHasExploded() {
+        hasExploded = true;
     }
 
     /**

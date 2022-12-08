@@ -1,9 +1,6 @@
 package com.example.jewelchase230;
 
-import com.example.jewelchase230.menus.HighScoreMenu;
-import com.example.jewelchase230.menus.ProfileMenu;
-import com.example.jewelchase230.menus.ProfileSelectMenu;
-import com.example.jewelchase230.menus.SettingsMenu;
+import com.example.jewelchase230.menus.*;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -117,8 +114,18 @@ public final class Menu {
         return getParent(PROFILE_SELECT_FXML);
     }
 
+    /**
+     * @return menu with all selectable levels.
+     */
     public static Parent getLevelSelectMenu() {
         return getParent(LEVEL_SELECT_MENU_FXML);
+    }
+
+    /**
+     * @return The level select controller.
+     */
+    public static LevelSelectMenu getLevelSelectController() {
+        return (LevelSelectMenu) getController(LEVEL_SELECT_MENU_FXML);
     }
 
     /**
@@ -131,13 +138,12 @@ public final class Menu {
     */
 
     /**
-     * 
      * @return The profile Menu select controller.
      */
     public static ProfileMenu getProfileMenuController() {
         return (ProfileMenu) getController(PROFILE_MENU_FXML);
     }
-    
+
     /**
      * @return The profile select controller.
      */

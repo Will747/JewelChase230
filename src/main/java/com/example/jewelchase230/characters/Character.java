@@ -1,6 +1,8 @@
 package com.example.jewelchase230.characters;
 import com.example.jewelchase230.*;
 import com.example.jewelchase230.vectors.IntVector2D;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +10,8 @@ import java.util.ArrayList;
  *
  * @author Caroline Segestaaland and Ben Stott.
  */
-public abstract class Character extends Sprite implements Collidable {
+public abstract class Character extends Sprite
+        implements Collidable, Serializable {
     /** True if the character is alive. */
     private boolean alive = true;
     /** Bones image. */

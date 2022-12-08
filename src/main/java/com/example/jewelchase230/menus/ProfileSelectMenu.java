@@ -3,6 +3,7 @@ package com.example.jewelchase230.menus;
 import java.io.IOException;
 import java.util.Optional;
 
+import com.example.jewelchase230.Level;
 import com.example.jewelchase230.LevelFileReader;
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
@@ -22,18 +23,25 @@ import javafx.stage.Modality;
  * @author Daniel Clark
  */
 public final class ProfileSelectMenu {
-    @FXML 
+    /** Displays the player's name. */
+    @FXML
     private Label selectPlayerName;
 
+    /** Displays the players highest achieved level. */
     @FXML
     private Label selectPlayerLevel;
-    
+
+    /** The profile being shown by this. */
     private Profile currentProfile;
 
 
-    public void setProfile(Profile p){
+    /**
+     * Sets the profile being shown by this menu.
+     * @param p The profile to be shown.
+     */
+    public void setProfile(final Profile p) {
         selectPlayerName.setText(p.getPlayerName());
-        selectPlayerLevel.setText("LEVEL : " + String.valueOf(p.getLevelReached()));
+        selectPlayerLevel.setText("LEVEL : " + p.getLevelReached());
         currentProfile = p;
     }
 
@@ -47,15 +55,10 @@ public final class ProfileSelectMenu {
         Main.switchRoot(Menu.getProfileMenu());
     }
 
-    /*@FXML
-    private void onStartGamePressed(final MouseEvent event) {
-        Main.setLevel(LevelFileReader.getLevel(1));
-        Main.switchToCanvas();
-    }*/
-
     @FXML
     private void onStartGamePressed(final MouseEvent event) {
-        Main.setLevel(LevelFileReader.getLevel(1));
+        LevelSelectMenu levelSelectController = Menu.getLevelSelectController();
+        levelSelectController.setProfile(currentProfile);
         Main.switchRoot(Menu.getLevelSelectMenu());
     }
 
@@ -67,19 +70,16 @@ public final class ProfileSelectMenu {
 
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.getDialogPane().setContentText("are you sure?");
-        alert.getDialogPane().setHeaderText("You are about to delete this profile");
+        alert.getDialogPane()
+                .setHeaderText("You are about to delete this profile");
 
         Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == ButtonType.OK)
-        {
+        if (result.get() == ButtonType.OK) {
         	ProfileManager.deleteProfile(currentProfile);
             ProfileManager.saveProfiles();
         	Menu.getProfileMenuController().refresh();
             Main.switchRoot(Menu.getProfileMenu());
-           
-        }
-        else if (result.get() == ButtonType.CANCEL)
-        {
+        } else if (result.get() == ButtonType.CANCEL) {
             System.out.println("cancelled profile deletion.");
         }
     }
