@@ -28,7 +28,6 @@ public class ProfileManager {
 	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4;
 	/** Name of Text File to be read */
 	static String profilesFile = "Profiles.txt";
-	
 
 	// Reads each line of the text file "Profile.txt"
 	/**
@@ -73,10 +72,10 @@ public class ProfileManager {
 		BufferedWriter pmWriter = new BufferedWriter(new FileWriter(profilesFile));
 
 		try {
-			pmWriter.write(Profile.profileToString(profile));
-			pmWriter.newLine();
-			for (int i = 0; i <= profilesLineByLineData.size(); i++) {
-				pmWriter.write(profilesLineByLineData.get(i));
+
+			
+			for (int i = 0; i < listOfProfile.size(); i++) {
+				pmWriter.write(Profile.profileToString(listOfProfile.get(i)));
 
 				if (i != profilesLineByLineData.size()) {
 					pmWriter.newLine();
@@ -92,24 +91,25 @@ public class ProfileManager {
 	}
 
 	/**
-	 * Deletes a player profile from the player slots by overwriting its line as
-	 * a blank profile.
+	 * Deletes a player profile from the player slots by overwriting its line as a
+	 * blank profile.
 	 * 
 	 * ERROR NEEDS TO WRITE TO LINE 1 OF TXT FILE NOT LINE 2
 	 * 
 	 */
 	public static void deleteProfile(Profile profile) throws IOException {
-		 listOfProfile.remove(profile);
+		listOfProfile.remove(profile);
 	}
-	
-	public static Profile searchProfile(int playerSlot) { 
-		//go thru the list and check for if player slot == list i.get(uniqueID)
-		for(int i = 0;  i <= listOfProfile.size(); i++) { 
-			if (playerSlot == listOfProfile.get(i).getPlayerProfileSlot());
+
+	public static Profile searchProfile(int playerSlot) {
+		// go thru the list and check for if player slot == list i.get(uniqueID)
+		for (int i = 0; i <= listOfProfile.size(); i++) {
+			if (playerSlot == listOfProfile.get(i).getPlayerProfileSlot())
+				;
 			return listOfProfile.get(i);
 		}
 		return null;
-		
+
 	}
 
 	/**
@@ -119,7 +119,6 @@ public class ProfileManager {
 		return profilesLineByLineData;
 	}
 
-	
 	/**
 	 * @return the listOfProfile
 	 */
