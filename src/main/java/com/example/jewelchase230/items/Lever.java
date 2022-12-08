@@ -54,7 +54,7 @@ public class Lever extends Item {
     }
 
     /**
-     * When collided with, removes all gates then remove the level itself.
+     * When collided with, removes all gates then remove the lever itself.
      */
     @Override
     public void onCollision(final Character collidingCharacter) {

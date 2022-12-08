@@ -7,29 +7,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public enum LeverColours {
-    /**
-     * Red Colour.
-     */
+    /** Red Colour.*/
     Red(new Color(1, 0, 0, 1)),
-    /**
-     * Blue Colour.
-     */
+    /** Blue Colour.*/
     Blue(new Color(0, 0, 1, 1)),
-    /**
-     * Green Colour.
-     */
+    /** Green Colour.*/
     Green("LEVER_GREEN.png"),
-    /**
-     * Yellow Colour.
-     */
+    /** Yellow Colour. */
     Yellow(new Color(1, 1, 0, 1)),
-    /**
-     * Cyan colour.
-     */
+    /** Cyan colour.*/
     Cyan(new Color(0, 0.7, 0.7, 1)),
-    /**
-     * Magenta colour.
-     */
+    /** Magenta colour.*/
     Magenta(new Color(0.7, 0, 1, 1));
 
     /**
@@ -69,4 +57,9 @@ public enum LeverColours {
         };
     }
 
+    /** Returns the image.
+     * @return The lever image. */
+    public Image getImage() {
+        return image;
+    }
 }
