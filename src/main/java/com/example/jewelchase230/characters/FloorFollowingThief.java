@@ -22,7 +22,7 @@ public class FloorFollowingThief extends AICharacter {
     public FloorFollowingThief(final Direction d, final TileColour c) {
         super();
         setDirection(d);
-        setImageFromFile("images/CAT_WHITE_SIT.png"); //TEMPORARY IMAGE
+        setImageFromFile("images/FLOOR_FOLLOWING_THIEF.png"); 
         colourToFollow = c;
     }
 
