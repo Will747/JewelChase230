@@ -39,7 +39,7 @@ public class FlyingAssassin extends AICharacter {
         IntVector2D potentialPosition = canMove(xDiff, yDiff);
         if (potentialPosition == currentPos) {
             Direction newDirection =
-                    currentDirection.getOppositeDirection(currentDirection);
+                    currentDirection.getOppositeDirection();
             setDirection(newDirection);
             setGridPosition(canMove(-xDiff, -yDiff));
             setImageFromFile(imageManager(newDirection));
@@ -59,7 +59,7 @@ public class FlyingAssassin extends AICharacter {
         IntVector2D currentPos = getGridPosition();
         IntVector2D newPos =
                 currentPos.add(new IntVector2D(xChange, yChange));
-        if (getLevel().checkValidTile(newPos)
+        if (getLevel().checkTileExists(newPos)
                 && canCharactersCollide(newPos)) {
             return newPos;
         } else {

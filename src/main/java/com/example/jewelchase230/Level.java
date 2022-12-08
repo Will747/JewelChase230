@@ -156,7 +156,7 @@ public class Level {
             for (int y = -1; y <= 1; y++) {
                 if (!(x == 0 && y == 0)) {
                     IntVector2D tempVtr = position.add(new IntVector2D(x, y));
-                    if (checkValidTile(tempVtr)) {
+                    if (checkTileExists(tempVtr)) {
                         tileArray.add(getTile(tempVtr));
                     }
                 }
@@ -197,7 +197,7 @@ public class Level {
      * @param posToCheck The tile position to check is valid.
      * @return True if valid, false if not.
      */
-    public boolean checkValidTile(final IntVector2D posToCheck) {
+    public boolean checkTileExists(final IntVector2D posToCheck) {
         IntVector2D maxSize = getLevelSize();
         return posToCheck.getX() < maxSize.getX()
                 && posToCheck.getY() < maxSize.getY()
