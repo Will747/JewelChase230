@@ -124,9 +124,9 @@ public final class Main extends Application {
         renderables.add(new TimeText());
 
         /* Test - Remove this */
-        Level level1 = LevelFileReader.readInFile("Level_Files/level1.txt");
-        Level level2 = LevelFileReader.readInFile("Level_Files/level2.txt");
-        Level level3 = LevelFileReader.readInFile("Level_Files/level3.txt");
+        Level level1 = LevelFileReader.readInFile("Level_Files/level1.txt", 1);
+        Level level2 = LevelFileReader.readInFile("Level_Files/level2.txt", 2);
+        Level level3 = LevelFileReader.readInFile("Level_Files/level3.txt", 3);
         setLevel(level1);
         Levels.add(level1);
         Levels.add(level2);
