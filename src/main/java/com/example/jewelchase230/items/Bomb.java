@@ -123,7 +123,7 @@ public class Bomb extends Item {
                 explodeUp += 1;
                 IntVector2D newPos =
                         currentPos.add(new IntVector2D(0, explodeUp));
-                if (getLevel().checkValidTile(newPos)) {
+                if (getLevel().checkTileExists(newPos)) {
                     explodePosition(newPos);
                 } else {
                     continueExplosionUp = false;
@@ -133,7 +133,7 @@ public class Bomb extends Item {
                 explodeDown -= 1;
                 IntVector2D newPos =
                         currentPos.add(new IntVector2D(0, explodeDown));
-                if (getLevel().checkValidTile(newPos)) {
+                if (getLevel().checkTileExists(newPos)) {
                     explodePosition(newPos);
                 } else {
                     continueExplosionDown = false;
@@ -143,7 +143,7 @@ public class Bomb extends Item {
                 explodeLeft -= 1;
                 IntVector2D newPos =
                         currentPos.add(new IntVector2D(explodeLeft, 0));
-                if (getLevel().checkValidTile(newPos)) {
+                if (getLevel().checkTileExists(newPos)) {
                     explodePosition(newPos);
                 } else {
                     continueExplosionLeft = false;
@@ -153,7 +153,7 @@ public class Bomb extends Item {
                 explodeRight += 1;
                 IntVector2D newPos =
                         currentPos.add(new IntVector2D(explodeRight, 0));
-                if (getLevel().checkValidTile(newPos)) {
+                if (getLevel().checkTileExists(newPos)) {
                     explodePosition(newPos);
                 } else {
                     continueExplosionRight = false;

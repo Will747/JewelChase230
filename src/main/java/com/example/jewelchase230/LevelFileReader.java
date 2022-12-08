@@ -201,7 +201,6 @@ public class LevelFileReader {
                 String directionString = lineScanner.next();
                 SmartThief tempAssassin = new
                         SmartThief(Direction.getDirectionType(directionString));
-                //won't show as no image yet
                 levelBuilt.addCharacter(tempPos, tempAssassin);
             break;
         }

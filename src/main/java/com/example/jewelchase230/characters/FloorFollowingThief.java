@@ -32,7 +32,7 @@ public class FloorFollowingThief extends AICharacter {
      * @return x and y difference values to check next move
      */
     private IntVector2D getLeftDiff(final Direction d) {
-        return getMoveDifference(d.getLeftDirection(d));
+        return getMoveDifference(d.getLeftDirection());
     }
 
     /**
@@ -41,7 +41,7 @@ public class FloorFollowingThief extends AICharacter {
      * @return x and y difference values to check next move
      */
     private IntVector2D getRightDiff(final Direction d) {
-        return getMoveDifference(d.getRightDirection(d));
+        return getMoveDifference(d.getRightDirection());
     }
 
     /**
@@ -50,7 +50,7 @@ public class FloorFollowingThief extends AICharacter {
      * @return x and y difference values to check next move
      */
     private IntVector2D getBehindDiff(final Direction d) {
-        return getMoveDifference(d.getOppositeDirection(d));
+        return getMoveDifference(d.getOppositeDirection());
     }
 
     /**
@@ -64,7 +64,7 @@ public class FloorFollowingThief extends AICharacter {
     }
 
     /**
-     * Gets the next move for the Floor Following Thief.
+     * Makes the next move for the Floor Following Thief.
      */
     @Override
     protected void makeNextMove() {
@@ -99,16 +99,15 @@ public class FloorFollowingThief extends AICharacter {
                 canMove(behindXDiff, behindYDiff);
         if (!(potentialLeftTurnPos == currentPos)) {
             setGridPosition(potentialLeftTurnPos);
-            setDirection(currentDirection.getLeftDirection(currentDirection));
+            setDirection(currentDirection.getLeftDirection());
         } else if (!(potentialForwardPos == currentPos)) {
             setGridPosition(potentialForwardPos);
         } else if (!(potentialRightTurnPos == currentPos)) {
             setGridPosition(potentialRightTurnPos);
-            setDirection(currentDirection.getRightDirection(currentDirection));
+            setDirection(currentDirection.getRightDirection());
         } else if (!(potentialBehindPos == currentPos)) {
             setGridPosition(potentialBehindPos);
-            setDirection(currentDirection.getOppositeDirection(
-                    currentDirection));
+            setDirection(currentDirection.getOppositeDirection());
         }
     }
 }
