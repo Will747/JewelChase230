@@ -20,7 +20,7 @@ import java.util.Stack;
  */
 public final class SmartThief extends AICharacter {
     /** Image used by the smart thief. */
-    private static final String SMART_THIEF_IMAGE = "images/CAT_WHITE_SIT.png";
+    private static final String SMART_THIEF_IMAGE = "images/SMART_THIEF.png";
 
     /** The item the thief is heading towards. */
     private Item targetItem;
