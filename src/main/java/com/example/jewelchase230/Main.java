@@ -70,12 +70,13 @@ public final class Main extends Application {
      * The level currently being played.
      * null if no level is being played.
      */
-    private static Level currentLevel;
+    public static Level currentLevel;
 
     /**
      * Any renderables permanently shown on the canvas.
      */
     private static ArrayList<Renderable> renderables;
+    public static ArrayList<Level> Levels = new ArrayList<Level>();;
 
     @Override
     public void start(final Stage inStage) throws IOException {
@@ -126,7 +127,10 @@ public final class Main extends Application {
         Level level1 = LevelFileReader.readInFile("Level_Files/level1.txt");
         Level level2 = LevelFileReader.readInFile("Level_Files/level2.txt");
         Level level3 = LevelFileReader.readInFile("Level_Files/level3.txt");
-        setLevel(level3);
+        setLevel(level1);
+        Levels.add(level1);
+        Levels.add(level2);
+        Levels.add(level3);
         /* Test - Remove this */
     }
 
@@ -156,7 +160,7 @@ public final class Main extends Application {
      * Changes the level currently being played.
      * @param level The new level.
      */
-    public void setLevel(final Level level) {
+    public static void setLevel(final Level level) {
         currentLevel = level;
     }
 
@@ -211,6 +215,11 @@ public final class Main extends Application {
     public static Level getCurrentLevel() {
         return currentLevel;
     }
+
+    public static Level getNextLevel(int i){
+       return Levels.get(i);
+    }
+    
 
     /**
      * @return The pixel dimensions of the canvas.

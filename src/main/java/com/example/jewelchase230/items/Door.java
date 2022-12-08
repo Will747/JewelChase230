@@ -1,5 +1,7 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.Level;
+import com.example.jewelchase230.Main;
 import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.characters.Player;
 
@@ -13,6 +15,8 @@ public class Door extends Item {
     private boolean isDoorOpen = false;
     /** The Door image. */
     private static final String DOOR_IMAGE = "images/DOOR.png";
+    /** integer used for setting the next level. */
+    private static int i;
 
     /**
      * Constructs a new door.
@@ -46,6 +50,8 @@ public class Door extends Item {
     public void onCollision(final Character collidingCharacter) {
         if (isDoorOpen && collidingCharacter instanceof Player) {
             //winning end level situation
+            i = i + 1;
+            Main.setLevel(Main.getNextLevel(i));
         } else {
             getLevel().gameOver();
         }
