@@ -1,9 +1,12 @@
 package com.example.jewelchase230.menus;
 
-import com.example.jewelchase230.Main;
-import com.example.jewelchase230.Menu;
-import com.example.jewelchase230.profiles.ProfileScore;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import com.example.jewelchase230.Main;
+import com.example.jewelchase230.profiles.Profile;
+
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -13,6 +16,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+
 
 /**
  * Test menu to test out switching between menus.
@@ -20,7 +26,7 @@ import javafx.scene.control.TableView;
  * @author Will Kaye
  * @author Kellie Robinson
  */
-public final class HighScoreMenu {
+public final class HighScoreMenu  {
 	
 	@FXML 
 	private Button nextLevelButton; 
@@ -33,32 +39,36 @@ public final class HighScoreMenu {
     private int navigationSelected;
     
     @FXML
-	private TableView hsTable;
-	@FXML
-	private TableColumn<ProfileScore, String> nameCol;
-	
-	@FXML
-	private TableColumn<ProfileScore, Integer> levelCol;
-	
-	@FXML 
-	private TableColumn<ProfileScore, Integer> hsCol;
-	
-	private String profileName;
-	private int level;
-	private int levelScore;
+	private TableView<Profile> hsTable;
     
+	@FXML
+	private TableColumn<Profile, String> playerCol;
 	
-	public HighScoreMenu(String profileName, int level, int levelScore){ 
-		this.profileName = profileName;
-		this.level = level;
-		this.levelScore = levelScore;
+	//@FXML
+	//private TableColumn<Profile, Integer> levelCol;
+	
+	//@FXML 
+	//private TableColumn<Profile, Integer> hsCol;
+	
+	
+	ObservableList<Profile> list = FXCollections.observableArrayList( 
+	
+	new Profile (1,4,"Kellie",700),
+	new Profile (2,3,"Derek",7000),
+	new Profile (1,4,"K2",700)
+	); 
+	
+	
+	
+	@FXML
+	private void initialize() {
+		playerCol.setCellValueFactory( new PropertyValueFactory<Profile, String>("playerName")); 
+		 
+
+		hsTable.setItems(null);
+		hsTable.setItems(list);
 	}
-    
-    //ObservableList<ProfileScore> topTenObservableList = FXCollections.observableArrayList(
-    //		new HighScoreMenu ("Hi",2,1000)
-    //		); 
-    
-    
+	
     @FXML
     void onBackPressed(final MouseEvent event) {
         Main.switchRoot(previousMenu);
