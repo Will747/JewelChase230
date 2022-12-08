@@ -5,6 +5,7 @@ import com.example.jewelchase230.LevelFileReader;
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.characters.Player;
+import com.example.jewelchase230.profiles.Profile;
 
 /**
  * A class to implement doors and end the level if the door is open.
@@ -48,9 +49,9 @@ public class Door extends Item {
     public void onCollision(final Character collidingCharacter) {
         Level level = getLevel();
         if (isDoorOpen && collidingCharacter instanceof Player) {
-            //winning end level situation
             level.addTimeLeftScore();
             int nextLevelNum = level.getLevelNumber() + 1;
+            //set level in instance of profile
             Main.setLevel(null);
             Main.setLevel(LevelFileReader.getLevel(nextLevelNum));
         } else if (isDoorOpen) {
