@@ -31,6 +31,8 @@
             <TableColumn prefWidth="340.0" text="High Score" />
         </columns>
       </TableView>
+      <Button fx:id="prevLevelButton" mnemonicParsing="false" onMouseClicked="#onPrevLevelButtonPressed" text="&lt;- Previous Level" />
+      <Button fx:id="nextLevelButton" mnemonicParsing="false" onMouseClicked="#onNextLevelButtonPressed" text="Next Level -&gt;" />
       <Button mnemonicParsing="false" onMouseClicked="#onBackPressed" text="Back">
          <VBox.margin>
             <Insets top="30.0" />

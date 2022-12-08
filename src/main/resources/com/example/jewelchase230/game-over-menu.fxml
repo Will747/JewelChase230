@@ -8,28 +8,17 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.PauseMenu">
    <children>
-      <Label text="Game Paused">
+      <Label text="Jewel Chase">
          <font>
             <Font name="Franklin Gothic Medium Italic" size="45.0" />
          </font>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
       </Label>
-      <Button mnemonicParsing="false" onMouseClicked="#onResumeGamePressed" text="Resume">
+      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onReturntoMainMenuPressed" text="Return to main menu" />
          <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin></Button>
-      <Button mnemonicParsing="false" onMouseClicked="#onSettingsMenuPressed" text="Settings">
-         <VBox.margin>
-            <Insets top="15.0" />
-         </VBox.margin>
-      </Button>
-      <Button mnemonicParsing="false" onMouseClicked="#onHighScoreTablePressed" text="HighScores">
-         <VBox.margin>
-            <Insets top="15.0" />
-         </VBox.margin>
-      </Button>
-      <Button mnemonicParsing="false" onMouseClicked="#onExitPressed" text="Exit">
-         <VBox.margin>
-            <Insets top="15.0" />
+            <Insets top="10.0" />
          </VBox.margin>
       </Button>
    </children>
