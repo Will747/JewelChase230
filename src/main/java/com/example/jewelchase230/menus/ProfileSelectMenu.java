@@ -68,7 +68,9 @@ public final class ProfileSelectMenu {
         if(result.get() == ButtonType.OK)
         {
         	ProfileManager.deleteProfile(currentProfile);
+            ProfileManager.saveProfiles();
         	Menu.getProfileMenuController().refresh();
+            Main.switchRoot(Menu.getProfileMenu());
            
         }
         else if (result.get() == ButtonType.CANCEL)

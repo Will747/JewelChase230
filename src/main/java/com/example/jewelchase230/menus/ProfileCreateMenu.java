@@ -50,11 +50,18 @@ public final class ProfileCreateMenu {
 			throws IOException {
 		profileCreatedName = createProfileName.getText();
 		if (acceptableName(profileCreatedName)) {
-			Profile newProfile = new Profile(profileCreatedName);
-			ProfileManager.addProfile(newProfile);
-			ProfileManager.saveProfiles();
-			Menu.getProfileMenuController().refresh();
-			Main.switchRoot(Menu.getProfileMenu());
+			if(ProfileManager.getListOfProfile().size() <= 3){
+				Profile newProfile = new Profile(profileCreatedName);
+				ProfileManager.addProfile(newProfile);
+				ProfileManager.saveProfiles();
+				Menu.getProfileMenuController().refresh();
+				Main.switchRoot(Menu.getProfileMenu());
+			}
+			else{
+				fullProfiles();
+				System.out.println("FULL PROFILES");
+			}
+
 		} else {
 			System.out.println("INVALID INPUT");
 		}
