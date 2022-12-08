@@ -61,7 +61,7 @@ public class ProfileManager {
 	}
 
 	/**
-	 * Overwrites the Profiles.txt file with updated Profile information
+	 * Overwrites the Profiles.txt file with updated Profile information.
 	 * 
 	 * @param ProfileManager profile
 	 * @throws FileNotFoundException
@@ -93,8 +93,8 @@ public class ProfileManager {
 	/**
 	 * Deletes a player profile from the player slots by overwriting its line as a
 	 * blank profile.
-	 * 
-	 * ERROR NEEDS TO WRITE TO LINE 1 OF TXT FILE NOT LINE 2
+	 * @param Profile
+	 * @throws IOException
 	 * 
 	 */
 	public static void deleteProfile(Profile profile) throws IOException {

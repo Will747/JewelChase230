@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.HighScoreMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.HighScoreMenu">
    <children>
       <Label alignment="TOP_CENTER" text="High scores" underline="true">
          <font>
@@ -31,6 +31,8 @@
             <TableColumn prefWidth="340.0" text="High Score" />
         </columns>
       </TableView>
+      <Button fx:id="prevLevelButton" mnemonicParsing="false" onMouseClicked="#onPrevLevelButtonPressed" text="&lt;- Previous Level" />
+      <Button fx:id="nextLevelButton" mnemonicParsing="false" onMouseClicked="#onNextLevelButtonPressed" text="Next Level -&gt;" />
       <Button mnemonicParsing="false" onMouseClicked="#onBackPressed" text="Back">
          <VBox.margin>
             <Insets top="30.0" />
