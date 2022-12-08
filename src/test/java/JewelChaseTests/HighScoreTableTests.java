@@ -4,11 +4,10 @@ import com.example.jewelchase230.profiles.HighScoreTable;
 import com.example.jewelchase230.profiles.Profile;
 import org.junit.jupiter.api.Test;
 
-
 public class HighScoreTableTests {
     @Test
     public void readAndSaveTest() {
-        Profile testProfile = new Profile(1, 1, "Test", -1);
+        Profile testProfile = new Profile("Test");
 
         HighScoreTable highScoreTable = HighScoreTable.read();
 
@@ -16,6 +15,6 @@ public class HighScoreTableTests {
         highScoreTable.save();
 
         HighScoreTable highScoreTable1 = HighScoreTable.read();
-        assert(highScoreTable1.getLevelHighScores(0).getLevelScoreList().size() > 0);
+        assert(highScoreTable1.getLevelHighScores(0).getScoreList().size() > 0);
     }
 }

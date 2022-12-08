@@ -52,7 +52,7 @@ public final class HighScoreMenu {
 	private TableColumn<ProfileScore, Integer> hsCol;
 	
 	
-
+/*
 	ObservableList<ProfileScore> list = FXCollections.observableArrayList(
 		new	ProfileScore (600,7,"Poo", 3),
 		new ProfileScore(400,1,"hi", 4),
@@ -63,19 +63,20 @@ public final class HighScoreMenu {
 		new	ProfileScore (7500,2,"Me",6),
 
 		new	ProfileScore (5000,2,"Ben",6)
-
-		
 	);
+	*/
 
 	@FXML
 	private void initialize() {
-				
-		playerCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, String>("name"));
-		levelCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, Integer>("currentLevel"));
-		hsCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, Integer>("highestScore"));
+		playerCol.setCellValueFactory(
+				new PropertyValueFactory<>("name"));
+		levelCol.setCellValueFactory(
+				new PropertyValueFactory<>("currentLevel"));
+		hsCol.setCellValueFactory(
+				new PropertyValueFactory<>("highestScore"));
 
 		hsTable.setItems(null);
-		hsTable.setItems(list);
+		//hsTable.setItems(list);
 	}
 
 	@FXML

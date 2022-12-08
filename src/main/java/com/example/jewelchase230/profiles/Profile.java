@@ -1,105 +1,56 @@
 package com.example.jewelchase230.profiles;
 
+import java.util.UUID;
+
+/**
+ * This class manages the Profiles. Includes various constructor
+ * methods of Profiles, some functions to handle said objects,
+ * and getters and setters.
+ *
+ * @author Kellie Robinson
+ */
 public class Profile {
-	
-	/**
-	 * This class manages the Profiles. Includes various constructor methods of Profiles, some functions to handle said objects, and getters and setters. 
-	 *
-	 * @author Kellie Robinson
-	 */
-	
-	
-	
-	private Integer uniquePlayerID;
-	private Integer playerProfileSlot;
+	/** Unique ID of the profile. */
+	private UUID uniquePlayerID;
+
+	/** The name of the player. */
 	private String playerName;
+
+	/** The highest level reached by the player. */
 	private Integer levelReached;
-	
-	
-	
-	
+
 	/**
-	 * Constructor of Profile 
-	 * @param uniquePlayerID
-	 * @param playerProfileSlot
-	 * @param playerName
-	 * @param levelReached
-	 * @param overallScore
-	 * @param currentLevel
+	 * Constructor of Profile.
+	 * @param inPlayerName The name of the player.
 	 */
-	  public Profile(Integer playerProfileSlot, Integer uniquePlayerID, String playerName, Integer levelReached) {
-		  this.uniquePlayerID = uniquePlayerID;
-		  this.playerProfileSlot = playerProfileSlot;
-		  this.playerName = playerName; 
-		  this.levelReached = levelReached;
-		 
-		  
+	  public Profile(final String inPlayerName) {
+		  uniquePlayerID = UUID.randomUUID();
+		  playerName = inPlayerName;
+		  levelReached = 0;
+		}
 
-		  
-	}
 	  /**
-	   * Constructor of Profile
-	   * @param lineDataSplit
+	   * Constructor of Profile.
+	   * @param lineDataSplit Parameters for constructing a Profile.
 	   */
-	  public Profile(String[] lineDataSplit) { 
-		  playerProfileSlot = Integer.parseInt(lineDataSplit[0]); 
-		  uniquePlayerID = Integer.parseInt(lineDataSplit[1]);
-		  playerName = lineDataSplit[2]; 
-		  levelReached = Integer.parseInt(lineDataSplit[3]);
-		 
-		  
+	  public Profile(final String[] lineDataSplit) {
+		  uniquePlayerID = UUID.fromString(lineDataSplit[0]);
+		  playerName = lineDataSplit[1];
+		  levelReached = Integer.parseInt(lineDataSplit[2]);
 	  }
-	  
-	 
-	  
-	  
 
 	  /**
-	   * Method which takes a Profile object and returns it to a String format seperating each variable with a '.'.
+	   * Method which takes a Profile object and returns it to
+	   * a String format separating each variable with a '.'.
 	   * This will be fed into the saveProfile() function.
-	   * @param profile
-	   * @return profileToString
+	   * @return The profile in string form.
 	   */
-	  public static String profileToString(Profile profile) { 
-		  String profileToString = (profile.getPlayerProfileSlot() + "." + profile.getUniquePlayerID() + "." + profile.getPlayerName()
-+ "." + profile.getLevelReached());
-		return profileToString;		 
+	  @Override
+	  public String toString() {
+		return getUniquePlayerID().toString()
+				+ "." + getPlayerName()
+				+ "." + getLevelReached();
 	  }
-	  
-	   
-	  /**
-	   * Method which takes an Array lineDataSplit and converts it to a String with periods ('.') between each variable.
-	   * @param lineDataSplit
-	   * @return lineDataSplitToString
-	   */
-	    public String toString(String[] lineDataSplit) { 
-	      String lineDataSplitToString = lineDataSplit[0] + "." + lineDataSplit[1] + "." + lineDataSplit[2] + "." + lineDataSplit[3]; 
-	      
-	      return lineDataSplitToString;
-	  } 
-	  
-	  
-	
-	  /**
-	   * Method which clones an object 
-	   */
-	    public Object clone(){  
-	        try{  
-	            return super.clone();  
-	        }catch(Exception e){ 
-	            return null; 
-	        }
-	    }
-	  
-	  
-	  
-	  
-	/**
-	 * @return the playerProfileSlot
-	 */
-	public Integer getPlayerProfileSlot() {
-		return playerProfileSlot;
-	}
 
 	/**
 	 * @return the playerName
@@ -115,43 +66,17 @@ public class Profile {
 		return levelReached;
 	}
 
-	
-
 	/**
 	 * @return the uniquePlayerID
 	 */
-	public Integer getUniquePlayerID() {
+	public UUID getUniquePlayerID() {
 		return uniquePlayerID;
 	}
 
 	/**
-	 * @param playerProfileSlot the playerProfileSlot to set
+	 * @param newLevelReached the levelReached to set
 	 */
-	public void setPlayerProfileSlot(Integer playerProfileSlot) {
-		this.playerProfileSlot = playerProfileSlot;
+	public void setLevelReached(final Integer newLevelReached) {
+		levelReached = newLevelReached;
 	}
-
-	/**
-	 * @param playerName the playerName to set
-	 */
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
-	}
-
-	/**
-	 * @param levelReached the levelReached to set
-	 */
-	public void setLevelReached(Integer levelReached) {
-		this.levelReached = levelReached;
-	}
-
-	
-
-	/**
-	 * @param uniquePlayerID the uniquePlayerID to set
-	 */
-	public void setUniquePlayerID(Integer uniquePlayerID) {
-		this.uniquePlayerID = uniquePlayerID;
-	}
-	
 }

@@ -142,6 +142,7 @@ public final class Main extends Application {
      */
     public static void close() {
         settings.write();
+        ProfileManager.saveProfiles();
         System.exit(0);
     }
 

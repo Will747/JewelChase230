@@ -47,16 +47,15 @@ public enum LootType {
         if (randomNumber < Beer.getValue()) {
             return Beer;
         }
-
         return Cocktail;
     }
 
     /**
      * Converts the input value to a loot type.
-     * @param value
-     * @return
+     * @param value input value.
+     * @return Corresponding loot value.
      */
-    public static LootType getTypeFromInput(int value) {
+    public static LootType getTypeFromInput(final int value) {
         return switch (value) {
             case 1 -> Coins;
             case 2 -> Bag;

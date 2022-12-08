@@ -15,41 +15,35 @@ import java.io.IOException;
  *
  * @author Kellie Robinson
  */
+public final class ProfileManager {
+	/** ArrayList which holds a list of Profiles. */
+	private static ArrayList<Profile> listOfProfile = new ArrayList<>();
 
-public class ProfileManager {
+	/** Name of Text File to be read. */
+	private static final String PROFILES_FILE = "Profiles.txt";
 
-	/** ArrayList which holds each line of the Profiles.txt File */
-	static ArrayList<String> profilesLineByLineData = new ArrayList<String>();
-	/** ArrayList which holds a list of Profiles */
-	public static ArrayList<Profile> listOfProfile = new ArrayList<Profile>();
-	/** Integer which holds a user's unique player ID */
-	static int uniqueIDFromFile;
-	/** Final int variable which holds the total number of 'splits' to be done */
-	public static final int LINEBYLINEDATA_NUMBER_OF_CASES = 4;
-	/** Name of Text File to be read */
-	static String profilesFile = "Profiles.txt";
+	private ProfileManager() {
+	}
 
 	// Reads each line of the text file "Profile.txt"
 	/**
-	 * Reads content from file and stores them appropriately to be handled in the
-	 * makeProfile method
-	 * 
-	 * @return lineDataSplit
-	 * @throws FileNotFoundException
+	 * Reads content from file and stores them appropriately to be
+	 * handled in the makeProfile method.
 	 */
-
 	public static void readLines() {
 		try {
-			File myFile = new File(profilesFile);
+			File myFile = new File(PROFILES_FILE);
 			Scanner input = new Scanner(myFile);
+			ArrayList<String> profilesLineByLineData =
+					new ArrayList<>();
 
 			while (input.hasNextLine()) {
 				String data = input.nextLine();
 				profilesLineByLineData.add(data);
 
-				String[] lineDataSplit = data.split("\\.", LINEBYLINEDATA_NUMBER_OF_CASES);
-				uniqueIDFromFile = Integer.parseInt(lineDataSplit[1]);
-				Profile tempProfile = new Profile(lineDataSplit);
+				String[] lineDataSplit = data.split("\\.");
+				Profile tempProfile =
+						new Profile(lineDataSplit);
 				listOfProfile.add(tempProfile);
 			}
 			input.close();
@@ -62,61 +56,42 @@ public class ProfileManager {
 
 	/**
 	 * Overwrites the Profiles.txt file with updated Profile information.
-	 * 
-	 * @param ProfileManager profile
-	 * @throws FileNotFoundException
 	 */
-
-	public static void saveProfile(Profile profile) throws IOException {
-
-		BufferedWriter pmWriter = new BufferedWriter(new FileWriter(profilesFile));
-
+	public static void saveProfiles() {
 		try {
+			FileWriter fileWriter =
+					new FileWriter(PROFILES_FILE);
+			BufferedWriter pmWriter =
+					new BufferedWriter(fileWriter);
 
-			
-			for (int i = 0; i < listOfProfile.size(); i++) {
-				pmWriter.write(Profile.profileToString(listOfProfile.get(i)));
-
-				if (i != profilesLineByLineData.size()) {
-					pmWriter.newLine();
-				}
+			for (Profile profile : listOfProfile) {
+				String profileData = profile.toString();
+				pmWriter.write(profileData);
+				pmWriter.newLine();
 			}
-
 			pmWriter.close();
-
 		} catch (FileNotFoundException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
 	/**
-	 * Deletes a player profile from the player slots by overwriting its line as a
-	 * blank profile.
-	 * @param Profile
-	 * @throws IOException
-	 * 
+	 * Adds a new profile to the manager.
+	 * @param profile New profile being added.
 	 */
-	public static void deleteProfile(Profile profile) throws IOException {
+	public static void addProfile(final Profile profile) {
+		listOfProfile.add(profile);
+	}
+
+	/**
+	 * Deletes a player profile.
+	 * @param profile Profile to be deleted.
+	 */
+	public static void deleteProfile(final Profile profile) {
 		listOfProfile.remove(profile);
-	}
-
-	public static Profile searchProfile(int playerSlot) {
-		// go thru the list and check for if player slot == list i.get(uniqueID)
-		for (int i = 0; i <= listOfProfile.size(); i++) {
-			if (playerSlot == listOfProfile.get(i).getPlayerProfileSlot())
-				;
-			return listOfProfile.get(i);
-		}
-		return null;
-
-	}
-
-	/**
-	 * @return The profilesLineByLineData arraylist.
-	 */
-	public static ArrayList<String> getProfilesLineByLineData() {
-		return profilesLineByLineData;
 	}
 
 	/**
@@ -125,8 +100,4 @@ public class ProfileManager {
 	public static ArrayList<Profile> getListOfProfile() {
 		return listOfProfile;
 	}
-
-	/**
-	 * @return the profileLevel
-	 */
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Lever extends Item {
 
     /** The colour of the gate. */
-    private LeverGateColour colour;
+    private final LeverGateColour colour;
 
     /**
      * Constructs a new lever.

@@ -1,6 +1,7 @@
 package com.example.jewelchase230.items;
 
 import com.example.jewelchase230.Level;
+import com.example.jewelchase230.Main;
 import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.vectors.IntVector2D;
 
@@ -12,8 +13,6 @@ import com.example.jewelchase230.vectors.IntVector2D;
 public class Bomb extends Item {
     /** Time since the image last changed. */
     private int timeSinceLastImageChange = 0;
-    /** The game frame rate. */
-    private static final int MILLISECONDS_IN_A_SECOND = 1000;
     /** Time between image change when a fast explode occours. */
     private static final int FAST_EXPLODE_COUNTDOWN_RATE = 100;
     /** The index for currently displayed image in countdownArray. */
@@ -47,7 +46,7 @@ public class Bomb extends Item {
     public void tick(final int time) {
         if (hasExploded) {
             timeSinceLastImageChange += time;
-            if (timeSinceLastImageChange >= MILLISECONDS_IN_A_SECOND) {
+            if (timeSinceLastImageChange >= Main.MILLISECONDS_IN_A_SECOND) {
                 countdown();
             }
         } else if (fastExplode) {
@@ -57,7 +56,7 @@ public class Bomb extends Item {
             }
         } else if (hasCollided) {
             timeSinceLastImageChange += time;
-            if (timeSinceLastImageChange >= MILLISECONDS_IN_A_SECOND) {
+            if (timeSinceLastImageChange >= Main.MILLISECONDS_IN_A_SECOND) {
                 countdown();
             }
         }
