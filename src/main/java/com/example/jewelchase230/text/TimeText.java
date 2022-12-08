@@ -19,8 +19,7 @@ public final class TimeText extends CanvasText {
     @Override
     protected String getText() {
         Level level = getLevel();
-        int remainingTime =
-                level.getTimeLimit() / Main.MILLISECONDS_IN_A_SECOND;
+        int remainingTime = getLevel().getTime() / Main.MILLISECONDS_IN_A_SECOND;
         return "Time Left: " + remainingTime;
     }
 }

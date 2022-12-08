@@ -63,7 +63,7 @@ public class LevelFileReader {
             case 5:
                 return readInFile("Level_Files/Level5.txt", 5);
             default:
-                return readInFile("Level_Files/Level1.txt", 1);
+                return readInFile("Level_Files/Level6.txt", 1);
         }
     }
 
@@ -91,9 +91,11 @@ public class LevelFileReader {
             xAxis = fileScanner.nextInt();
             yAxis = fileScanner.nextInt();
             levelTime = fileScanner.nextInt();
+            System.out.println(levelTime);
 
             IntVector2D size = new IntVector2D(xAxis, yAxis);
             levelBuilt = new Level(size, levelNum);
+            levelBuilt.setTime(levelTime);
 
             // Changes the tokens in the text file to tile objects
             // that are added to the level.
@@ -133,7 +135,6 @@ public class LevelFileReader {
     private static void levelBuilder(final String value) {
         Scanner lineScanner = new Scanner(value);
         int id = lineScanner.nextInt();
-
         // Makes the appropriate object from the id provided from the file.
         int x = lineScanner.nextInt();
         int y = lineScanner.nextInt();

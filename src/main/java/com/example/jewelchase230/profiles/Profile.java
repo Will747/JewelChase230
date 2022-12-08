@@ -27,7 +27,7 @@ public class Profile {
 	 * @param overallScore
 	 * @param currentLevel
 	 */
-	  public Profile(Integer playerProfileSlow, Integer uniquePlayerID, String playerName, Integer levelReached) {
+	  public Profile(Integer playerProfileSlot, Integer uniquePlayerID, String playerName, Integer levelReached) {
 		  this.uniquePlayerID = uniquePlayerID;
 		  this.playerProfileSlot = playerProfileSlot;
 		  this.playerName = playerName; 
