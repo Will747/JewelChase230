@@ -16,8 +16,9 @@ public class Loot extends Item {
      * Constructs a new item of loot.
      * Randomly selecting the type.
      */
-    public Loot(LootType type) {
-        super(type.getImage());
+    public Loot(final LootType inType) {
+        super(inType.getImage());
+        type = inType;
     }
 
     /**
