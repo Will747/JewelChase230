@@ -177,10 +177,10 @@ public class Level {
             for (Tile tileInstance: neighbouringTiles) {
                 tileInstance.removeBombTrigger(pos);
             }
-        } else if (item instanceof Loot || item instanceof Lever) {
+        }getTile(pos).setItem(null);
+        if (item instanceof Loot || item instanceof Lever) {
             checkIfDoorOpen();
         }
-        getTile(pos).setItem(null);
     }
 
     /**

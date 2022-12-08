@@ -52,7 +52,7 @@ public class Door extends Item {
             //winning end level situation
             i = i + 1;
             Main.setLevel(Main.getNextLevel(i));
-        } else {
+        } else if (isDoorOpen) {
             getLevel().gameOver();
         }
     }
