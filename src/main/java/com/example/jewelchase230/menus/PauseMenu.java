@@ -3,7 +3,6 @@ import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.Parent;
 
 /**
  * The class controls the pause menu of the game.
@@ -37,5 +36,10 @@ public class PauseMenu {
     private void onHighScoreTablePressed(final MouseEvent event) {
         Menu.getHighScoreMenuController().setPreviousParent(Menu.getPauseMenu());
         Main.switchRoot(Menu.getHighScoreTable());
+    }
+
+    @FXML
+    private void onExitPressed(final MouseEvent event) {
+        Main.switchRoot(Menu.getMainMenu());
     }
 }
