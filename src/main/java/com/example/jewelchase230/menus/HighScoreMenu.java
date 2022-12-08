@@ -54,9 +54,9 @@ public final class HighScoreMenu {
 		this.levelScore = levelScore;
 	}
     
-    ObservableList<ProfileScore> topTenObservableList = FXCollections.observableArrayList(
-    		new H ("Hi",2,1000)
-    		); 
+    //ObservableList<ProfileScore> topTenObservableList = FXCollections.observableArrayList(
+    //		new HighScoreMenu ("Hi",2,1000)
+    //		); 
     
     
     @FXML
