@@ -15,7 +15,6 @@ import java.io.IOException;
  *
  * @author Kellie Robinson
  */
-
 public final class ProfileManager {
 	/** ArrayList which holds a list of Profiles. */
 	private static ArrayList<Profile> listOfProfile = new ArrayList<>();
@@ -57,15 +56,14 @@ public final class ProfileManager {
 
 	/**
 	 * Overwrites the Profiles.txt file with updated Profile information.
-	 * @throws FileNotFoundException When the profile file cannot be
-	 * written to.
 	 */
-
-	public static void saveProfiles() throws IOException {
-		FileWriter fileWriter = new FileWriter(PROFILES_FILE);
-		BufferedWriter pmWriter = new BufferedWriter(fileWriter);
-
+	public static void saveProfiles() {
 		try {
+			FileWriter fileWriter =
+					new FileWriter(PROFILES_FILE);
+			BufferedWriter pmWriter =
+					new BufferedWriter(fileWriter);
+
 			for (Profile profile : listOfProfile) {
 				String profileData = profile.toString();
 				pmWriter.write(profileData);
@@ -75,6 +73,8 @@ public final class ProfileManager {
 		} catch (FileNotFoundException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
