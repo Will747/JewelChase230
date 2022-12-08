@@ -7,12 +7,7 @@ import com.example.jewelchase230.characters.FlyingAssassin;
 import com.example.jewelchase230.characters.Player;
 import com.example.jewelchase230.characters.SmartThief;
 
-import com.example.jewelchase230.items.Bomb;
-import com.example.jewelchase230.items.Loot;
-import com.example.jewelchase230.items.Clock;
-import com.example.jewelchase230.items.Door;
-import com.example.jewelchase230.items.Lever;
-import com.example.jewelchase230.items.Gate;
+import com.example.jewelchase230.items.*;
 
 import com.example.jewelchase230.vectors.IntVector2D;
 import java.io.File;
@@ -177,13 +172,21 @@ public final class LevelFileReader {
             }
             case Lever -> {
                 String colour = lineScanner.next();
-                Lever tempLever = new Lever(colour);
+                LeverGateColour leverColour = 
+                    LeverGateColour.colourInputConversion(
+                        colour.charAt(0));
+                Lever tempLever = new Lever(leverColour);
                 levelBuilt.addItem(tempPos, tempLever);
+            break;
             }
             case Gate -> {
                 String colour = lineScanner.next();
-                Gate tempGate = new Gate(colour);
+                LeverGateColour gateColour = 
+                    LeverGateColour.colourInputConversion(
+                        colour.charAt(0));
+                Gate tempGate = new Gate(gateColour);
                 levelBuilt.addItem(tempPos, tempGate);
+            break;
             }
             case FfThief -> {
                 String directionString = lineScanner.next();
