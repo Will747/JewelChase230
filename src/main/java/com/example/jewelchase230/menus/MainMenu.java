@@ -29,13 +29,13 @@ public final class MainMenu {
 
     @FXML
     private void onSettingsMenuPressed(final MouseEvent event) {
-        Menu.getSettingsMenuController().setPreviousParent(Menu.getPauseMenu());
+        Menu.getSettingsMenuController().setPreviousParent(Menu.getMainMenu());
         Main.switchRoot(Menu.getSettingsMenu());
     }
 
     @FXML
     private void onHighScoreTablePressed(final MouseEvent event) {
-        Menu.getHighScoreMenuController().setPreviousParent(Menu.getPauseMenu());
+        Menu.getHighScoreMenuController().setPreviousParent(Menu.getMainMenu());
         Main.switchRoot(Menu.getHighScoreTable());
     }
 

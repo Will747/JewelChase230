@@ -16,15 +16,7 @@
             <Insets bottom="5.0" />
          </VBox.margin>
       </Label>
-      <Button centerShape="false" mnemonicParsing="false" onMouseClicked="#onResumeGamePressed" text="Resume Game">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin>
-      </Button>
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onSettingsMenuPressed" text="Settings" />
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onHighScoreTablePressed" text="High Score" />
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onSaveGamePressed" text="Save Game" />
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onExitPressed" text="Exit" />
+      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onReturntoMainMenuPressed" text="Return to main menu" />
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
