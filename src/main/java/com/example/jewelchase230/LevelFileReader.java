@@ -206,7 +206,7 @@ public final class LevelFileReader {
             }
             case Loot -> {
                 int rarity = lineScanner.nextInt();
-                Loot tempLoot = new Loot(rarity);
+                Loot tempLoot = new Loot(LootType.getTypeFromInput(rarity));
                 levelBuilt.addItem(tempPos, tempLoot);
             }
             case Player -> {

@@ -6,17 +6,24 @@ package com.example.jewelchase230.items;
  */
 public enum LeverGateColour {
     /** Red Colour.*/
-    Red("images/LEVER_GREEN.png", "images/GATE.png"),
+    Red("images/LEVER_GREEN.png",
+    "images/GATE.png"),
     /** Blue Colour.*/
-    Blue("images/LEVER_GREEN.png", "images/GATE.png"),
+    Blue("images/LEVER_GREEN.png",
+     "images/GATE.png"),
     /** Green Colour.*/
-    Green("images/LEVER_GREEN.png", "images/GATE.png");
+    Green("images/LEVER_GREEN.png",
+     "images/GATE.png");
 
-    private String leverImage;
+    /** The lever image. */
+    private final String leverImage;
 
-    private String gateImage;
+    /** The gate image. */
+    private final String gateImage;
 
-    LeverGateColour(final String LeverImageFileName, final String gateImageFileName) {
+    /**  Lever and Gate colours. */
+    LeverGateColour(final String LeverImageFileName, 
+            final String gateImageFileName) {
         leverImage = LeverImageFileName;
         gateImage = gateImageFileName;
     }
@@ -35,10 +42,18 @@ public enum LeverGateColour {
         };
     }
 
+    /**
+     * Gets the lever image for this colour.
+     * @return
+     */
     public String getLeverImage() {
         return leverImage;
     }
 
+    /**
+     * gets the gate image for this colour.
+     * @return
+     */
     public String getGateImage() {
         return gateImage;
     }

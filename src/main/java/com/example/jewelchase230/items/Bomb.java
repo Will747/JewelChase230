@@ -35,8 +35,7 @@ public class Bomb extends Item {
      *
      */
     public Bomb() {
-        super();
-        setImageFromFile(BOMB_IMAGE);
+        super(BOMB_IMAGE);
         setCollidable(false);
     }
 
@@ -96,7 +95,6 @@ public class Bomb extends Item {
         if (currentItem != null) {
             currentItem.doOnExplosionCollision();
         }
-
         if (currentCharacter != null) {
             currentCharacter.onCollision(null);
         }

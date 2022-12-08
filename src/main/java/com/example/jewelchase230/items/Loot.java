@@ -16,28 +16,8 @@ public class Loot extends Item {
      * Constructs a new item of loot.
      * Randomly selecting the type.
      */
-    public Loot(int rarity) {
-        super();
-        switch (rarity) {
-            case 1: {
-                type = LootType.Coins;
-                break;
-            }
-            case 2: {
-                type = LootType.Bag;
-                break;
-            }
-            case 3: {
-                type = LootType.Beer;
-                break;
-            }
-            case 4: {
-                type = LootType.Cocktail;
-                break;
-            }
-        }
-        // type = LootType.getRandomType();
-        setImageFromFile(type.getImage());
+    public Loot(LootType type) {
+        super(type.getImage());
     }
 
     /**

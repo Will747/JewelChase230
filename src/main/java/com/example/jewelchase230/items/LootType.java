@@ -52,6 +52,21 @@ public enum LootType {
     }
 
     /**
+     * Converts the input value to a loot type.
+     * @param value
+     * @return
+     */
+    public static LootType getTypeFromInput(int value) {
+        return switch (value) {
+            case 1 -> Coins;
+            case 2 -> Bag;
+            case 3 -> Beer;
+            case 4 -> Cocktail;
+            default -> getRandomType();
+        };
+    }
+
+    /**
      * @return Number of points received when collected.
      */
     public int getValue() {
