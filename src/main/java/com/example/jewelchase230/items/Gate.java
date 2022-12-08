@@ -10,16 +10,14 @@ import com.example.jewelchase230.characters.Character;
 public class Gate extends Item {
 
     /** The gate colour. */
-    private final String colour;
-    /** The gate image.*/
-    private static final String GATE_IMAGE = "images/GATE.png";
+    private final LeverGateColour colour;
 
     /**
      * Constructs a new gate.
      * @param inColour defines the gate colour.
      */
-    public Gate(final String inColour) {
-        super(GATE_IMAGE);
+    public Gate(final LeverGateColour inColour) {
+        super(inColour.getGateImage());
         setCollidable(false);
         colour = inColour;
     }
@@ -28,7 +26,7 @@ public class Gate extends Item {
      * Returns the colour of the gate.
      * @return colour of the gate.
      */
-    public String getColour() {
+    public LeverGateColour getColour() {
         return colour;
     }
 

@@ -10,34 +10,24 @@ import java.util.ArrayList;
  * @author Ben Stott and Scott Williams
  */
 public class Lever extends Item {
-    /** The lever image. */
-    private static final String LEVER_IMAGE = "images/LEVER.png";
 
     /** The colour of the gate. */
-    private String colour;
+    private LeverGateColour colour;
 
     /**
      * Constructs a new lever.
      * @param inColour Settings the lever colour.
      */
-    public Lever(final String inColour) {
-        super(LEVER_IMAGE);
-        colour = inColour;
-    }
-
-    /**
-     * Setting a new colour.
-     * @param newColour Changing the current lever colour.
-     */
-    public void setColour(final String newColour) {
-        colour = newColour;
+    public Lever(final LeverGateColour inputColour) {
+        super(inputColour.getLeverImage());
+        colour = inputColour;
     }
 
     /**
     * Get the lever colour.
     * @return The lever colour.
     */
-    public String getColour() {
+    public LeverGateColour getColour() {
         return colour;
     }
 

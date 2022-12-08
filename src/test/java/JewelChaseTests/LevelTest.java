@@ -3,6 +3,7 @@ package JewelChaseTests;
 import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.items.Gate;
 import com.example.jewelchase230.items.Item;
+import com.example.jewelchase230.items.LeverGateColour;
 import com.example.jewelchase230.Level;
 import com.example.jewelchase230.vectors.IntVector2D;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,7 @@ public class LevelTest {
 
         testLevel.addItem(new IntVector2D(0, 0), new Bomb());
         testLevel.addItem(new IntVector2D(0, 1), new Bomb());
-        testLevel.addItem(new IntVector2D(0, 2), new Gate("Red"));
+        testLevel.addItem(new IntVector2D(0, 2), new Gate(LeverGateColour.Red)); 
 
         ArrayList<Bomb> bombs = testLevel.getAllItemsOfType(Bomb.class);
         assertEquals(2, bombs.size());
@@ -45,7 +46,7 @@ public class LevelTest {
 
         testLevel.addItem(new IntVector2D(0, 0), new Bomb());
         testLevel.addItem(new IntVector2D(0, 1), new Bomb());
-        testLevel.addItem(new IntVector2D(0, 2), new Gate("Red"));
+        testLevel.addItem(new IntVector2D(0, 2), new Gate(LeverGateColour.Red));
 
         ArrayList<Item> items = testLevel.getAllItems();
         assertEquals(3, items.size());
