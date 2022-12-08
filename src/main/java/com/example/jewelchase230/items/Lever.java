@@ -60,6 +60,5 @@ public class Lever extends Item {
     public void onCollision(final Character collidingCharacter) {
         removeGates();
         remove();
-        checkIfDoorOpen();
     }
 }
