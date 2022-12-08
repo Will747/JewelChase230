@@ -47,6 +47,14 @@ public class Level {
         timeLeftInMilliseconds = inTimeLimit;
     }
 
+    public void setTime(int time) {
+        this.timeLeftInMilliseconds = time * 1000;
+    }
+
+    public int getTime(){
+        return this.timeLeftInMilliseconds;
+    }
+
     /**
      * Gets the time limit for the level.
      * @return The time limit for the level.

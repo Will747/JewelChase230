@@ -1,5 +1,5 @@
 7 7
-200
+60
 yyyy yyyy yyyy yyyy yyyy yyyy yyyy
 yyyy rrrr yygg rrrr rrrr rrrr yyyy
 yyyy rrrr gggg gggg gggg rrrr yyyy
