@@ -15,7 +15,7 @@ import java.util.LinkedList;
 public class LevelHighScores implements Serializable {
 	
 
-	/** ArrayList holds scores of all players from this Level */
+	/** ArrayList holds scores of all players from all levels */
 	private ArrayList<ProfileScore> levelScoreList = new ArrayList<>();
 
 	/** Integer which specifies the player's score for this level */
@@ -35,27 +35,29 @@ public class LevelHighScores implements Serializable {
 	 * @param profile The profile that achieved the high score.
 	 * @param score The high score.
 	 */
-	public void updatePlayerScore(Profile profile, int score) {
+	public void updatePlayerScore(Profile profile, int score, int currentLevel) {
 		boolean profileScoreExists = false;
 
 		for (int i = 0; i < levelScoreList.size(); i++) {
 			ProfileScore playerScore = levelScoreList.get(i);
-			if (playerScore.getUserUniqueID() == profile.getUniquePlayerID()) {
+			if ((playerScore.getUserUniqueID() == profile.getUniquePlayerID()) && (playerScore.getCurrentLevel() == currentLevel)) {
 				profileScoreExists = true;
 				if (score > playerScore.getHighestScore()) {
 					playerScore.setHighestScore(score);
 					levelScoreList.set(i, playerScore);
 				}
+			} else if (!profileScoreExists) {
+				ProfileScore profileScore = new ProfileScore(score, currentLevel, profile.getPlayerName(),profile.getUniquePlayerID());
+				levelScoreList.add(profileScore);
+				
+				
 			}
 		}
 
-		if (!profileScoreExists) {
-			// Need to check if score is in the top 10 before adding it.
-			ProfileScore profileScore = new ProfileScore(score, profile.getUniquePlayerID());
-			levelScoreList.add(profileScore);
-		}
+	
 	}
 
+	
 	
 
 	/**
@@ -65,15 +67,27 @@ public class LevelHighScores implements Serializable {
 	 * @param orderedLevelHighScores
 	 * @return
 	 */
-	public LinkedList<Integer> cullTopTenHighScores(ArrayList<Integer> levelScoreList) {
-		Collections.sort(levelScoreList);
-		Collections.reverse(levelScoreList);
-			for (int i = 0; i < LEGAL_HIGH_SCORE_NUM; i++) { 
-				topTenHighScores.addLast(levelScoreList.get(i));
+	public LinkedList<Integer> cullTopTenHighScoresForLevelX(ArrayList<ProfileScore> levelScoreList, int levelTopTen) {
+		
+			for (int i = 0; i <= levelScoreList.size(); i++) { 
+					if(levelScoreList.get(i).getCurrentLevel() == levelTopTen) {
+						for (int k = 0; k < LEGAL_HIGH_SCORE_NUM; k++)
+						topTenHighScores.addLast(levelScoreList.get(i).getHighestScore());
+
+					}
+					
 			}
 
 		return topTenHighScores;
 	}
+		
+		
+		public ArrayList<Integer> orderTopTenHighScores(ArrayList<Integer> levelScoreList){ 
+			Collections.sort(levelScoreList);
+			Collections.reverse(levelScoreList);
+			return levelScoreList;
+		}
+	
 
 	
 	

@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.example.jewelchase230.Main;
-import com.example.jewelchase230.profiles.Profile;
+import com.example.jewelchase230.profiles.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,88 +18,93 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
-
 /**
  * Test menu to test out switching between menus.
  *
  * @author Will Kaye
  * @author Kellie Robinson
  */
-public final class HighScoreMenu  {
-	
-	@FXML 
-	private Button nextLevelButton; 
-	@FXML 
+public final class HighScoreMenu {
+
+	@FXML
+	private Button nextLevelButton;
+	@FXML
 	private Button prevLevelButton;
 
-    private Parent previousMenu;
-    private int topTenLevelSelected = 1; 
-    /** This will be assigned 0 if Prev button is clicked, and 1 if Next button is clicked*/ 
-    private int navigationSelected;
-    
-    @FXML
-	private TableView<Profile> hsTable;
-    
+	private Parent previousMenu;
+	private int topTenLevelSelected = 1;
+	/**
+	 * This will be assigned 0 if Prev button is clicked, and 1 if Next button is
+	 * clicked
+	 */
+	private int navigationSelected;
+
 	@FXML
-	private TableColumn<Profile, String> playerCol;
+	private TableView<ProfileScore> hsTable;
+
+	@FXML
+	private TableColumn<ProfileScore, String> playerCol;
+
+	@FXML
+	private TableColumn<ProfileScore, Integer> levelCol;
+
+	@FXML
+	private TableColumn<ProfileScore, Integer> hsCol;
+	
 	
 
-	//@FXML
-	//private TableColumn<Profile, Integer> levelCol;
-	
-	//@FXML 
-	//private TableColumn<Profile, Integer> hsCol;
-	
-	
-	ObservableList<Profile> list = FXCollections.observableArrayList( 
-	
-	new Profile (1,4,"Kellie",700),
-	new Profile (2,3,"Derek",7000),
-	new Profile (1,4,"K2",700)
-	); 
-	
-	
-	
+	ObservableList<ProfileScore> list = FXCollections.observableArrayList(
+		new	ProfileScore (600,7,"Poo", 3),
+		new ProfileScore(400,1,"hi", 4),
+		new	ProfileScore (5000,2,"PeePee",6)
+	);
+
 	@FXML
 	private void initialize() {
-		playerCol.setCellValueFactory( new PropertyValueFactory<Profile, String>("playerName")); 
-		 
+		
+	
+
+
+		
+		playerCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, String>("name"));
+		levelCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, Integer>("currentLevel"));
+		hsCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, Integer>("highestScore"));
 
 		hsTable.setItems(null);
 		hsTable.setItems(list);
 	}
-    @FXML
-    void onBackPressed(final MouseEvent event) {
-        Main.switchRoot(previousMenu);
-    }
 
-    public void setPreviousParent(Parent menu) {
-        previousMenu = menu;
-    }
-    
-    @FXML
-    public void onPrevLevelButtonPressed(final MouseEvent event) { 
-    	navigationSelected = 0;
-    	if (!isLevelNavigationValid()) { 
-    		levelSelectOutOfBounds();
-    	} else { 
-    		topTenLevelSelected = (topTenLevelSelected - 1);
-    	}
-    }
-    
-    @FXML
-    public void onNextLevelButtonPressed(final MouseEvent event) { 
-    	navigationSelected = 1;
-    	if (!isLevelNavigationValid()) { 
-    		levelSelectOutOfBounds();
-    	} else { 
-    		topTenLevelSelected = (topTenLevelSelected + 1);
-    	}
-    }
-    
-    public void levelSelectOutOfBounds(){ 
-    	Alert.AlertType type = Alert.AlertType.WARNING;
+	@FXML
+	void onBackPressed(final MouseEvent event) {
+		Main.switchRoot(previousMenu);
+	}
+
+	public void setPreviousParent(Parent menu) {
+		previousMenu = menu;
+	}
+
+	@FXML
+	public void onPrevLevelButtonPressed(final MouseEvent event) {
+		navigationSelected = 0;
+		if (!isLevelNavigationValid()) {
+			levelSelectOutOfBounds();
+		} else {
+			topTenLevelSelected = (topTenLevelSelected - 1);
+		}
+	}
+
+	@FXML
+	public void onNextLevelButtonPressed(final MouseEvent event) {
+		navigationSelected = 1;
+		if (!isLevelNavigationValid()) {
+			levelSelectOutOfBounds();
+		} else {
+			topTenLevelSelected = (topTenLevelSelected + 1);
+		}
+	}
+
+	public void levelSelectOutOfBounds() {
+		Alert.AlertType type = Alert.AlertType.WARNING;
 
 		Alert alert = new Alert(type, "");
 
@@ -108,19 +113,16 @@ public final class HighScoreMenu  {
 		alert.getDialogPane().setHeaderText("Cannot select this level: Invalid");
 
 		alert.show();
-    }
-    
-    
-    
-    public boolean isLevelNavigationValid() { 
-    	if(navigationSelected == 0 && topTenLevelSelected == 1) { 
-    		return false;
-    	} else if (navigationSelected == 1 && topTenLevelSelected == 5) { 
-    		return false; 
-    	} else { 
-    		return true;
-    	}
-    }
-    
-    
+	}
+
+	public boolean isLevelNavigationValid() {
+		if (navigationSelected == 0 && topTenLevelSelected == 1) {
+			return false;
+		} else if (navigationSelected == 1 && topTenLevelSelected == 5) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 }
