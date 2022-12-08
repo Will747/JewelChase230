@@ -6,6 +6,10 @@ import javafx.scene.paint.Color;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+ * Lever colours.
+ * @author Caroline Segestahl.
+ */
 public enum LeverColours {
     /** Red Colour.*/
     Red(new Color(1, 0, 0, 1)),
