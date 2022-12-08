@@ -16,6 +16,6 @@ public class HighScoreTableTests {
         highScoreTable.save();
 
         HighScoreTable highScoreTable1 = HighScoreTable.read();
-        assert(highScoreTable1.getLevelHighScores(0).getLevelScoreList().size() > 0);
+        assert(highScoreTable1.getLevelHighScores(0).getScoreList().size() > 0);
     }
 }

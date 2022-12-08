@@ -1,22 +1,25 @@
 package com.example.jewelchase230.profiles;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * 
- * @author Kellie Robinson
- * 
- * High score table per level. Each time level is complete, profile name is recorded
- * for that level along with their score
- * only top 10 
- * 
- * high score table, will  appear at the end of each level and should be navigatable from menu(?)
- * 
- * upon level exit, save user ID, name & score of that level in text file
- * 
- * 
  *
+ * @author Kellie Robinson
+ *
+ * High score table per level. Each time level is complete,
+ * profile name is recorded
+ * for that level along with their score
+ * only top 10
+ *
+ * high score table, will  appear at the end of each level and should
+ * be navigatable from menu(?)
+ *
+ * upon level exit, save user ID, name & score of that level in text file
  */
 
 public class HighScoreTable implements Serializable {
@@ -24,25 +27,14 @@ public class HighScoreTable implements Serializable {
 	/** The file name of the file that stores all high scores. */
 	private static final String FILE_NAME = "HighScores.bin";
 
-	LevelHighScores[] highScores;
-	//this should be changed upon the completion of a level in a different class (?) or somehow changed depending on when it is being called
-	public int levelNumberCompleted;
-	public ArrayList<Integer> highScoresPerLevelx = new ArrayList<Integer>(); 
-	public ArrayList<String> highScoreLineByLineData = new ArrayList<String>();
-	private Integer uniquePlayerID;
-	private String playerName;
-	private Integer levelReached;
-	private Integer levelScore; 
+	/** Scores for each level. */
+	private ArrayList<LevelHighScores> highScores;
 
 	/**
-	* Constructor of highScoreProfile
-	*
+	* Constructor of HighScoreTable.
 	*/
 	public HighScoreTable() {
-		// Temp until the number of level is decided
-		highScores = new LevelHighScores[10];
-		//highScores[0] = new LevelHighScores(); <-- commented out as it is throwing an error (?) 
-		// Temp until the number of level is decided
+		read();
 	}
 
 	/**
@@ -97,14 +89,17 @@ public class HighScoreTable implements Serializable {
 	}
 
 	/**
-	 * Adds a new score to the table if it's in the top 10 highest.
+	 * Adds a new score to the table.
 	 * @param levelNumber The level number the score was achieved on.
-	 * @param profile The profile that achived the score.
+	 * @param profile The profile that achieved the score.
 	 * @param score The score.
 	 */
-	public void addScore(int levelNumber, Profile profile, int score) {
+	public void addScore(
+			final int levelNumber,
+			final Profile profile,
+			final int score) {
 		LevelHighScores scores = getLevelHighScores(levelNumber);
-		scores.updatePlayerScore(profile, score, levelNumber);
+		scores.updatePlayerScore(profile, score);
 	}
 
 	/**
@@ -113,29 +108,24 @@ public class HighScoreTable implements Serializable {
 	 * @return The highest scores for that level.
 	 */
 	public LevelHighScores getLevelHighScores(final int levelNumber) {
-		if (levelNumber < highScores.length) {
-			return highScores[levelNumber];
+		// Search for existing high scores for this level.
+		for (LevelHighScores level : highScores) {
+			if (level.getLevelNumber() == levelNumber) {
+				return level;
+			}
 		}
 
-		return null;
-	}
-
-	public void groupHighScoresPerLevelX(int levelNumberCompleted) {
-		
-		
+		// If none exist create new LevelHighScores
+		LevelHighScores levelHighScores =
+				new LevelHighScores(levelNumber);
+		highScores.add(levelHighScores);
+		return levelHighScores;
 	}
 
 	/**
-	 * @return the highScores
+	 * @return All highScores.
 	 */
-	public LevelHighScores[] getHighScores() {
+	public ArrayList<LevelHighScores> getHighScores() {
 		return highScores;
-	}
-
-	/**
-	 * @param highScores the highScores to set
-	 */
-	public void setHighScores(LevelHighScores[] highScores) {
-		this.highScores = highScores;
 	}
 }

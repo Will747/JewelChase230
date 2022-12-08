@@ -1,67 +1,57 @@
 package com.example.jewelchase230.profiles;
 
 import java.io.Serializable;
+import java.util.UUID;
 
-public class ProfileScore implements Serializable {
-	/** int which holds the highest score of a player */
-	private int highestScore;
-	/** Integer which holds the player's unique ID */
-	private int userUniqueID;
-	/**Integer which holds the player's current level*/
-	private int currentLevel;
-	private String name;
-	
-	
-	public ProfileScore(int highestScore, int currentLevel, String name, int userUniqueID) {
-		this.highestScore = highestScore; 
-		this.userUniqueID = userUniqueID; 
-		this.currentLevel = currentLevel;
-		this.name = name;
-	}
-
-	
-	
 /**
- * @return player name.
+ * The highest score from a profile on a certain level.
  */
-	public String getName() { 
-		return name;
+public class ProfileScore implements Serializable {
+	/** int which holds the highest score of a player. */
+	private int highestScore;
+
+	/** Holds the player's unique ID. */
+	private UUID userUniqueID;
+
+	/** The name of the player. */
+	private String playerName;
+
+	/**
+	 * Constructs a new ProfileScore.
+	 * @param inHighestScore The highest score achieved.
+	 * @param profile The profile responsible for the score.
+	 */
+	public ProfileScore(final int inHighestScore, final Profile profile) {
+		highestScore = inHighestScore;
+		userUniqueID = profile.getUniquePlayerID();
+		playerName = profile.getPlayerName();
 	}
-	
+
+	/**
+	* @return player name.
+	*/
+	public String getName() {
+		return playerName;
+	}
+
 	/**
 	 * @return the highestScore
 	 */
 	public int getHighestScore() {
 		return highestScore;
 	}
-	
-	/**
-	 * @return the currentLevel
-	 */
-	public int getCurrentLevel() {
-		return currentLevel;
-	}
-
 
 	/**
 	 * @return the userName
 	 */
-	public int getUserUniqueID() {
+	public UUID getUserUniqueID() {
 		return userUniqueID;
 	}
 
 	/**
-	 * @param highestScore the highestScore to set
+	 * @param inHighestScore the highestScore to set
 	 */
-	public void setHighestScore(int highestScore) {
-		this.highestScore = highestScore;
+	public void setHighestScore(final int inHighestScore) {
+		highestScore = inHighestScore;
 	}
-
-	/**
-	 * @param userName the userName to set
-	 */
-	public void setUserUniqueID(int userUniqueID) {
-		this.userUniqueID = userUniqueID;
-	}
-
 }
