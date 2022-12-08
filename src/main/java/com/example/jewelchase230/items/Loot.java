@@ -10,11 +10,12 @@ import com.example.jewelchase230.characters.Player;
  */
 public class Loot extends Item {
     /** The type of loot. */
-    private LootType type;
+    private final LootType type;
 
     /**
      * Constructs a new item of loot.
      * Randomly selecting the type.
+     * @param inType The type of loot.
      */
     public Loot(final LootType inType) {
         super(inType.getImage());

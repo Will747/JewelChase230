@@ -34,7 +34,7 @@ public class HighScoreTable implements Serializable {
 	* Constructor of HighScoreTable.
 	*/
 	public HighScoreTable() {
-		read();
+		highScores = new ArrayList<>();
 	}
 
 	/**

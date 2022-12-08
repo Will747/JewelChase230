@@ -363,6 +363,9 @@ public class Level {
      */
     public void tick(final int time) {
         timeLeftInMilliseconds -= time;
+        if (timeLeftInMilliseconds <= 0) {
+            gameOver();
+        }
     }
 
     /**

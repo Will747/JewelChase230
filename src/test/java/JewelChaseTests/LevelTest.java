@@ -34,7 +34,7 @@ public class LevelTest {
 
         testLevel.addItem(new IntVector2D(0, 0), new Bomb());
         testLevel.addItem(new IntVector2D(0, 1), new Bomb());
-        testLevel.addItem(new IntVector2D(0, 2), new Gate(LeverGateColour.Red)); 
+        testLevel.addItem(new IntVector2D(0, 2), new Gate(LeverGateColour.Pink)); 
 
         ArrayList<Bomb> bombs = testLevel.getAllItemsOfType(Bomb.class);
         assertEquals(2, bombs.size());
@@ -46,7 +46,7 @@ public class LevelTest {
 
         testLevel.addItem(new IntVector2D(0, 0), new Bomb());
         testLevel.addItem(new IntVector2D(0, 1), new Bomb());
-        testLevel.addItem(new IntVector2D(0, 2), new Gate(LeverGateColour.Red));
+        testLevel.addItem(new IntVector2D(0, 2), new Gate(LeverGateColour.Pink));
 
         ArrayList<Item> items = testLevel.getAllItems();
         assertEquals(3, items.size());

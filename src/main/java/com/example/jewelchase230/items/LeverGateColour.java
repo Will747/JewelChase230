@@ -6,14 +6,14 @@ package com.example.jewelchase230.items;
  */
 public enum LeverGateColour {
     /** Red Colour.*/
-    Red("images/LEVER_GREEN.png",
-    "images/GATE.png"),
+    Pink("images/LEVER_PINK.png",
+    "images/GATE_PINK.png"),
     /** Blue Colour.*/
-    Blue("images/LEVER_GREEN.png",
-     "images/GATE.png"),
+    Blue("images/LEVER_BLUE.png",
+     "images/GATE_BLUE.png"),
     /** Green Colour.*/
     Green("images/LEVER_GREEN.png",
-     "images/GATE.png");
+     "images/GATE_GREEN.png");
 
     /** The lever image. */
     private final String leverImage;
@@ -35,10 +35,10 @@ public enum LeverGateColour {
      */
     public static LeverGateColour colourInputConversion(final char c) {
         return switch (c) {
-            case 'r' -> Red;
+            case 'p' -> Pink;
             case 'g' -> Green;
             case 'b' -> Blue;
-            default -> Red;
+            default -> Pink;
         };
     }
 
