@@ -56,13 +56,7 @@ public enum LootType {
      * @return Corresponding loot value.
      */
     public static LootType getTypeFromInput(final int value) {
-        return switch (value) {
-            case 1 -> Coins;
-            case 2 -> Bag;
-            case 3 -> Beer;
-            case 4 -> Cocktail;
-            default -> getRandomType();
-        };
+        return values()[value - 1];
     }
 
     /**
