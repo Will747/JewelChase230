@@ -52,12 +52,11 @@ public final class ProfileCreateMenu {
 		profileCreatedName = createProfileName.getText();
 		System.out.println(profileCreatedName);
 		if(acceptableName(profileCreatedName) == true){
-			choosePlayerSlot();
 			Profile newProfile = new Profile(choosePlayerSlot(),1,profileCreatedName,0);
 			ProfileManager.listOfProfile.add(newProfile);
+			ProfileManager.saveProfile(newProfile);
 			Menu.getProfileMenuController().refresh();
 			//ProfileManager.readLines();
-			//ProfileManager.saveProfile(newProfile);
 			Main.switchRoot(Menu.getProfileMenu());
 		}
 		else{

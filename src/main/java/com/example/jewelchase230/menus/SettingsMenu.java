@@ -4,6 +4,7 @@ import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.Settings;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
@@ -28,6 +29,9 @@ public final class SettingsMenu {
     /** Full screen checkbox. */
     @FXML
     private CheckBox fullScreen;
+
+    /** Previous menu */
+    private Parent previousMenu;
 
     @FXML
     private void initialize() {
@@ -56,8 +60,12 @@ public final class SettingsMenu {
         settings.setFullScreen(fullScreen.isSelected());
     }
 
+    public void setPreviousParent(Parent menu){
+        previousMenu = menu;
+    }
+
     @FXML
     void onBackPressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getMainMenu());
+        Main.switchRoot(previousMenu);
     }
 }
