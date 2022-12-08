@@ -31,6 +31,9 @@ public class Level {
     /** The current score. */
     private int playerScore;
 
+    /** Time left score multiplyer when level is complete. */
+    private static final int TIME_LEFT_SCORE_MULTIPLYER = 5;
+
     /**
      * Constructs a new level.
      * @param size The size of the level (Num of tiles).
@@ -47,22 +50,14 @@ public class Level {
      * @param inTimeLimit The new time limit for the level.
      */
     public void setTimeLimit(final int inTimeLimit) {
-        timeLeftInMilliseconds = inTimeLimit;
-    }
-
-    public void setTime(int time) {
-        this.timeLeftInMilliseconds = time * 1000;
-    }
-
-    public int getTime(){
-        return this.timeLeftInMilliseconds;
+        timeLeftInMilliseconds = inTimeLimit * Main.MILLISECONDS_IN_A_SECOND;
     }
 
     /**
      * Gets the time limit for the level.
      * @return The time limit for the level.
      */
-    public int getTimeLimit() {
+    public int getTime() {
         return timeLeftInMilliseconds;
     }
 
@@ -72,6 +67,15 @@ public class Level {
      */
     public void addTime(final int additionalTime) {
         timeLeftInMilliseconds += additionalTime;
+    }
+
+    /**
+     * When level is complete, additional score added for time left.
+     */
+    public void addTimeLeftScore() {
+        incrementPlayerScore((timeLeftInMilliseconds/Main.MILLISECONDS_IN_A_SECOND)
+        * TIME_LEFT_SCORE_MULTIPLYER);
+        System.out.println("Final score: " + playerScore); //temporary
     }
 
     /**
@@ -177,7 +181,8 @@ public class Level {
             for (Tile tileInstance: neighbouringTiles) {
                 tileInstance.removeBombTrigger(pos);
             }
-        }getTile(pos).setItem(null);
+        }
+        getTile(pos).setItem(null);
         if (item instanceof Loot || item instanceof Lever) {
             checkIfDoorOpen();
         }

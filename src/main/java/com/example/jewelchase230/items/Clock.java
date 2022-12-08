@@ -1,5 +1,6 @@
 package com.example.jewelchase230.items;
 
+import com.example.jewelchase230.Main;
 import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.characters.Player;
 
@@ -14,7 +15,6 @@ public class Clock extends Item {
 
     /** Additional time clock provides to player. */
     private int timeFromClock;
-    private int secondsToMilliseconds = 1000;
 
     /**
      * Constructs a clock.
@@ -22,7 +22,7 @@ public class Clock extends Item {
      */
     public Clock(final int inTime) {
         super(CLOCK_IMAGE);
-        timeFromClock = inTime * secondsToMilliseconds;
+        timeFromClock = inTime * Main.MILLISECONDS_IN_A_SECOND;
     }
 
     /**
