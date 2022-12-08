@@ -17,6 +17,8 @@ public class LevelHighScores implements Serializable {
 
 	/** ArrayList holds scores of all players from all levels */
 	private ArrayList<ProfileScore> levelScoreList = new ArrayList<>();
+	
+	private ArrayList<Integer>levelScoreListScores = new ArrayList<>();
 
 	/** Integer which specifies the player's score for this level */
 	private int playerLevelScore;
@@ -24,7 +26,7 @@ public class LevelHighScores implements Serializable {
 	private final int LEGAL_HIGH_SCORE_NUM = 10;
 
 	/** Linked List which holds the top 10 high scores */
-	LinkedList<Integer> topTenHighScores = new LinkedList<Integer>();
+	LinkedList<ProfileScore> topTenHighScores = new LinkedList<ProfileScore>();
 
 	/**
 	 * Method which searches the ArrayList of profiles scores and checks alongside
@@ -50,13 +52,17 @@ public class LevelHighScores implements Serializable {
 				ProfileScore profileScore = new ProfileScore(score, currentLevel, profile.getPlayerName(),profile.getUniquePlayerID());
 				levelScoreList.add(profileScore);
 				
-				
 			}
 		}
-
-	
 	}
 
+	public void createProfilesPerLevelXScore() { 
+		for (int i = 0; i <= levelScoreList.size(); i++ ) { 
+			levelScoreListScores.add(levelScoreList.get(i).getHighestScore());
+		}
+			
+		
+	}
 	
 	
 
@@ -67,12 +73,12 @@ public class LevelHighScores implements Serializable {
 	 * @param orderedLevelHighScores
 	 * @return
 	 */
-	public LinkedList<Integer> cullTopTenHighScoresForLevelX(ArrayList<ProfileScore> levelScoreList, int levelTopTen) {
+	public LinkedList<ProfileScore> cullTopTenHighScoresForLevelX(ArrayList<ProfileScore> levelScoreList, int levelTopTen) {
 		
 			for (int i = 0; i <= levelScoreList.size(); i++) { 
 					if(levelScoreList.get(i).getCurrentLevel() == levelTopTen) {
 						for (int k = 0; k < LEGAL_HIGH_SCORE_NUM; k++)
-						topTenHighScores.addLast(levelScoreList.get(i).getHighestScore());
+						topTenHighScores.addLast(levelScoreList.get(i));
 
 					}
 					
@@ -113,7 +119,7 @@ public class LevelHighScores implements Serializable {
 	/**
 	 * @return the topTenHighScores
 	 */
-	public LinkedList<Integer> getTopTenHighScores() {
+	public LinkedList<ProfileScore> getTopTenHighScores() {
 		return topTenHighScores;
 	}
 

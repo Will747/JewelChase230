@@ -61,11 +61,7 @@ public final class HighScoreMenu {
 
 	@FXML
 	private void initialize() {
-		
-	
-
-
-		
+				
 		playerCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, String>("name"));
 		levelCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, Integer>("currentLevel"));
 		hsCol.setCellValueFactory(new PropertyValueFactory<ProfileScore, Integer>("highestScore"));
