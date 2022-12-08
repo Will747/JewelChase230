@@ -77,6 +77,8 @@ public class Profile {
 	 * @param newLevelReached the levelReached to set
 	 */
 	public void setLevelReached(final Integer newLevelReached) {
-		levelReached = newLevelReached;
+		if (newLevelReached > levelReached) {
+			levelReached = newLevelReached;
+		}
 	}
 }
