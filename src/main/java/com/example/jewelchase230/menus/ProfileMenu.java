@@ -8,6 +8,7 @@ import com.example.jewelchase230.profiles.Profile;
 import com.example.jewelchase230.profiles.ProfileManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -71,6 +72,30 @@ public final class ProfileMenu {
     private Pane playerFourPane;
 
     /**
+     * Player 1 Image.
+     */
+    @FXML
+    private ImageView playerOneImage;
+
+    /**
+     * Player 2 Image.
+     */
+    @FXML
+    private ImageView playerTwoImage;
+
+    /**
+     * Player 3 Image.
+     */
+    @FXML
+    private ImageView playerThreeImage;
+
+    /**
+     * Player 4 Image.
+     */
+    @FXML
+    private ImageView playerFourImage;
+
+    /**
      * Player 1 profile.
      */
     private Profile player1;
@@ -109,23 +134,33 @@ public final class ProfileMenu {
         profileList = ProfileManager.getListOfProfile();
 
         int i = 0;
+        Profile profileI = null;
         if (profileList.size() > i) {
-            playerOneLabel.setText(profileList.get(i).getPlayerName());
-            player1 = profileList.get(i);
+            profileI = profileList.get(i);
+            playerOneLabel.setText(profileI.getPlayerName());
+            playerOneImage.setImage(profileI.getCatCharacter().getLeftImage());
+            player1 = profileI;
             i++;
             if (profileList.size() > i) {
-                playerTwoLabel.setText(profileList.get(i).getPlayerName());
-                player2 = profileList.get(i);
+                profileI = profileList.get(i);
+                playerTwoLabel.setText(profileI.getPlayerName());
+                playerTwoImage.setImage(profileI.getCatCharacter()
+                        .getLeftImage());
+                player2 = profileI;
                 i++;
                 if (profileList.size() > i) {
-                    playerThreeLabel.setText(profileList.get(i)
-                            .getPlayerName());
-                    player3 = profileList.get(i);
+                    profileI = profileList.get(i);
+                    playerThreeLabel.setText(profileI.getPlayerName());
+                    playerThreeImage.setImage(profileI.getCatCharacter()
+                            .getLeftImage());
+                    player3 = profileI;
                     i++;
                     if (profileList.size() > i) {
-                        playerFourLabel.setText(profileList.get(i)
-                                .getPlayerName());
-                        player4 = profileList.get(i);
+                        profileI = profileList.get(i);
+                        playerFourLabel.setText(profileI.getPlayerName());
+                        playerFourImage.setImage(profileI.getCatCharacter()
+                                .getLeftImage());
+                        player4 = profileI;
 
                     }
                 }

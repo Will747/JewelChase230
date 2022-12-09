@@ -75,7 +75,7 @@
             <Pane fx:id="playerOnePane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
                <children>
                   <Label fx:id="playerOneLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P1" />
-                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
+                  <ImageView fx:id="playerOneImage" fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
                      <image>
                         <Image url="@../fxmlImages/CAT_BLACK_SIT.png" />
                      </image>
@@ -86,7 +86,7 @@
             <Pane fx:id="playerThreePane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.rowIndex="1">
                <children>
                   <Label fx:id="playerThreeLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P3" />
-                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="playerThreeImage" fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../fxmlImages/CAT_TABBY_SIT.png" />
                      </image>
@@ -97,7 +97,7 @@
             <Pane fx:id="playerFourPane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label fx:id="playerFourLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P4" />
-                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="playerFourImage" fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../fxmlImages/CAT_WHITE_SIT.png" />
                      </image>
@@ -108,7 +108,7 @@
             <Pane fx:id="playerTwoPane" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: lightgrey;" GridPane.columnIndex="1">
                <children>
                   <Label fx:id="playerTwoLabel" alignment="CENTER" layoutX="120.0" layoutY="20.0" prefHeight="69.0" prefWidth="158.0" text="P2" />
-                  <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="playerTwoImage" fitHeight="84.0" fitWidth="87.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../fxmlImages/CAT_OREO_SIT.png" />
                      </image>

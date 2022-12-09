@@ -1,5 +1,8 @@
 package com.example.jewelchase230.profiles;
+import javafx.scene.image.Image;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 /**
@@ -39,7 +42,7 @@ public enum ProfileImage {
 
     /**
      * Gets the file path for the left facing image.
-     * 
+     *
      * @return The file path for the left facing image.
      */
     public String getLeft() {
@@ -48,7 +51,7 @@ public enum ProfileImage {
 
     /**
      * Gets the file path for the right facing image.
-     * 
+     *
      * @return The file path for the right facing image.
      */
     public String getRight() {
@@ -57,7 +60,7 @@ public enum ProfileImage {
 
     /**
      * Converts a character to a cat.
-     * 
+     *
      * @param catID The character.
      * @return The corresponding cat.
      */
@@ -69,20 +72,33 @@ public enum ProfileImage {
             case 'w' -> White;
             default -> Tabby;
         };
-    } 
+    }
 
     /**
      * Gets the cat id.
-     * 
+     *
      * @return The cat id.
      */
     public char getChar() {
-        return(name().toLowerCase().charAt(0));
+        return (name().toLowerCase().charAt(0));
+    }
+
+    /**
+     * @return The profile image facing left.
+     */
+    public Image getLeftImage() {
+        try {
+            return new Image(new FileInputStream(catImagePath + "_LEFT.png"));
+        } catch (FileNotFoundException e) {
+            System.out.println("Failed to load profile image!");
+        }
+
+        return null;
     }
 
     /**
      * Gets a random cat character.
-     * 
+     *
      * @return A randomly picked cat image.
      */
     public static ProfileImage getRandomCat() {
