@@ -51,7 +51,8 @@ public class Profile {
         uniquePlayerID = UUID.fromString(lineDataSplit[0]);
         playerName = lineDataSplit[1];
         levelReached = Integer.parseInt(lineDataSplit[2]);
-        catCharacter = ProfileImage.getRandomCat();
+        char catID = lineDataSplit[3].charAt(0);
+        catCharacter = ProfileImage.getCatFromChar(catID);
     }
 
     /**
@@ -65,7 +66,8 @@ public class Profile {
     public String toString() {
         return getUniquePlayerID().toString()
                 + "." + getPlayerName()
-                + "." + getLevelReached();
+                + "." + getLevelReached()
+                + "." + catCharacter.getChar();
     }
 
     /**
