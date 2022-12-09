@@ -21,10 +21,13 @@ public enum LeverGateColour {
     /** The gate image. */
     private final String gateImage;
 
-    /**  Lever and Gate colours. */
-    LeverGateColour(final String LeverImageFileName, 
+    /**  Lever and Gate colours.
+     * @param gateImageFileName The gate image file.
+     * @param leverImageFileName The lever image file.
+     */
+    LeverGateColour(final String leverImageFileName,
             final String gateImageFileName) {
-        leverImage = LeverImageFileName;
+        leverImage = leverImageFileName;
         gateImage = gateImageFileName;
     }
     /**
@@ -44,15 +47,15 @@ public enum LeverGateColour {
 
     /**
      * Gets the lever image for this colour.
-     * @return
+     * @return Lever image.
      */
     public String getLeverImage() {
         return leverImage;
     }
 
     /**
-     * gets the gate image for this colour.
-     * @return
+     * Gets the gate image for this colour.
+     * @return Gate image.
      */
     public String getGateImage() {
         return gateImage;
