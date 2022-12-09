@@ -1,6 +1,7 @@
 package com.example.jewelchase230;
 
 import com.example.jewelchase230.profiles.HighScoreTable;
+import com.example.jewelchase230.profiles.Profile;
 import com.example.jewelchase230.text.LevelNumText;
 import com.example.jewelchase230.text.ScoreText;
 import com.example.jewelchase230.text.TimeText;
@@ -156,9 +157,21 @@ public final class Main extends Application {
     /**
      * Changes the level currently being played.
      * @param level The new level.
+     * @param profile The profile playing this level.
      */
-    public static void setLevel(final Level level) {
+    public static void setLevel(final Level level, final Profile profile) {
         currentLevel = level;
+
+        if (currentLevel != null) {
+            currentLevel.setProfile(profile);
+        }
+    }
+
+    /**
+     * Destroys the current level.
+     */
+    public static void endCurrentLevel() {
+        currentLevel = null;
     }
 
     /**

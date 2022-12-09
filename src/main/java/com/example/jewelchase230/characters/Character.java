@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Caroline Segestaaland and Ben Stott.
  */
 public abstract class Character extends Sprite
-        implements Collidable, Serializable {
+        implements Collidable {
     /** True if the character is alive. */
     private boolean alive = true;
     /** Bones image. */

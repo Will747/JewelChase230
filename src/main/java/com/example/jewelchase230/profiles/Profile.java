@@ -26,7 +26,7 @@ public class Profile {
 	  public Profile(final String inPlayerName) {
 		  uniquePlayerID = UUID.randomUUID();
 		  playerName = inPlayerName;
-		  levelReached = 0;
+		  levelReached = 1;
 		}
 
 	  /**

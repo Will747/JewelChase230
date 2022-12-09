@@ -1,8 +1,12 @@
 package com.example.jewelchase230.menus;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.Optional;
 
+import com.example.jewelchase230.Level;
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.profiles.Profile;
@@ -10,6 +14,7 @@ import com.example.jewelchase230.profiles.ProfileManager;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +34,10 @@ public final class ProfileSelectMenu {
     @FXML
     private Label selectPlayerLevel;
 
+    /** Button used for loading the last saved game. */
+    @FXML
+    private Button saveGameButton;
+
     /** The profile being shown by this. */
     private Profile currentProfile;
 
@@ -38,9 +47,37 @@ public final class ProfileSelectMenu {
      * @param p The profile to be shown.
      */
     public void setProfile(final Profile p) {
+        currentProfile = p;
         selectPlayerName.setText(p.getPlayerName());
         selectPlayerLevel.setText("LEVEL : " + p.getLevelReached());
-        currentProfile = p;
+
+        String saveGamePath = p.getSaveGamePath();
+        File file = new File(saveGamePath);
+
+        if (file.exists()) {
+            saveGameButton.setDisable(false);
+        }
+    }
+
+    @FXML
+    void onLoadSaveGamePressed(final MouseEvent event) {
+        try {
+            String fileName = currentProfile.getSaveGamePath();
+            FileInputStream fileInputStream = new
+                    FileInputStream(fileName);
+            ObjectInputStream objectInputStream = new
+                    ObjectInputStream(fileInputStream);
+
+            Level newLevel = (Level) objectInputStream.readObject();
+
+            objectInputStream.close();
+            fileInputStream.close();
+
+            Main.setLevel(newLevel, currentProfile);
+            Main.switchToCanvas();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

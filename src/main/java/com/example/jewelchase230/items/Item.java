@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Ben Stott and Scott Williams
  */
-public abstract class Item extends Sprite implements Collidable, Serializable {
+public abstract class Item extends Sprite implements Collidable {
 
     /** Image for when the bomb has exploded. */
     private static final String ASHES_IMAGE = "images/BOMB_ASHES.png";

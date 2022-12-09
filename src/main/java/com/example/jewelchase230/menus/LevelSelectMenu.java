@@ -82,8 +82,7 @@ public final class LevelSelectMenu {
 
     private void switchToLevel(final int levelNum) {
         Level nextLevel = LevelFileReader.getLevel(levelNum);
-        nextLevel.setProfile(selectedProfile);
-        Main.setLevel(nextLevel);
+        Main.setLevel(nextLevel, selectedProfile);
         Main.switchToCanvas();
     }
     
