@@ -47,8 +47,8 @@ public final class SmartThief extends AICharacter {
      */
     public SmartThief(final Direction direction) {
         super();
-        facingLeftImage = FACING_LEFT_IMAGE;
-        facingRightImage = FACING_RIGHT_IMAGE;
+        setFacingLeftImage(FACING_LEFT_IMAGE);
+        setFacingRightImage(FACING_RIGHT_IMAGE);
         setDirection(direction);
     }
 
@@ -78,8 +78,11 @@ public final class SmartThief extends AICharacter {
         }
 
         // If the next position has been found move.
-        if (nextPos != null) {
+        if (nextPos != null && canCharactersCollide(nextPos)) {
+            // Check that square can still be moved into.
             setGridPosition(nextPos);
+        } else {
+            distanceMoved--; // Undo move
         }
     }
 
@@ -185,22 +188,23 @@ public final class SmartThief extends AICharacter {
     private ArrayList<IntVector2D> getAdjacentTiles(final IntVector2D tilePos) {
         ArrayList<IntVector2D> adjacentTiles = new ArrayList<>();
 
-        IntVector2D upPos = canMove(tilePos, Direction.UP, false);
+        IntVector2D upPos = canMoveIgnoreCharacters(tilePos, Direction.UP);
         if (!upPos.equals(tilePos)) {
             adjacentTiles.add(upPos);
         }
 
-        IntVector2D downPos = canMove(tilePos, Direction.DOWN, false);
+        IntVector2D downPos = canMoveIgnoreCharacters(tilePos, Direction.DOWN);
         if (!downPos.equals(tilePos)) {
             adjacentTiles.add(downPos);
         }
 
-        IntVector2D leftPos = canMove(tilePos, Direction.LEFT, false);
+        IntVector2D leftPos = canMoveIgnoreCharacters(tilePos, Direction.LEFT);
         if (!leftPos.equals(tilePos)) {
             adjacentTiles.add(leftPos);
         }
 
-        IntVector2D rightPos = canMove(tilePos, Direction.RIGHT, false);
+        IntVector2D rightPos = canMoveIgnoreCharacters(tilePos,
+                Direction.RIGHT);
         if (!rightPos.equals(tilePos)) {
             adjacentTiles.add(rightPos);
         }

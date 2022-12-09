@@ -22,8 +22,8 @@ public class FlyingAssassin extends AICharacter {
      * @param inDirection The inputted direction.
      */
     public FlyingAssassin(final Direction inDirection) {
-        facingLeftImage = FACING_LEFT_IMAGE;
-        facingRightImage = FACING_RIGHT_IMAGE;
+        setFacingLeftImage(FACING_LEFT_IMAGE);
+        setFacingRightImage(FACING_RIGHT_IMAGE);
         setDirection(inDirection);
     }
 
@@ -43,7 +43,7 @@ public class FlyingAssassin extends AICharacter {
                     currentDirection.getOppositeDirection();
             setDirection(newDirection);
             setGridPosition(canMove(-xDiff, -yDiff));
-            setImageFromFile(imageManager(newDirection));
+            setImageFromFile(getImage(newDirection));
         } else {
             setGridPosition(potentialPosition);
         }

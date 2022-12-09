@@ -27,8 +27,8 @@ public class FloorFollowingThief extends AICharacter {
      */
     public FloorFollowingThief(final Direction d, final TileColour c) {
         super();
-        facingLeftImage = FACING_LEFT_IMAGE;
-        facingRightImage = FACING_RIGHT_IMAGE;
+        setFacingLeftImage(FACING_LEFT_IMAGE);
+        setFacingRightImage(FACING_RIGHT_IMAGE);
         setDirection(d);
         colourToFollow = c;
     }
@@ -116,7 +116,7 @@ public class FloorFollowingThief extends AICharacter {
         if (!(potentialLeftTurnPos == currentPos)) {
             setGridPosition(potentialLeftTurnPos);
             setDirection(currentDirection.getLeftDirection());
-            setImageFromFile(imageManager(currentDirection));
+            setImageFromFile(getImage(currentDirection));
         } else if (!(potentialForwardPos == currentPos)) {
             setGridPosition(potentialForwardPos);
         } else if (!(potentialRightTurnPos == currentPos)) {

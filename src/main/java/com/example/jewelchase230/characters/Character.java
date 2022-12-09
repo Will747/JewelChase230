@@ -1,8 +1,12 @@
 package com.example.jewelchase230.characters;
-import com.example.jewelchase230.*;
+import com.example.jewelchase230.Collidable;
+import com.example.jewelchase230.Sprite;
+import com.example.jewelchase230.Tile;
+import com.example.jewelchase230.TileColour;
+import com.example.jewelchase230.Direction;
+import com.example.jewelchase230.Level;
 import com.example.jewelchase230.vectors.IntVector2D;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -15,9 +19,11 @@ public abstract class Character extends Sprite
     /** True if the character is alive. */
     private boolean alive = true;
 
-    protected String facingLeftImage;
+    /** The image when the character is facing to the left. */
+    private String facingLeftImage;
 
-    protected String facingRightImage;
+    /** The image when the character is facing to the right. */
+    private String facingRightImage;
 
 
     /** Bones image. */
@@ -72,9 +78,9 @@ public abstract class Character extends Sprite
         }
 
         // Check if the next tile has any matching colours with the current.
-        for (int i = 0; i < thisTileColours.size(); i++) {
-            for (int j = 0; j < nextTileColours.size(); j++) {
-                if (thisTileColours.get(i) == nextTileColours.get(j)) {
+        for (TileColour thisTileColour : thisTileColours) {
+            for (TileColour nextTileColour : nextTileColours) {
+                if (thisTileColour == nextTileColour) {
                     if (checkCharacters) {
                         return canCharactersCollide(
                                 nextMoveTile.getGridPosition());
@@ -103,15 +109,12 @@ public abstract class Character extends Sprite
      * particular tile.
      * @param startPos The initial position.
      * @param direction The direction the character wants to move in.
-     * @param checkCharacters True if characters on the grid should be
-     *                        considered.
      * @return The final position after making move or startPos if invalid move.
      */
-    protected IntVector2D canMove(final IntVector2D startPos,
-                                  final Direction direction,
-                                  final boolean checkCharacters) {
+    protected IntVector2D canMoveIgnoreCharacters(final IntVector2D startPos,
+                                  final Direction direction) {
         return canMove(startPos, direction.getDirectionVector(),
-                checkCharacters);
+                false);
     }
 
     /**
@@ -218,16 +221,15 @@ public abstract class Character extends Sprite
 
     /**
      * Gets the correct image depending on the direction.
-     * @param d new direction.
+     * @param newDirection The new direction.
      * @return image corresponding with the direction.
      */
-    protected String imageManager(final Direction newDirection) {
-        return switch (newDirection) {
-            case LEFT -> facingLeftImage;
-            case RIGHT -> facingRightImage;
-            case NONE -> facingLeftImage;
-            default -> imageManager(newDirection.getLeftDirection());
-        };
+    protected String getImage(final Direction newDirection) {
+        if (newDirection == Direction.RIGHT) {
+            return facingRightImage;
+        }
+
+        return facingLeftImage;
     }
 
     /**
@@ -245,5 +247,21 @@ public abstract class Character extends Sprite
         }
 
         super.setGridPosition(inGridPosition);
+    }
+
+    /**
+     * Sets the image when the character is facing to the left.
+     * @param inFacingLeftImage The facing left image path.
+     */
+    public void setFacingLeftImage(final String inFacingLeftImage) {
+        facingLeftImage = inFacingLeftImage;
+    }
+
+    /**
+     * Sets the image when the character is facing to the right.
+     * @param inFacingRightImage The facing right image path.
+     */
+    public void setFacingRightImage(final String inFacingRightImage) {
+        facingRightImage = inFacingRightImage;
     }
 }
