@@ -22,7 +22,7 @@ public class FloorFollowingThief extends AICharacter {
     public FloorFollowingThief(final Direction d, final TileColour c) {
         super();
         setDirection(d);
-        setImageFromFile("images/FLOOR_FOLLOWING_THIEF.png"); 
+        setImageFromFile("images/FLOOR_FOLLOWING_THIEF.png");
         colourToFollow = c;
     }
 
@@ -54,13 +54,22 @@ public class FloorFollowingThief extends AICharacter {
     }
 
     /**
-     * Checks that the next move is a valid move.
+     * Compares two tiles and decides if it is possible to move between them.
+     * Ignoring the current positions of other characters.
      * @param nextMoveTile The tile to be moved to.
+     * @param colourFollow The specific colour the next tile must be.
+     * @param currentPos The current position.
+     * @param checkCharacters True if other characters should be
+     *                        considered.
      * @return True if valid move, false if not.
      */
     @Override
-    protected boolean validNextTile(final Tile nextMoveTile) {
-        return super.validNextTile(nextMoveTile, colourToFollow);
+    protected boolean validNextTile(final Tile nextMoveTile,
+                                    final TileColour colourFollow,
+                                    final IntVector2D currentPos,
+                                    final boolean checkCharacters) {
+        return super.validNextTile(
+                nextMoveTile, colourToFollow, currentPos, checkCharacters);
     }
 
     /**
