@@ -3,8 +3,6 @@ package com.example.jewelchase230.menus;
 import java.io.IOException;
 import java.util.Optional;
 
-import com.example.jewelchase230.Level;
-import com.example.jewelchase230.LevelFileReader;
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.profiles.Profile;

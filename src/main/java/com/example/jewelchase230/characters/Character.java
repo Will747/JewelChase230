@@ -26,15 +26,6 @@ public abstract class Character extends Sprite
     /**
      * Checks that the next move is a valid move.
      * @param nextMoveTile The tile to be moved to.
-     * @return True if valid move, false if not.
-     */
-    protected boolean validNextTile(final Tile nextMoveTile) {
-        return validNextTile(nextMoveTile, null);
-    }
-
-    /**
-     * Checks that the next move is a valid move.
-     * @param nextMoveTile The tile to be moved to.
      * @param colourFollow The specific colour the next tile must be.
      * @return True if valid move, false if not.
      */
@@ -115,18 +106,6 @@ public abstract class Character extends Sprite
                                   final boolean checkCharacters) {
         return canMove(startPos, direction.getDirectionVector(),
                 checkCharacters);
-    }
-
-    /**
-     * Checks if a character can move in a certain direction from a
-     * particular tile.
-     * @param startPos The initial position.
-     * @param direction The direction the character wants to move in.
-     * @return The final position after making move or startPos if invalid move.
-     */
-    protected IntVector2D canMove(final IntVector2D startPos,
-                                  final Direction direction) {
-        return canMove(startPos, direction.getDirectionVector(), true);
     }
 
     /**
