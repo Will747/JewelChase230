@@ -22,8 +22,9 @@ public class FlyingAssassin extends AICharacter {
      * @param inDirection The inputted direction.
      */
     public FlyingAssassin(final Direction inDirection) {
+        facingLeftImage = FACING_LEFT_IMAGE;
+        facingRightImage = FACING_RIGHT_IMAGE;
         setDirection(inDirection);
-        setImageFromFile(imageManager(inDirection));
     }
 
     /**
@@ -101,19 +102,6 @@ public class FlyingAssassin extends AICharacter {
         if (character != null) {
             character.kill();
         }
-    }
-
-    /**
-     * Gets the correct image depending on the direction.
-     * @param d new direction.
-     * @return image corresponding with the direction.
-     */
-    private String imageManager(final Direction d) {
-        return switch (d) {
-            case LEFT -> FACING_LEFT_IMAGE;
-            case RIGHT -> FACING_RIGHT_IMAGE;
-            default -> FACING_LEFT_IMAGE;
-        };
     }
 }
 

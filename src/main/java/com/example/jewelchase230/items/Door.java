@@ -52,7 +52,7 @@ public class Door extends Item {
             level.addTimeLeftScore();
             int nextLevelNum = level.getLevelNumber() + 1;
             Profile playerProfile = level.getCurrentProfile();
-            playerProfile.setLevelReached(level.getLevelNumber() + 1);
+            playerProfile.setLevelReached(nextLevelNum);
             Main.endCurrentLevel();
             Main.setLevel(
                     LevelFileReader.getLevel(nextLevelNum), playerProfile);

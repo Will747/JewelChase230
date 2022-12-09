@@ -19,8 +19,12 @@ import java.util.Stack;
  * @author Will Kaye
  */
 public final class SmartThief extends AICharacter {
-    /** Image used by the smart thief. */
-    private static final String SMART_THIEF_IMAGE = "images/SMART_THIEF.png";
+    /** Left facing image. */
+    static final String FACING_LEFT_IMAGE =
+            "images/SMART_THIEF_LEFT.png";
+    /** Right facing image. */
+    static final String FACING_RIGHT_IMAGE =
+            "images/SMART_THIEF_RIGHT.png";
 
     /** The item the thief is heading towards. */
     private Item targetItem;
@@ -43,8 +47,9 @@ public final class SmartThief extends AICharacter {
      */
     public SmartThief(final Direction direction) {
         super();
+        facingLeftImage = FACING_LEFT_IMAGE;
+        facingRightImage = FACING_RIGHT_IMAGE;
         setDirection(direction);
-        setImageFromFile(SMART_THIEF_IMAGE);
     }
 
     @Override

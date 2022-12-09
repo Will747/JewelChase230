@@ -14,6 +14,12 @@ public abstract class Character extends Sprite
         implements Collidable {
     /** True if the character is alive. */
     private boolean alive = true;
+
+    protected String facingLeftImage;
+
+    protected String facingRightImage;
+
+
     /** Bones image. */
     private static final String BONES_IMAGE = "images/BONES.png";
     /**
@@ -208,6 +214,20 @@ public abstract class Character extends Sprite
     @Override
     public void onCollision(final Character character) {
         kill();
+    }
+
+    /**
+     * Gets the correct image depending on the direction.
+     * @param d new direction.
+     * @return image corresponding with the direction.
+     */
+    protected String imageManager(final Direction newDirection) {
+        return switch (newDirection) {
+            case LEFT -> facingLeftImage;
+            case RIGHT -> facingRightImage;
+            case NONE -> facingLeftImage;
+            default -> imageManager(newDirection.getLeftDirection());
+        };
     }
 
     /**

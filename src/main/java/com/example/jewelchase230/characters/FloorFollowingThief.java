@@ -13,6 +13,12 @@ import com.example.jewelchase230.vectors.IntVector2D;
 public class FloorFollowingThief extends AICharacter {
     /** Colour for the FFT to follow. */
     private final TileColour colourToFollow;
+    /** Left facing image. */
+    static final String FACING_LEFT_IMAGE =
+            "images/FLOOR_FOLLOWING_THIEF_LEFT.png";
+    /** Right facing image. */
+    static final String FACING_RIGHT_IMAGE =
+            "images/FLOOR_FOLLOWING_THIEF_RIGHT.png";
 
     /**
      * Constructs a renderable component.
@@ -21,8 +27,9 @@ public class FloorFollowingThief extends AICharacter {
      */
     public FloorFollowingThief(final Direction d, final TileColour c) {
         super();
+        facingLeftImage = FACING_LEFT_IMAGE;
+        facingRightImage = FACING_RIGHT_IMAGE;
         setDirection(d);
-        setImageFromFile("images/FLOOR_FOLLOWING_THIEF.png");
         colourToFollow = c;
     }
 
@@ -109,6 +116,7 @@ public class FloorFollowingThief extends AICharacter {
         if (!(potentialLeftTurnPos == currentPos)) {
             setGridPosition(potentialLeftTurnPos);
             setDirection(currentDirection.getLeftDirection());
+            setImageFromFile(imageManager(currentDirection));
         } else if (!(potentialForwardPos == currentPos)) {
             setGridPosition(potentialForwardPos);
         } else if (!(potentialRightTurnPos == currentPos)) {
