@@ -10,14 +10,19 @@ import com.example.jewelchase230.characters.Player;
  * @author Ben Stott
  */
 public class Clock extends Item {
-    /** The clock image. */
+    /**
+     * The clock image.
+     */
     private static final String CLOCK_IMAGE = "images/CLOCK.png";
 
-    /** Additional time clock provides to player. */
+    /**
+     * Additional time clock provides to player.
+     */
     private int timeFromClock;
 
     /**
      * Constructs a clock.
+     *
      * @param inTime Additional time clock provides to player.
      */
     public Clock(final int inTime) {
@@ -27,6 +32,7 @@ public class Clock extends Item {
 
     /**
      * Changes the current additional time value.
+     *
      * @param newTime The new additional time value.
      */
     public void setTime(final int newTime) {
@@ -35,6 +41,7 @@ public class Clock extends Item {
 
     /**
      * Get the additional time value.
+     *
      * @return The additional time value.
      */
     public int getTime() {

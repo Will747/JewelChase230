@@ -15,18 +15,25 @@ import javafx.scene.text.Text;
  * @author Will Kaye
  */
 public abstract class CanvasText extends Renderable {
-    /** Font name. */
+    /**
+     * Font name.
+     */
     private static final String FONT_NAME = "Silkscreen";
 
-    /** Distance from other things on the grid. */
+    /**
+     * Distance from other things on the grid.
+     */
     private static final int PADDING = 8;
 
-    /** The position of text above the grid. */
+    /**
+     * The position of text above the grid.
+     */
     private final TextPosition position;
 
     /**
      * Constructs a new CanvasText and gives it
      * a position above the grid.
+     *
      * @param pos The horizontal position on the window.
      */
     protected CanvasText(final TextPosition pos) {
@@ -48,6 +55,7 @@ public abstract class CanvasText extends Renderable {
 
     /**
      * Draws this item to the canvas.
+     *
      * @param gc GraphicsContext for creating draw class.
      */
     @Override

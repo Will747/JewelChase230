@@ -9,11 +9,14 @@ import com.example.jewelchase230.characters.Character;
  */
 public class Gate extends Item {
 
-    /** The gate colour. */
+    /**
+     * The gate colour.
+     */
     private final LeverGateColour colour;
 
     /**
      * Constructs a new gate.
+     *
      * @param inColour defines the gate colour.
      */
     public Gate(final LeverGateColour inColour) {
@@ -24,6 +27,7 @@ public class Gate extends Item {
 
     /**
      * Returns the colour of the gate.
+     *
      * @return colour of the gate.
      */
     public LeverGateColour getColour() {

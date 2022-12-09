@@ -1,4 +1,5 @@
 package com.example.jewelchase230;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,13 +13,19 @@ import java.net.URL;
  * @author Adam Smith and Will Kaye
  */
 public final class MessageOfTheDay {
-    /** 'A' ASCII character value. */
+    /**
+     * 'A' ASCII character value.
+     */
     private static final int A_CHAR_AS_INT = 'A';
 
-    /** 'Z' ASCII character value. */
+    /**
+     * 'Z' ASCII character value.
+     */
     private static final int Z_CHAR_AS_INT = 'Z';
 
-    /** Suffix that gets added to the end of the puzzle. */
+    /**
+     * Suffix that gets added to the end of the puzzle.
+     */
     private static final String SUFFIX = "CS-230";
 
     private MessageOfTheDay() {
@@ -26,6 +33,7 @@ public final class MessageOfTheDay {
 
     /**
      * Returns the string containing the message of the day.
+     *
      * @return String with today's message on.
      */
     public static String getMessageOfTheDay() {
@@ -35,6 +43,7 @@ public final class MessageOfTheDay {
     /**
      * Submits a get request to the message of the day API and returns the
      * puzzle that needed to be solved.
+     *
      * @return puzzle the puzzle that is solved to get the message of the day.
      */
     private static String getPuzzle() {
@@ -80,6 +89,7 @@ public final class MessageOfTheDay {
     /**
      * Solves the puzzle so that it can be sent as a parameter to
      * the API to get the message of the day.
+     *
      * @param puzzle the puzzle returned from the first API request.
      * @return solutionQuery the solved puzzle and formatted with extra
      * information needed for the final API request.
@@ -122,6 +132,7 @@ public final class MessageOfTheDay {
     /**
      * Submits an API requests with the solution as the parameter and
      * returns the message of the day if correct.
+     *
      * @return message the message of the day from the API.
      */
     private static String getSolution() {
@@ -133,7 +144,7 @@ public final class MessageOfTheDay {
 
         try {
             // Builds URL with the correct query and opens a connection.
-            URI  tempURI = new URI(messageURL + solvedPuzzleQuery);
+            URI tempURI = new URI(messageURL + solvedPuzzleQuery);
             URL finalMessageURL = tempURI.toURL();
             message = makeRequest(finalMessageURL);
         } catch (Exception e) {

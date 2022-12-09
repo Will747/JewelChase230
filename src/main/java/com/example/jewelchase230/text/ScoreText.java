@@ -1,7 +1,6 @@
 package com.example.jewelchase230.text;
 
 import com.example.jewelchase230.Level;
-import com.example.jewelchase230.Main;
 
 /**
  * Renders the current in-game score to the canvas.

@@ -11,6 +11,7 @@ import com.example.jewelchase230.characters.Character;
 public interface Collidable {
     /**
      * Called when a character collides with this.
+     *
      * @param movingCharacter The colliding character.
      */
     void onCollision(Character movingCharacter);

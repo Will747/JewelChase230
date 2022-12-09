@@ -22,7 +22,9 @@ public abstract class Sprite extends Renderable {
      */
     private transient Image image;
 
-    /** Current path of image. */
+    /**
+     * Current path of image.
+     */
     private String imagePath;
 
     /**
@@ -37,6 +39,7 @@ public abstract class Sprite extends Renderable {
 
     /**
      * Constructs a new sprite with an image.
+     *
      * @param inImage The image used by the sprite.
      */
     public Sprite(final Image inImage) {
@@ -63,6 +66,7 @@ public abstract class Sprite extends Renderable {
 
     /**
      * Updates the image being rendered by this sprite.
+     *
      * @param inImage The image.
      */
     protected void setImage(final Image inImage) {
@@ -72,6 +76,7 @@ public abstract class Sprite extends Renderable {
 
     /**
      * Sets the image to render, from the file path to the image.
+     *
      * @param fileName File path of image.
      */
     protected void setImageFromFile(final String fileName) {
@@ -85,6 +90,7 @@ public abstract class Sprite extends Renderable {
 
     /**
      * Creates an image from a filename.
+     *
      * @param fileName The file path of the image.
      * @return The image.
      * @throws FileNotFoundException When the image cannot be loaded.

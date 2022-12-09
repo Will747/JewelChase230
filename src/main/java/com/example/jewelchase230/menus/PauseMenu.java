@@ -1,18 +1,20 @@
 package com.example.jewelchase230.menus;
+
 import com.example.jewelchase230.Level;
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
-import com.example.jewelchase230.profiles.Profile;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
 /**
  * The class controls the pause menu of the game.
+ *
  * @author Adam Smith
  */
 public class PauseMenu {
     /**
      * Resumes the game to the current state.
+     *
      * @param event A user input.
      */
     @FXML
@@ -22,26 +24,31 @@ public class PauseMenu {
 
     /**
      * Changes to the settings menu.
+     *
      * @param event A user input.
      */
     @FXML
     private void onSettingsMenuPressed(final MouseEvent event) {
-        Menu.getSettingsMenuController().setPreviousParent(Menu.getMainMenu()); //Menu.getPauseMenu());
+        Menu.getSettingsMenuController()
+                .setPreviousParent(Menu.getPauseMenu());
         Main.switchRoot(Menu.getSettingsMenu());
     }
 
     /**
      * Changes to the high score menu.
+     *
      * @param event A user input.
      */
     @FXML
     private void onHighScoreTablePressed(final MouseEvent event) {
-        Menu.getHighScoreMenuController().setPreviousParent(Menu.getMainMenu());//Menu.getPauseMenu());
+        Menu.getHighScoreMenuController()
+                .setPreviousParent(Menu.getPauseMenu());
         Main.switchRoot(Menu.getHighScoreTable());
     }
 
     /**
      * Saves the game at the current point.
+     *
      * @param event A user input.
      */
     @FXML
@@ -52,6 +59,7 @@ public class PauseMenu {
 
     /**
      * Exits game to menu.
+     *
      * @param event A user input.
      */
     @FXML
@@ -62,6 +70,7 @@ public class PauseMenu {
 
     /**
      * Exits the game.
+     *
      * @param event A user input.
      */
     @FXML

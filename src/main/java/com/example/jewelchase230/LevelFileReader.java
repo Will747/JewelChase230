@@ -17,12 +17,14 @@ import com.example.jewelchase230.items.LeverGateColour;
 import com.example.jewelchase230.items.LootType;
 
 import com.example.jewelchase230.vectors.IntVector2D;
+
 import java.io.File;
 import java.io.IOException;
 
 /**
  * This class reads an ASCII file and converts the data into objects and
  * information needed to make the level.
+ *
  * @author Adam Smith.
  */
 public final class LevelFileReader {
@@ -31,29 +33,51 @@ public final class LevelFileReader {
      * the level file.
      */
     private enum SpriteCode {
-        /** Bomb. */
+        /**
+         * Bomb.
+         */
         Bomb,
-        /** Clock. */
+        /**
+         * Clock.
+         */
         Clock,
-        /** Door. */
+        /**
+         * Door.
+         */
         Door,
-        /** Lever. */
+        /**
+         * Lever.
+         */
         Lever,
-        /** Gate. */
+        /**
+         * Gate.
+         */
         Gate,
-        /** Floor Following Thief. */
+        /**
+         * Floor Following Thief.
+         */
         FfThief,
-        /** Flying Assassin. */
+        /**
+         * Flying Assassin.
+         */
         FAssassin,
-        /** Loot. */
+        /**
+         * Loot.
+         */
         Loot,
-        /** Player. */
+        /**
+         * Player.
+         */
         Player,
-        /** Smart Thief. */
+        /**
+         * Smart Thief.
+         */
         SmartThief;
     }
 
-    /** The level being built. */
+    /**
+     * The level being built.
+     */
     private static Level levelBuilt;
 
     private LevelFileReader() {
@@ -62,18 +86,20 @@ public final class LevelFileReader {
     /**
      * Method that is called to start the process of reading in
      * the level ASCII file.
+     *
      * @param fileName The name / directory of the file being read in.
      * @param levelNum The number of this level.
      * @return Returns the built level.
      */
     public static Level readInFile(final String fileName, final int levelNum) {
-           File levelFile = new File(fileName);
-           lineReader(levelFile, levelNum);
-           return levelBuilt;
+        File levelFile = new File(fileName);
+        lineReader(levelFile, levelNum);
+        return levelBuilt;
     }
 
     /**
      * Loads in a specific level based on the level number passed in.
+     *
      * @param levelNum The int that is passed to represent the level.
      * @return The level being returned.
      */
@@ -83,6 +109,7 @@ public final class LevelFileReader {
 
     /**
      * Returns the number of levels the game has.
+     *
      * @return the number of levels.
      */
     public static int getMaxLevel() {
@@ -94,8 +121,9 @@ public final class LevelFileReader {
     /**
      * Reads the information from the file and processes the values as
      * there needed to be.
+     *
      * @param levelFile The file being read.
-     * @param levelNum The level number.
+     * @param levelNum  The level number.
      */
     private static void lineReader(final File levelFile, final int levelNum) {
         // Tries to read the file and sends an error code if the file
@@ -114,33 +142,33 @@ public final class LevelFileReader {
             // Changes the tokens in the text file to tile objects
             // that are added to the level.
             for (int i = 0; i < yAxis; i++) {
-                 for (int j = 0; j < xAxis; j++) {
-                     String tempTileColour = fileScanner.next();
+                for (int j = 0; j < xAxis; j++) {
+                    String tempTileColour = fileScanner.next();
 
-                     int charIdx = 0;
-                     TileColour topLeft = TileColour.getTileColourType(
-                             tempTileColour.charAt(charIdx));
-                     charIdx++;
+                    int charIdx = 0;
+                    TileColour topLeft = TileColour.getTileColourType(
+                            tempTileColour.charAt(charIdx));
+                    charIdx++;
 
-                     TileColour topRight = TileColour.getTileColourType(
-                             tempTileColour.charAt(charIdx));
-                     charIdx++;
+                    TileColour topRight = TileColour.getTileColourType(
+                            tempTileColour.charAt(charIdx));
+                    charIdx++;
 
-                     TileColour bottomLeft = TileColour.getTileColourType(
-                             tempTileColour.charAt(charIdx));
-                     charIdx++;
+                    TileColour bottomLeft = TileColour.getTileColourType(
+                            tempTileColour.charAt(charIdx));
+                    charIdx++;
 
-                     TileColour bottomRight = TileColour.getTileColourType(
-                             tempTileColour.charAt(charIdx));
+                    TileColour bottomRight = TileColour.getTileColourType(
+                            tempTileColour.charAt(charIdx));
 
-                     Tile tempTile = new
-                             Tile(topLeft, topRight, bottomLeft, bottomRight);
-                     IntVector2D tempTilePos = new IntVector2D(j, i);
-                     levelBuilt.addTile(tempTilePos, tempTile);
-                 }
+                    Tile tempTile = new
+                            Tile(topLeft, topRight, bottomLeft, bottomRight);
+                    IntVector2D tempTilePos = new IntVector2D(j, i);
+                    levelBuilt.addTile(tempTilePos, tempTile);
+                }
             }
 
-             fileScanner.nextLine();
+            fileScanner.nextLine();
             // Makes objects from the provided information.
             while (fileScanner.hasNextLine()) {
                 spriteBuilder(fileScanner.nextLine());
@@ -153,6 +181,7 @@ public final class LevelFileReader {
     /**
      * Makes the objects from the passed information and
      * adds them to an array list.
+     *
      * @param value The serialized data.
      */
     private static void spriteBuilder(final String value) {
@@ -180,20 +209,20 @@ public final class LevelFileReader {
             case Lever -> {
                 String colour = lineScanner.next();
                 LeverGateColour leverColour =
-                    LeverGateColour.colourInputConversion(
-                        colour.charAt(0));
+                        LeverGateColour.colourInputConversion(
+                                colour.charAt(0));
                 Lever tempLever = new Lever(leverColour);
                 levelBuilt.addItem(tempPos, tempLever);
-            break;
+                break;
             }
             case Gate -> {
                 String colour = lineScanner.next();
                 LeverGateColour gateColour =
-                    LeverGateColour.colourInputConversion(
-                        colour.charAt(0));
+                        LeverGateColour.colourInputConversion(
+                                colour.charAt(0));
                 Gate tempGate = new Gate(gateColour);
                 levelBuilt.addItem(tempPos, tempGate);
-            break;
+                break;
             }
             case FfThief -> {
                 String directionString = lineScanner.next();

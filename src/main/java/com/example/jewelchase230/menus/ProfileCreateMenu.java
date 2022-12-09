@@ -1,7 +1,5 @@
 package com.example.jewelchase230.menus;
 
-import java.io.IOException;
-
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.profiles.Profile;
@@ -17,101 +15,97 @@ import javafx.stage.Modality;
 /**
  * Controller for the create profile menu.
  *
- * @author Kellie Robinson
- * @author Daniel Clarke
- *
+ * @author Kellie Robinson, Daniel Clarke
  */
-
-
 public final class ProfileCreateMenu {
 
-	@FXML
-	private Button buttonCreateProfile; 
-	@FXML 
-	private TextField createProfileName;
-	
-	
-	public String profileCreatedName; 
-	
-	@FXML
-	private Button createProfileMenuButton;
-	
-	int profileNewSlot;
-	
-	
-	
-	@FXML
-	/** 
-	 * This method creates a profile using the user's name input
-	 * @param event: MouseClick
-	 * @throws IOException
-	 */
-	void onCreateProfilePressed(final MouseEvent event)
-			throws IOException {
-		profileCreatedName = createProfileName.getText();
-		if (acceptableName(profileCreatedName)) {
-			if(ProfileManager.getListOfProfile().size() <= 3){
-				Profile newProfile = new Profile(profileCreatedName);
-				ProfileManager.addProfile(newProfile);
-				ProfileManager.saveProfiles();
-				Menu.getProfileMenuController().refresh();
-				Main.switchRoot(Menu.getProfileMenu());
-			}
-			else{
-				fullProfiles();
-				System.out.println("FULL PROFILES");
-			}
+    /**
+     * Create profile button.
+     */
+    @FXML
+    private Button buttonCreateProfile;
 
-		} else {
-			System.out.println("INVALID INPUT");
-		}
+    /**
+     * Profile name text field.
+     */
+    @FXML
+    private TextField createProfileName;
 
-	}
+    /**
+     * Create profile button.
+     */
+    @FXML
+    private Button createProfileMenuButton;
 
-	/**
-	 * Method which allows user to navigate back to the Main Menu.
-	 * @param event (MouseClick)
-	 */
-	@FXML
+    /**
+     * This method creates a profile using the user's name input.
+     *
+     * @param event MouseClick
+     */
+    @FXML
+    void onCreateProfilePressed(final MouseEvent event) {
+        String profileCreatedName = createProfileName.getText();
+        if (acceptableName(profileCreatedName)) {
+            if (ProfileManager.getListOfProfile().size()
+                    < ProfileMenu.MAX_NUM_OF_PROFILES) {
+                Profile newProfile = new Profile(profileCreatedName);
+                ProfileManager.addProfile(newProfile);
+                ProfileManager.saveProfiles();
+                Menu.getProfileMenuController().refresh();
+                Main.switchRoot(Menu.getProfileMenu());
+            } else {
+                fullProfiles();
+                System.out.println("FULL PROFILES");
+            }
+
+        } else {
+            System.out.println("INVALID INPUT");
+        }
+
+    }
+
+    /**
+     * Method which allows user to navigate back to the Main Menu.
+     *
+     * @param event (MouseClick)
+     */
+    @FXML
     void onBackToProfileMenuPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileMenu());
     }
 
-	/**
-	 * Method which checks if a name is valid (only characters and numbers).
-	 * @param name
-	 * @return boolean value valid.
-	 */
-	boolean acceptableName(String name)
-	{
-		boolean valid = false;
-		if(name == "")
-		{
-			System.out.println("No name was entered");
-		}
-		else if(!name.matches("[a-zA-Z1-9]+"))
-		{
-			System.out.println("invalid charecter in name");
-		}
-		else
-		{
-			valid = true;
-		}
-		return(valid);
-	}
-	/**
-	 * Method which throws error on pretense that all profile slots are occupied.
-	 * @throws IOException
-	 */
-	private void fullProfiles() throws IOException{
-		Alert.AlertType type = Alert.AlertType.WARNING;
+    /**
+     * Method which checks if a name is valid (only characters and numbers).
+     *
+     * @param name The name to be checked.
+     * @return boolean value valid.
+     */
+    boolean acceptableName(final String name) {
+        boolean valid = false;
+        if (name.equals("")) {
+            System.out.println("No name was entered");
+        } else if (!name.matches("[a-zA-Z1-9]+")) {
+            System.out.println("invalid charecter in name");
+        } else {
+            valid = true;
+        }
+        return (valid);
+    }
 
-		Alert alert = new Alert(type, "");
+    /**
+     * Method which throws error on pretense that all profile
+     * slots are occupied.
+     */
+    private void fullProfiles() {
+        Alert.AlertType type = Alert.AlertType.WARNING;
 
-		alert.initModality(Modality.APPLICATION_MODAL);
-		alert.getDialogPane().setContentText("Too many profiles!");
-		alert.getDialogPane().setHeaderText("Please delete a Profile to continue");
+        Alert alert = new Alert(type, "");
 
-		alert.show();
-	}
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.getDialogPane().setContentText("Too many profiles!");
+        alert.getDialogPane()
+                .setHeaderText("Please delete a Profile to continue");
+
+        alert.show();
+    }
 }

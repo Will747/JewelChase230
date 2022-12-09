@@ -17,131 +17,184 @@ import javafx.scene.layout.Pane;
  * @author Daniel Clark
  */
 public final class ProfileMenu {
+    /**
+     * The maximum number of profiles shown by this menu.
+     */
+    public static final int MAX_NUM_OF_PROFILES = 4;
 
-	@FXML
-	private Label playerOneLabel;
+    /**
+     * Player 1 Label.
+     */
+    @FXML
+    private Label playerOneLabel;
 
-	@FXML
-	private Label playerTwoLabel;
+    /**
+     * Player 2 Label.
+     */
+    @FXML
+    private Label playerTwoLabel;
 
-	@FXML
-	private Label playerThreeLabel;
+    /**
+     * Player 3 Label.
+     */
+    @FXML
+    private Label playerThreeLabel;
 
-	@FXML
-	private Label playerFourLabel;
+    /**
+     * Player 4 Label.
+     */
+    @FXML
+    private Label playerFourLabel;
 
-	@FXML
-	private Pane playerOnePane;
-	@FXML
-	private Pane playerTwoPane;
-	@FXML
-	private Pane playerThreePane;
-	@FXML
-	private Pane playerFourPane;
+    /**
+     * Player 1 Pane.
+     */
+    @FXML
+    private Pane playerOnePane;
 
-	private Profile player1;
-	private Profile player2;
-	private Profile player3;
-	private Profile player4;
-	
-	static ArrayList<Profile> profileList = new ArrayList<Profile>();
+    /**
+     * Player 2 Pane.
+     */
+    @FXML
+    private Pane playerTwoPane;
 
-	@FXML
-	private void initialize() {
+    /**
+     * Player 3 Pane.
+     */
+    @FXML
+    private Pane playerThreePane;
 
-		refresh();
+    /**
+     * Player 4 Pane.
+     */
+    @FXML
+    private Pane playerFourPane;
 
-	}
+    /**
+     * Player 1 profile.
+     */
+    private Profile player1;
 
-	public void refresh() {
-		 profileList = ProfileManager.getListOfProfile();
-		if(profileList.size() > 0)
-		{
-			playerOneLabel.setText(profileList.get(0).getPlayerName());
-			player1 = profileList.get(0);
-			if (profileList.size() > 1) {
-				playerTwoLabel.setText(profileList.get(1).getPlayerName());
-				player2 = profileList.get(1);
-				if (profileList.size() > 2) {
-					playerThreeLabel.setText(profileList.get(2).getPlayerName());
-					player3 = profileList.get(2);
-					if (profileList.size() > 3) {
-						playerFourLabel.setText(profileList.get(3).getPlayerName());
-						player4 = profileList.get(3);
+    /**
+     * Player 2 profile.
+     */
+    private Profile player2;
 
-					}
-				}
-			}
-		}
+    /**
+     * Payer 3 profile.
+     */
+    private Profile player3;
 
-		if (profileList.size() < 4) {
-			playerFourPane.setVisible(false);
-			if (profileList.size() < 3) {
-				playerThreePane.setVisible(false);
-				if (profileList.size() < 2) {
-					playerTwoPane.setVisible(false);
-					if (profileList.size() < 1) {
-						playerOnePane.setVisible(false);
-					}
-					else{
-						playerOnePane.setVisible(true);
-					}
-				}
-				else{
-					playerTwoPane.setVisible(true);
-				}
-			}
-			else{
-				playerThreePane.setVisible(true);
-			}
-		}
-		else{
-			playerFourPane.setVisible(true);
-		}
-	}
+    /**
+     * Player 4 profile.
+     */
+    private Profile player4;
 
-	@FXML
-	void onBackToMainMenuPressed(final MouseEvent event) {
-		Main.switchRoot(Menu.getMainMenu());
-	}
-	
-	@FXML
-	void onProfileCreateMenuPressed(final MouseEvent event) { 
-		Main.switchRoot(Menu.getProfileCreateMenu());
-	}
+    /**
+     * List of profiles.
+     */
+    private static ArrayList<Profile> profileList = new ArrayList<>();
 
-	@FXML
-	void onP1Pressed(final MouseEvent event) {
-		ProfileSelectMenu selectController = Menu.getProfileSelectController();
-		selectController.setProfile(player1);
-		Main.switchRoot(Menu.getProfileSelect());
-	}
+    @FXML
+    private void initialize() {
 
-	@FXML
-	void onP2Pressed(final MouseEvent event) {
-		ProfileSelectMenu selectController = Menu.getProfileSelectController();
-		selectController.setProfile(player2);
-		Main.switchRoot(Menu.getProfileSelect());
-	}
+        refresh();
 
-	@FXML
-	void onP3Pressed(final MouseEvent event) {
-		ProfileSelectMenu selectController = Menu.getProfileSelectController();
-		selectController.setProfile(player3);
-		Main.switchRoot(Menu.getProfileSelect());
-	}
+    }
 
-	@FXML
-	void onP4Pressed(final MouseEvent event) {
-		ProfileSelectMenu selectController = Menu.getProfileSelectController();
-		selectController.setProfile(player4);
-		Main.switchRoot(Menu.getProfileSelect());
-	}
+    /**
+     * Updates all labels with the latest profiles.
+     */
+    public void refresh() {
+        profileList = ProfileManager.getListOfProfile();
 
-	/**
-	 * @return the profileList
-	 */
-	public ArrayList<Profile> getProfileList() {
-		return profileList;
-	}
+        int i = 0;
+        if (profileList.size() > i) {
+            playerOneLabel.setText(profileList.get(i).getPlayerName());
+            player1 = profileList.get(i);
+            i++;
+            if (profileList.size() > i) {
+                playerTwoLabel.setText(profileList.get(i).getPlayerName());
+                player2 = profileList.get(i);
+                i++;
+                if (profileList.size() > i) {
+                    playerThreeLabel.setText(profileList.get(i)
+                            .getPlayerName());
+                    player3 = profileList.get(i);
+                    i++;
+                    if (profileList.size() > i) {
+                        playerFourLabel.setText(profileList.get(i)
+                                .getPlayerName());
+                        player4 = profileList.get(i);
+
+                    }
+                }
+            }
+        }
+
+        i = MAX_NUM_OF_PROFILES;
+        if (profileList.size() < i) {
+            playerFourPane.setVisible(false);
+            i--;
+            if (profileList.size() < i) {
+                playerThreePane.setVisible(false);
+                i--;
+                if (profileList.size() < i) {
+                    playerTwoPane.setVisible(false);
+                    playerOnePane.setVisible(profileList.size() >= 1);
+                } else {
+                    playerTwoPane.setVisible(true);
+                }
+            } else {
+                playerThreePane.setVisible(true);
+            }
+        } else {
+            playerFourPane.setVisible(true);
+        }
+    }
+
+    @FXML
+    void onBackToMainMenuPressed(final MouseEvent event) {
+        Main.switchRoot(Menu.getMainMenu());
+    }
+
+    @FXML
+    void onProfileCreateMenuPressed(final MouseEvent event) {
+        Main.switchRoot(Menu.getProfileCreateMenu());
+    }
+
+    @FXML
+    void onP1Pressed(final MouseEvent event) {
+        ProfileSelectMenu selectController = Menu.getProfileSelectController();
+        selectController.setProfile(player1);
+        Main.switchRoot(Menu.getProfileSelect());
+    }
+
+    @FXML
+    void onP2Pressed(final MouseEvent event) {
+        ProfileSelectMenu selectController = Menu.getProfileSelectController();
+        selectController.setProfile(player2);
+        Main.switchRoot(Menu.getProfileSelect());
+    }
+
+    @FXML
+    void onP3Pressed(final MouseEvent event) {
+        ProfileSelectMenu selectController = Menu.getProfileSelectController();
+        selectController.setProfile(player3);
+        Main.switchRoot(Menu.getProfileSelect());
+    }
+
+    @FXML
+    void onP4Pressed(final MouseEvent event) {
+        ProfileSelectMenu selectController = Menu.getProfileSelectController();
+        selectController.setProfile(player4);
+        Main.switchRoot(Menu.getProfileSelect());
+    }
+
+    /**
+     * @return the profileList
+     */
+    public ArrayList<Profile> getProfileList() {
+        return profileList;
+    }
 }

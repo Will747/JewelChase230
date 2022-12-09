@@ -8,7 +8,9 @@ import com.example.jewelchase230.vectors.IntVector2D;
  * @author Caroline Segestaal.
  */
 public enum Direction {
-    /** The four directions. */
+    /**
+     * The four directions.
+     */
     UP, DOWN, LEFT, RIGHT, NONE;
 
     /**
@@ -28,6 +30,7 @@ public enum Direction {
 
     /**
      * Finds the direction after a left turn.
+     *
      * @return New direction.
      */
     public Direction getLeftDirection() {
@@ -42,6 +45,7 @@ public enum Direction {
 
     /**
      * Finds the direction after a right turn.
+     *
      * @return New Direction.
      */
     public Direction getRightDirection() {
@@ -57,6 +61,7 @@ public enum Direction {
     /**
      * Allows for a string parameter to be passed and an enum to be returned
      * for object creation.
+     *
      * @param directionString The inputted direction from the level file.
      * @return The wanted enum from the passed string.
      */
@@ -72,19 +77,24 @@ public enum Direction {
 
     /**
      * Generates a unit vector based on direction.
+     *
      * @return The unit vector.
      */
     public IntVector2D getDirectionVector() {
         int xDiff = 0;
         int yDiff = 0;
         switch (this) {
-            case UP: yDiff = -1;
+            case UP:
+                yDiff = -1;
                 break;
-            case DOWN: yDiff = 1;
+            case DOWN:
+                yDiff = 1;
                 break;
-            case LEFT: xDiff = -1;
+            case LEFT:
+                xDiff = -1;
                 break;
-            case RIGHT: xDiff = 1;
+            case RIGHT:
+                xDiff = 1;
                 break;
             default:
                 System.out.print("ERROR: No direction for flying assassin!");

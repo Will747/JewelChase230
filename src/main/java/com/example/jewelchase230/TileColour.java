@@ -12,20 +12,34 @@ import java.io.Serializable;
  * @author Will Kaye
  */
 public enum TileColour implements Serializable {
-    /** Red Colour. */
+    /**
+     * Red Colour.
+     */
     Red("images/WOODFLOOR_RED.png"),
-    /** Blue Colour. */
+    /**
+     * Blue Colour.
+     */
     Blue("images/WOODFLOOR_BLUE.png"),
-    /** Green Colour. */
+    /**
+     * Green Colour.
+     */
     Green("images/WOODFLOOR_GREEN.png"),
-    /** Yellow Colour. */
+    /**
+     * Yellow Colour.
+     */
     Yellow("images/WOODFLOOR_YELLOW.png"),
-    /** Magenta Colour.*/
+    /**
+     * Magenta Colour.
+     */
     Magenta("images/WOODFLOOR_MAGENTA.png"),
-    /** Cyan Colour. */
+    /**
+     * Cyan Colour.
+     */
     Cyan("images/WOODFLOOR_CYAN.png");
 
-    /** The colour of a section of a tile. */
+    /**
+     * The colour of a section of a tile.
+     */
     private Image image = null;
 
     TileColour(final String imageFileName) {
@@ -38,6 +52,7 @@ public enum TileColour implements Serializable {
 
     /**
      * Converts a character to tile.
+     *
      * @param c The character.
      * @return Converted colour.
      */

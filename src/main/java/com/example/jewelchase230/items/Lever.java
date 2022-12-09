@@ -1,7 +1,6 @@
 package com.example.jewelchase230.items;
 
 import com.example.jewelchase230.characters.Character;
-
 import java.util.ArrayList;
 
 /**
@@ -11,12 +10,15 @@ import java.util.ArrayList;
  */
 public class Lever extends Item {
 
-    /** The colour of the gate. */
+    /**
+     * The colour of the gate.
+     */
     private final LeverGateColour colour;
 
     /**
      * Constructs a new lever.
-     * @param inColour Settings the lever colour.
+     *
+     * @param inputColour Settings the lever colour.
      */
     public Lever(final LeverGateColour inputColour) {
         super(inputColour.getLeverImage());
@@ -24,9 +26,10 @@ public class Lever extends Item {
     }
 
     /**
-    * Get the lever colour.
-    * @return The lever colour.
-    */
+     * Get the lever colour.
+     *
+     * @return The lever colour.
+     */
     public LeverGateColour getColour() {
         return colour;
     }
@@ -36,7 +39,7 @@ public class Lever extends Item {
      */
     public void removeGates() {
         ArrayList<Gate> gateArray = getLevel().getAllItemsOfType(Gate.class);
-        for (Gate gateInstance: gateArray) {
+        for (Gate gateInstance : gateArray) {
             if (gateInstance.getColour().equals(colour)) {
                 gateInstance.remove();
             }

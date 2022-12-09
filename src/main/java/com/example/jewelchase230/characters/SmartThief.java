@@ -21,23 +21,35 @@ import java.util.Stack;
  * @author Will Kaye
  */
 public final class SmartThief extends AICharacter {
-    /** Left facing image. */
+    /**
+     * Left facing image.
+     */
     static final String FACING_LEFT_IMAGE =
             "images/SMART_THIEF_LEFT.png";
-    /** Right facing image. */
+    /**
+     * Right facing image.
+     */
     static final String FACING_RIGHT_IMAGE =
             "images/SMART_THIEF_RIGHT.png";
 
-    /** The item the thief is heading towards. */
+    /**
+     * The item the thief is heading towards.
+     */
     private Item targetItem;
 
-    /** Position of random tile if no loot is left. */
+    /**
+     * Position of random tile if no loot is left.
+     */
     private IntVector2D randomTarget;
 
-    /** The number of moves towards the current target item. */
+    /**
+     * The number of moves towards the current target item.
+     */
     private int distanceMoved;
 
-    /** Parent nodes from BFS traversal. */
+    /**
+     * Parent nodes from BFS traversal.
+     */
     private int[] parent;
 
     /**
@@ -48,6 +60,7 @@ public final class SmartThief extends AICharacter {
 
     /**
      * Constructs a renderable component.
+     *
      * @param direction The initial direction.
      */
     public SmartThief(final Direction direction) {
@@ -107,7 +120,9 @@ public final class SmartThief extends AICharacter {
         }
     }
 
-    /** Selects the next closest item to where the thief is. */
+    /**
+     * Selects the next closest item to where the thief is.
+     */
     private void findNextTargetItem() {
         IntVector2D startPos = getGridPosition();
 

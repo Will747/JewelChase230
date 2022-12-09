@@ -17,41 +17,83 @@ import javafx.scene.input.MouseEvent;
  */
 
 public final class LevelSelectMenu {
-    /** Profile being used to play the levels. */
+    /**
+     * The number of levels shown on this menu.
+     */
+    private static final int NUM_OF_LEVELS = 10;
+
+    /**
+     * Profile being used to play the levels.
+     */
     private Profile selectedProfile;
 
+    /**
+     * Level 2 view.
+     */
     @FXML
     private ImageView lvl2;
+
+    /**
+     * Level 3 view.
+     */
     @FXML
     private ImageView lvl3;
+
+    /**
+     * Level 4 view.
+     */
     @FXML
     private ImageView lvl4;
+
+    /**
+     * Level 5 view.
+     */
     @FXML
     private ImageView lvl5;
+
+    /**
+     * Level 6 view.
+     */
     @FXML
     private ImageView lvl6;
+
+    /**
+     * Level 7 view.
+     */
     @FXML
     private ImageView lvl7;
+
+    /**
+     * Level 8 view.
+     */
     @FXML
     private ImageView lvl8;
+
+    /**
+     * Level 9 view.
+     */
     @FXML
     private ImageView lvl9;
+
+    /**
+     * Level 10 view.
+     */
     @FXML
     private ImageView lvl10;
 
-    private ImageView[] getImageViews()
-    {
-        ImageView[] imageViews = new ImageView[9];
-        imageViews[0] = lvl2;
-        imageViews[1] = lvl3;
-        imageViews[2] = lvl4;
-        imageViews[3] = lvl5;
-        imageViews[4] = lvl6;
-        imageViews[5] = lvl7;
-        imageViews[6] = lvl8;
-        imageViews[7] = lvl9;
-        imageViews[8] = lvl10;
-        return(imageViews);
+    private ImageView[] getImageViews() {
+        ImageView[] imageViews = new ImageView[NUM_OF_LEVELS - 1];
+        int i = 0;
+        imageViews[i++] = lvl2;
+        imageViews[i++] = lvl3;
+        imageViews[i++] = lvl4;
+        imageViews[i++] = lvl5;
+        imageViews[i++] = lvl6;
+        imageViews[i++] = lvl7;
+        imageViews[i++] = lvl8;
+        imageViews[i++] = lvl9;
+        imageViews[i] = lvl10;
+        return (imageViews);
     }
 
     @FXML
@@ -61,7 +103,7 @@ public final class LevelSelectMenu {
 
     @FXML
     void changeLevel(final MouseEvent event) {
-        int btnNum = Integer.parseInt(((Button)event.getSource()).getText());
+        int btnNum = Integer.parseInt(((Button) event.getSource()).getText());
         System.out.println(btnNum);
         switchToLevel(btnNum);
     }
@@ -85,14 +127,13 @@ public final class LevelSelectMenu {
         Main.setLevel(nextLevel, selectedProfile);
         Main.switchToCanvas();
     }
-    
-    private void levelUnlock(){
+
+    private void levelUnlock() {
         ImageView[] imageViews = getImageViews();
         int playerLvl = selectedProfile.getLevelReached();
-        for(int i = 2;i < 11; i++){
+        for (int i = 2; i < NUM_OF_LEVELS + 1; i++) {
             imageViews[i - 2].setVisible(true);
-            if(playerLvl >= i){
-                getImageViews();
+            if (playerLvl >= i) {
                 imageViews[i - 2].setVisible(false);
             }
         }

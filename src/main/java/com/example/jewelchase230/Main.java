@@ -31,44 +31,70 @@ import java.util.ArrayList;
  * @author Will Kaye, Daniel Clark
  */
 public final class Main extends Application {
-    /** Default window width. */
+    /**
+     * Default window width.
+     */
     private static final int DEFAULT_WINDOW_WIDTH = 800;
 
-    /** Default window height. */
+    /**
+     * Default window height.
+     */
     private static final int DEFAULT_WINDOW_HEIGHT = 450;
 
-    /** Number of times the game ticks per second. */
+    /**
+     * Number of times the game ticks per second.
+     */
     private static final int FRAME_RATE = 20;
 
-    /** The number of milliseconds in a second. */
+    /**
+     * The number of milliseconds in a second.
+     */
     public static final int MILLISECONDS_IN_A_SECOND = 1000;
 
-    /** URL to style sheet with cool font. */
+    /**
+     * URL to style sheet with cool font.
+     */
     private static final String SILKSCREEN_FONT =
             "https://fonts.googleapis.com/css2?family=Silkscreen";
 
-    /** Size of the window. */
+    /**
+     * Size of the window.
+     */
     private static IntVector2D windowSize;
 
-    /** Stage that is shown in the main window. */
+    /**
+     * Stage that is shown in the main window.
+     */
     private static Stage stage;
 
-    /** The canvas being used to render the grid/board. */
+    /**
+     * The canvas being used to render the grid/board.
+     */
     private static Canvas canvas;
 
-    /** The scene shown by the window. */
+    /**
+     * The scene shown by the window.
+     */
     private static ScalingScene mainScene;
 
-    /** Pane the hold the canvas as a child. */
+    /**
+     * Pane the hold the canvas as a child.
+     */
     private static StackPane canvasPane;
 
-    /** Timeline which will cause tick method to be called periodically. */
+    /**
+     * Timeline which will cause tick method to be called periodically.
+     */
     private static Timeline tickTimeline;
 
-    /** All config settings for the game. */
+    /**
+     * All config settings for the game.
+     */
     private static Settings settings;
 
-    /** Table containing all highscores. */
+    /**
+     * Table containing all highscores.
+     */
     private static HighScoreTable highScoreTable;
 
     /**
@@ -156,7 +182,8 @@ public final class Main extends Application {
 
     /**
      * Changes the level currently being played.
-     * @param level The new level.
+     *
+     * @param level   The new level.
      * @param profile The profile playing this level.
      */
     public static void setLevel(final Level level, final Profile profile) {
@@ -186,6 +213,7 @@ public final class Main extends Application {
 
     /**
      * Switches what is currently shown on the screen to a menu.
+     *
      * @param root The root node to be shown.
      */
     public static void switchRoot(final Parent root) {
@@ -199,11 +227,11 @@ public final class Main extends Application {
      * background.
      */
     private void resetCanvas() {
-       GraphicsContext gc = canvas.getGraphicsContext2D();
-       gc.clearRect(0, 0, windowSize.getX(), windowSize.getY());
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, windowSize.getX(), windowSize.getY());
 
-       gc.setFill(Color.WHITE);
-       gc.fillRect(0, 0, windowSize.getX(), windowSize.getY());
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0, 0, windowSize.getX(), windowSize.getY());
     }
 
     private static void processKeyEvent(final KeyEvent event) {
@@ -280,6 +308,7 @@ public final class Main extends Application {
 
     /**
      * Program entry point.
+     *
      * @param args Program arguments.
      */
     public static void main(final String[] args) {

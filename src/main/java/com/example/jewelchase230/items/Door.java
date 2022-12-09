@@ -13,9 +13,13 @@ import com.example.jewelchase230.profiles.Profile;
  * @author Ben Stott
  */
 public class Door extends Item {
-    /** Is the door open or closed. */
+    /**
+     * Is the door open or closed.
+     */
     private boolean isDoorOpen = false;
-    /** The Door image. */
+    /**
+     * The Door image.
+     */
     private static final String DOOR_IMAGE = "images/DOOR.png";
 
     /**
@@ -27,6 +31,7 @@ public class Door extends Item {
 
     /**
      * Returns whether the door is open or not.
+     *
      * @return True if open, false if closed.
      */
     public boolean getIsDoorOpen() {
@@ -35,6 +40,7 @@ public class Door extends Item {
 
     /**
      * Change if the door is open or closed.
+     *
      * @param openOrClose True if open, false if closed.
      */
     public void setIsDoorOpen(final boolean openOrClose) {

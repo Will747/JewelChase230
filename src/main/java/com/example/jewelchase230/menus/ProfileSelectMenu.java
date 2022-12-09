@@ -26,24 +26,33 @@ import javafx.stage.Modality;
  * @author Daniel Clark
  */
 public final class ProfileSelectMenu {
-    /** Displays the player's name. */
+    /**
+     * Displays the player's name.
+     */
     @FXML
     private Label selectPlayerName;
 
-    /** Displays the players highest achieved level. */
+    /**
+     * Displays the players highest achieved level.
+     */
     @FXML
     private Label selectPlayerLevel;
 
-    /** Button used for loading the last saved game. */
+    /**
+     * Button used for loading the last saved game.
+     */
     @FXML
     private Button saveGameButton;
 
-    /** The profile being shown by this. */
+    /**
+     * The profile being shown by this.
+     */
     private Profile currentProfile;
 
 
     /**
      * Sets the profile being shown by this menu.
+     *
      * @param p The profile to be shown.
      */
     public void setProfile(final Profile p) {
@@ -110,9 +119,9 @@ public final class ProfileSelectMenu {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-        	ProfileManager.deleteProfile(currentProfile);
+            ProfileManager.deleteProfile(currentProfile);
             ProfileManager.saveProfiles();
-        	Menu.getProfileMenuController().refresh();
+            Menu.getProfileMenuController().refresh();
             Main.switchRoot(Menu.getProfileMenu());
         } else if (result.get() == ButtonType.CANCEL) {
             System.out.println("cancelled profile deletion.");

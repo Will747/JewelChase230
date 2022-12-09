@@ -15,6 +15,7 @@ public class IntVector2D extends Vector2D<Integer> {
 
     /**
      * Constructs a new instance of vector.
+     *
      * @param x Initial X component.
      * @param y Initial Y component.
      */
@@ -25,6 +26,7 @@ public class IntVector2D extends Vector2D<Integer> {
 
     /**
      * Adds two vectors together.
+     *
      * @param value vector to add.
      * @return sum of both vectors.
      */
@@ -34,6 +36,7 @@ public class IntVector2D extends Vector2D<Integer> {
 
     /**
      * Converts this int vector to a double vector.
+     *
      * @return Converted double vector.
      */
     public DoubleVector2D toDouble() {

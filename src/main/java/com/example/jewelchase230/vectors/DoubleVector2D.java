@@ -15,6 +15,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Constructs a new instance of vector.
+     *
      * @param x Initial X component.
      * @param y Initial Y component.
      */
@@ -25,6 +26,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Multiplies both components of vector by a value.
+     *
      * @param value The value to multiply by.
      * @return Multiplied vector.
      */
@@ -34,6 +36,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Multiplies two vectors together.
+     *
      * @param value The vector to multiply by.
      * @return Multiplied vector.
      */
@@ -43,6 +46,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Multiplies both components of vector by a value.
+     *
      * @param value The value to multiply by.
      * @return Multiplied vector.
      */
@@ -52,6 +56,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Multiplies two vectors together.
+     *
      * @param value The vector to multiply by.
      * @return Multiplied vector.
      */
@@ -61,6 +66,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Divides both components of vector by a value.
+     *
      * @param value The value to divide by.
      * @return Divided vector.
      */
@@ -70,6 +76,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Divides vector by another vector.
+     *
      * @param value The vector to divide by.
      * @return Divided vector.
      */
@@ -79,6 +86,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Divides both components of vector by a value.
+     *
      * @param value The value to divide by.
      * @return Divided vector.
      */
@@ -88,6 +96,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Divides vector by another vector.
+     *
      * @param value The vector to divide by.
      * @return Divided vector.
      */
@@ -97,6 +106,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Adds two vectors together.
+     *
      * @param value The vector to add.
      * @return Added vector.
      */
@@ -106,6 +116,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Adds a double to both components of this vector.
+     *
      * @param value The vector to add.
      * @return Added vector.
      */
@@ -115,6 +126,7 @@ public class DoubleVector2D extends Vector2D<Double> {
 
     /**
      * Subtracts one vector from another.
+     *
      * @param value The vector to subtract.
      * @return subtracted vector.
      */
