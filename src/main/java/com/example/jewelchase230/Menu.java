@@ -1,6 +1,12 @@
 package com.example.jewelchase230;
 
-import com.example.jewelchase230.menus.*;
+import com.example.jewelchase230.menus.ProfileMenu;
+import com.example.jewelchase230.menus.LevelSelectMenu;
+import com.example.jewelchase230.menus.ProfileSelectMenu;
+import com.example.jewelchase230.menus.HighScoreMenu;
+import com.example.jewelchase230.menus.SettingsMenu;
+import com.example.jewelchase230.menus.LevelCompleteMenu;
+import com.example.jewelchase230.menus.GameOverMenu;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -92,7 +98,7 @@ public final class Menu {
         createParent(PROFILE_CREATE_MENU_FXML);
         createParent(LEVEL_SELECT_MENU_FXML);
         createParent(LEVEL_COMPLETE_FXML);
-        // createParent(GAME_OVER_FXML);
+        createParent(GAME_OVER_FXML);
     }
 
     /**
@@ -129,10 +135,24 @@ public final class Menu {
     }
 
     /**
+     * @return The profile Menu select controller.
+     */
+    public static ProfileMenu getProfileMenuController() {
+        return (ProfileMenu) getController(PROFILE_MENU_FXML);
+    }
+
+    /**
      * @return menu with one profile.
      */
     public static Parent getProfileSelect() {
         return getParent(PROFILE_SELECT_FXML);
+    }
+
+    /**
+     * @return The profile select controller.
+     */
+    public static ProfileSelectMenu getProfileSelectController() {
+        return (ProfileSelectMenu) getController(PROFILE_SELECT_FXML);
     }
 
     /**
@@ -163,27 +183,25 @@ public final class Menu {
         return (LevelSelectMenu) getController(LEVEL_SELECT_MENU_FXML);
     }
 
-    /*
+    /**
      * @return Game over menu node.
      */
-    /*
     public static Parent getGameOverMenu() {
         return getParent(GAME_OVER_FXML);
     }
-    */
 
     /**
-     * @return The profile Menu select controller.
+     * @return The game over controller.
      */
-    public static ProfileMenu getProfileMenuController() {
-        return (ProfileMenu) getController(PROFILE_MENU_FXML);
+    public static GameOverMenu getGameOverMenuController() {
+        return (GameOverMenu) getController(GAME_OVER_FXML);
     }
 
     /**
-     * @return The profile select controller.
+     * @return settings menu node.
      */
-    public static ProfileSelectMenu getProfileSelectController() {
-        return (ProfileSelectMenu) getController(PROFILE_SELECT_FXML);
+    public static Parent getSettingsMenu() {
+        return getParent(SETTINGS_MENU_FXML);
     }
 
     /**
@@ -191,21 +209,6 @@ public final class Menu {
      */
     public static SettingsMenu getSettingsMenuController() {
         return (SettingsMenu) getController(SETTINGS_MENU_FXML);
-    }
-
-    /**
-     * @return The high score table controller
-     */
-    public static HighScoreMenu getHighScoreMenuController() {
-        return (HighScoreMenu) getController(HIGHSCORE_TABLE_FXML);
-    }
-
-
-    /**
-     * @return settings menu node.
-     */
-    public static Parent getSettingsMenu() {
-        return getParent(SETTINGS_MENU_FXML);
     }
 
     /**
@@ -220,6 +223,13 @@ public final class Menu {
      */
     public static Parent getHighScoreTable() {
         return getParent(HIGHSCORE_TABLE_FXML);
+    }
+
+    /**
+     * @return The high score table controller
+     */
+    public static HighScoreMenu getHighScoreMenuController() {
+        return (HighScoreMenu) getController(HIGHSCORE_TABLE_FXML);
     }
 
     /**

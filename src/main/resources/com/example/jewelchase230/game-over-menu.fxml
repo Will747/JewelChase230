@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.PauseMenu">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.GameOverMenu">
    <children>
-      <Label text="Jewel Chase">
+      <Label text="Game Over">
          <font>
             <Font name="Franklin Gothic Medium Italic" size="45.0" />
          </font>
-         <VBox.margin>
-            <Insets bottom="5.0" />
-         </VBox.margin>
       </Label>
-      <Button alignment="CENTER" centerShape="false" mnemonicParsing="false" onMouseClicked="#onReturntoMainMenuPressed" text="Return to main menu" />
+      <Button mnemonicParsing="false" onMouseClicked="#onRestartPressed" text="Restart">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin></Button>
+      <Button mnemonicParsing="false" onMouseClicked="#onReturnToMainMenuPressed" text="Main Menu">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#onExitPressed" text="Exit">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>

@@ -13,12 +13,12 @@ public class Profile {
     /**
      * Unique ID of the profile.
      */
-    private UUID uniquePlayerID;
+    private final UUID uniquePlayerID;
 
     /**
      * The name of the player.
      */
-    private String playerName;
+    private final String playerName;
 
     /**
      * The highest level reached by the player.
@@ -48,10 +48,11 @@ public class Profile {
      * @param lineDataSplit Parameters for constructing a Profile.
      */
     public Profile(final String[] lineDataSplit) {
-        uniquePlayerID = UUID.fromString(lineDataSplit[0]);
-        playerName = lineDataSplit[1];
-        levelReached = Integer.parseInt(lineDataSplit[2]);
-        char catID = lineDataSplit[3].charAt(0);
+        int i = 0;
+        uniquePlayerID = UUID.fromString(lineDataSplit[i++]);
+        playerName = lineDataSplit[i++];
+        levelReached = Integer.parseInt(lineDataSplit[i++]);
+        char catID = lineDataSplit[i].charAt(0);
         catCharacter = ProfileImage.getCatFromChar(catID);
     }
 

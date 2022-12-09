@@ -9,6 +9,7 @@ import com.example.jewelchase230.items.Door;
 import com.example.jewelchase230.profiles.Profile;
 import com.example.jewelchase230.profiles.ProfileImage;
 import com.example.jewelchase230.vectors.IntVector2D;
+import javafx.scene.Parent;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -384,8 +385,9 @@ public class Level implements Serializable {
      * Method to end the game if the player loses.
      */
     public void gameOver() {
-        Main.endCurrentLevel();
-        Main.switchRoot(Menu.getMainMenu());
+        Parent gameOverMenu = Menu.getGameOverMenu();
+        Main.switchRoot(gameOverMenu);
+        Menu.getGameOverMenuController().setLevelLost(this);
     }
 
     /**

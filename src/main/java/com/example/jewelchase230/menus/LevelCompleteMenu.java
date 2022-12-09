@@ -21,7 +21,7 @@ public final class LevelCompleteMenu {
     private int levelNum;
 
     /**
-     * Profiles completing this level.
+     * Profile completing this level.
      */
     private Profile profile;
 
