@@ -16,7 +16,7 @@ import javafx.scene.canvas.GraphicsContext;
  *
  * @author Will Kaye
  */
-public final class Tile extends Renderable implements Collidable, Serializable {
+public final class Tile extends Renderable implements Collidable {
     /** The width of the border around the tile. */
     private static final double BORDER_WIDTH = 0.04;
 

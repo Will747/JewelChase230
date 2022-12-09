@@ -53,10 +53,9 @@ public class Door extends Item {
             int nextLevelNum = level.getLevelNumber() + 1;
             Profile playerProfile = level.getCurrentProfile();
             playerProfile.setLevelReached(level.getLevelNumber() + 1);
-            Main.setLevel(null);
-            Main.setLevel(LevelFileReader.getLevel(nextLevelNum));
-            level = getLevel();
-            level.setProfile(playerProfile);
+            Main.endCurrentLevel();
+            Main.setLevel(
+                    LevelFileReader.getLevel(nextLevelNum), playerProfile);
         } else if (isDoorOpen) {
             getLevel().gameOver();
         }

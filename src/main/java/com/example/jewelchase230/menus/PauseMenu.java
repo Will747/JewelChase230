@@ -56,7 +56,7 @@ public class PauseMenu {
      */
     @FXML
     private void onMainMenuPressed(final MouseEvent event) {
-        Main.setLevel(null);
+        Main.endCurrentLevel();
         Main.switchRoot(Menu.getMainMenu());
     }
 

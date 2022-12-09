@@ -4,13 +4,15 @@ import com.example.jewelchase230.vectors.DoubleVector2D;
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.scene.canvas.GraphicsContext;
 
+import java.io.Serializable;
+
 /**
  * A component that ticks and can be rendered onto the level
  * grid.
  *
  * @author Will Kaye
  */
-public abstract class Renderable {
+public abstract class Renderable implements Serializable {
     /**
      * The percentage of the canvas that must be left blank
      * around the edges.
