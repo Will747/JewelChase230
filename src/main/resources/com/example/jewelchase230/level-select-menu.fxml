@@ -10,7 +10,7 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.LevelSelectMenu">
    <children>
-      <Label alignment="TOP_CENTER" text="Profiles" underline="true">
+      <Label alignment="TOP_CENTER" text="Levels" underline="true">
          <font>
             <Font name="Franklin Gothic Medium Italic" size="35.0" />
          </font>
@@ -22,16 +22,16 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="586.0">
                <children>
-                  <Button layoutX="105.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#levelOne" prefHeight="75.0" prefWidth="75.0" text="1" AnchorPane.leftAnchor="55.0" />
-                  <Button layoutX="180.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="2" AnchorPane.leftAnchor="155.0" />
-                  <Button layoutX="255.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="3" AnchorPane.leftAnchor="255.0" />
-                  <Button layoutX="330.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="4" AnchorPane.leftAnchor="355.0" />
-                  <Button layoutX="405.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="5" AnchorPane.leftAnchor="455.0" />
-                  <Button layoutX="55.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="6" AnchorPane.leftAnchor="55.0" />
-                  <Button layoutX="130.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="7" AnchorPane.leftAnchor="155.0" />
-                  <Button layoutX="205.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="8" AnchorPane.leftAnchor="255.0" />
-                  <Button layoutX="280.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="9" AnchorPane.leftAnchor="355.0" />
-                  <Button layoutX="355.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="10" AnchorPane.leftAnchor="455.0" />
+                  <Button fx:id="lvl1" layoutX="105.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="1" AnchorPane.leftAnchor="55.0" />
+                  <Button fx:id="lvl2" layoutX="180.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="2" AnchorPane.leftAnchor="155.0" />
+                  <Button fx:id="lvl3" layoutX="255.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="3" AnchorPane.leftAnchor="255.0" />
+                  <Button fx:id="lvl4" layoutX="330.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="4" AnchorPane.leftAnchor="355.0" />
+                  <Button fx:id="lvl5" layoutX="405.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="5" AnchorPane.leftAnchor="455.0" />
+                  <Button fx:id="lvl6" layoutX="55.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="6" AnchorPane.leftAnchor="55.0" />
+                  <Button fx:id="lvl7" layoutX="130.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="7" AnchorPane.leftAnchor="155.0" />
+                  <Button fx:id="lvl8" layoutX="205.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="8" AnchorPane.leftAnchor="255.0" />
+                  <Button fx:id="lvl9" layoutX="280.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="9" AnchorPane.leftAnchor="355.0" />
+                  <Button fx:id="lvl10" layoutX="355.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="10" AnchorPane.leftAnchor="455.0" />
                </children>
             </AnchorPane>
         </content>
