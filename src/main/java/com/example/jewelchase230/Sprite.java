@@ -7,10 +7,8 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.Serial;
-import java.util.Arrays;
 
 /**
  * Represents Sprites in the game.
@@ -69,6 +67,7 @@ public abstract class Sprite extends Renderable {
      */
     protected void setImage(final Image inImage) {
         image = inImage;
+        imagePath = null;
     }
 
     /**
@@ -77,8 +76,8 @@ public abstract class Sprite extends Renderable {
      */
     protected void setImageFromFile(final String fileName) {
         try {
-            imagePath = fileName;
             setImage(getImageFromFile(fileName));
+            imagePath = fileName;
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
