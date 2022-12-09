@@ -38,7 +38,7 @@ public final class Main extends Application {
     private static final int DEFAULT_WINDOW_HEIGHT = 450;
 
     /** Number of times the game ticks per second. */
-    private static final int FRAME_RATE = 10;
+    private static final int FRAME_RATE = 20;
 
     /** The number of milliseconds in a second. */
     public static final int MILLISECONDS_IN_A_SECOND = 1000;
