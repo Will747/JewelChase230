@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.LevelSelectMenu">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jewelchase230.menus.LevelSelectMenu">
    <children>
       <Label alignment="TOP_CENTER" text="Levels" underline="true">
          <font>
@@ -20,71 +20,71 @@
             <Insets />
          </VBox.margin>
       </Label>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="586.0">
+      <ScrollPane prefHeight="233.0" prefWidth="562.0">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+         <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="214.0" prefWidth="602.0">
                <children>
-                  <Button fx:id="lvl1" layoutX="105.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="1" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="456.2" AnchorPane.topAnchor="15.0" />
-                  <Button fx:id="lvl2" layoutX="180.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="2" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="15.0" />
-                  <Button fx:id="lvl3" layoutX="255.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="3" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="15.0" />
-                  <Button fx:id="lvl4" layoutX="330.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="4" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="15.0" />
-                  <Button fx:id="lvl5" layoutX="405.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="5" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="15.0" />
-                  <Button fx:id="lvl6" layoutX="55.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="6" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="100.0" />
-                  <Button fx:id="lvl7" layoutX="130.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="7" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="100.0" />
-                  <Button fx:id="lvl8" layoutX="205.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="8" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="100.0" />
-                  <Button fx:id="lvl9" layoutX="280.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="9" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="100.0" />
-                  <Button fx:id="lvl10" layoutX="355.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="10" AnchorPane.bottomAnchor="24.799999999999997" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="56.199999999999974" AnchorPane.topAnchor="100.0" />
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="165.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="15.0">
+                  <Button layoutX="105.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="1" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="15.0" />
+                  <Button layoutX="180.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="2" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="15.0" />
+                  <Button layoutX="255.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="3" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="15.0" />
+                  <Button layoutX="330.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="4" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="15.0" />
+                  <Button layoutX="405.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="5" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="15.0" />
+                  <Button layoutX="55.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="6" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="110.0" />
+                  <Button layoutX="130.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="7" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="110.0" />
+                  <Button layoutX="205.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="8" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="110.0" />
+                  <Button layoutX="280.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="9" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="110.0" />
+                  <Button layoutX="454.0" layoutY="99.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="10" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="110.0" />
+                  <ImageView fx:id="lvl2" fitHeight="75.0" fitWidth="75.0" layoutX="165.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="15.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="265.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="15.0">
+                  <ImageView fx:id="lvl3" fitHeight="75.0" fitWidth="75.0" layoutX="265.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="15.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="365.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="15.0">
+                  <ImageView fx:id="lvl4" fitHeight="75.0" fitWidth="75.0" layoutX="365.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="15.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="465.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="15.0">
+                  <ImageView fx:id="lvl5" fitHeight="75.0" fitWidth="75.0" layoutX="465.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="15.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="55.0" layoutY="14.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="100.0">
+                  <ImageView fx:id="lvl6" fitHeight="75.0" fitWidth="75.0" layoutX="55.0" layoutY="14.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="110.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="65.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="100.0">
+                  <ImageView fx:id="lvl7" fitHeight="75.0" fitWidth="75.0" layoutX="65.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="110.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="65.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="100.0">
+                  <ImageView fx:id="lvl8" fitHeight="75.0" fitWidth="75.0" layoutX="65.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="110.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="165.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="100.0">
+                  <ImageView fx:id="lvl9" fitHeight="75.0" fitWidth="75.0" layoutX="165.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="110.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="365.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="100.0">
+                  <ImageView fx:id="lvl10" fitHeight="75.0" fitWidth="75.0" layoutX="365.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="110.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-        </content>
-         <VBox.margin>
-            <Insets top="30.0" />
-         </VBox.margin>
+         </content>
       </ScrollPane>
       <Button mnemonicParsing="false" onMouseClicked="#onBackPressed" text="Back">
          <VBox.margin>
