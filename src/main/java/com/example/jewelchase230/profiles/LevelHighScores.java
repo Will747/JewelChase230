@@ -48,8 +48,8 @@ public class LevelHighScores implements Serializable {
 
         for (int i = 0; i < scoreList.size(); i++) {
             ProfileScore playerScore = scoreList.get(i);
-            if (playerScore.getUserUniqueID()
-                    == profile.getUniquePlayerID()) {
+            if (playerScore.getUserUniqueID().equals(
+                    profile.getUniquePlayerID())) {
                 profileScoreExists = true;
                 if (score > playerScore.getHighestScore()) {
                     playerScore.setHighestScore(score);

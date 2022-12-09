@@ -102,6 +102,7 @@ public class HighScoreTable implements Serializable {
             final int score) {
         LevelHighScores scores = getLevelHighScores(levelNumber);
         scores.updatePlayerScore(profile, score);
+        save();
     }
 
     /**

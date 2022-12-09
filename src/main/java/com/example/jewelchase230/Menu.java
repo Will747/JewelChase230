@@ -1,10 +1,6 @@
 package com.example.jewelchase230;
 
-import com.example.jewelchase230.menus.ProfileMenu;
-import com.example.jewelchase230.menus.LevelSelectMenu;
-import com.example.jewelchase230.menus.ProfileSelectMenu;
-import com.example.jewelchase230.menus.HighScoreMenu;
-import com.example.jewelchase230.menus.SettingsMenu;
+import com.example.jewelchase230.menus.*;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -56,6 +52,11 @@ public final class Menu {
     private static final String LEVEL_SELECT_MENU_FXML
             = "level-select-menu.fxml";
     /**
+     * Level completed fxml file.
+     */
+    private static final String LEVEL_COMPLETE_FXML
+            = "level-complete.fxml";
+    /**
      * Game over fxml file.
      */
     private static final String GAME_OVER_FXML = "game-over-menu.fxml";
@@ -90,6 +91,7 @@ public final class Menu {
         createParent(PAUSE_MENU_FXML);
         createParent(PROFILE_CREATE_MENU_FXML);
         createParent(LEVEL_SELECT_MENU_FXML);
+        createParent(LEVEL_COMPLETE_FXML);
         // createParent(GAME_OVER_FXML);
     }
 
@@ -131,6 +133,20 @@ public final class Menu {
      */
     public static Parent getProfileSelect() {
         return getParent(PROFILE_SELECT_FXML);
+    }
+
+    /**
+     * @return level completed menu.
+     */
+    public static Parent getLevelComplete() {
+        return getParent(LEVEL_COMPLETE_FXML);
+    }
+
+    /**
+     * @return The level completed controller.
+     */
+    public static LevelCompleteMenu getLevelCompleteController() {
+        return (LevelCompleteMenu) getController(LEVEL_COMPLETE_FXML);
     }
 
     /**
