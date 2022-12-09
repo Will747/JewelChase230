@@ -56,7 +56,6 @@ public final class ProfileSelectMenu {
      */
     private Profile currentProfile;
 
-
     /**
      * Sets the profile being shown by this menu.
      *

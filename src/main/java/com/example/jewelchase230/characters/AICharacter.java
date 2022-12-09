@@ -14,9 +14,15 @@ public abstract class AICharacter extends Character {
      */
     private int timeSinceLastImageChange = 0;
     /**
-     * Time between moves.
+     * 1 second time between moves.
      */
     protected static final int MILLISECONDS_PER_MOVE = 1000;
+
+    /**
+     * Current time between moves in milliseconds.
+     */
+    private int timeBetweenMoves = MILLISECONDS_PER_MOVE;
+
     /**
      * Current Direction.
      */
@@ -59,6 +65,14 @@ public abstract class AICharacter extends Character {
     }
 
     /**
+     * Sets the amount of time between the characters moves.
+     * @param millisecondsBetweenMoves Time in milliseconds between moves.
+     */
+    protected void setMoveSpeed(final int millisecondsBetweenMoves) {
+        timeBetweenMoves = millisecondsBetweenMoves;
+    }
+
+    /**
      * Constructs a renderable component.
      *
      * @param inDirection The direction given.
@@ -90,7 +104,7 @@ public abstract class AICharacter extends Character {
     public void tick(final int time) {
         if (isAlive()) {
             timeSinceLastImageChange += time;
-            if (timeSinceLastImageChange > MILLISECONDS_PER_MOVE) {
+            if (timeSinceLastImageChange > timeBetweenMoves) {
                 makeNextMove();
                 timeSinceLastImageChange = 0;
             }

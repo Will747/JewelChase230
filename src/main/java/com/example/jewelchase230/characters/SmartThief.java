@@ -22,6 +22,12 @@ import java.util.Stack;
  */
 public final class SmartThief extends AICharacter {
     /**
+     * The amount of time between moves.
+     * The smart thief is the slowest character.
+     */
+    private static final int MOVE_SPEED = 1350;
+
+    /**
      * Left facing image.
      */
     private static final String FACING_LEFT_IMAGE =
@@ -66,6 +72,7 @@ public final class SmartThief extends AICharacter {
         setFacingLeftImage(FACING_LEFT_IMAGE);
         setFacingRightImage(FACING_RIGHT_IMAGE);
         setDirection(Direction.NONE);
+        setMoveSpeed(MOVE_SPEED);
         randomTarget = null;
     }
 
