@@ -7,6 +7,7 @@ import com.example.jewelchase230.items.Loot;
 import com.example.jewelchase230.items.Lever;
 import com.example.jewelchase230.items.Door;
 import com.example.jewelchase230.profiles.Profile;
+import com.example.jewelchase230.profiles.ProfileImage;
 import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.io.FileOutputStream;
@@ -415,6 +416,11 @@ public class Level implements Serializable {
      */
     public void setProfile(final Profile inCurrentProfile) {
         currentProfile = inCurrentProfile;
+        ProfileImage catCharacter = currentProfile.getCatCharacter();
+        Player player = getPlayer();
+        player.setImageFromFile(catCharacter.getRight());
+        player.setFacingLeftImage(catCharacter.getLeft());
+        player.setFacingRightImage(catCharacter.getRight());
     }
 
     /**

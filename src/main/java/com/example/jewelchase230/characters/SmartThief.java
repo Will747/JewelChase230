@@ -24,12 +24,12 @@ public final class SmartThief extends AICharacter {
     /**
      * Left facing image.
      */
-    static final String FACING_LEFT_IMAGE =
+    private static final String FACING_LEFT_IMAGE =
             "images/SMART_THIEF_LEFT.png";
     /**
      * Right facing image.
      */
-    static final String FACING_RIGHT_IMAGE =
+    private static final String FACING_RIGHT_IMAGE =
             "images/SMART_THIEF_RIGHT.png";
 
     /**

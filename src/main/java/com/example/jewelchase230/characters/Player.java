@@ -1,6 +1,7 @@
 package com.example.jewelchase230.characters;
 
 import javafx.scene.input.KeyEvent;
+import com.example.jewelchase230.Direction;
 
 /**
  * A class to control the Player character.
@@ -33,9 +34,11 @@ public class Player extends Character {
                     break;
                 case RIGHT:
                     setGridPosition(canMove(1, 0));
+                    setImageFromFile(getImage(Direction.RIGHT));
                     break;
                 case LEFT:
                     setGridPosition(canMove(-1, 0));
+                    setImageFromFile(getImage(Direction.LEFT));
                     break;
                 default:
                     break;

@@ -13,12 +13,12 @@ public class FlyingAssassin extends AICharacter {
     /**
      * Left facing image.
      */
-    static final String FACING_LEFT_IMAGE =
+    private static final String FACING_LEFT_IMAGE =
             "images/FLYING_ASSASSIN_LEFT_FACE.png";
     /**
      * Right facing image.
      */
-    static final String FACING_RIGHT_IMAGE =
+    private static final String FACING_RIGHT_IMAGE =
             "images/FLYING_ASSASSIN_RIGHT_FACE.png";
 
     /**

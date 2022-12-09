@@ -26,6 +26,11 @@ public class Profile {
     private Integer levelReached;
 
     /**
+     * The cat character for this profile.
+     */
+    private final ProfileImage catCharacter;
+
+    /**
      * Constructor of Profile.
      *
      * @param inPlayerName The name of the player.
@@ -34,6 +39,7 @@ public class Profile {
         uniquePlayerID = UUID.randomUUID();
         playerName = inPlayerName;
         levelReached = 1;
+        catCharacter = ProfileImage.getRandomCat();
     }
 
     /**
@@ -45,6 +51,7 @@ public class Profile {
         uniquePlayerID = UUID.fromString(lineDataSplit[0]);
         playerName = lineDataSplit[1];
         levelReached = Integer.parseInt(lineDataSplit[2]);
+        catCharacter = ProfileImage.getRandomCat();
     }
 
     /**
@@ -80,6 +87,13 @@ public class Profile {
      */
     public UUID getUniquePlayerID() {
         return uniquePlayerID;
+    }
+
+    /**
+     * @return The cat character image.
+     */
+    public ProfileImage getCatCharacter() {
+        return catCharacter;
     }
 
     /**
