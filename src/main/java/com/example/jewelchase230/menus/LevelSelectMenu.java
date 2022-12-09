@@ -7,6 +7,8 @@ import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.profiles.Profile;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -19,26 +21,24 @@ public final class LevelSelectMenu {
     /** Profile being used to play the levels. */
     private Profile selectedProfile;
 
-    @FXML
-    private Button lvl1;
-    @FXML
-    private Button lvl2;
-    @FXML
-    private Button lvl3;
-    @FXML
-    private Button lvl4;
-    @FXML
-    private Button lvl5;
-    @FXML
-    private Button lvl6;
-    @FXML
-    private Button lvl7;
-    @FXML
-    private Button lvl8;
-    @FXML
-    private Button lvl9;
-    @FXML
-    private Button lvl10;
+    //@FXML
+    //private ImageView lvl2;
+    //@FXML
+    //private ImageView lvl3;
+    //@FXML
+    //private ImageView lvl4;
+    //@FXML
+    //private ImageView lvl5;
+    //@FXML
+    //private ImageView lvl6;
+    //@FXML
+    //private ImageView lvl7;
+    //@FXML
+    //private ImageView lvl8;
+    //@FXML
+    //private ImageView lvl9;
+    //@FXML
+    //private ImageView lvl10;
 
     @FXML
     void onBackPressed(final MouseEvent event) {
