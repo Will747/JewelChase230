@@ -63,9 +63,7 @@ public final class ProfileSelectMenu {
         String saveGamePath = p.getSaveGamePath();
         File file = new File(saveGamePath);
 
-        if (file.exists()) {
-            saveGameButton.setDisable(false);
-        }
+        saveGameButton.setDisable(!file.exists());
     }
 
     @FXML

@@ -199,6 +199,7 @@ public final class Main extends Application {
      */
     public static void endCurrentLevel() {
         currentLevel = null;
+        tickTimeline.stop();
     }
 
     /**
