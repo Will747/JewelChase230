@@ -383,6 +383,7 @@ public class Level implements Serializable {
      * Method to end the game if the player loses.
      */
     public void gameOver() {
+        Main.endCurrentLevel();
         Main.switchRoot(Menu.getMainMenu());
     }
 

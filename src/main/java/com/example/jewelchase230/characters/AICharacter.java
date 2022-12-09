@@ -103,7 +103,7 @@ public abstract class AICharacter extends Character {
      * @param inDirection the direction it is currently facing.
      */
     protected void setDirection(final Direction inDirection) {
-        setImageFromFile(getImage(inDirection));
         currentDirection = inDirection;
+        setImageFromFile(getImage(currentDirection));
     }
 }

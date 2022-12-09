@@ -250,9 +250,7 @@ public final class LevelFileReader {
                 levelBuilt.addCharacter(tempPos, tempPlayer);
             }
             case SmartThief -> {
-                String directionString = lineScanner.next();
-                SmartThief tempAssassin = new
-                        SmartThief(Direction.getDirectionType(directionString));
+                SmartThief tempAssassin = new SmartThief();
                 levelBuilt.addCharacter(tempPos, tempAssassin);
             }
             default -> System.out.println("Item id does not exist!");

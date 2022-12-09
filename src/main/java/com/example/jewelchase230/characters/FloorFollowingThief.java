@@ -127,7 +127,6 @@ public class FloorFollowingThief extends AICharacter {
         if (!(potentialLeftTurnPos == currentPos)) {
             setGridPosition(potentialLeftTurnPos);
             setDirection(currentDirection.getLeftDirection());
-            setImageFromFile(getImage(currentDirection));
         } else if (!(potentialForwardPos == currentPos)) {
             setGridPosition(potentialForwardPos);
         } else if (!(potentialRightTurnPos == currentPos)) {

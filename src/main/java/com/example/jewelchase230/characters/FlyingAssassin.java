@@ -48,7 +48,6 @@ public class FlyingAssassin extends AICharacter {
                     currentDirection.getOppositeDirection();
             setDirection(newDirection);
             setGridPosition(canMove(-xDiff, -yDiff));
-            setImageFromFile(getImage(newDirection));
         } else {
             setGridPosition(potentialPosition);
         }

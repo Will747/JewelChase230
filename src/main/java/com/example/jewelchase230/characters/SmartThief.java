@@ -63,11 +63,11 @@ public final class SmartThief extends AICharacter {
      *
      * @param direction The initial direction.
      */
-    public SmartThief(final Direction direction) {
+    public SmartThief() {
         super();
         setFacingLeftImage(FACING_LEFT_IMAGE);
         setFacingRightImage(FACING_RIGHT_IMAGE);
-        setDirection(direction);
+        setDirection(Direction.NONE);
         randomTarget = null;
     }
 
@@ -112,8 +112,15 @@ public final class SmartThief extends AICharacter {
         }
 
         // If the next position has been found move.
+        // Check that square can still be moved into.
         if (nextPos != null && canCharactersCollide(nextPos)) {
-            // Check that square can still be moved into.
+            //Only for image changes, direction is not relevent.
+            int xDiff = nextPos.getX() - getGridPosition().getX();
+            if (xDiff > 0) {
+                setDirection(Direction.RIGHT);
+            } else if (xDiff < 0) {
+                setDirection(Direction.LEFT);
+            }
             setGridPosition(nextPos);
         } else {
             distanceMoved--; // Undo move
