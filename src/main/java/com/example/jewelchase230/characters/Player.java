@@ -14,8 +14,6 @@ public class Player extends Character {
      */
     public Player() {
         super();
-
-        setImageFromFile("images/CAT_TABBY_SIT.png");
     }
 
     /**

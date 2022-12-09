@@ -3,7 +3,7 @@ package com.example.jewelchase230.profiles;
 import java.util.Random;
 
 /**
- * Character / profile image.
+ * Character / profile images.
  *
  * @author Ben Stott.
  */
@@ -53,6 +53,31 @@ public enum ProfileImage {
      */
     public String getRight() {
         return (catImagePath + "_RIGHT.png");
+    }
+
+    /**
+     * Converts a character to a cat.
+     * 
+     * @param catID The character.
+     * @return The corresponding cat.
+     */
+    public static ProfileImage getCatFromChar(final char catID) {
+        return switch (catID) {
+            case 'b' -> Black;
+            case 'o' -> Oreo;
+            case 't' -> Tabby;
+            case 'w' -> White;
+            default -> Tabby;
+        };
+    } 
+
+    /**
+     * Gets the cat id.
+     * 
+     * @return The cat id.
+     */
+    public char getChar() {
+        return(name().toLowerCase().charAt(0));
     }
 
     /**
