@@ -17,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 
@@ -45,6 +46,12 @@ public final class ProfileSelectMenu {
     private Button saveGameButton;
 
     /**
+     * Image of the profile.
+     */
+    @FXML
+    private ImageView profileImage;
+
+    /**
      * The profile being shown by this.
      */
     private Profile currentProfile;
@@ -58,6 +65,7 @@ public final class ProfileSelectMenu {
     public void setProfile(final Profile p) {
         currentProfile = p;
         selectPlayerName.setText(p.getPlayerName());
+        profileImage.setImage(p.getCatCharacter().getRightImage());
         selectPlayerLevel.setText("LEVEL : " + p.getLevelReached());
 
         String saveGamePath = p.getSaveGamePath();

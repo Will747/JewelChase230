@@ -97,6 +97,19 @@ public enum ProfileImage {
     }
 
     /**
+     * @return The profile image facing right.
+     */
+    public Image getRightImage() {
+        try {
+            return new Image(new FileInputStream(catImagePath + "_RIGHT.png"));
+        } catch (FileNotFoundException e) {
+            System.out.println("Failed to load profile image!");
+        }
+
+        return null;
+    }
+
+    /**
      * Gets a random cat character.
      *
      * @return A randomly picked cat image.

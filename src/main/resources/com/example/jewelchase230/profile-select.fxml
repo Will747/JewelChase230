@@ -19,7 +19,7 @@
       <Pane prefHeight="166.0" prefWidth="475.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
          <children>
             <Label fx:id="selectPlayerName" alignment="CENTER" layoutX="156.0" layoutY="43.0" prefHeight="40.0" prefWidth="277.0" text="Player" />
-            <ImageView fitHeight="142.0" fitWidth="146.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
+            <ImageView fx:id="profileImage" fitHeight="142.0" fitWidth="146.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
                <image>
                   <Image url="@../fxmlImages/CAT_BLACK_SIT.png" />
                </image>
