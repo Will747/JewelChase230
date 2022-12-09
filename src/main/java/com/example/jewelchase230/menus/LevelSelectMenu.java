@@ -39,6 +39,21 @@ public final class LevelSelectMenu {
     @FXML
     private ImageView lvl10;
 
+    private ImageView[] getImageViews()
+    {
+        ImageView[] imageViews = new ImageView[9];
+        imageViews[0] = lvl2;
+        imageViews[1] = lvl3;
+        imageViews[2] = lvl4;
+        imageViews[3] = lvl5;
+        imageViews[4] = lvl6;
+        imageViews[5] = lvl7;
+        imageViews[6] = lvl8;
+        imageViews[7] = lvl9;
+        imageViews[8] = lvl10;
+        return(imageViews);
+    }
+
     @FXML
     void onBackPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileSelect());
@@ -62,6 +77,7 @@ public final class LevelSelectMenu {
      */
     public void setProfile(final Profile profile) {
         selectedProfile = profile;
+        levelUnlock();
     }
 
     private void switchToLevel(final int levelNum) {
@@ -71,14 +87,15 @@ public final class LevelSelectMenu {
         Main.switchToCanvas();
     }
     
-    //NEED TO KNOW HOW TO CALL AN OBJECT FROM A STRING
-    //private void levelUnlcok(){
-    //    int playerLvl = selectedProfile.getLevelReached();
-    //    String imageViewName = "lvl";
-    //    for(int i = 2;i < 11; i++){
-    //        if(playerLvl >= i){
-    //            imageViewName = "lvl" + i;
-    //        }
-    //    }
-    //}
+    private void levelUnlock(){
+        ImageView[] imageViews = getImageViews();
+        int playerLvl = selectedProfile.getLevelReached();
+        for(int i = 2;i < 11; i++){
+            imageViews[i - 2].setVisible(true);
+            if(playerLvl >= i){
+                getImageViews();
+                imageViews[i - 2].setVisible(false);
+            }
+        }
+    }
 }

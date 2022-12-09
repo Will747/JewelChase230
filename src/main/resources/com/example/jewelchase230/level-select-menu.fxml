@@ -37,22 +37,22 @@
                   <Button layoutX="205.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="8" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="110.0" />
                   <Button layoutX="280.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="9" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="110.0" />
                   <Button layoutX="454.0" layoutY="99.0" mnemonicParsing="false" onMouseClicked="#changeLevel" prefHeight="75.0" prefWidth="75.0" text="10" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="110.0" />
-                  <ImageView fx:id="lvl2" fitHeight="75.0" fitWidth="75.0" layoutX="165.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="15.0">
+                  <ImageView fx:id="lvl2" fitHeight="75.0" fitWidth="75.0" layoutX="165.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="15.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="lvl3" fitHeight="75.0" fitWidth="75.0" layoutX="265.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="15.0">
+                  <ImageView fx:id="lvl3" fitHeight="75.0" fitWidth="75.0" layoutX="265.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="15.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="lvl4" fitHeight="75.0" fitWidth="75.0" layoutX="365.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="15.0">
+                  <ImageView fx:id="lvl4" fitHeight="75.0" fitWidth="75.0" layoutX="365.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="15.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="lvl5" fitHeight="75.0" fitWidth="75.0" layoutX="465.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="15.0">
+                  <ImageView fx:id="lvl5" fitHeight="75.0" fitWidth="75.0" layoutX="465.0" layoutY="110.0" opacity="0.14" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="15.0">
                      <image>
                         <Image url="@../fxmlImages/lock.jpg" />
                      </image>
