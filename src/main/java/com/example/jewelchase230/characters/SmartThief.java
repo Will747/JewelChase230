@@ -60,8 +60,6 @@ public final class SmartThief extends AICharacter {
 
     /**
      * Constructs a renderable component.
-     *
-     * @param direction The initial direction.
      */
     public SmartThief() {
         super();

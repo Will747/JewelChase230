@@ -1,11 +1,10 @@
 package com.example.jewelchase230.items;
 
 import com.example.jewelchase230.Level;
-import com.example.jewelchase230.LevelFileReader;
 import com.example.jewelchase230.Main;
+import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.characters.Character;
 import com.example.jewelchase230.characters.Player;
-import com.example.jewelchase230.profiles.Profile;
 
 /**
  * A class to implement doors and end the level if the door is open.
@@ -56,12 +55,9 @@ public class Door extends Item {
         Level level = getLevel();
         if (isDoorOpen && collidingCharacter instanceof Player) {
             level.addTimeLeftScore();
-            int nextLevelNum = level.getLevelNumber() + 1;
-            Profile playerProfile = level.getCurrentProfile();
-            playerProfile.setLevelReached(nextLevelNum);
-            Main.endCurrentLevel();
-            Main.setLevel(
-                    LevelFileReader.getLevel(nextLevelNum), playerProfile);
+
+            Main.switchRoot(Menu.getLevelComplete());
+            Menu.getLevelCompleteController().setLevelCompleted(level);
         } else if (isDoorOpen) {
             getLevel().gameOver();
         }

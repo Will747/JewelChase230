@@ -281,7 +281,6 @@ public final class Main extends Application {
         int timeSinceLastFrameInt = (int) Math.round(timeSinceLastFrame);
         if (currentLevel != null) {
             resetCanvas();
-            currentLevel.tick(timeSinceLastFrameInt);
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
             // Render and tick level.
@@ -296,6 +295,8 @@ public final class Main extends Application {
                 renderable.tick(timeSinceLastFrameInt);
                 renderable.draw(gc);
             }
+
+            currentLevel.tick(timeSinceLastFrameInt);
         }
     }
 
