@@ -29,9 +29,9 @@ cccc cccc bbbb bbbb bbbb bbbb cccc cccc cccc cccc cccc
 5 5 1 g
 3 5 5
 8 6 10 1
-4 8 1 y
+4 8 1 b
 8 8 7 1
-5 9 5 y
+5 9 5 b
 8 9 10 2
 2 10 0 10
 2 10 1 10

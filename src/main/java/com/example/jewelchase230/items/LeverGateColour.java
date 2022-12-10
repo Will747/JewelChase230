@@ -9,8 +9,8 @@ public enum LeverGateColour {
     /**
      * Red Colour.
      */
-    Pink("images/LEVER_PINK.png",
-            "images/GATE_PINK.png"),
+    Magenta("images/LEVER_MAGENTA.png",
+            "images/GATE_MAGENTA.png"),
     /**
      * Blue Colour.
      */
@@ -52,10 +52,10 @@ public enum LeverGateColour {
      */
     public static LeverGateColour colourInputConversion(final char c) {
         return switch (c) {
-            case 'p' -> Pink;
+            case 'm' -> Magenta;
             case 'g' -> Green;
             case 'b' -> Blue;
-            default -> Pink;
+            default -> Magenta;
         };
     }
 
