@@ -1,5 +1,5 @@
 10 10 
-60
+40
 mmmm mmmm mmmm mmmm mmmm mmmm mmmm mmmm mmmm mmmm
 mmmm bbbb bbbb brbr mmmm mmmm rrrr rrrr rrrr mmmm
 mmmm bbbb mmmm mmmm mmmm mmmm rrrr rrrr rrrr mmmm
@@ -8,8 +8,8 @@ cccc bbcc cccc cccc mmmm mmmm mmmm mmmm mmmm mmmm
 cccc cccc cccc mmmm mmmm yyyy yyyy yyyy ymym mmmm
 cccc cccc cccc mmmm mmmm yyyy yyyy yyyy yyyy mmmm
 cccc cccc cccc cccc mmmm mmmm mmmm yyyy yyyy mmmm
-mmmm mmmm mmmm cccc cccc mmmm cycy yyyy yyyy mmmm
-mmmm mmmm mmmm mmmm mmmm mmmm mmmm mmmm mmmm mmmm
+gggg gggg gggg cccc cccc mmmm cycy yyyy yyyy mmmm
+ggmm ggmm ggmm mmmm mmmm mmmm mmmm mmmm mmmm mmmm
 4 0 0 y
 8 0 5 2
 9 0 8
