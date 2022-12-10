@@ -1,19 +1,36 @@
-15 10
-200
-bbbb yyyy cccc cccc cccc cccc rrrr yyyy rrrr cccc cccc cccc cccc yyry bbbb
-bbbb bbbb cccc cccc cccc cccg ccgg ccgg ccgg ccgc cccc cccc cccc bbbb cccc
-cccc cccc bbbb cccc cccc cgcg cmcm mmmm mcmc gcgc cccc cccc bbbb bbbb cccc
-cccc cccc bbbb cccc cccc cgcc ggcc gggg ggcc gccc cccc cccc bbbb cccc cccc
-cccc cccc bbbb bbbb cccc cccc cccc cccc cccc cccc cccc bbbb cccc cccc cccc
-cccc cccc cccc bbbb bbbb bbbb mmbb bbbb mmbb bbbb bbbb bbbb cccc cccc cccc
-gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg gggg
-cccc ggcc ggcc ggcc ggcc ggcc rrrr mmmm rrrr ggcc ggcc ggcc ggcc ggcc cccc
-ccyy brmm ccyy ccyy ccyy ccyy rrrr mmmm rrrr ccyy ccyy ccyy ccyy rrmm ccyy
-yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy yyyy
-2 0 1 20
-8 1 5 4
-8 0 0 3
-7 5 7 l
-9 8 2
-3 3 3
-10 7 7
+11 11
+80
+cccc cccc cccc cccc cccc gggg gggg gggg gggg cccc cccc
+cccc cccc cccc cccc cccc gggr rrry rryr gggg cccc cccc
+mmmm mmmm cccc cccc gggr rrry yyyy yyyy cccc cccc cccc
+mmmm rrrg gggg gggg rrry yyyy yyyy yyyy cccc cccc cccc
+mmmm rgrr gggg gggg rrrr rrrr rrrr rrbr yyry cccc cccc
+mmmm mrmm rgrr gggg rrrr rrrr rrrr bbbb rrbr yyry yyyy
+cccc cccc mrmm rgrr rrrr rrrr rrrr bbbb bbbb rrbr yyyy
+cccc cccc cccc mmmm mmmm mmmm mrrr bbbb bbbb brrr yyyy
+cccc cccc cccc mmmm mmmm mrrr rbbb cccc cccc yycc yyyy
+cccc cccc bbbb rmrr mrrr rbbb cccc cccc cccc cccc cccc
+cccc cccc bbbb bbbb bbbb bbbb cccc cccc cccc cccc cccc
+8 0 0 4
+8 0 1 4
+8 0 7 3
+8 1 0 4
+8 1 1 4
+4 1 2 g
+5 1 5 m
+7 2 0 d
+8 2 8 3
+4 2 9 m
+8 3 4 1
+9 4 4
+8 4 8 1
+7 5 0 d
+5 5 1 g
+3 5 5
+8 6 10 1
+4 8 1 y
+8 8 7 1
+5 9 5 y
+8 9 10 2
+2 10 0 10
+2 10 1 10
