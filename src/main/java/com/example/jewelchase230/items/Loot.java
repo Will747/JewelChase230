@@ -16,7 +16,6 @@ public class Loot extends Item {
 
     /**
      * Constructs a new item of loot.
-     * Randomly selecting the type.
      *
      * @param inType The type of loot.
      */
@@ -34,13 +33,5 @@ public class Loot extends Item {
             getLevel().incrementPlayerScore(type.getValue());
         }
         remove();
-    }
-
-    /**
-     * Explosion collision for loot.
-     */
-    @Override
-    public void doOnExplosionCollision() {
-        super.doOnExplosionCollision();
     }
 }

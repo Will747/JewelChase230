@@ -12,7 +12,7 @@ import com.example.jewelchase230.Sprite;
 public abstract class Item extends Sprite implements Collidable {
 
     /**
-     * Image for when the bomb has exploded.
+     * Image for when the bomb has exploded this item.
      */
     private static final String ASHES_IMAGE = "images/BOMB_ASHES.png";
 

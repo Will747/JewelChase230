@@ -50,16 +50,20 @@ public class Player extends Character {
         if (isAlive()) {
             switch (keyPress.getCode()) {
                 case UP:
+                case W:
                     setGridPosition(canMove(0, -1));
                     break;
                 case DOWN:
+                case S:
                     setGridPosition(canMove(0, 1));
                     break;
                 case RIGHT:
+                case D:
                     setGridPosition(canMove(1, 0));
                     setImageFromFile(getImage(Direction.RIGHT));
                     break;
                 case LEFT:
+                case A:
                     setGridPosition(canMove(-1, 0));
                     setImageFromFile(getImage(Direction.LEFT));
                     break;
