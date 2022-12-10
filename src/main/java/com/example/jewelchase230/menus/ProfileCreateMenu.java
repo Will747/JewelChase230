@@ -93,7 +93,6 @@ public final class ProfileCreateMenu {
         if (acceptableName(profileCreatedName)) {
             if (ProfileManager.getListOfProfile().size()
                     < ProfileMenu.MAX_NUM_OF_PROFILES) {
-            	
                 Profile newProfile = new Profile(profileCreatedName);
                 ProfileManager.addProfile(newProfile);
                 ProfileManager.saveProfiles();
