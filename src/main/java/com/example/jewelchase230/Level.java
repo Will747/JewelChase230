@@ -1,5 +1,6 @@
 package com.example.jewelchase230;
 import com.example.jewelchase230.characters.Character;
+import com.example.jewelchase230.characters.FlyingAssassin;
 import com.example.jewelchase230.characters.Player;
 import com.example.jewelchase230.items.Bomb;
 import com.example.jewelchase230.items.Item;
@@ -122,8 +123,7 @@ public class Level implements Serializable {
     }
 
     /**
-     * Checks if all loot and levers have been collected and opens the
-     * door if they have.
+     * Checks for loot and levers on the level, opening the door if none found.
      */
     public void checkIfDoorOpen() {
         ArrayList<Lever> leverArray = getAllItemsOfType(Lever.class);
@@ -142,6 +142,11 @@ public class Level implements Serializable {
         getAllItemsOfType(Door.class);
         for (Door doorInstance : doorArray) {
              doorInstance.openDoor();
+             IntVector2D doorPos = doorInstance.getGridPosition();
+             Character  c = getSpecificCharacter(doorPos);
+             if (!(c instanceof FlyingAssassin) && !(c == null)) {
+                doorInstance.onCollision(c);
+             }
         }
     }
 
