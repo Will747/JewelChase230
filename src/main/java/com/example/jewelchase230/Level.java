@@ -141,7 +141,7 @@ public class Level implements Serializable {
         ArrayList<Door> doorArray =
         getAllItemsOfType(Door.class);
         for (Door doorInstance : doorArray) {
-             doorInstance.setIsDoorOpen(true);
+             doorInstance.openDoor();
         }
     }
 

@@ -1,0 +1,13 @@
+10 10
+200
+bbbb yyyy cccc cccc cccc yyyy bbbb bbbb yyyy cccc
+cccc bbbb yyyy yyyy yyyy bbbb cccc cccc bbbb yyyy
+yyyy cccc bbbb bbbb bbbb cccc yyyy yyyy cccc bbbb
+cccc yyyy cccc cccc cccc yyyy bbbb bbbb yyyy cccc
+bbbb bbbb bbbb bbbb bbbb bbbb cccc cccc bbbb bbbb
+cccc cccc cccc cccc cccc cccc yyyy yyyy cccc cccc
+yyyy yyyy yyyy yyyy yyyy yyyy bbbb bbbb yyyy yyyy
+cccc cccc cccc cccc cccc cccc yyyy yyyy cccc cccc
+bbbb bbbb bbbb bbbb bbbb bbbb cccc cccc bbbb bbbb
+cccc cccc cccc cccc cccc cccc yyyy yyyy cccc cccc
+9 0 0

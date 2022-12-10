@@ -17,15 +17,19 @@ public class Door extends Item {
      */
     private boolean isDoorOpen = false;
     /**
-     * The Door image.
+     * The closed door image.
      */
-    private static final String DOOR_IMAGE = "images/DOOR.png";
+    private static final String DOOR_CLOSED_IMAGE = "images/DOOR_CLOSED.png";
+    /**
+     * The open door image.
+     */
+    private static final String DOOR_OPEN_IMAGE = "images/DOOR_OPEN.png";
 
     /**
      * Constructs a new door.
      */
     public Door() {
-        super(DOOR_IMAGE);
+        super(DOOR_CLOSED_IMAGE);
     }
 
     /**
@@ -42,8 +46,9 @@ public class Door extends Item {
      *
      * @param openOrClose True if open, false if closed.
      */
-    public void setIsDoorOpen(final boolean openOrClose) {
-        isDoorOpen = openOrClose;
+    public void openDoor() {
+        isDoorOpen = true;
+        setImageFromFile(DOOR_OPEN_IMAGE);
     }
 
     /**
