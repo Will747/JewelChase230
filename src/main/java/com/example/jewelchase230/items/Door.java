@@ -60,7 +60,6 @@ public class Door extends Item {
         Level level = getLevel();
         if (isDoorOpen && collidingCharacter instanceof Player) {
             level.addTimeLeftScore();
-
             Main.switchRoot(Menu.getLevelComplete());
             Menu.getLevelCompleteController().setLevelCompleted(level);
         } else if (isDoorOpen) {

@@ -5,6 +5,7 @@ import com.example.jewelchase230.LevelFileReader;
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.profiles.Profile;
+import com.example.jewelchase230.profiles.ProfileManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -42,6 +43,7 @@ public final class LevelCompleteMenu {
 
         // Save score
         profile.setLevelReached(levelNum + 1);
+        ProfileManager.saveProfiles();
         Main.getHighScoreTable().addScore(levelNum, profile,
                 score);
 
