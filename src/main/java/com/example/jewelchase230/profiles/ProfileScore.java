@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * The highest score from a profile on a certain level.
+ * This class manages the highest score of a Profile, for the intent of it to be used to record the highest
+ * score of a player per level X.
+ * @author Kellie Robinson
  */
 public class ProfileScore implements Serializable {
     /**
