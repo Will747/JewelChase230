@@ -3,6 +3,7 @@ module com.example.jewelchase230 {
     requires javafx.fxml;
 	requires javafx.graphics;
 	requires javafx.base;
+	requires java.desktop;
 
 
     opens com.example.jewelchase230 to javafx.fxml, javafx.base;

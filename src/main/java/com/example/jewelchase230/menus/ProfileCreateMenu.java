@@ -1,13 +1,19 @@
 package com.example.jewelchase230.menus;
 
+
+
 import com.example.jewelchase230.Main;
 import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.profiles.Profile;
 import com.example.jewelchase230.profiles.ProfileManager;
+import com.example.jewelchase230.profiles.ProfileImage;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
@@ -36,6 +42,45 @@ public final class ProfileCreateMenu {
      */
     @FXML
     private Button createProfileMenuButton;
+    
+    /*
+     * Choose cat combo box.
+     */
+    @FXML
+    private ComboBox<ProfileImage> chooseCatComboBox;
+    
+    /** 
+     * char which indicated which cat is selected.
+     */
+    private char catIDSelected = 't'; 
+    
+    private String chosenCat;
+    
+/**
+    ObservableList<ProfileImage> catList = 
+    	    FXCollections.observableArrayList(
+    	        ProfileImage.Black,
+    	        ProfileImage.Oreo,
+    	        ProfileImage.Tabby,
+    	        ProfileImage.White
+    	    );
+    
+    
+    @FXML
+    public void initialize() {
+    	chooseCatComboBox.getItems().removeAll(chooseCatComboBox.getItems());
+    	chooseCatComboBox.setItems(catList);
+    	//chooseCatComboBox.getSelectionModel().select("Option B");
+    }
+    
+    
+    private char getChosenCat() {
+    	chooseCatComboBox.setOnAction(event -> { 
+    		 chosenCat = chooseCatComboBox.getValue().toString();    
+    		});
+    	return chosenCat.toLowerCase().charAt(0);
+    }
+   */
 
     /**
      * This method creates a profile using the user's name input.
@@ -48,6 +93,7 @@ public final class ProfileCreateMenu {
         if (acceptableName(profileCreatedName)) {
             if (ProfileManager.getListOfProfile().size()
                     < ProfileMenu.MAX_NUM_OF_PROFILES) {
+            	
                 Profile newProfile = new Profile(profileCreatedName);
                 ProfileManager.addProfile(newProfile);
                 ProfileManager.saveProfiles();

@@ -66,6 +66,11 @@ public final class Menu {
      * Game over fxml file.
      */
     private static final String GAME_OVER_FXML = "game-over-menu.fxml";
+    
+    /** 
+     * Cat select menu fxml file.
+     */
+    private static final String CAT_SELECT_MENU_FXML = "cat-select-menu.fxml";
 
     /**
      * Already created parent nodes.
@@ -99,6 +104,7 @@ public final class Menu {
         createParent(LEVEL_SELECT_MENU_FXML);
         createParent(LEVEL_COMPLETE_FXML);
         createParent(GAME_OVER_FXML);
+        createParent(CAT_SELECT_MENU_FXML);
     }
 
     /**
@@ -223,6 +229,10 @@ public final class Menu {
      */
     public static Parent getHighScoreTable() {
         return getParent(HIGHSCORE_TABLE_FXML);
+    }
+    
+    public static Parent getCatSelectMenu() { 
+    	return getParent(CAT_SELECT_MENU_FXML);
     }
 
     /**
