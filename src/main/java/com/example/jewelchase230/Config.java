@@ -26,6 +26,7 @@ import java.util.Scanner;
 public abstract class Config {
     /**
      * Constructs a new config.
+     *
      * @param filePath The file path and name to the config file.
      */
     public Config(final String filePath) {
@@ -34,6 +35,7 @@ public abstract class Config {
 
     /**
      * Saves the current state of this class to the config file.
+     *
      * @param filePath The file path and name to the config file.
      */
     protected void write(final String filePath) {
@@ -63,6 +65,7 @@ public abstract class Config {
 
     /**
      * Reads the settings from the config file and sets all fields.
+     *
      * @param filePath The file path and name to the config file.
      */
     private void read(final String filePath) {

@@ -6,8 +6,8 @@ import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.vectors.DoubleVector2D;
 import com.example.jewelchase230.vectors.IntVector2D;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+
 import javafx.scene.canvas.GraphicsContext;
 
 /**
@@ -16,20 +16,32 @@ import javafx.scene.canvas.GraphicsContext;
  *
  * @author Will Kaye
  */
-public final class Tile extends Renderable implements Collidable, Serializable {
-    /** The width of the border around the tile. */
+public final class Tile extends Renderable implements Collidable {
+    /**
+     * The width of the border around the tile.
+     */
     private static final double BORDER_WIDTH = 0.04;
 
-    /** Top left side of tile. */
+    /**
+     * Top left side of tile.
+     */
     private final TileColour topLeft;
-    /** Bottom left side of tile. */
+    /**
+     * Bottom left side of tile.
+     */
     private final TileColour bottomLeft;
-    /** Top right side of tile. */
+    /**
+     * Top right side of tile.
+     */
     private final TileColour topRight;
-    /** Bottom right side of tile. */
+    /**
+     * Bottom right side of tile.
+     */
     private final TileColour bottomRight;
-    /** List of all nearby bombs. */
-    private ArrayList<IntVector2D> bombsNextToTile = new ArrayList<>();
+    /**
+     * List of all nearby bombs.
+     */
+    private final ArrayList<IntVector2D> bombsNextToTile = new ArrayList<>();
 
     /**
      * Item currently on this tile.
@@ -39,9 +51,10 @@ public final class Tile extends Renderable implements Collidable, Serializable {
 
     /**
      * Constructs a new tile.
-     * @param inTopLeft Top left colour
-     * @param inTopRight Top right colour
-     * @param inBottomLeft Bottom left colour
+     *
+     * @param inTopLeft     Top left colour
+     * @param inTopRight    Top right colour
+     * @param inBottomLeft  Bottom left colour
      * @param inBottomRight Bottom right colour
      */
     public Tile(final TileColour inTopLeft,
@@ -57,6 +70,7 @@ public final class Tile extends Renderable implements Collidable, Serializable {
 
     /**
      * Checks if there is a bomb on a neighbouring tile.
+     *
      * @return True if there's a bomb near, false if not.
      */
     public boolean isNextToBomb() {
@@ -87,6 +101,7 @@ public final class Tile extends Renderable implements Collidable, Serializable {
 
     /**
      * Triggers all bombs next to this tile to explode.
+     *
      * @param character The character causing the explosion.
      */
     private void triggerAllNearbyBombs(final Character character) {
@@ -98,6 +113,7 @@ public final class Tile extends Renderable implements Collidable, Serializable {
 
     /**
      * Get a list of all nearby bombs.
+     *
      * @return ArrayList of bombs.
      */
     private ArrayList<Bomb> getBombs() {
@@ -110,6 +126,7 @@ public final class Tile extends Renderable implements Collidable, Serializable {
 
     /**
      * Add a bomb trigger to this tile.
+     *
      * @param bombPos Bomb position.
      */
     public void setBombTrigger(final IntVector2D bombPos) {
@@ -118,6 +135,7 @@ public final class Tile extends Renderable implements Collidable, Serializable {
 
     /**
      * Remove a bomb.
+     *
      * @param bombPos The bomb's position.
      */
     public void removeBombTrigger(final IntVector2D bombPos) {
@@ -133,6 +151,7 @@ public final class Tile extends Renderable implements Collidable, Serializable {
 
     /**
      * Adds an item to this tile.
+     *
      * @param inItem Item on this tile.
      */
     public void setItem(final Item inItem) {
@@ -141,6 +160,7 @@ public final class Tile extends Renderable implements Collidable, Serializable {
 
     /**
      * Gets all the colours contained in this tile.
+     *
      * @return Array of tile colours.
      */
     public ArrayList<TileColour> getTileColours() {

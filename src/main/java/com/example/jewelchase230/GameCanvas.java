@@ -1,20 +1,24 @@
 package com.example.jewelchase230;
+
 import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Region;
 
 /**
  * A resizable canvas that resizes to fill the parent nodes size.
+ *
  * @author Will Kaye
  */
 public class GameCanvas extends Canvas {
-    /** Region to match size with. */
+    /**
+     * Region to match size with.
+     */
     private Region parentRegion;
 
     /**
      * Constructs a new instance of GameCanvas.
      *
-     * @param width initial width used by canvas.
+     * @param width  initial width used by canvas.
      * @param height initial height used by canvas.
      */
     public GameCanvas(final double width, final double height) {

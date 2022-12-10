@@ -5,14 +5,19 @@ import java.util.Objects;
 
 /**
  * Two-dimensional vector.
+ *
  * @param <E> The type used by x,y coordinates.
  * @author Will Kaye
  */
 public class Vector2D<E extends Number> implements Serializable {
     // Components of the vector.
-    /** x component. */
+    /**
+     * x component.
+     */
     private E x;
-    /** y component. */
+    /**
+     * y component.
+     */
     private E y;
 
     /**
@@ -23,6 +28,7 @@ public class Vector2D<E extends Number> implements Serializable {
 
     /**
      * Constructs an instance of Vector2D.
+     *
      * @param inX Initial X component.
      * @param inY Initial Y component.
      */
@@ -61,6 +67,7 @@ public class Vector2D<E extends Number> implements Serializable {
 
     /**
      * Compares two vectors returns true if they are the same.
+     *
      * @param value vector to compare against.
      * @return True if vector is the same.
      */

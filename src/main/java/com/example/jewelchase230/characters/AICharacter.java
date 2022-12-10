@@ -9,11 +9,23 @@ import com.example.jewelchase230.vectors.IntVector2D;
  * @author Caroline Segestaal.
  */
 public abstract class AICharacter extends Character {
-    /** Time since last tick. */
+    /**
+     * Time since last tick.
+     */
     private int timeSinceLastImageChange = 0;
-    /** Time between moves. */
+    /**
+     * 1 second time between moves.
+     */
     protected static final int MILLISECONDS_PER_MOVE = 1000;
-    /** Current Direction. */
+
+    /**
+     * Current time between moves in milliseconds.
+     */
+    private int timeBetweenMoves = MILLISECONDS_PER_MOVE;
+
+    /**
+     * Current Direction.
+     */
     private Direction currentDirection;
 
     /**
@@ -25,6 +37,7 @@ public abstract class AICharacter extends Character {
 
     /**
      * Finds the x or y coordinate to change.
+     *
      * @param inDirection Direction to be faced.
      * @return x and y coordinates to change.
      */
@@ -32,13 +45,17 @@ public abstract class AICharacter extends Character {
         int xDiff = 0;
         int yDiff = 0;
         switch (inDirection) {
-            case UP: yDiff = -1;
+            case UP:
+                yDiff = -1;
                 break;
-            case DOWN: yDiff = 1;
+            case DOWN:
+                yDiff = 1;
                 break;
-            case LEFT: xDiff = -1;
+            case LEFT:
+                xDiff = -1;
                 break;
-            case RIGHT: xDiff = 1;
+            case RIGHT:
+                xDiff = 1;
                 break;
             default:
                 System.out.print("ERROR: No direction for flying assassin!");
@@ -48,18 +65,30 @@ public abstract class AICharacter extends Character {
     }
 
     /**
+     * Sets the amount of time between the characters moves.
+     * @param millisecondsBetweenMoves Time in milliseconds between moves.
+     */
+    protected void setMoveSpeed(final int millisecondsBetweenMoves) {
+        timeBetweenMoves = millisecondsBetweenMoves;
+    }
+
+    /**
      * Constructs a renderable component.
+     *
      * @param inDirection The direction given.
      */
     public AICharacter(final Direction inDirection) {
         super();
     }
 
-    /** The default next move. */
+    /**
+     * The default next move.
+     */
     protected abstract void makeNextMove();
 
     /**
      * Gets the current direction.
+     *
      * @return Current direction.
      */
     protected Direction getDirection() {
@@ -75,17 +104,20 @@ public abstract class AICharacter extends Character {
     public void tick(final int time) {
         if (isAlive()) {
             timeSinceLastImageChange += time;
-            if (timeSinceLastImageChange > MILLISECONDS_PER_MOVE) {
+            if (timeSinceLastImageChange > timeBetweenMoves) {
                 makeNextMove();
                 timeSinceLastImageChange = 0;
             }
         }
     }
+
     /**
      * Sets direction of the NPC.
+     *
      * @param inDirection the direction it is currently facing.
      */
     protected void setDirection(final Direction inDirection) {
         currentDirection = inDirection;
+        setImageFromFile(getImage(currentDirection));
     }
 }

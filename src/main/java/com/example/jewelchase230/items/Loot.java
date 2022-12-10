@@ -9,12 +9,14 @@ import com.example.jewelchase230.characters.Player;
  * @author Will Kaye and Ben Stott
  */
 public class Loot extends Item {
-    /** The type of loot. */
+    /**
+     * The type of loot.
+     */
     private final LootType type;
 
     /**
      * Constructs a new item of loot.
-     * Randomly selecting the type.
+     *
      * @param inType The type of loot.
      */
     public Loot(final LootType inType) {
@@ -31,11 +33,5 @@ public class Loot extends Item {
             getLevel().incrementPlayerScore(type.getValue());
         }
         remove();
-    }
-
-    /** Explosion collision for loot. */
-    @Override
-    public void doOnExplosionCollision() {
-        super.doOnExplosionCollision();
     }
 }

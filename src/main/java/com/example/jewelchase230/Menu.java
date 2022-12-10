@@ -1,6 +1,12 @@
 package com.example.jewelchase230;
 
-import com.example.jewelchase230.menus.*;
+import com.example.jewelchase230.menus.ProfileMenu;
+import com.example.jewelchase230.menus.LevelSelectMenu;
+import com.example.jewelchase230.menus.ProfileSelectMenu;
+import com.example.jewelchase230.menus.HighScoreMenu;
+import com.example.jewelchase230.menus.SettingsMenu;
+import com.example.jewelchase230.menus.LevelCompleteMenu;
+import com.example.jewelchase230.menus.GameOverMenu;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,31 +23,58 @@ import java.util.HashMap;
  */
 public final class Menu {
     // Filenames of all fxml files
-    /** Main menu fxml file. */
+    /**
+     * Main menu fxml file.
+     */
     private static final String MAIN_MENU_FXML = "main-menu.fxml";
-    /** Test menu fxml file. */
-    private static final String TEST_MENU_FXML = "test-menu.fxml";
-    /** Profile Menu fxml file. */
+    /**
+     * Profile Menu fxml file.
+     */
     private static final String PROFILE_MENU_FXML = "profile-menu.fxml";
-    /** Settings Menu fxml file. */
+    /**
+     * Settings Menu fxml file.
+     */
     private static final String SETTINGS_MENU_FXML = "settings-menu.fxml";
-    /** HighScore Table Menu fxml file. */
+    /**
+     * HighScore Table Menu fxml file.
+     */
     private static final String HIGHSCORE_TABLE_FXML = "highScore-table.fxml";
-    /** Profile Select fxml file. */
+    /**
+     * Profile Select fxml file.
+     */
     private static final String PROFILE_SELECT_FXML = "profile-select.fxml";
-    /** Pause menu fxml file */
+    /**
+     * Pause menu fxml file.
+     */
     private static final String PAUSE_MENU_FXML = "pause-menu.fxml";
-    /** Profile creating fxml file. */
-    private static final String PROFILE_CREATE_MENU_FXML = "profile-create-menu.fxml";
-    /** Level selecting fxml file. */
-    private static final String LEVEL_SELECT_MENU_FXML = "level-select-menu.fxml";
-    /** Game over fxml file. */
+    /**
+     * Profile creating fxml file.
+     */
+    private static final String PROFILE_CREATE_MENU_FXML
+            = "profile-create-menu.fxml";
+    /**
+     * Level selecting fxml file.
+     */
+    private static final String LEVEL_SELECT_MENU_FXML
+            = "level-select-menu.fxml";
+    /**
+     * Level completed fxml file.
+     */
+    private static final String LEVEL_COMPLETE_FXML
+            = "level-complete.fxml";
+    /**
+     * Game over fxml file.
+     */
     private static final String GAME_OVER_FXML = "game-over-menu.fxml";
 
-    /** Already created parent nodes. */
+    /**
+     * Already created parent nodes.
+     */
     private static HashMap<String, Parent> cachedParents;
 
-    /** Already initialized controllers. */
+    /**
+     * Already initialized controllers.
+     */
     private static HashMap<String, Object> cachedControllers;
 
     private Menu() {
@@ -57,7 +90,6 @@ public final class Menu {
         cachedControllers = new HashMap<>();
 
         createParent(MAIN_MENU_FXML);
-        createParent(TEST_MENU_FXML);
         createParent(SETTINGS_MENU_FXML);
         createParent(HIGHSCORE_TABLE_FXML);
         createParent(PROFILE_MENU_FXML);
@@ -65,11 +97,13 @@ public final class Menu {
         createParent(PAUSE_MENU_FXML);
         createParent(PROFILE_CREATE_MENU_FXML);
         createParent(LEVEL_SELECT_MENU_FXML);
-        // createParent(GAME_OVER_FXML);
+        createParent(LEVEL_COMPLETE_FXML);
+        createParent(GAME_OVER_FXML);
     }
 
     /**
      * Creates a new parent node and adds it to the cache.
+     *
      * @param fxmlFile fxmlFile that should be in the scene.
      */
     private static void createParent(final String fxmlFile) throws IOException {
@@ -94,13 +128,6 @@ public final class Menu {
     }
 
     /**
-     * @return test menu node.
-     */
-    public static Parent getTestMenu() {
-        return getParent(TEST_MENU_FXML);
-    }
-
-    /**
      * @return profile menu node.
      */
     public static Parent getProfileMenu() {
@@ -108,10 +135,38 @@ public final class Menu {
     }
 
     /**
+     * @return The profile Menu select controller.
+     */
+    public static ProfileMenu getProfileMenuController() {
+        return (ProfileMenu) getController(PROFILE_MENU_FXML);
+    }
+
+    /**
      * @return menu with one profile.
      */
     public static Parent getProfileSelect() {
         return getParent(PROFILE_SELECT_FXML);
+    }
+
+    /**
+     * @return The profile select controller.
+     */
+    public static ProfileSelectMenu getProfileSelectController() {
+        return (ProfileSelectMenu) getController(PROFILE_SELECT_FXML);
+    }
+
+    /**
+     * @return level completed menu.
+     */
+    public static Parent getLevelComplete() {
+        return getParent(LEVEL_COMPLETE_FXML);
+    }
+
+    /**
+     * @return The level completed controller.
+     */
+    public static LevelCompleteMenu getLevelCompleteController() {
+        return (LevelCompleteMenu) getController(LEVEL_COMPLETE_FXML);
     }
 
     /**
@@ -131,24 +186,22 @@ public final class Menu {
     /**
      * @return Game over menu node.
      */
-    /*
     public static Parent getGameOverMenu() {
         return getParent(GAME_OVER_FXML);
     }
-    */
 
     /**
-     * @return The profile Menu select controller.
+     * @return The game over controller.
      */
-    public static ProfileMenu getProfileMenuController() {
-        return (ProfileMenu) getController(PROFILE_MENU_FXML);
+    public static GameOverMenu getGameOverMenuController() {
+        return (GameOverMenu) getController(GAME_OVER_FXML);
     }
 
     /**
-     * @return The profile select controller.
+     * @return settings menu node.
      */
-    public static ProfileSelectMenu getProfileSelectController() {
-        return (ProfileSelectMenu) getController(PROFILE_SELECT_FXML);
+    public static Parent getSettingsMenu() {
+        return getParent(SETTINGS_MENU_FXML);
     }
 
     /**
@@ -159,25 +212,10 @@ public final class Menu {
     }
 
     /**
-     * @return The high score table controller
-     */
-    public static HighScoreMenu getHighScoreMenuController() {
-        return (HighScoreMenu) getController(HIGHSCORE_TABLE_FXML);
-    }
-
-
-    /**
-     * @return settings menu node.
-     */
-    public static Parent getSettingsMenu() {
-        return getParent(SETTINGS_MENU_FXML);
-    }
-
-    /**
      * @return The profile creation node.
      */
-    public static Parent getProfileCreateMenu() { 
-    	return getParent(PROFILE_CREATE_MENU_FXML);
+    public static Parent getProfileCreateMenu() {
+        return getParent(PROFILE_CREATE_MENU_FXML);
     }
 
     /**
@@ -188,7 +226,15 @@ public final class Menu {
     }
 
     /**
+     * @return The high score table controller
+     */
+    public static HighScoreMenu getHighScoreMenuController() {
+        return (HighScoreMenu) getController(HIGHSCORE_TABLE_FXML);
+    }
+
+    /**
      * Gets a Parent node from the cache.
+     *
      * @param fxmlFile fxml file being loaded.
      * @return scene containing menu from fxml file.
      */
@@ -198,6 +244,7 @@ public final class Menu {
 
     /**
      * Gets a controller from the cache.
+     *
      * @param fxmlFile fxml file being loaded.
      * @return controller used by fxml file.
      */

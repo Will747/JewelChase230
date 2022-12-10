@@ -11,27 +11,42 @@ import com.example.jewelchase230.vectors.IntVector2D;
  * @author Ben Stott
  */
 public class Bomb extends Item {
-    /** Time since the image last changed. */
+    /**
+     * Time since the image last changed.
+     */
     private int timeSinceLastImageChange = 0;
-    /** Time between image change when a fast explode occours. */
+    /**
+     * Time between image change when a fast explode occours.
+     */
     private static final int FAST_EXPLODE_COUNTDOWN_RATE = 100;
-    /** The index for currently displayed image in countdownArray. */
+    /**
+     * The index for currently displayed image in countdownArray.
+     */
     private int currentImageInCountdown = 0;
-    /** Whether the bomb has collided with a character. */
+    /**
+     * Whether the bomb has collided with a character.
+     */
     private boolean hasCollided = false;
-    /**  Whether the bomb has collided with an explosion. */
+    /**
+     * Whether the bomb has collided with an explosion.
+     */
     private boolean fastExplode = false;
-    /** The bomb image. */
+    /**
+     * The bomb image.
+     */
     private static final String BOMB_IMAGE = "images/BOMB.png";
-    /** The explosion image. */
+    /**
+     * The explosion image.
+     */
     private static final String EXPLOSION_IMAGE = "images/BOMB_EXPLOSION.png";
-    /** The bomb countdown images. */
+    /**
+     * The bomb countdown images.
+     */
     private final String[] countdownArray = {"images/BOMB_3.png",
             "images/BOMB_2.png", "images/BOMB_1.png"};
 
     /**
      * Constructs a new bomb.
-     *
      */
     public Bomb() {
         super(BOMB_IMAGE);
@@ -40,6 +55,7 @@ public class Bomb extends Item {
 
     /**
      * Every game tick checks bomb status.
+     *
      * @param time Time since the last frame.
      */
     @Override
@@ -84,6 +100,7 @@ public class Bomb extends Item {
 
     /**
      * Produces an explosion on a tile.
+     *
      * @param posToExplode Tile to produce explosion on.
      */
     public void explodePosition(final IntVector2D posToExplode) {

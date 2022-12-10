@@ -7,9 +7,16 @@ import com.example.jewelchase230.items.Loot;
 import com.example.jewelchase230.items.Lever;
 import com.example.jewelchase230.items.Door;
 import com.example.jewelchase230.profiles.Profile;
+import com.example.jewelchase230.profiles.ProfileImage;
 import com.example.jewelchase230.vectors.IntVector2D;
+import javafx.scene.Parent;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
+
 import java.util.ArrayList;
 
 /**
@@ -378,7 +385,9 @@ public class Level implements Serializable {
      * Method to end the game if the player loses.
      */
     public void gameOver() {
-        Main.switchRoot(Menu.getMainMenu());
+        Parent gameOverMenu = Menu.getGameOverMenu();
+        Main.switchRoot(gameOverMenu);
+        Menu.getGameOverMenuController().setLevelLost(this);
     }
 
     /**
@@ -409,6 +418,11 @@ public class Level implements Serializable {
      */
     public void setProfile(final Profile inCurrentProfile) {
         currentProfile = inCurrentProfile;
+        ProfileImage catCharacter = currentProfile.getCatCharacter();
+        Player player = getPlayer();
+        player.setImageFromFile(catCharacter.getRight());
+        player.setFacingLeftImage(catCharacter.getLeft());
+        player.setFacingRightImage(catCharacter.getRight());
     }
 
     /**

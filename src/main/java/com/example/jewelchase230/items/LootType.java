@@ -8,19 +8,31 @@ import java.util.Random;
  * @author Will Kaye
  */
 public enum LootType {
-    /** Pile of coins. */
+    /**
+     * Pile of coins.
+     */
     Coins(100, "images/COINS.png"),
-    /** Bag of coins. */
+    /**
+     * Bag of coins.
+     */
     Bag(250, "images/BAG.png"),
-    /** Beer. */
+    /**
+     * Beer.
+     */
     Beer(500, "images/Beer.png"),
-    /** Cocktail. */
+    /**
+     * Cocktail.
+     */
     Cocktail(750, "images/COCKTAIL.png");
 
-    /** Number of points received when collected. */
+    /**
+     * Number of points received when collected.
+     */
     private final int value;
 
-    /** Path to image file. */
+    /**
+     * Path to image file.
+     */
     private final String image;
 
     LootType(final int inValue, final String imagePath) {
@@ -30,6 +42,7 @@ public enum LootType {
 
     /**
      * Random picks a type of loot with weighting based on value.
+     *
      * @return A randomly picked type of loot.
      */
     public static LootType getRandomType() {
@@ -52,6 +65,7 @@ public enum LootType {
 
     /**
      * Converts the input value to a loot type.
+     *
      * @param value input value.
      * @return Corresponding loot value.
      */

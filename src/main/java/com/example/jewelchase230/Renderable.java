@@ -4,13 +4,15 @@ import com.example.jewelchase230.vectors.DoubleVector2D;
 import com.example.jewelchase230.vectors.IntVector2D;
 import javafx.scene.canvas.GraphicsContext;
 
+import java.io.Serializable;
+
 /**
  * A component that ticks and can be rendered onto the level
  * grid.
  *
  * @author Will Kaye
  */
-public abstract class Renderable {
+public abstract class Renderable implements Serializable {
     /**
      * The percentage of the canvas that must be left blank
      * around the edges.
@@ -22,11 +24,14 @@ public abstract class Renderable {
      */
     private static final double TOP_OFFSET = 0.25;
 
-    /** Position in the level item should be rendered to. */
+    /**
+     * Position in the level item should be rendered to.
+     */
     private IntVector2D gridPosition;
 
     /**
      * Constructs a renderable component.
+     *
      * @param x X position on the grid.
      * @param y Y position on the grid.
      */
@@ -44,6 +49,7 @@ public abstract class Renderable {
 
     /**
      * Gets the current level.
+     *
      * @return The level.
      */
     protected Level getLevel() {
@@ -53,6 +59,7 @@ public abstract class Renderable {
     /**
      * The top left position on the canvas that this item should
      * be rendered to.
+     *
      * @return Position of this item on the canvas.
      */
     protected DoubleVector2D getRenderPosition() {
@@ -72,6 +79,7 @@ public abstract class Renderable {
 
     /**
      * The maximum side length that the item should take up on the grid.
+     *
      * @return Size of this section.
      */
     protected static double getCubeSize() {
@@ -93,6 +101,7 @@ public abstract class Renderable {
 
     /**
      * The position of this item on the grid.
+     *
      * @return Coordinates of this.
      */
     public IntVector2D getGridPosition() {
@@ -101,6 +110,7 @@ public abstract class Renderable {
 
     /**
      * Changes the position of this on the grid.
+     *
      * @param inGridPosition New position on the grid.
      */
     public void setGridPosition(final IntVector2D inGridPosition) {
@@ -109,6 +119,7 @@ public abstract class Renderable {
 
     /**
      * Called just before the grid gets re-rendered.
+     *
      * @param time Time since last frame in milliseconds.
      */
     public void tick(final int time) {
@@ -116,6 +127,7 @@ public abstract class Renderable {
 
     /**
      * Draws this item to the canvas.
+     *
      * @param gc GraphicsContext for creating draw class.
      */
     public abstract void draw(GraphicsContext gc);

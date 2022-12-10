@@ -16,88 +16,92 @@ import java.io.IOException;
  * @author Kellie Robinson
  */
 public final class ProfileManager {
-	/** ArrayList which holds a list of Profiles. */
-	private static ArrayList<Profile> listOfProfile = new ArrayList<>();
+    /**
+     * ArrayList which holds a list of Profiles.
+     */
+    private static ArrayList<Profile> listOfProfile = new ArrayList<>();
 
-	/** Name of Text File to be read. */
-	private static final String PROFILES_FILE = "Profiles.txt";
+    /**
+     * Name of Text File to be read.
+     */
+    private static final String PROFILES_FILE = "Profiles.txt";
 
-	private ProfileManager() {
-	}
+    private ProfileManager() {
+    }
 
-	// Reads each line of the text file "Profile.txt"
-	/**
-	 * Reads content from file and stores them appropriately to be
-	 * handled in the makeProfile method.
-	 */
-	public static void readLines() {
-		try {
-			File myFile = new File(PROFILES_FILE);
-			Scanner input = new Scanner(myFile);
-			ArrayList<String> profilesLineByLineData =
-					new ArrayList<>();
+    // Reads each line of the text file "Profile.txt"
 
-			while (input.hasNextLine()) {
-				String data = input.nextLine();
-				profilesLineByLineData.add(data);
+    /**
+     * Reads content from file and stores them appropriately to be
+     * handled in the makeProfile method.
+     */
+    public static void readLines() {
+        try {
+            File myFile = new File(PROFILES_FILE);
+            Scanner input = new Scanner(myFile);
 
-				String[] lineDataSplit = data.split("\\.");
-				Profile tempProfile =
-						new Profile(lineDataSplit);
-				listOfProfile.add(tempProfile);
-			}
-			input.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("An error occurred.");
-			e.printStackTrace();
-		}
-		System.out.println(listOfProfile.size());
-	}
+            while (input.hasNextLine()) {
+                String data = input.nextLine();
 
-	/**
-	 * Overwrites the Profiles.txt file with updated Profile information.
-	 */
-	public static void saveProfiles() {
-		try {
-			FileWriter fileWriter =
-					new FileWriter(PROFILES_FILE);
-			BufferedWriter pmWriter =
-					new BufferedWriter(fileWriter);
+                String[] lineDataSplit = data.split("\\.");
+                Profile tempProfile =
+                        new Profile(lineDataSplit);
+                listOfProfile.add(tempProfile);
+            }
+            input.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        System.out.println(listOfProfile.size());
+    }
 
-			for (Profile profile : listOfProfile) {
-				String profileData = profile.toString();
-				pmWriter.write(profileData);
-				pmWriter.newLine();
-			}
-			pmWriter.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("An error occurred.");
-			e.printStackTrace();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
+    /**
+     * Overwrites the Profiles.txt file with updated Profile information.
+     */
+    public static void saveProfiles() {
+        try {
+            FileWriter fileWriter =
+                    new FileWriter(PROFILES_FILE);
+            BufferedWriter pmWriter =
+                    new BufferedWriter(fileWriter);
 
-	/**
-	 * Adds a new profile to the manager.
-	 * @param profile New profile being added.
-	 */
-	public static void addProfile(final Profile profile) {
-		listOfProfile.add(profile);
-	}
+            for (Profile profile : listOfProfile) {
+                String profileData = profile.toString();
+                pmWriter.write(profileData);
+                pmWriter.newLine();
+            }
+            pmWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-	/**
-	 * Deletes a player profile.
-	 * @param profile Profile to be deleted.
-	 */
-	public static void deleteProfile(final Profile profile) {
-		listOfProfile.remove(profile);
-	}
+    /**
+     * Adds a new profile to the manager.
+     *
+     * @param profile New profile being added.
+     */
+    public static void addProfile(final Profile profile) {
+        listOfProfile.add(profile);
+    }
 
-	/**
-	 * @return the listOfProfile
-	 */
-	public static ArrayList<Profile> getListOfProfile() {
-		return listOfProfile;
-	}
+    /**
+     * Deletes a player profile.
+     *
+     * @param profile Profile to be deleted.
+     */
+    public static void deleteProfile(final Profile profile) {
+        listOfProfile.remove(profile);
+    }
+
+    /**
+     * @return the listOfProfile
+     */
+    public static ArrayList<Profile> getListOfProfile() {
+        return listOfProfile;
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.jewelchase230.menus;
 
 import com.example.jewelchase230.Main;
-import com.example.jewelchase230.Menu;
 import com.example.jewelchase230.Settings;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -16,7 +15,7 @@ import javafx.scene.input.MouseEvent;
  */
 public final class SettingsMenu {
     /** Holds all saved settings. */
-    Settings settings;
+    private Settings settings;
 
     /** Music volume slider. */
     @FXML
@@ -30,7 +29,7 @@ public final class SettingsMenu {
     @FXML
     private CheckBox fullScreen;
 
-    /** Previous menu */
+    /** Previous menu. */
     private Parent previousMenu;
 
     @FXML
@@ -60,7 +59,11 @@ public final class SettingsMenu {
         settings.setFullScreen(fullScreen.isSelected());
     }
 
-    public void setPreviousParent(Parent menu){
+    /**
+     * Sets the menu used before this one.
+     * @param menu The menu to switch to when back button is pressed.
+     */
+    public void setPreviousParent(final Parent menu) {
         previousMenu = menu;
     }
 

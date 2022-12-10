@@ -18,6 +18,7 @@ public class ScalingScene extends Scene {
 
     /**
      * Creates a scene for a specific root node.
+     *
      * @param parent root node.
      */
     public ScalingScene(final Parent parent) {
@@ -31,6 +32,7 @@ public class ScalingScene extends Scene {
     /**
      * Sets the scene to scale the root node when the
      * window size is changed.
+     *
      * @param value Activates or deactivates scaling.
      */
     public void setScaleRoot(final boolean value) {

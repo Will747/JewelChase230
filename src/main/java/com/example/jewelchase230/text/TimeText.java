@@ -1,6 +1,5 @@
 package com.example.jewelchase230.text;
 
-import com.example.jewelchase230.Level;
 import com.example.jewelchase230.Main;
 
 /**
@@ -18,8 +17,8 @@ public final class TimeText extends CanvasText {
 
     @Override
     protected String getText() {
-        Level level = getLevel();
-        int remainingTime = getLevel().getTime() / Main.MILLISECONDS_IN_A_SECOND;
+        int remainingTime = getLevel().getTime()
+                / Main.MILLISECONDS_IN_A_SECOND;
         return "Time Left: " + remainingTime;
     }
 }

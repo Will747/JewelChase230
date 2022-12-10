@@ -7,16 +7,24 @@ package com.example.jewelchase230;
  * @author Will Kaye
  */
 public class Settings extends Config {
-    /** The path to the file storing the settings. */
+    /**
+     * The path to the file storing the settings.
+     */
     private static final String SETTINGS_FILE = "config.txt";
 
-    /** The music volume level. */
+    /**
+     * The music volume level.
+     */
     private double musicVolume;
 
-    /** The sound effects volume level. */
+    /**
+     * The sound effects volume level.
+     */
     private double sfxVolume;
 
-    /** True if the game should be full screened. */
+    /**
+     * True if the game should be full screened.
+     */
     private boolean fullScreen;
 
     /**

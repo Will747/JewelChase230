@@ -7,90 +7,96 @@ import java.util.ArrayList;
  * This class will manage player High Scores for a specific level.
  *
  * @author Kellie Robinson
- *
  */
 public class LevelHighScores implements Serializable {
-	/** ArrayList holds scores of all players from all levels. */
-	private ArrayList<ProfileScore> scoreList = new ArrayList<>();
+    /**
+     * ArrayList holds scores of all players from all levels.
+     */
+    private ArrayList<ProfileScore> scoreList = new ArrayList<>();
 
-	/** The number of the level this holds scores for. */
-	private int levelNumber;
+    /**
+     * The number of the level this holds scores for.
+     */
+    private int levelNumber;
 
-	/** final integer defining the amount of top players. */
-	private static final int LEGAL_HIGH_SCORE_NUM = 10;
+    /**
+     * final integer defining the amount of top players.
+     */
+    private static final int LEGAL_HIGH_SCORE_NUM = 10;
 
-	/**
-	 * Constructs a new LevelHighScores.
-	 * @param inLevelNumber The level number.
-	 */
-	public LevelHighScores(final int inLevelNumber) {
-		levelNumber = inLevelNumber;
-	}
+    /**
+     * Constructs a new LevelHighScores.
+     *
+     * @param inLevelNumber The level number.
+     */
+    public LevelHighScores(final int inLevelNumber) {
+        levelNumber = inLevelNumber;
+    }
 
-	/**
-	 * Method which searches the ArrayList of profiles scores and checks
-	 * alongside Profile and PlayerScore to check if the player's current
-	 * level score is a new high score. If the high score is beaten, the
-	 * profileScore is updated. If no high score exists for this profile
-	 * on this level, it is recorded.
-	 *
-	 * @param profile The profile that achieved the high score.
-	 * @param score   The high score.
-	 */
-	public void updatePlayerScore(final Profile profile, final int score) {
-		boolean profileScoreExists = false;
+    /**
+     * Method which searches the ArrayList of profiles scores and checks
+     * alongside Profile and PlayerScore to check if the player's current
+     * level score is a new high score. If the high score is beaten, the
+     * profileScore is updated. If no high score exists for this profile
+     * on this level, it is recorded.
+     *
+     * @param profile The profile that achieved the high score.
+     * @param score   The high score.
+     */
+    public void updatePlayerScore(final Profile profile, final int score) {
+        boolean profileScoreExists = false;
 
-		for (int i = 0; i < scoreList.size(); i++) {
-			ProfileScore playerScore = scoreList.get(i);
-			if (playerScore.getUserUniqueID()
-					== profile.getUniquePlayerID()) {
-				profileScoreExists = true;
-				if (score > playerScore.getHighestScore()) {
-					playerScore.setHighestScore(score);
-					scoreList.set(i, playerScore);
-				}
-			}
-		}
+        for (int i = 0; i < scoreList.size(); i++) {
+            ProfileScore playerScore = scoreList.get(i);
+            if (playerScore.getUserUniqueID().equals(
+                    profile.getUniquePlayerID())) {
+                profileScoreExists = true;
+                if (score > playerScore.getHighestScore()) {
+                    playerScore.setHighestScore(score);
+                    scoreList.set(i, playerScore);
+                }
+            }
+        }
 
-		if (!profileScoreExists) {
-			ProfileScore profileScore =
-					new ProfileScore(score, profile);
-			scoreList.add(profileScore);
-		}
-	}
+        if (!profileScoreExists) {
+            ProfileScore profileScore =
+                    new ProfileScore(score, profile);
+            scoreList.add(profileScore);
+        }
+    }
 
-	/**
-	 * @return the levelScoreList
-	 */
-	public ArrayList<ProfileScore> getScoreList() {
-		return scoreList;
-	}
+    /**
+     * @return the levelScoreList
+     */
+    public ArrayList<ProfileScore> getScoreList() {
+        return scoreList;
+    }
 
-	/**
-	 * @return the topTenHighScores
-	 */
-	public ProfileScore[] getTopTenHighScores() {
-		scoreList.sort(
-			(x, y) ->
-			x.getHighestScore() > y.getHighestScore() ? 1 : 0);
+    /**
+     * @return the topTenHighScores
+     */
+    public ProfileScore[] getTopTenHighScores() {
+        scoreList.sort(
+                (x, y) ->
+                        x.getHighestScore() > y.getHighestScore() ? 1 : 0);
 
-		int numOfScores = LEGAL_HIGH_SCORE_NUM;
-		if (scoreList.size() < numOfScores) {
-			numOfScores = scoreList.size();
-		}
+        int numOfScores = LEGAL_HIGH_SCORE_NUM;
+        if (scoreList.size() < numOfScores) {
+            numOfScores = scoreList.size();
+        }
 
-		ProfileScore[] scores = new ProfileScore[numOfScores];
-		for (int i = 0; i < numOfScores; i++) {
-			scores[i] = scoreList.get(i);
-		}
+        ProfileScore[] scores = new ProfileScore[numOfScores];
+        for (int i = 0; i < numOfScores; i++) {
+            scores[i] = scoreList.get(i);
+        }
 
-		return scores;
-	}
+        return scores;
+    }
 
-	/**
-	 * @return The level that the scores are from.
-	 */
-	public int getLevelNumber() {
-		return levelNumber;
-	}
+    /**
+     * @return The level that the scores are from.
+     */
+    public int getLevelNumber() {
+        return levelNumber;
+    }
 }

@@ -13,7 +13,9 @@ import javafx.scene.input.MouseEvent;
  * @author Will Kaye
  */
 public final class MainMenu {
-    /** Label used to display the message of the day. */
+    /**
+     * Label used to display the message of the day.
+     */
     @FXML
     private Label messageOfTheDay;
 
@@ -35,12 +37,7 @@ public final class MainMenu {
     }
 
     @FXML
-    private void onProlifeMenuPressed(final MouseEvent event) {
-        Main.switchRoot(Menu.getProfileMenu());
-    }
-
-    @FXML
-    private void onLevelSelectMenuPressed(final MouseEvent event) {
+    private void onProfileMenuPressed(final MouseEvent event) {
         Main.switchRoot(Menu.getProfileMenu());
     }
 

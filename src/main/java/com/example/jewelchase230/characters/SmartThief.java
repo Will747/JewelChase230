@@ -2,6 +2,7 @@ package com.example.jewelchase230.characters;
 
 import com.example.jewelchase230.Direction;
 import com.example.jewelchase230.Level;
+import com.example.jewelchase230.items.Door;
 import com.example.jewelchase230.items.Item;
 import com.example.jewelchase230.items.Lever;
 import com.example.jewelchase230.items.Loot;
@@ -9,6 +10,7 @@ import com.example.jewelchase230.vectors.IntVector2D;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -19,16 +21,41 @@ import java.util.Stack;
  * @author Will Kaye
  */
 public final class SmartThief extends AICharacter {
-    /** Image used by the smart thief. */
-    private static final String SMART_THIEF_IMAGE = "images/SMART_THIEF.png";
+    /**
+     * The amount of time between moves.
+     * The smart thief is the slowest character.
+     */
+    private static final int MOVE_SPEED = 1350;
 
-    /** The item the thief is heading towards. */
+    /**
+     * Left facing image.
+     */
+    private static final String FACING_LEFT_IMAGE =
+            "images/SMART_THIEF_LEFT.png";
+    /**
+     * Right facing image.
+     */
+    private static final String FACING_RIGHT_IMAGE =
+            "images/SMART_THIEF_RIGHT.png";
+
+    /**
+     * The item the thief is heading towards.
+     */
     private Item targetItem;
 
-    /** The number of moves towards the current target item. */
+    /**
+     * Position of random tile if no loot is left.
+     */
+    private IntVector2D randomTarget;
+
+    /**
+     * The number of moves towards the current target item.
+     */
     private int distanceMoved;
 
-    /** Parent nodes from BFS traversal. */
+    /**
+     * Parent nodes from BFS traversal.
+     */
     private int[] parent;
 
     /**
@@ -39,12 +66,14 @@ public final class SmartThief extends AICharacter {
 
     /**
      * Constructs a renderable component.
-     * @param direction The initial direction.
      */
-    public SmartThief(final Direction direction) {
+    public SmartThief() {
         super();
-        setDirection(direction);
-        setImageFromFile(SMART_THIEF_IMAGE);
+        setFacingLeftImage(FACING_LEFT_IMAGE);
+        setFacingRightImage(FACING_RIGHT_IMAGE);
+        setDirection(Direction.NONE);
+        setMoveSpeed(MOVE_SPEED);
+        randomTarget = null;
     }
 
     @Override
@@ -52,33 +81,60 @@ public final class SmartThief extends AICharacter {
         Level level = getLevel();
 
         // Check if there is currently a target item.
-        if (targetItem == null
-                || level.getItem(targetItem.getGridPosition()) != targetItem) {
+        boolean invalidTargetItem = targetItem == null
+                || level.getItem(targetItem.getGridPosition()) != targetItem;
+        boolean invalidRandomTarget = randomTarget == null
+                || randomTarget.equals(getGridPosition());
+        if (invalidTargetItem && invalidRandomTarget) {
             findNextTargetItem();
         }
 
         IntVector2D nextPos = null;
-        if (targetItem != null) {
+        if (targetItem != null || randomTarget != null) {
+            IntVector2D targetPos;
+
+            if (randomTarget != null) {
+                targetPos = randomTarget;
+            } else {
+                targetPos = targetItem.getGridPosition();
+            }
+
             /* Find the next position to move to which eventually leads
             to the target position. */
-            IntVector2D targetPos = targetItem.getGridPosition();
             int currentParent = getTileIdx(targetPos);
             distanceMoved++;
             /* Goes up the path from the target pos to the move after
             reaching the current position. */
             while (distance[currentParent] != distanceMoved) {
                 currentParent = parent[currentParent];
+
+                if (currentParent == -1) {
+                    targetItem = null;
+                    return;
+                }
             }
             nextPos = getTilePos(currentParent);
         }
 
         // If the next position has been found move.
-        if (nextPos != null) {
+        // Check that square can still be moved into.
+        if (nextPos != null && canCharactersCollide(nextPos)) {
+            //Only for image changes, direction is not relevent.
+            int xDiff = nextPos.getX() - getGridPosition().getX();
+            if (xDiff > 0) {
+                setDirection(Direction.RIGHT);
+            } else if (xDiff < 0) {
+                setDirection(Direction.LEFT);
+            }
             setGridPosition(nextPos);
+        } else {
+            distanceMoved--; // Undo move
         }
     }
 
-    /** Selects the next closest item to where the thief is. */
+    /**
+     * Selects the next closest item to where the thief is.
+     */
     private void findNextTargetItem() {
         IntVector2D startPos = getGridPosition();
 
@@ -145,6 +201,28 @@ public final class SmartThief extends AICharacter {
             for (Lever lever : targetLevers) {
                 potentialTiles.add(lever.getGridPosition());
             }
+        } else {
+            // Look for doors if there is no more loot or levers
+            ArrayList<Door> doors = level.getAllItemsOfType(Door.class);
+            for (Door door : doors) {
+                potentialTiles.add(door.getGridPosition());
+            }
+        }
+
+        if (potentialTiles.size() < 1) {
+            // Head towards random tile as there is no objectives
+            Random random = new Random();
+            while (potentialTiles.size() < 1) {
+                int randomX = random.nextInt(levelSize.getX() - 1);
+                int randomY = random.nextInt(levelSize.getY() - 1);
+                IntVector2D pos = new IntVector2D(randomX, randomY);
+
+                // Ensure tile is reachable
+                if (distance[getTileIdx(pos)] != -1) {
+                    potentialTiles.add(pos);
+                    randomTarget = pos;
+                }
+            }
         }
 
         IntVector2D bestTilePos = null;
@@ -180,22 +258,23 @@ public final class SmartThief extends AICharacter {
     private ArrayList<IntVector2D> getAdjacentTiles(final IntVector2D tilePos) {
         ArrayList<IntVector2D> adjacentTiles = new ArrayList<>();
 
-        IntVector2D upPos = canMove(tilePos, Direction.UP, false);
+        IntVector2D upPos = canMoveIgnoreCharacters(tilePos, Direction.UP);
         if (!upPos.equals(tilePos)) {
             adjacentTiles.add(upPos);
         }
 
-        IntVector2D downPos = canMove(tilePos, Direction.DOWN, false);
+        IntVector2D downPos = canMoveIgnoreCharacters(tilePos, Direction.DOWN);
         if (!downPos.equals(tilePos)) {
             adjacentTiles.add(downPos);
         }
 
-        IntVector2D leftPos = canMove(tilePos, Direction.LEFT, false);
+        IntVector2D leftPos = canMoveIgnoreCharacters(tilePos, Direction.LEFT);
         if (!leftPos.equals(tilePos)) {
             adjacentTiles.add(leftPos);
         }
 
-        IntVector2D rightPos = canMove(tilePos, Direction.RIGHT, false);
+        IntVector2D rightPos = canMoveIgnoreCharacters(tilePos,
+                Direction.RIGHT);
         if (!rightPos.equals(tilePos)) {
             adjacentTiles.add(rightPos);
         }

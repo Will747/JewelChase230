@@ -1,8 +1,13 @@
 package com.example.jewelchase230.characters;
-import com.example.jewelchase230.*;
+
+import com.example.jewelchase230.Collidable;
+import com.example.jewelchase230.Sprite;
+import com.example.jewelchase230.Tile;
+import com.example.jewelchase230.TileColour;
+import com.example.jewelchase230.Direction;
+import com.example.jewelchase230.Level;
 import com.example.jewelchase230.vectors.IntVector2D;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,11 +16,28 @@ import java.util.ArrayList;
  * @author Caroline Segestaaland and Ben Stott.
  */
 public abstract class Character extends Sprite
-        implements Collidable, Serializable {
-    /** True if the character is alive. */
+        implements Collidable {
+    /**
+     * True if the character is alive.
+     */
     private boolean alive = true;
-    /** Bones image. */
+
+    /**
+     * The image when the character is facing to the left.
+     */
+    private String facingLeftImage;
+
+    /**
+     * The image when the character is facing to the right.
+     */
+    private String facingRightImage;
+
+
+    /**
+     * Bones image.
+     */
     private static final String BONES_IMAGE = "images/BONES.png";
+
     /**
      * Constructs a renderable component.
      */
@@ -25,12 +47,13 @@ public abstract class Character extends Sprite
 
     /**
      * Checks that the next move is a valid move.
+     *
      * @param nextMoveTile The tile to be moved to.
      * @param colourFollow The specific colour the next tile must be.
      * @return True if valid move, false if not.
      */
     protected boolean validNextTile(final Tile nextMoveTile,
-                                  final TileColour colourFollow) {
+                                    final TileColour colourFollow) {
         return validNextTile(nextMoveTile, colourFollow,
                 getGridPosition(), true);
     }
@@ -38,9 +61,10 @@ public abstract class Character extends Sprite
     /**
      * Compares two tiles and decides if it is possible to move between them.
      * Ignoring the current positions of other characters.
-     * @param nextMoveTile The tile to be moved to.
-     * @param colourFollow The specific colour the next tile must be.
-     * @param currentPos The current position.
+     *
+     * @param nextMoveTile    The tile to be moved to.
+     * @param colourFollow    The specific colour the next tile must be.
+     * @param currentPos      The current position.
      * @param checkCharacters True if other characters should be
      *                        considered.
      * @return True if valid move, false if not.
@@ -66,9 +90,9 @@ public abstract class Character extends Sprite
         }
 
         // Check if the next tile has any matching colours with the current.
-        for (int i = 0; i < thisTileColours.size(); i++) {
-            for (int j = 0; j < nextTileColours.size(); j++) {
-                if (thisTileColours.get(i) == nextTileColours.get(j)) {
+        for (TileColour thisTileColour : thisTileColours) {
+            for (TileColour nextTileColour : nextTileColours) {
+                if (thisTileColour == nextTileColour) {
                     if (checkCharacters) {
                         return canCharactersCollide(
                                 nextMoveTile.getGridPosition());
@@ -82,6 +106,7 @@ public abstract class Character extends Sprite
 
     /**
      * Checks if a character can move to a new tile.
+     *
      * @param xChange Positive for moving right, negative for moving left.
      * @param yChange Positive for moving down, negative for moving up.
      * @return new tile position, or current position if invalid move.
@@ -95,24 +120,23 @@ public abstract class Character extends Sprite
     /**
      * Checks if a character can move in a certain direction from a
      * particular tile.
-     * @param startPos The initial position.
+     *
+     * @param startPos  The initial position.
      * @param direction The direction the character wants to move in.
-     * @param checkCharacters True if characters on the grid should be
-     *                        considered.
      * @return The final position after making move or startPos if invalid move.
      */
-    protected IntVector2D canMove(final IntVector2D startPos,
-                                  final Direction direction,
-                                  final boolean checkCharacters) {
+    protected IntVector2D canMoveIgnoreCharacters(final IntVector2D startPos,
+                                                  final Direction direction) {
         return canMove(startPos, direction.getDirectionVector(),
-                checkCharacters);
+                false);
     }
 
     /**
      * Checks if a character can move in a certain direction from a
      * particular tile.
-     * @param startPos The initial position.
-     * @param direction The direction the character wants to move in.
+     *
+     * @param startPos        The initial position.
+     * @param direction       The direction the character wants to move in.
      * @param checkCharacters True if characters on the grid should be
      *                        considered.
      * @return The final position after making move or startPos if invalid move.
@@ -160,6 +184,7 @@ public abstract class Character extends Sprite
 
     /**
      * Decides if a character on specific tile can be collied with.
+     *
      * @param nextTilePosition The position of the tile.
      * @return True if the player can move, false if not.
      */
@@ -177,6 +202,7 @@ public abstract class Character extends Sprite
     /**
      * Weather the character is able to affect items such as
      * pick up loot.
+     *
      * @return True if the player can collect/interact with items.
      */
     public boolean canInteractWithItems() {
@@ -186,6 +212,7 @@ public abstract class Character extends Sprite
     /**
      * Weather this character can kill other characters when moving
      * around the grid even if the character cannot be collided with.
+     *
      * @return True if this character kills others.
      */
     public boolean canKill() {
@@ -194,6 +221,7 @@ public abstract class Character extends Sprite
 
     /**
      * Weather other objects can collide into this character.
+     *
      * @return True if another object (character) can collide with this.
      */
     @Override
@@ -203,6 +231,7 @@ public abstract class Character extends Sprite
 
     /**
      * Handles a collision event.
+     *
      * @param character The colliding character.
      */
     @Override
@@ -211,7 +240,22 @@ public abstract class Character extends Sprite
     }
 
     /**
+     * Gets the correct image depending on the direction.
+     *
+     * @param newDirection The new direction.
+     * @return image corresponding with the direction.
+     */
+    protected String getImage(final Direction newDirection) {
+        if (newDirection == Direction.RIGHT) {
+            return facingRightImage;
+        }
+
+        return facingLeftImage;
+    }
+
+    /**
      * Changes the position of the character on the grid and handles collisions.
+     *
      * @param inGridPosition New position on the grid.
      */
     @Override
@@ -225,5 +269,23 @@ public abstract class Character extends Sprite
         }
 
         super.setGridPosition(inGridPosition);
+    }
+
+    /**
+     * Sets the image when the character is facing to the left.
+     *
+     * @param inFacingLeftImage The facing left image path.
+     */
+    public void setFacingLeftImage(final String inFacingLeftImage) {
+        facingLeftImage = inFacingLeftImage;
+    }
+
+    /**
+     * Sets the image when the character is facing to the right.
+     *
+     * @param inFacingRightImage The facing right image path.
+     */
+    public void setFacingRightImage(final String inFacingRightImage) {
+        facingRightImage = inFacingRightImage;
     }
 }

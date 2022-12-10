@@ -10,20 +10,26 @@ import com.example.jewelchase230.vectors.IntVector2D;
  * @author Caroline Segestaal.
  */
 public class FlyingAssassin extends AICharacter {
-    /** Left facing image. */
-    static final String FACING_LEFT_IMAGE =
+    /**
+     * Left facing image.
+     */
+    private static final String FACING_LEFT_IMAGE =
             "images/FLYING_ASSASSIN_LEFT_FACE.png";
-    /** Right facing image. */
-    static final String FACING_RIGHT_IMAGE =
+    /**
+     * Right facing image.
+     */
+    private static final String FACING_RIGHT_IMAGE =
             "images/FLYING_ASSASSIN_RIGHT_FACE.png";
 
     /**
      * Constructs a renderable component.
+     *
      * @param inDirection The inputted direction.
      */
     public FlyingAssassin(final Direction inDirection) {
+        setFacingLeftImage(FACING_LEFT_IMAGE);
+        setFacingRightImage(FACING_RIGHT_IMAGE);
         setDirection(inDirection);
-        setImageFromFile(imageManager(inDirection));
     }
 
     /**
@@ -42,7 +48,6 @@ public class FlyingAssassin extends AICharacter {
                     currentDirection.getOppositeDirection();
             setDirection(newDirection);
             setGridPosition(canMove(-xDiff, -yDiff));
-            setImageFromFile(imageManager(newDirection));
         } else {
             setGridPosition(potentialPosition);
         }
@@ -50,6 +55,7 @@ public class FlyingAssassin extends AICharacter {
 
     /**
      * Checks if a character can move to a new tile.
+     *
      * @param xChange Positive for moving right, negative for moving left.
      * @param yChange Positive for moving down, negative for moving up.
      * @return new tile position, or current position if invalid move.
@@ -85,6 +91,7 @@ public class FlyingAssassin extends AICharacter {
 
     /**
      * The flying assassin is not a thief so doesn't collect/collide with items.
+     *
      * @return False - As the assassin is flying.
      */
     @Override
@@ -101,19 +108,6 @@ public class FlyingAssassin extends AICharacter {
         if (character != null) {
             character.kill();
         }
-    }
-
-    /**
-     * Gets the correct image depending on the direction.
-     * @param d new direction.
-     * @return image corresponding with the direction.
-     */
-    private String imageManager(final Direction d) {
-        return switch (d) {
-            case LEFT -> FACING_LEFT_IMAGE;
-            case RIGHT -> FACING_RIGHT_IMAGE;
-            default -> FACING_LEFT_IMAGE;
-        };
     }
 }
 
