@@ -14,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
@@ -42,45 +44,39 @@ public final class ProfileCreateMenu {
      */
     @FXML
     private Button createProfileMenuButton;
-    
-    /*
-     * Choose cat combo box.
+
+    /**
+     * Drop down menu.
      */
     @FXML
-    private ComboBox<ProfileImage> chooseCatComboBox;
-    
-    /** 
+    private ComboBox<ProfileImage> chooseCatComboBox = new ComboBox<>();
+
+    /**
      * char which indicated which cat is selected.
      */
-    private char catIDSelected = 't'; 
-    
-    private String chosenCat;
-    
-/**
-    ObservableList<ProfileImage> catList = 
-    	    FXCollections.observableArrayList(
-    	        ProfileImage.Black,
-    	        ProfileImage.Oreo,
-    	        ProfileImage.Tabby,
-    	        ProfileImage.White
-    	    );
-    
-    
+    private char chosenCat;
+
+    /**
+     * List of cat types.
+     */
+    private ObservableList<ProfileImage> catList =
+        FXCollections.observableArrayList(ProfileImage.values());
+
+    /**
+     * Drop down menu for cat type.
+     */
     @FXML
     public void initialize() {
-    	chooseCatComboBox.getItems().removeAll(chooseCatComboBox.getItems());
-    	chooseCatComboBox.setItems(catList);
-    	//chooseCatComboBox.getSelectionModel().select("Option B");
+        chooseCatComboBox.getItems().setAll(catList);
+        chooseCatComboBox.getSelectionModel().selectedItemProperty()
+            .addListener(new ChangeListener<ProfileImage>() {
+                @Override public void changed(final ObservableValue
+                <? extends ProfileImage> selectedCat,
+                 final ProfileImage oldCat, final ProfileImage newCat) {
+                    chosenCat = newCat.name().toLowerCase().charAt(0);
+            }
+        });
     }
-    
-    
-    private char getChosenCat() {
-    	chooseCatComboBox.setOnAction(event -> { 
-    		 chosenCat = chooseCatComboBox.getValue().toString();    
-    		});
-    	return chosenCat.toLowerCase().charAt(0);
-    }
-   */
 
     /**
      * This method creates a profile using the user's name input.
@@ -93,7 +89,7 @@ public final class ProfileCreateMenu {
         if (acceptableName(profileCreatedName)) {
             if (ProfileManager.getListOfProfile().size()
                     < ProfileMenu.MAX_NUM_OF_PROFILES) {
-                Profile newProfile = new Profile(profileCreatedName);
+                Profile newProfile = new Profile(profileCreatedName, chosenCat);
                 ProfileManager.addProfile(newProfile);
                 ProfileManager.saveProfiles();
                 Menu.getProfileMenuController().refresh();

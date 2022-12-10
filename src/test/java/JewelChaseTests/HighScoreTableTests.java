@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class HighScoreTableTests {
     @Test
     public void readAndSaveTest() {
-        Profile testProfile = new Profile("Test");
+        Profile testProfile = new Profile("Test", 'b');
 
         HighScoreTable highScoreTable = HighScoreTable.read();
 

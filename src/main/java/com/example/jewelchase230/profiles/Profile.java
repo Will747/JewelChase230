@@ -34,12 +34,13 @@ public class Profile {
      * Constructor of Profile.
      *
      * @param inPlayerName The name of the player.
+     * @param catID The cat assigned to the player.
      */
-    public Profile(final String inPlayerName) {
+    public Profile(final String inPlayerName, final char catID) {
         uniquePlayerID = UUID.randomUUID();
         playerName = inPlayerName;
         levelReached = 1;
-        catCharacter = ProfileImage.getRandomCat();
+        catCharacter = ProfileImage.getCatFromChar(catID);
     }
 
     /**

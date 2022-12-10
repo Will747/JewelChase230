@@ -70,7 +70,7 @@ public enum ProfileImage {
             case 'o' -> Oreo;
             case 't' -> Tabby;
             case 'w' -> White;
-            default -> Tabby;
+            default -> getRandomCat();
         };
     }
 
@@ -119,6 +119,4 @@ public enum ProfileImage {
         int randomNum = random.nextInt(values().length);
         return values()[randomNum];
     }
-    
-  
 }
