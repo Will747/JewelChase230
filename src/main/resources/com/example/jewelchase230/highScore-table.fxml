@@ -28,8 +28,8 @@
       </CheckBox>
       <TableView fx:id="hsTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="playerCol" prefWidth="200.0" text="Player" />
-            <TableColumn fx:id="hsCol" prefWidth="340.0" text="High Score" />
+          <TableColumn fx:id="playerCol" prefWidth="276.79998779296875" text="Player" />
+            <TableColumn fx:id="hsCol" prefWidth="324.0" text="High Score" />
         </columns>
       </TableView>
       <Pane prefHeight="36.0" prefWidth="600.0">
