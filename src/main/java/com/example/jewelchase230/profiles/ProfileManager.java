@@ -53,7 +53,6 @@ public final class ProfileManager {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        System.out.println(listOfProfile.size());
     }
 
     /**

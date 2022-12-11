@@ -125,7 +125,6 @@ public final class MessageOfTheDay {
         int solvedPuzzleLength = puzzle.length() + SUFFIX.length();
         String solvedPuzzleLengthString = String.valueOf(solvedPuzzleLength);
         String solutionQuery = solvedPuzzleLengthString + solvedPuzzle + SUFFIX;
-        System.out.println(solvedPuzzle);
         return solutionQuery;
     }
 
