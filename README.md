@@ -1,4 +1,7 @@
 # JewelChase230
+We created this project for our Software Engineering course at Swansea University.  <br />
+In the course we were tasked with creating a JavaFX jewel chase styled game based on a functional specification given to us. <br />
+First part of the project was designing the game and creating UML diagrams which were then implemented in this part.
 
 # Description
 A mini jewel chase version with cats in a pub.
@@ -27,10 +30,10 @@ As cat in a pub your goal is to collect all the loot (Coins, bag of coins, beer,
 and get to the door before the timer runs out or the smart thief (Animal control) gets there.
 <br />
 <br />
-There is three types of NPC's:
+There are three types of NPC's:
 - <b> Flying Assasin/Mouse in an airplane: </b>
   - Kills the player if they cross paths
-  - Doesn't interact with loot
+  - Does not interact with loot
 - <b> Floor following thief/Dog: </b>
   - Follows a certain coloured tiles in clockwise pattern
   - Interacts with loot
@@ -49,7 +52,7 @@ Each loot type gives a different amount of extra points which are directly added
 Daniel Clark <br />
 Will Kaye <br />
 Kellie Robinson <br />
-Caroine Segestaal <br />
+Caroline Segestaal <br />
 Adam Smith <br />
 Ben Stott <br />
 Scott Williams <br />
