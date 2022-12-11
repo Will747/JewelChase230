@@ -8,10 +8,15 @@ A mini jewel chase version with cats in a pub.
 <br />
 <br />
 <b> Features: </b>
-- Game Play with 10 levels
-- High cores tables with top 10 scorers for each level
+- Game Play with 7 levels of increasing difficulty
+- High score tables with top 10 scorers for each level
 - Create and delete profiles
 - Saves high scores and highest level played
+
+# Technologies
+This project was created using:
+- Java 17
+- JavaFX 17.2
 
 # Compile
 Once downloaded and opened run the class called Main to start the game. <br />
