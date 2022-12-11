@@ -8,10 +8,16 @@ import com.example.jewelchase230.vectors.IntVector2D;
  * @author Caroline Segestaal.
  */
 public enum Direction {
-    /**
-     * The four directions.
-     */
-    UP, DOWN, LEFT, RIGHT, NONE;
+    /** Direction up. */
+    UP,
+    /** Direction down. */
+    DOWN,
+    /** Direction left. */
+    LEFT,
+    /** Direction right. */
+    RIGHT,
+    /** No direction. */
+    NONE;
 
     /**
      * Changes the direction the AICharacter is facing by 180 degrees.

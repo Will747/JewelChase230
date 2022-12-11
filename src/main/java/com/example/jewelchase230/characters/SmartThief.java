@@ -207,7 +207,7 @@ public final class SmartThief extends AICharacter {
                 } else {
                 }
             }
-        } 
+        }
         if (doors.size() > 0 && potentialTiles.size() < 1) {
             // Look for doors if there is no more loot or levers
             for (Door door : doors) {

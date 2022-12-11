@@ -16,9 +16,9 @@ import java.util.ArrayList;
  * only top 10
  * <p>
  * high score table, will  appear at the end of each level and should
- * be navigatable from menu(?)
+ * be navigatable from menu.
  * <p>
- * upon level exit, save user ID, name & score of that level in text file
+ * upon level exit, save user ID, name and score of that level in a text file.
  */
 
 public class HighScoreTable implements Serializable {
