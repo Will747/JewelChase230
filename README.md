@@ -4,11 +4,15 @@
 A mini jewel chase version with cats in a pub.
 <br />
 <br />
-Features:
+<b> Features: </b>
 - Game Play with 10 levels
 - High cores tables with top 10 scorers for each level
 - Create and delete profiles
 - Saves high scores and highest level played
+
+# Compile
+Once downloaded and opened run the class called Main to start the game. <br />
+Once in the main menu, click start to create a profile and start a level.
 
 # Images
 ![java_ehXdDwo20P](https://user-images.githubusercontent.com/77969841/206911352-ff499549-0155-4440-9c30-f8844f55182b.jpg)
@@ -22,19 +26,24 @@ Features:
 As cat in a pub your goal is to collect all the loot (Coins, bag of coins, beer, cocktail and clocks) 
 and get to the door before the timer runs out or the smart thief (Animal control) gets there.
 <br />
+<br />
 There is three types of NPC's:
-- Flying Assasin/Mouse in an airplane 
+- <b> Flying Assasin/Mouse in an airplane: </b>
   - Kills the player if they cross paths
   - Doesn't interact with loot
-- Floor following thief/Dog:
+- <b> Floor following thief/Dog: </b>
   - Follows a certain coloured tiles in clockwise pattern
   - Interacts with loot
   - Does not kill the player
-- Smart Thief/Animal control:
+- <b> Smart Thief/Animal control: </b>
   - Takes the shortest path to the nearest loot
   - Once all loot is collected it takes the shortest path to the exit
   - Does not kil the player but if it reaches the exit befor ethe player then the player loses
 <br />
+<br />
+To unlock the door all loot needs to be picked up and all gates need to be opened. <br />
+Each loot type gives a different amount of extra points which are directly added to the players score. <br />
+
 
 # Authors:
 Daniel Clark <br />
