@@ -61,8 +61,6 @@ public class LevelHighScores implements Serializable {
         }
 
         if (!profileScoreExists) {
-            System.out.println("Adding new score to high scores");
-            System.out.println("Score list size: " + scoreList.size());
             ProfileScore profileScore =
                     new ProfileScore(score, profile);
             scoreList.add(profileScore);
@@ -80,7 +78,6 @@ public class LevelHighScores implements Serializable {
      * @return the topTenHighScores
      */
     public ProfileScore[] getTopTenHighScores() {
-        System.out.println("Score list size: " + scoreList.size());
         Collections.sort(
             scoreList, Comparator.comparing(ProfileScore::getHighestScore));
         Collections.reverse(scoreList);
