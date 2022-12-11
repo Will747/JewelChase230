@@ -82,9 +82,12 @@ public final class SmartThief extends AICharacter {
 
         // Check if there is currently a target item.
         boolean invalidTargetItem = targetItem == null
+                || targetItem.hasExploded()
                 || level.getItem(targetItem.getGridPosition()) != targetItem;
         boolean invalidRandomTarget = randomTarget == null
+                || level.getItem(randomTarget).hasExploded()
                 || randomTarget.equals(getGridPosition());
+        System.out.println(invalidTargetItem + " " + invalidRandomTarget);
         if (invalidTargetItem && invalidRandomTarget) {
             findNextTargetItem();
         }
@@ -195,11 +198,15 @@ public final class SmartThief extends AICharacter {
 
         if (targetLoot.size() > 0 || targetLevers.size() > 0) {
             for (Loot loot : targetLoot) {
-                potentialTiles.add(loot.getGridPosition());
+                if (!loot.hasExploded()) {
+                    potentialTiles.add(loot.getGridPosition());
+                }
             }
 
             for (Lever lever : targetLevers) {
-                potentialTiles.add(lever.getGridPosition());
+                if (!lever.hasExploded()) {
+                    potentialTiles.add(lever.getGridPosition());
+                }
             }
         } else {
             // Look for doors if there is no more loot or levers
