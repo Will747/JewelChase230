@@ -193,6 +193,7 @@ public final class SmartThief extends AICharacter {
         ArrayList<Loot> targetLoot = level.getAllItemsOfType(Loot.class);
         ArrayList<Lever> targetLevers =
                 level.getAllItemsOfType(Lever.class);
+        ArrayList<Door> doors = level.getAllItemsOfType(Door.class);
 
         if (targetLoot.size() > 0 || targetLevers.size() > 0) {
             for (Loot loot : targetLoot) {
@@ -200,15 +201,15 @@ public final class SmartThief extends AICharacter {
                     potentialTiles.add(loot.getGridPosition());
                 }
             }
-
             for (Lever lever : targetLevers) {
                 if (!lever.hasExploded()) {
                     potentialTiles.add(lever.getGridPosition());
+                } else {
                 }
             }
-        } else {
+        } 
+        if (doors.size() > 0 && potentialTiles.size() < 1) {
             // Look for doors if there is no more loot or levers
-            ArrayList<Door> doors = level.getAllItemsOfType(Door.class);
             for (Door door : doors) {
                 potentialTiles.add(door.getGridPosition());
             }
