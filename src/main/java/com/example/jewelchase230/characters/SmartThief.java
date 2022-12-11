@@ -87,7 +87,6 @@ public final class SmartThief extends AICharacter {
         boolean invalidRandomTarget = randomTarget == null
                 || level.getItem(randomTarget).hasExploded()
                 || randomTarget.equals(getGridPosition());
-        System.out.println(invalidTargetItem + " " + invalidRandomTarget);
         if (invalidTargetItem && invalidRandomTarget) {
             findNextTargetItem();
         }
