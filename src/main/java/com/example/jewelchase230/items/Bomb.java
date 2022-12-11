@@ -16,10 +16,6 @@ public class Bomb extends Item {
      */
     private int timeSinceLastImageChange = 0;
     /**
-     * Time between image change when a fast explode occours.
-     */
-    private static final int FAST_EXPLODE_COUNTDOWN_RATE = 100;
-    /**
      * The index for currently displayed image in countdownArray.
      */
     private int currentImageInCountdown = 0;
@@ -67,16 +63,13 @@ public class Bomb extends Item {
             }
         } else if (fastExplode) {
             timeSinceLastImageChange += time;
-            if (timeSinceLastImageChange >= FAST_EXPLODE_COUNTDOWN_RATE) {
-                countdown();
-            }
+            countdown();
         } else if (hasCollided) {
             timeSinceLastImageChange += time;
             if (timeSinceLastImageChange >= Main.MILLISECONDS_IN_A_SECOND) {
                 countdown();
             }
         }
-
     }
 
     /**
