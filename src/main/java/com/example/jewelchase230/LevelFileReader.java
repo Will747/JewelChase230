@@ -94,6 +94,7 @@ public final class LevelFileReader {
     public static Level readInFile(final String fileName, final int levelNum) {
         File levelFile = new File(fileName);
         lineReader(levelFile, levelNum);
+        levelBuilt.checkIfDoorOpen();
         return levelBuilt;
     }
 

@@ -42,8 +42,7 @@ public class Door extends Item {
     }
 
     /**
-     * Change if the door is open or closed.
-     *
+     * Opens the door.
      */
     public void openDoor() {
         isDoorOpen = true;
