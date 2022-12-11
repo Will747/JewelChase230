@@ -1,3 +1,8 @@
+/**
+ * Module information.
+ *
+ * @author Will Kaye.
+ */
 module com.example.jewelchase230 {
     requires javafx.controls;
     requires javafx.fxml;

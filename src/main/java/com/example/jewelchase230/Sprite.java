@@ -54,6 +54,12 @@ public abstract class Sprite extends Renderable {
         super();
     }
 
+    /**
+     * Reads in a sprite object.
+     * @param in The input object.
+     * @throws IOException If no input stream is found.
+     * @throws ClassNotFoundException If the class can't be found.
+     */
     @Serial
     private void readObject(final ObjectInputStream in)
             throws IOException, ClassNotFoundException {

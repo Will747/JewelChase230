@@ -105,6 +105,7 @@ public final class Menu {
      * Creates a new parent node and adds it to the cache.
      *
      * @param fxmlFile fxmlFile that should be in the scene.
+     * @throws IOException Throws exception if no file is found.
      */
     private static void createParent(final String fxmlFile) throws IOException {
         URL url = Menu.class.getResource(fxmlFile);
