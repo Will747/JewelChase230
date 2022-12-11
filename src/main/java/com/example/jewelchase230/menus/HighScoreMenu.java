@@ -87,9 +87,6 @@ public final class HighScoreMenu {
                 table.getLevelHighScores(levelNum);
         ProfileScore[] topTen = levelScores.getTopTenHighScores();
         list.addAll(topTen);
-        hsCol.setSortType(TableColumn.SortType.DESCENDING);
-        hsTable.getSortOrder().add(hsCol);
-        hsTable.sort();
 
         levelNumLabel.setText("Level " + levelNum);
     }
