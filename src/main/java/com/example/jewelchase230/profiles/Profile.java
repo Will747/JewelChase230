@@ -111,7 +111,6 @@ public class Profile {
      * @param newLevelReached the levelReached to set
      */
     public void setLevelReached(final Integer newLevelReached) {
-        System.out.println("updating max level");
         if (newLevelReached > levelReached) {
             levelReached = newLevelReached;
         }

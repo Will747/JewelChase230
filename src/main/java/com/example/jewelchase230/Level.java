@@ -89,7 +89,6 @@ public class Level implements Serializable {
         incrementPlayerScore(
             (timeLeftInMilliseconds / Main.MILLISECONDS_IN_A_SECOND)
                 * TIME_LEFT_SCORE_MULTIPLYER);
-        System.out.println("Final score: " + playerScore); //temporary
     }
 
     /**

@@ -104,7 +104,6 @@ public final class LevelSelectMenu {
     @FXML
     void changeLevel(final MouseEvent event) {
         int btnNum = Integer.parseInt(((Button) event.getSource()).getText());
-        System.out.println(btnNum);
         switchToLevel(btnNum);
     }
 
